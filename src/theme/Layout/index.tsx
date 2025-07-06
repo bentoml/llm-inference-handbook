@@ -43,7 +43,6 @@ export default function Layout(props: Props): ReactNode {
         className={clsx(
           ThemeClassNames.layout.main.container,
           ThemeClassNames.wrapper.main,
-          styles.mainWrapper,
           wrapperClassName
         )}
       >
@@ -51,6 +50,15 @@ export default function Layout(props: Props): ReactNode {
           {children}
         </ErrorBoundary>
       </div>
+
+      <a
+        href="https://bentoml.com/contact"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.chat}
+      >
+        <i className={styles.chatIcon} />
+      </a>
 
       {!noFooter && <Footer />}
     </LayoutProvider>
