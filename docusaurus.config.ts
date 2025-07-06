@@ -5,9 +5,9 @@ import type * as Preset from '@docusaurus/preset-classic'
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'LLM Inference in Production',
+  tagline: 'BentoML LLM Inference in Production',
+  favicon: 'img/favicon-32x32.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -22,8 +22,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'bentoml', // Usually your GitHub org/user name.
+  projectName: 'content-hub', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -55,16 +55,38 @@ const config: Config = {
       disableSwitch: true
     },
     navbar: {
-      title: 'My Site',
+      hideOnScroll: true,
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg'
+        alt: 'bentoml logo',
+        src: 'img/logo.svg',
+        href: 'https://www.bentoml.com',
+        height: 41
       },
       items: [
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right'
+          position: 'left',
+          href: 'https://github.com/bentoml/BentoVLLM',
+          label: 'Examples'
+        },
+        {
+          position: 'left',
+          href: 'https://www.bentoml.com/blog',
+          label: 'Blog'
+        },
+        {
+          position: 'left',
+          href: 'https://l.bentoml.com/join-slack',
+          label: 'Community'
+        },
+        {
+          position: 'right',
+          href: 'https://github.com/bentoml',
+          label: 'GitHub'
+        },
+        {
+          position: 'right',
+          href: 'https://cloud.bentoml.com/signup',
+          label: 'Sign Up'
         }
       ]
     },
