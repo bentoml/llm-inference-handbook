@@ -35,3 +35,15 @@
 .sidebarLogo {
   display: none;
 }
+
+.sidebarHeader {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.sidebarHeader h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}

@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import clsx from 'clsx'
 import { useThemeConfig } from '@docusaurus/theme-common'
-import Logo from '@theme/Logo'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import CollapseButton from '@theme/DocSidebar/Desktop/CollapseButton'
 import Content from '@theme/DocSidebar/Desktop/Content'
 import type { Props } from '@theme/DocSidebar/Desktop'
@@ -15,6 +15,9 @@ function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props) {
       sidebar: { hideable }
     }
   } = useThemeConfig()
+  const {
+    siteConfig: { title }
+  } = useDocusaurusContext()
 
   return (
     <div
@@ -24,7 +27,9 @@ function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props) {
         isHidden && styles.sidebarHidden
       )}
     >
-      {hideOnScroll && <Logo tabIndex={-1} className={styles.sidebarLogo} />}
+      <div className={styles.sidebarHeader}>
+        <h2>{title}</h2>
+      </div>
       <Content path={path} sidebar={sidebar} />
       {hideable && <CollapseButton onClick={onCollapse} />}
     </div>
