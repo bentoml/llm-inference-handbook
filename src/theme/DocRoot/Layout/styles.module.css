@@ -6,4 +6,14 @@
 .docsWrapper {
   display: flex;
   flex: 1 0 auto;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  align-self: center;
+}
+
+@media (min-width: 768px) {
+  .docsWrapper {
+    padding: 0 5rem;
+  }
 }
