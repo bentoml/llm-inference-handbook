@@ -1,0 +1,71 @@
+.menuListCollapsible:hover {
+  background-color: #f0fdf4;
+}
+
+.menuCaret:hover {
+  background: none;
+}
+
+.menuCaret:before {
+  background: url('/img/arrow.svg') 50% 50% / 1rem 1rem no-repeat !important;
+  filter: var(--ifm-menu-link-sublist-icon-filter);
+  transform: rotateZ(360deg);
+}
+
+.menuCaret.collapsed:before {
+  transform: rotateZ(270deg);
+}
+
+.menuLink {
+  color: #4b5563;
+}
+
+.docSidebarItemLinkLevel1 > .menuList {
+  margin-left: 1rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid #dcfce7;
+  margin-top: 0;
+  padding-top: 0.25rem;
+}
+
+.docSidebarItemLinkLevel1 > .menuListCollapsible > .menuLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #111827;
+  padding: 0.75rem;
+}
+
+.docSidebarItemLinkLevel1 > .menuListCollapsible > .menuLink img {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+
+.docSidebarItemLinkLevel2 > .menuListCollapsible > .menuLink {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.docSidebarItemLinkLevel2 > .menuListCollapsible > .menuLink img {
+  width: 0.75rem;
+  height: 0.75rem;
+  display: block;
+}
+
+.docSidebarItemLinkLevelOther > .menuListCollapsible > .menuLink {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+.docSidebarItemLinkLevelOther > .menuListCollapsible > .menuLink img {
+  width: 0.5rem;
+  height: 0.5rem;
+  display: block;
+}
