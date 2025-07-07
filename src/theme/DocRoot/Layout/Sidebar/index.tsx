@@ -1,8 +1,13 @@
 import { type ReactNode, useState, useCallback, Fragment } from 'react'
 import clsx from 'clsx'
-import { prefersReducedMotion, ThemeClassNames } from '@docusaurus/theme-common'
+import {
+  prefersReducedMotion,
+  ThemeClassNames,
+  useThemeConfig
+} from '@docusaurus/theme-common'
 import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client'
 import { useLocation } from '@docusaurus/router'
+import Logo from '@theme/Logo'
 import DocSidebar from '@theme/DocSidebar'
 import ExpandButton from '@theme/DocRoot/Layout/Sidebar/ExpandButton'
 import type { Props } from '@theme/DocRoot/Layout/Sidebar'
@@ -14,9 +19,7 @@ import styles from './styles.module.css'
 // See https://github.com/facebook/docusaurus/issues/3414
 function ResetOnSidebarChange({ children }: { children: ReactNode }) {
   const sidebar = useDocsSidebar()
-  return (
-    <Fragment key={sidebar?.name ?? 'noSidebar'}>{children}</Fragment>
-  )
+  return <Fragment key={sidebar?.name ?? 'noSidebar'}>{children}</Fragment>
 }
 
 export default function DocRootLayoutSidebar({
@@ -25,7 +28,9 @@ export default function DocRootLayoutSidebar({
   setHiddenSidebarContainer
 }: Props): ReactNode {
   const { pathname } = useLocation()
-
+  const {
+    navbar: { hideOnScroll }
+  } = useThemeConfig()
   const [hiddenSidebar, setHiddenSidebar] = useState(false)
   const toggleSidebar = useCallback(() => {
     if (hiddenSidebar) {
@@ -56,6 +61,11 @@ export default function DocRootLayoutSidebar({
         }
       }}
     >
+      {hideOnScroll && (
+        <div className={styles.sidebarHeader}>
+          <Logo tabIndex={-1} className={styles.sidebarLogo} />
+        </div>
+      )}
       <ResetOnSidebarChange>
         <div
           className={clsx(
