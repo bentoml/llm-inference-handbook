@@ -40,6 +40,11 @@ const config: Config = {
     [
       'classic',
       {
+        googleTagManager: {
+          containerId: 'GTM-NLGDMK5',
+        },
+      },
+      {
         docs: {
           routeBasePath: '/'
         },
