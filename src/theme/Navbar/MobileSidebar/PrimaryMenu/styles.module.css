@@ -1,0 +1,11 @@
+.navbarList {
+  margin-top: 20px;
+}
+
+.navbarList li {
+  margin-bottom: 20px;
+}
+
+.navbarList li a {
+  color: #19192c;
+}
