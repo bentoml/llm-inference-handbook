@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import clsx from 'clsx'
 import { useWindowSize } from '@docusaurus/theme-common'
 import { useDoc } from '@docusaurus/plugin-content-docs/client'
@@ -9,7 +9,6 @@ import DocItemFooter from '@theme/DocItem/Footer'
 import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile'
 import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop'
 import DocItemContent from '@theme/DocItem/Content'
-import DocBreadcrumbs from '@theme/DocBreadcrumbs'
 import ContentVisibility from '@theme/ContentVisibility'
 import type { Props } from '@theme/DocItem/Layout'
 
@@ -49,7 +48,6 @@ export default function DocItemLayout({ children }: Props): ReactNode {
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>
-            <DocBreadcrumbs />
             <DocVersionBadge />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
@@ -58,7 +56,9 @@ export default function DocItemLayout({ children }: Props): ReactNode {
           <DocItemPaginator />
         </div>
       </div>
-      {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
+      {docTOC.desktop && (
+        <div className={clsx('col col--3', styles.toc)}>{docTOC.desktop}</div>
+      )}
     </div>
   )
 }

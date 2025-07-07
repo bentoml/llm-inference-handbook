@@ -3,8 +3,23 @@
   margin-top: 0;
 }
 
+.docItemContainer article {
+  margin-bottom: 2rem;
+}
+
+.toc {
+  padding-right: 0;
+}
+
 @media (min-width: 997px) {
   .docItemCol {
     max-width: 75% !important;
+  }
+}
+
+@media (max-width: 996px) {
+  .docItemCol {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
