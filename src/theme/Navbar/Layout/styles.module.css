@@ -5,3 +5,34 @@
 .navbarHidden {
   transform: translate3d(0, calc(-100% - 2px), 0);
 }
+
+.navbarInner {
+  background-color: var(--ifm-navbar-background-color);
+  font-family: var(--bentoml-font-family);
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 1.25rem;
+}
+
+.navbarContent {
+  border: 1px solid #19192c;
+  border-radius: 0 0 15px 15px;
+  border-top: none;
+  height: var(--ifm-navbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .navbarInner {
+    padding: 0 5rem;
+  }
+
+  .navbarContent {
+    padding: 0 2.5rem;
+  }
+}

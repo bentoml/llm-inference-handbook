@@ -37,7 +37,6 @@ export default function NavbarLayout({ children }: Props): ReactNode {
       })}
       className={clsx(
         ThemeClassNames.layout.navbar.container,
-        'navbar',
         'navbar--fixed-top',
         hideOnScroll && [
           styles.navbarHideable,
@@ -50,7 +49,9 @@ export default function NavbarLayout({ children }: Props): ReactNode {
         }
       )}
     >
-      {children}
+      <div className={styles.navbarInner}>
+        <div className={styles.navbarContent}>{children}</div>
+      </div>
       <NavbarBackdrop onClick={mobileSidebar.toggle} />
       <NavbarMobileSidebar />
     </nav>
