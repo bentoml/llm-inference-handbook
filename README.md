@@ -1,2 +1,13 @@
-# llm-inference-in-production
-Everything you need to know about LLM inference
+# 📖 LLM Inference in Production
+
+This repository contains the source content for LLM Inference in Production, a practical guide for understanding, optimizing, scaling, and operating LLM inference.
+
+[![Twitter](https://badgen.net/badge/icon/@bentomlai/1DA1F2?icon=twitter&label=Follow)](https://twitter.com/bentomlai)
+[![Community](https://badgen.net/badge/Join/Community/cyan?icon=slack)](https://l.bentoml.com/join-slack)
+
+## 🤝 Contributing
+Contributions are welcome! Feel free to open issues, suggest improvements, or submit pull requests.
+
+## 📄 License
+
+This project is licensed under the [MIT License](https://github.com/bentoml/llm-inference-in-production/blob/main/LICENSE).
