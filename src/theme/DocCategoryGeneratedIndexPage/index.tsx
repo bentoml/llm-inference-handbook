@@ -6,7 +6,6 @@ import DocCardList from '@theme/DocCardList'
 import DocPaginator from '@theme/DocPaginator'
 import DocVersionBanner from '@theme/DocVersionBanner'
 import DocVersionBadge from '@theme/DocVersionBadge'
-import DocBreadcrumbs from '@theme/DocBreadcrumbs'
 import Heading from '@theme/Heading'
 import type { Props } from '@theme/DocCategoryGeneratedIndexPage'
 
@@ -33,7 +32,6 @@ function DocCategoryGeneratedIndexPageContent({
   return (
     <div className={styles.generatedIndexPage}>
       <DocVersionBanner />
-      <DocBreadcrumbs />
       <DocVersionBadge />
       <header>
         <Heading as="h1" className={styles.title}>
