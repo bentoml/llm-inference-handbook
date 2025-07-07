@@ -1,20 +1,13 @@
 import { type ReactNode } from 'react'
-import clsx from 'clsx'
-import {
-  useThemeConfig,
-  ErrorCauseBoundary,
-  ThemeClassNames
-} from '@docusaurus/theme-common'
+import { useThemeConfig, ErrorCauseBoundary } from '@docusaurus/theme-common'
 import {
   splitNavbarItems,
   useNavbarMobileSidebar
 } from '@docusaurus/theme-common/internal'
 import NavbarItem, { type Props as NavbarItemConfig } from '@theme/NavbarItem'
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle'
-import SearchBar from '@theme/SearchBar'
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle'
 import NavbarLogo from '@theme/Navbar/Logo'
-import NavbarSearch from '@theme/Navbar/Search'
 
 import styles from './styles.module.css'
 
@@ -45,66 +38,22 @@ ${JSON.stringify(item, null, 2)}`,
   )
 }
 
-function NavbarContentLayout({
-  left,
-  right
-}: {
-  left: ReactNode
-  right: ReactNode
-}) {
-  return (
-    <div className="navbar__inner">
-      <div
-        className={clsx(
-          ThemeClassNames.layout.navbar.containerLeft,
-          'navbar__items'
-        )}
-      >
-        {left}
-      </div>
-      <div
-        className={clsx(
-          ThemeClassNames.layout.navbar.containerRight,
-          'navbar__items navbar__items--right'
-        )}
-      >
-        {right}
-      </div>
-    </div>
-  )
-}
-
 export default function NavbarContent(): ReactNode {
   const mobileSidebar = useNavbarMobileSidebar()
-
   const items = useNavbarItems()
   const [leftItems, rightItems] = splitNavbarItems(items)
 
-  const searchBarItem = items.find((item) => item.type === 'search')
-
   return (
-    <NavbarContentLayout
-      left={
-        // TODO stop hardcoding items?
-        <>
-          {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
-          <NavbarLogo />
-          <NavbarItems items={leftItems} />
-        </>
-      }
-      right={
-        // TODO stop hardcoding items?
-        // Ask the user to add the respective navbar items => more flexible
-        <>
-          <NavbarItems items={rightItems} />
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
-          {!searchBarItem && (
-            <NavbarSearch>
-              <SearchBar />
-            </NavbarSearch>
-          )}
-        </>
-      }
-    />
+    <div className={styles.navbarInner}>
+      <NavbarLogo />
+      <div className={styles.navbarLeftItems}>
+        <NavbarItems items={leftItems} />
+      </div>
+      <div className={styles.navbarRightItems}>
+        <NavbarItems items={rightItems} />
+        <NavbarColorModeToggle />
+        {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
+      </div>
+    </div>
   )
 }
