@@ -10,10 +10,17 @@ export default function IconClose({
   ...restProps
 }: Props): ReactNode {
   return (
-    <svg viewBox="0 0 15 15" width={width} height={height} {...restProps}>
-      <g stroke={color} strokeWidth={strokeWidth}>
-        <path d="M.75.75l13.5 13.5M14.25.75L.75 14.25" />
-      </g>
+    <svg
+      fill={color}
+      viewBox="0 0 24 24"
+      strokeWidth={strokeWidth}
+      className={className}
+      width={width}
+      height={height}
+      {...restProps}
+    >
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
     </svg>
   )
 }
