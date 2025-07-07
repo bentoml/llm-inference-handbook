@@ -9,7 +9,7 @@
 
 .tocCollapsibleButton::after {
   content: '';
-  background: var(--ifm-menu-link-sublist-icon) 50% 50% / 2rem 2rem no-repeat;
+  background: url('/img/arrow.svg') 50% 50% / 1rem 1rem no-repeat;
   filter: var(--ifm-menu-link-sublist-icon-filter);
   height: 1.25rem;
   width: 1.25rem;
