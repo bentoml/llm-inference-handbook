@@ -1,0 +1,48 @@
+.section {
+  border: 1px solid #bfdbfe;
+  border-radius: 0.75rem;
+  padding: 1.85rem 2rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.section a {
+  color: #2563eb;
+  transition: color 0.2s ease-in-out;
+}
+
+.section ul {
+  list-style: none;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  padding-left: 1.5rem;
+}
+
+.section ul li {
+  margin-bottom: 0.75rem;
+}
+
+.section ul li:last-child {
+  margin-bottom: 0;
+}
+
+.section ul li a::before {
+  content: '';
+  mask: url('/img/link.svg') no-repeat center;
+  mask-size: 1rem;
+  background-color: currentColor;
+  width: 1rem;
+  height: 1rem;
+  padding-left: 1.75rem;
+  margin-left: -1.75rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.section ul li a:hover {
+  color: #1e40af;
+}
+
+.section ul li a:hover::before {
+  background-color: #1e40af;
+}
