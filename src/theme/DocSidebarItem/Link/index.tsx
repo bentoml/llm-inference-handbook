@@ -26,6 +26,12 @@ export default function DocSidebarItemLink({
         ThemeClassNames.docs.docSidebarItemLink,
         ThemeClassNames.docs.docSidebarItemLinkLevel(level),
         'menu__list-item',
+        styles.menuListItem,
+        {
+          [styles.docSidebarItemLinkLevel1]: level === 1,
+          [styles.docSidebarItemLinkLevel2]: level === 2,
+          [styles.docSidebarItemLinkLevelOther]: level >= 3
+        },
         className
       )}
       key={label}
@@ -33,10 +39,9 @@ export default function DocSidebarItemLink({
       <Link
         className={clsx(
           'menu__link',
-          !isInternalLink && styles.menuExternalLink,
-          {
-            'menu__link--active': isActive
-          }
+          styles.menuLink,
+          { [styles.menuLinkActive]: isActive },
+          !isInternalLink && styles.menuExternalLink
         )}
         autoAddBaseUrl={autoAddBaseUrl}
         aria-current={isActive ? 'page' : undefined}
@@ -46,6 +51,9 @@ export default function DocSidebarItemLink({
         })}
         {...props}
       >
+        {item.customProps?.icon && (
+          <img src={item.customProps.icon as string} />
+        )}
         {label}
         {!isInternalLink && <IconExternalLink />}
       </Link>
