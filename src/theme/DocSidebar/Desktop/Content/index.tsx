@@ -47,7 +47,14 @@ export default function DocSidebarDesktopContent({
         className
       )}
     >
-      <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
+      <h3 className={styles.chapters}>Chapters</h3>
+      <ul
+        className={clsx(
+          ThemeClassNames.docs.docSidebarMenu,
+          'menu__list',
+          styles.menuList
+        )}
+      >
         <DocSidebarItems items={sidebar} activePath={path} level={1} />
       </ul>
     </nav>

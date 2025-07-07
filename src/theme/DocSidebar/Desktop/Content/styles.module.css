@@ -1,11 +1,11 @@
 @media (min-width: 997px) {
   .menu {
     flex-grow: 1;
-    padding: 0.5rem;
+    padding: 1rem;
   }
   @supports (scrollbar-gutter: stable) {
     .menu {
-      padding: 0.5rem 0 0.5rem 0.5rem;
+      padding: 1rem;
       scrollbar-gutter: stable;
     }
   }
@@ -13,4 +13,20 @@
   .menuWithAnnouncementBar {
     margin-bottom: var(--docusaurus-announcement-bar-height);
   }
+}
+
+.chapters {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.menuList > li {
+  margin-top: 0.5rem;
+}
+
+.menuList > li:first-child {
+  margin-top: 0;
 }
