@@ -3,7 +3,16 @@
   width: 100%;
 }
 
+.docMainContainer .docItemWrapper {
+  padding-top: 16px !important;
+}
+
 @media (min-width: 997px) {
+  .docMainContainer .docItemWrapper {
+    padding-top: 50px !important;
+    padding-left: 32px;
+  }
+
   .docMainContainer {
     flex-grow: 1;
     max-width: calc(100% - var(--doc-sidebar-width));
