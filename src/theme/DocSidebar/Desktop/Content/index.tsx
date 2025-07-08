@@ -47,7 +47,6 @@ export default function DocSidebarDesktopContent({
         className
       )}
     >
-      <h3 className={styles.chapters}>Chapters</h3>
       <ul
         className={clsx(
           ThemeClassNames.docs.docSidebarMenu,

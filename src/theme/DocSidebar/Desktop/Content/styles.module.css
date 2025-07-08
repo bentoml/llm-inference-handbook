@@ -15,14 +15,6 @@
   }
 }
 
-.chapters {
-  font-size: 0.75rem;
-  line-height: 1rem;
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-  color: #6b7280;
-}
-
 .menuList > li {
   margin-top: 0.5rem;
 }
