@@ -10,7 +10,6 @@ import styles from './styles.module.css'
 
 function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props) {
   const {
-    navbar: { hideOnScroll },
     docs: {
       sidebar: { hideable }
     }
@@ -20,13 +19,7 @@ function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props) {
   } = useDocusaurusContext()
 
   return (
-    <div
-      className={clsx(
-        styles.sidebar,
-        hideOnScroll && styles.sidebarWithHideableNavbar,
-        isHidden && styles.sidebarHidden
-      )}
-    >
+    <div className={clsx(styles.sidebar, isHidden && styles.sidebarHidden)}>
       <div className={styles.sidebarHeader}>
         <h2>{title}</h2>
       </div>

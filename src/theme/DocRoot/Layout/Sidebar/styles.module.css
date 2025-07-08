@@ -43,6 +43,10 @@
     height: calc(100vh - var(--ifm-navbar-height));
     max-height: calc(100vh - var(--ifm-navbar-height));
     border-right: 1px solid var(--ifm-toc-border-color);
-    margin-top: 50px;
+    margin-top: calc(var(--bentoml-body-offset) + var(--ifm-navbar-height));
+  }
+
+  .docSidebarHideOnScrollOffset {
+    margin-top: var(--bentoml-body-offset);
   }
 }

@@ -41,7 +41,7 @@ const config: Config = {
       'classic',
       {
         googleTagManager: {
-          containerId: 'GTM-NLGDMK5',
+          containerId: 'GTM-NLGDMK5'
         },
         docs: {
           routeBasePath: '/'
@@ -58,7 +58,7 @@ const config: Config = {
       disableSwitch: true
     },
     navbar: {
-      hideOnScroll: true,
+      hideOnScroll: false,
       logo: {
         alt: 'bentoml logo',
         src: 'img/logo.svg',
