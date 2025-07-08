@@ -28,8 +28,8 @@ Here’s the step-by-step process:
     
 Key benefits of speculative decoding:
 
-- **Parallel verification:** Since verification doesn’t depend on previous verifications, it’s faster than generation (which is sequential).
-- **High acceptance for easy tokens:** The draft model can often get the next few tokens correct, which speeds up generation.
-- **Better use of hardware:** Because verification uses hardware resources that would otherwise be idle, overall throughput improves.
+- **Parallel verification**: Since verification doesn’t depend on previous verifications, it’s faster than generation (which is sequential).
+- **High acceptance for easy tokens**: The draft model can often get the next few tokens correct, which speeds up generation.
+- **Better use of hardware**: Because verification uses hardware resources that would otherwise be idle, overall throughput improves.
 
 However, speculative decoding has its own costs. Because both the draft model and the target model need to be loaded into memory, it increases overall VRAM usage. This reduces the available memory for other tasks (e.g., batch processing), which can limit throughput, especially under high load or when serving large models.

@@ -10,11 +10,11 @@ Function calling is like giving an LLM a toolbox with specific tools it can use 
 
 Here is a specific example:
 
-- **You ask:** "What's the current price of Apple stock?"
-- **LLM thinks:** "I need current stock data, so I'll use my stock price function"
-- **LLM calls:** `get_stock_price("AAPL")`
-- **Function returns:** "$195.25"
-- **LLM responds:** "The current price of Apple stock is $195.25"
+- **You ask**: "What's the current price of Apple stock?"
+- **LLM thinks**: "I need current stock data, so I'll use my stock price function"
+- **LLM calls**: `get_stock_price("AAPL")`
+- **Function returns**: "$195.25"
+- **LLM responds**: "The current price of Apple stock is $195.25"
 
 At a technical level, the LLM still predicts the next token, just like any other transformer-based models. The prompt includes well-defined function signatures and descriptions, guiding the model to produce outputs that match those formats. This allows you to build workflows like:
 

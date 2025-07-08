@@ -23,9 +23,9 @@ While OpenAI’s APIs helped kickstart the AI application development, their wid
 
 OpenAI-compatible APIs address these challenges by providing:
 
-- **Drop-in replacement:** Swap out OpenAI’s hosted API for your own self-hosted or open-source model, without changing your application code.
-- **Seamless migration:** Move between providers or self-hosted deployments with minimal disruption.
-- **Consistent integration:** Maintain compatibility with tools and frameworks that rely on the OpenAI API schema (e.g., `chat/completions`, `embeddings` endpoints).
+- **Drop-in replacement**: Swap out OpenAI’s hosted API for your own self-hosted or open-source model, without changing your application code.
+- **Seamless migration**: Move between providers or self-hosted deployments with minimal disruption.
+- **Consistent integration**: Maintain compatibility with tools and frameworks that rely on the OpenAI API schema (e.g., `chat/completions`, `embeddings` endpoints).
 
 ## How to call an OpenAI-compatible API
 

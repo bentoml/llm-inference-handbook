@@ -13,7 +13,7 @@ When building applications with LLMs, you typically have two main infrastructure
 
 Serverless inference services, provided by companies like OpenAI, Anthropic, and other hosted API providers, simplify application development significantly. Key advantages include:
 
-- **Ease of use:** You can get started quickly with minimal setup — just use an API key and a few lines of code. There is no need to manage hardware, software environments, or complex scaling logic.
+- **Ease of use**: You can get started quickly with minimal setup — just use an API key and a few lines of code. There is no need to manage hardware, software environments, or complex scaling logic.
 - **Rapid prototyping**: It is perfect for testing ideas quickly, building demos, or internal tooling without infrastructure overhead.
 - **Hardware abstraction**: Self-hosting LLMs at scale usually requires high-end GPUs (such as NVIDIA A100 or H100). Serverless APIs abstract these hardware complexities, allowing you to avoid GPU shortages, quota limits, and provisioning delays.
 
