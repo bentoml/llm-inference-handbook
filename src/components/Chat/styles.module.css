@@ -1,0 +1,90 @@
+.chat {
+  cursor: pointer;
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-image: linear-gradient(to right, #16a34a, #15803d);
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  right: 1.3rem;
+  bottom: 1.3rem;
+  border-radius: 50%;
+  box-shadow:
+    0 0 #0000,
+    0 0 #0000,
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.chat:hover {
+  background-image: linear-gradient(to right, #15803d, #166534);
+}
+
+.chatIcon {
+  display: block;
+  height: 16px;
+  width: 16px;
+  background-image: url('/img/chat.svg');
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chatContent {
+  position: fixed;
+  right: 1.3rem;
+  bottom: 1.3rem;
+  width: 18rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    #000000 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    #0000001a 0px 20px 25px -5px,
+    #0000001a 0px 8px 10px -6px;
+}
+
+.chatContent h4 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.chatContent p {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: #4b5563;
+  margin: 0 0 1rem;
+}
+
+.chatLink {
+  display: block;
+}
+
+.chatButton {
+  width: 100%;
+}
+
+.chatClose {
+  position: absolute;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  top: 1rem;
+  right: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: color 0.2s ease-in-out;
+}
+
+.chatClose:hover {
+  color: #4b5563;
+}

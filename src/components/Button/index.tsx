@@ -4,7 +4,7 @@ import ArrowSquare from './ArrowSquare'
 import styles from './styles.module.css'
 
 interface LinkButtonProps {
-  type:
+  type?:
     | 'blue'
     | 'light-blue'
     | 'green'
@@ -12,6 +12,7 @@ interface LinkButtonProps {
     | 'pink'
     | 'light-purple'
     | 'yellow'
+  className?: string
 }
 
 const colors: { [key in LinkButtonProps['type']]: string } = {
@@ -24,9 +25,16 @@ const colors: { [key in LinkButtonProps['type']]: string } = {
   yellow: styles.buttonYellow
 }
 
-function Button({ children, type }: PropsWithChildren<LinkButtonProps>) {
+function Button({
+  children,
+  type,
+  className
+}: PropsWithChildren<LinkButtonProps>) {
   return (
-    <button type="button" className={clsx(styles.button, colors[type])}>
+    <button
+      type="button"
+      className={clsx(styles.button, colors[type], className)}
+    >
       <span className={styles.buttonInner}>
         {children}
         <ArrowSquare className={styles.buttonIcon} />

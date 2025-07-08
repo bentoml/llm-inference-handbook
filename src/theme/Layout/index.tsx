@@ -14,7 +14,8 @@ import Footer from '@theme/Footer'
 import LayoutProvider from '@theme/Layout/Provider'
 import ErrorPageContent from '@theme/ErrorPageContent'
 import type { Props } from '@theme/Layout'
-import styles from './styles.module.css'
+import Chat from '@site/src/components/Chat'
+import './styles.module.css'
 
 export default function Layout(props: Props): ReactNode {
   const {
@@ -51,14 +52,7 @@ export default function Layout(props: Props): ReactNode {
         </ErrorBoundary>
       </div>
 
-      <a
-        href="https://bentoml.com/contact"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.chat}
-      >
-        <i className={styles.chatIcon} />
-      </a>
+      <Chat />
 
       {!noFooter && <Footer />}
     </LayoutProvider>

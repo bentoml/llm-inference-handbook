@@ -67,6 +67,10 @@
   --bentoml-body-offset: 3rem;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 article p {
   font-family: 'Inter', sans-serif;
 }
