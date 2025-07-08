@@ -1,0 +1,10 @@
+{
+  "label": "LLM inference basics",
+  "position": 1,
+  "link": {
+    "type": "generated-index"
+  },
+  "customProps": {
+    "icon": "/img/book.svg"
+  }
+}
