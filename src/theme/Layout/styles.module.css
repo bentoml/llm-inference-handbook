@@ -1,0 +1,48 @@
+html,
+body {
+  height: 100%;
+}
+
+/* Docusaurus-specific utility class */
+:global(.docusaurus-mt-lg) {
+  margin-top: 3rem;
+}
+
+:global(#__docusaurus) {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-image: linear-gradient(to right, #16a34a, #15803d);
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  right: 1.3rem;
+  bottom: 1.3rem;
+  border-radius: 50%;
+  box-shadow:
+    0 0 #0000,
+    0 0 #0000,
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.chat:hover {
+  background-image: linear-gradient(to right, #15803d, #166534);
+}
+
+.chatIcon {
+  display: block;
+  height: 16px;
+  width: 16px;
+  background-image: url('/img/chat.svg');
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

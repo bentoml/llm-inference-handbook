@@ -13,12 +13,18 @@ importers:
       '@docusaurus/preset-classic':
         specifier: 3.8.1
         version: 3.8.1(@algolia/client-search@5.30.0)(@mdx-js/react@3.1.0(@types/react@19.1.8)(react@19.1.0))(@types/react@19.1.8)(acorn@8.15.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(search-insights@2.17.3)(typescript@5.6.3)
+      '@docusaurus/theme-common':
+        specifier: ^3.8.1
+        version: 3.8.1(@docusaurus/plugin-content-docs@3.8.1(@mdx-js/react@3.1.0(@types/react@19.1.8)(react@19.1.0))(acorn@8.15.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.6.3))(acorn@8.15.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@mdx-js/react':
         specifier: ^3.0.0
         version: 3.1.0(@types/react@19.1.8)(react@19.1.0)
       clsx:
         specifier: ^2.0.0
         version: 2.1.1
+      internal:
+        specifier: link:@docusaurus/theme-common/internal
+        version: link:@docusaurus/theme-common/internal
       prism-react-renderer:
         specifier: ^2.3.0
         version: 2.4.1(react@19.1.0)
