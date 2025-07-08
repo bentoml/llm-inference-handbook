@@ -37,7 +37,9 @@ export default function NavbarLayout({ children }: Props): ReactNode {
       })}
       className={clsx(
         ThemeClassNames.layout.navbar.container,
+        'navbar',
         'navbar--fixed-top',
+        styles.navbar,
         hideOnScroll && [
           styles.navbarHideable,
           !isNavbarVisible && styles.navbarHidden

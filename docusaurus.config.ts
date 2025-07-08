@@ -59,7 +59,7 @@ const config: Config = {
       disableSwitch: true
     },
     navbar: {
-      hideOnScroll: true,
+      hideOnScroll: false,
       logo: {
         alt: 'bentoml logo',
         src: 'img/logo.svg',

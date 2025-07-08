@@ -49,7 +49,8 @@ export default function DocRootLayoutSidebar({
       className={clsx(
         ThemeClassNames.docs.docSidebarContainer,
         styles.docSidebarContainer,
-        hiddenSidebarContainer && styles.docSidebarContainerHidden
+        hiddenSidebarContainer && styles.docSidebarContainerHidden,
+        { [styles.docSidebarHideOnScrollOffset]: hideOnScroll }
       )}
       onTransitionEnd={(e) => {
         if (!e.currentTarget.classList.contains(styles.docSidebarContainer!)) {

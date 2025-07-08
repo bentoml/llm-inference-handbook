@@ -59,6 +59,9 @@
 
   /* navbar */
   --ifm-navbar-height: 81px;
+  /* --ifm-navbar-shadow: none;
+  --ifm-navbar-padding-horizontal: 0;
+  --ifm-navbar-padding-vertical: 0; */
 
   /* custom */
   --bentoml-font-family:
