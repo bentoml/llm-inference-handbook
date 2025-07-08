@@ -10,7 +10,7 @@
 @media (min-width: 997px) {
   .docMainContainer .docItemWrapper {
     padding-top: var(--bentoml-body-offset) !important;
-    padding-left: 32px;
+    padding-left: 2.75rem;
   }
 
   .docMainContainer {
