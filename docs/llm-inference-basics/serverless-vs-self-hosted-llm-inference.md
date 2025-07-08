@@ -2,6 +2,9 @@
 sidebar_position: 5
 ---
 
+import LinkList from '@site/src/components/LinkList';
+import Button from '@site/src/components/Button';
+
 # Serverless vs. Self-hosted LLM inference
 
 When building applications with LLMs, you typically have two main infrastructure choices: **serverless** (managed) services or **self-hosted** solutions. Each offers distinct advantages and trade-offs in terms of ease of use, customization, scalability, and compliance.
@@ -29,9 +32,11 @@ Key benefits of self-hosting include:
     - Fine-tuning models using proprietary data to achieve competitive advantages.
 - **Predictable performance and control**: When you self-host your LLMs, you have complete control over how your system behaves and performs. You’re not at the mercy of external API rate limits or sudden policy changes that might impact your application’s performance and availability.
 
-Here is a comparison summary:
+## Comparison summary
 
-| Iteam | Serverless APIs | Self-hosted |
+Choosing between serverless and self-hosted LLM inference depends on your specific needs regarding ease of use, data privacy, performance optimization, and control.
+
+| Item | Serverless APIs | Self-hosted inference |
 | --- | --- | --- |
 | **Ease of Use** | ✅ High (simple API calls) | ⚠️ Lower (requires LLM deployment and maintenance) |
 | **Data Privacy & Compliance** | ⚠️ Limited | ✅ Full control |
@@ -39,6 +44,19 @@ Here is a comparison summary:
 | **Cost at Scale** | ⚠️ Higher (usage-based, may rise significantly) | ✅ Potentially lower (predictable, optimized infrastructure) |
 | **Hardware Management** | ✅ Abstracted away | ⚠️ Requires GPU setup & maintenance |
 
-Choosing between serverless and self-hosted LLM inference depends on your specific needs regarding ease of use, data privacy, performance optimization, and control. For more detailed guidance, see our blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
+For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
 
-At Bento, we work to help enterprises run LLMs privately with flexible distributed architecture and tailored inference optimization. With Bento Inference Platform, you can achieve up to 6x lower cost than serverless APIs.
+---
+
+At Bento, we work to help enterprises self-host any open and custom LLMs with flexible distributed architecture and tailored inference optimization. With Bento Inference Platform, you can achieve up to 6x lower cost than serverless APIs.
+
+<div style={{ margin: '3rem 0' }}>
+[<Button>Talk to us</Button>](https://www.bentoml.com/contact)
+</div>
+
+<LinkList>
+  ## Additional resources
+  * [Secure and Private DeepSeek Deployment with BentoML](https://www.bentoml.com/blog/secure-and-private-deepseek-deployment-with-bentoml)
+  * [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments)
+  * [Building RAG with Open-Source and Custom AI Models](https://www.bentoml.com/blog/building-rag-with-open-source-and-custom-ai-models)
+</LinkList>

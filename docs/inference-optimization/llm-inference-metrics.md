@@ -15,7 +15,7 @@ There are two key metrics to measure latency:
 - **Time to First Token (TTFT)**: The time it takes to generate the first token after sending a request. It reflects how fast the model can start responding. Different applications usually have different expectations for TTFT. For example, when summarizing a long document, users are usually willing to wait longer for the first token since the task is more demanding.
 - **Time per Output Token (TPOT)**: Also known as inter-token latency (ITL), TPOT measures the time between generating each subsequent token. A lower TPOT means the model can produce tokens faster, leading to higher tokens per second.
     
-    In streaming scenarios where users see text appear word-by-word (like ChatGPT's interface), TPOT determines how smooth the experience feels. It should be fast enough to keep pace with human reading speed.
+  In streaming scenarios where users see text appear word-by-word (like ChatGPT's interface), TPOT determines how smooth the experience feels. It should be fast enough to keep pace with human reading speed.
     
 
 ## Throughput
@@ -69,7 +69,7 @@ There are two common ways to measure throughput:
 
 Goodput refines the idea of throughput. It measures how many requests per second the LLM successfully completes while meeting your defined service-level objectives (SLOs). This makes it a much more useful metric for real-world deployments, as it directly reflects service quality.
 
-:::note
+:::info
 
 A **Service-Level Objective (SLO)** defines the target performance level for a particular metric. It sets a standard for what’s considered acceptable service. For example, an SLO for TTFT might specify that 95% of chatbot interactions should have a TTFT below 200 milliseconds. An SLO is typically a key part of a broader service-level agreement (SLA) between a service provider and its users.
 
