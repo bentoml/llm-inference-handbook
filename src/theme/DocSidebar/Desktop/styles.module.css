@@ -41,6 +41,14 @@
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 
+.sidebarHeader a {
+  color: inherit;
+}
+
+.sidebarHeader a:hover {
+  color: var(--ifm-link-hover-color);
+}
+
 .sidebarHeader h2 {
   margin: 0;
   font-size: 1.125rem;
