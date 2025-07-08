@@ -81,12 +81,14 @@ const config: Config = {
         {
           position: 'right',
           href: 'https://github.com/bentoml',
-          label: 'GitHub'
+          label: 'GitHub',
+          icon: '/img/github.svg'
         },
         {
           position: 'right',
           href: 'https://cloud.bentoml.com/signup',
-          label: 'Sign Up'
+          label: 'Sign Up',
+          button: 'light-purple'
         }
       ]
     },
