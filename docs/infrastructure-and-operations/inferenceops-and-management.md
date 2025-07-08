@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # InferenceOps and management
 
-Getting your first LLM into production is a big milestone. But staying there and scaling up requires more than just a working model. Without a reliable and standardized operational workflow, AI teams quickly find themselves in a maze of manual steps, patchwork tooling, and inconsistent processes. This is where InferenceOps comes in: the practices, tooling, and workflows that support ongoing model deployment, updates, and management at scale.
+Getting your first LLM into production is a big milestone. But staying there and scaling up requires more than just a working model. Without a reliable and standardized operational workflow, AI teams quickly find themselves in a maze of manual steps, patchwork tooling, and inconsistent processes. This is where [InferenceOps](https://www.bentoml.com/blog/what-is-inference-ops) comes in: the practices and workflows that support ongoing model deployment, updates, and management at scale.
 
 To scale LLM inference sustainably, you need a well-structured approach that covers the full lifecycle.
 

@@ -10,13 +10,13 @@ Parallelism strategies are essential for achieving high-performance computing in
 
 Data parallelism is a common technique to accelerate computation. In this approach, the model's weights are replicated across multiple GPU devices, and the global batch of input data is divided into smaller microbatches. Each device only processes the microbatch assigned to it and this process happens in parallel for all devices. This delivers faster execution by allowing larger batches to be processed simultaneously.
 
-![dp.png](attachment:8cfd12fd-75ac-4543-bf7b-2f611a08fc81:dp.png)
+![dp.png](/img/docs/dp.png)
 
 ## Tensor parallelism
 
 Tensor parallelism slices individual layers of the model into smaller blocks. These blocks are computed independently and in parallel across different devices. For example, during matrix multiplication, different slices of the matrix can be processed simultaneously on different GPUs.
 
-![tp-inference.png](attachment:6bead62b-725e-4644-8939-6c671b2df19e:tp-inference.png)
+![tp-inference.png](/img/docs/tp-inference.png)
 
 This approach delivers faster computation and allows serving LLMs that do not fit into the memory of a single device. However, because it involves extra communication between devices, you need to balance the performance gain against this overhead.
 
@@ -24,11 +24,11 @@ This approach delivers faster computation and allows serving LLMs that do not fi
 
 [Pipeline parallelism](https://arxiv.org/pdf/1811.06965) divides the model’s layers into sequential chunks, each assigned to a separate device. Data flows through these chunks like an assembly line, with the output of one device becoming the input for the next. For instance, in a four-way pipeline, each device processes a quarter of the model’s layers.
 
-![pp-diagram.png](attachment:a16e2793-63ee-4822-9f00-abd60daec2e8:pp-diagram.png)
+![pp-diagram.png](/img/docs/pp-diagram.png)
 
 However, because each device depends on the output of the previous one, some devices may be idle at times, which means resource underutilization. To reduce these idle periods, the input batch can be split into smaller microbatches. Each microbatch flows through the pipeline one by one, and gradients are accumulated at the end. This microbatching improves GPU utilization, though it does not completely eliminate idle time.
 
-![pp-batching.png](attachment:b3091efc-aad3-4b68-bb2e-5bf1be4e18e6:pp-batching.png)
+![pp-batching.png](/img/docs/pp-batching.png)
 
 Note that pipeline parallelism can increase the total latency for each request because of
 communication between different pipeline stages.
@@ -37,7 +37,7 @@ communication between different pipeline stages.
 
 Expert parallelism is a specialized parallelism strategy used in Mixture of Experts (MoE) models. In these models, only a subset of the model’s experts is activated for each token. Instead of duplicating all experts across every device (e.g., GPU), expert parallelism splits the experts themselves across different devices.
 
-![ep-inference.png](attachment:29668aa4-3128-4afb-8797-89c86a55b37b:ep-inference.png)
+![ep-inference.png](/img/docs/ep-inference.png)
 
 Each GPU holds the full weights of only some experts, not all. This means that each GPU processes only the tokens assigned to the experts stored on that GPU. In contrast, if you apply tensor parallelism for MoE models, it simply slices the weight matrices of all experts and distributes these slices across all devices.
 
@@ -49,7 +49,7 @@ For certain models, relying on a single parallelism strategy is often not enough
 
 A typical hybrid setup might look like this (combining data parallelism and tensor parallelism):
 
-![dp+tp.png](attachment:0e1d4a8e-a85e-4bbc-a9aa-c225c5d52f9f:dptp.png)
+![dp+tp.png](/img/docs/dptp.png)
 
 If you have 8 GPUs, you could apply tensor parallelism across the first four GPUs (TP=4), then replicate that setup to the remaining ones using data parallelism (DP=2).
 
@@ -57,7 +57,7 @@ Note that this is only one of the possible combinations, each with advantages an
 
 An alternative configuration is to reduce tensor parallelism and increase data parallelism. For example, you can set TP=2 and DP=4:
 
-![dp4tp2.png](attachment:613bf4ff-e0fa-42a2-a233-a53001bf1385:dp4tp2.png)
+![dp4tp2.png](/img/docs/dp4tp2.png)
 
 This reduces cross-GPU communication, which may help lower latency during inference. However, there’s a catch: model weights consume a large portion of GPU memory, especially for large models. Lowering tensor parallelism means fewer GPUs share the model, leaving less room for KV cache. This can degrade inference optimizations like prefix caching.
 

@@ -33,9 +33,10 @@ This issue presents itself in three different stages:
 1. **Cloud provisioning**: This step involves the time it takes for the cloud provider to allocate a new instance and attach it to the Kubernetes cluster. Depending on the instance type and availability, this can take anywhere from 30 seconds to several minutes, or even hours for high-demand GPUs like Nvidia A100 and H100.
 2. **Container image pulling**: LLM images are significantly larger and more complex than typical Python job images, due to numerous dependencies and custom libraries. Despite claims of multi-gigabit bandwidth by cloud providers, actual image download speeds are often much slower. As a result, pulling images can take three to five minutes.
 3. **Model loading**. The time required to load the model depends heavily on its size. LLMs introduce significant delays due to their billions of parameters. Key bottlenecks include:
-    - **Slow downloads from model hubs**: Platforms like Hugging Face are not optimized for high-throughput, multi-part downloads, making the retrieval of large model files time-consuming.
-    - **Sequential data flow**: Model files are transferred through multiple hops: **remote storage → local disk → memory → GPU**. This is minimal or no parallelization between them. Each step adds latency, particularly for large files that are difficult to cache or stream.
-    - **Lack of on-demand streaming**: Model files must be fully downloaded and written to disk before inference can begin. This introduces additional I/O operations and delays startup.
+
+   - **Slow downloads from model hubs**: Platforms like Hugging Face are not optimized for high-throughput, multi-part downloads, making the retrieval of large model files time-consuming.
+   - **Sequential data flow**: Model files are transferred through multiple hops: **remote storage → local disk → memory → GPU**. This is minimal or no parallelization between them. Each step adds latency, particularly for large files that are difficult to cache or stream.
+   - **Lack of on-demand streaming**: Model files must be fully downloaded and written to disk before inference can begin. This introduces additional I/O operations and delays startup.
 
 Each phase of the cold start issue demands specific strategies to minimize delays. For more information, see how BentoML solves the cold start problem: [25x Faster Cold Starts for LLMs on Kubernetes](https://www.bentoml.com/blog/25x-faster-cold-starts-for-llms-on-kubernetes).
 
