@@ -104,3 +104,7 @@ article p {
 .markdown .theme-code-block {
   margin-bottom: 32px;
 }
+
+.hidden {
+  display: none !important;
+}
