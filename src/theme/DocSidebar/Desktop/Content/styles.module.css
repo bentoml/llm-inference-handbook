@@ -1,0 +1,24 @@
+@media (min-width: 997px) {
+  .menu {
+    flex-grow: 1;
+    padding: 1rem;
+  }
+  @supports (scrollbar-gutter: stable) {
+    .menu {
+      padding: 1rem;
+      scrollbar-gutter: stable;
+    }
+  }
+
+  .menuWithAnnouncementBar {
+    margin-bottom: var(--docusaurus-announcement-bar-height);
+  }
+}
+
+.menuList > li {
+  margin-top: 0.5rem;
+}
+
+.menuList > li:first-child {
+  margin-top: 0;
+}
