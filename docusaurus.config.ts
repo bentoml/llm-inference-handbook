@@ -41,7 +41,8 @@ const config: Config = {
       'classic',
       {
         docs: {
-          routeBasePath: '/'
+          routeBasePath: '/',
+          sidebarCollapsed: false
         },
         theme: {
           customCss: './src/css/custom.css'
