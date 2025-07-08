@@ -40,6 +40,9 @@ const config: Config = {
     [
       'classic',
       {
+        googleTagManager: {
+          containerId: 'GTM-NLGDMK5'
+        },
         docs: {
           routeBasePath: '/',
           sidebarCollapsed: false
@@ -66,7 +69,7 @@ const config: Config = {
       items: [
         {
           position: 'left',
-          href: 'https://github.com/bentoml/BentoVLLM',
+          href: 'https://docs.bentoml.com/en/latest/examples/overview.html#llms',
           label: 'Examples'
         },
         {
@@ -81,7 +84,7 @@ const config: Config = {
         },
         {
           position: 'right',
-          href: 'https://github.com/bentoml',
+          href: 'https://github.com/bentoml/llm-inference-in-production',
           label: 'GitHub',
           icon: '/img/github.svg'
         },
