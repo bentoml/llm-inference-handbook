@@ -5,7 +5,19 @@ This repository contains the source content for LLM Inference in Production, a p
 [![Twitter](https://badgen.net/badge/icon/@bentomlai/1DA1F2?icon=twitter&label=Follow)](https://twitter.com/bentomlai)
 [![Community](https://badgen.net/badge/Join/Community/cyan?icon=slack)](https://l.bentoml.com/join-slack)
 
+## 🔧 Local preview
+
+To preview the site locally:
+
+```bash
+pnpm install
+pnpm start
+```
+
+It will be running at `http://localhost:3000/`.
+
 ## 🤝 Contributing
+
 Contributions are welcome! Feel free to open issues, suggest improvements, or submit pull requests.
 
 ## 📄 License
