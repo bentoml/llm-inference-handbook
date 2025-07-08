@@ -1,0 +1,30 @@
+.docMainContainer {
+  display: flex;
+  width: 100%;
+}
+
+.docMainContainer .docItemWrapper {
+  padding-top: 16px !important;
+}
+
+@media (min-width: 997px) {
+  .docMainContainer .docItemWrapper {
+    padding-top: var(--bentoml-body-offset) !important;
+    padding-left: 2.75rem;
+  }
+
+  .docMainContainer {
+    flex-grow: 1;
+    max-width: calc(100% - var(--doc-sidebar-width));
+  }
+
+  .docMainContainerEnhanced {
+    max-width: calc(100% - var(--doc-sidebar-hidden-width));
+  }
+
+  .docItemWrapperEnhanced {
+    max-width: calc(
+      var(--ifm-container-width) + var(--doc-sidebar-width)
+    ) !important;
+  }
+}
