@@ -1,5 +1,13 @@
 ---
 sidebar_position: 1
+description: Measure key metrics like latency and throughput to optimize LLM inference performance.
+keywords:
+    - LLM inference metrics
+    - LLM benchmarks
+    - Time to First Token (TTFT), Time per Output Token (TPOT)
+    - Requests per Second (RPS), Tokens per Second (TPS)
+    - Latency, Throughput, Goodput
+    - Service-Level Objective (SLO)
 ---
 
 # Key metrics for LLM inference
@@ -17,7 +25,6 @@ There are two key metrics to measure latency:
     
   In streaming scenarios where users see text appear word-by-word (like ChatGPT's interface), TPOT determines how smooth the experience feels. It should be fast enough to keep pace with human reading speed.
     
-
 ## Throughput
 
 Throughput describes how much work an LLM can do within a given period. High throughput is essential when serving many users simultaneously or processing large volumes of data.

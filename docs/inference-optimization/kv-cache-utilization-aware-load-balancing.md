@@ -1,5 +1,11 @@
 ---
 sidebar_position: 6
+description: Route LLM requests based on KV cache usage for faster, smarter inference.
+keywords:
+    - KV cache
+    - Load balancing
+    - LLM inference optimization
+    - Gateway API Inference Extension
 ---
 
 # KV cache utilization-aware load balancing

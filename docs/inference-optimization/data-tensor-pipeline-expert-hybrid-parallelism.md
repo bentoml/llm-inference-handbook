@@ -1,5 +1,9 @@
 ---
 sidebar_position: 8
+description: Understand the differences between data, tensor, pipeline, expert and hybrid parallelisms.
+keywords:
+    - LLM inference optimization
+    - Data parallelism, tensor parallelism, pipeline parallelism, expert parallelism and hybrid parallelism
 ---
 
 # Data, tensor, pipeline, expert and hybrid parallelisms

@@ -1,5 +1,13 @@
 ---
 sidebar_position: 7
+description: Prefix caching speeds up LLM inference by reusing shared prompt KV cache across requests.
+keywords:
+    - Prefix caching, prompt caching
+    - KV cache
+    - Prefix cache-aware routing
+    - Distributed inference, distributed LLM inference
+    - Inference optimization
+    - Dynamo, SGLang, vLLM, llm-d
 ---
 
 # Prefix caching

@@ -1,5 +1,11 @@
 ---
 sidebar_position: 4
+description: Speculative decoding accelerates LLM inference with draft model predictions verified by the target model.
+keywords:
+    - Speculative decoding, speculative sampling
+    - Draft model, target model
+    - Distributed inference, distributed LLM inference
+    - Inference optimization
 ---
 
 # Speculative decoding

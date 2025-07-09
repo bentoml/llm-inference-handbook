@@ -1,5 +1,11 @@
 ---
 sidebar_position: 2
+description: Building LLM infrastructure in-house is costly, complex, and slows AI product development and innovation.
+keywords:
+    - LLM infrastructure cost
+    - Self-hosted LLM challenges
+    - Building vs buying AI infrastructure
+    - AI inference infrastructure
 ---
 
 # Build and maintenance cost

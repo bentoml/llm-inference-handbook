@@ -1,5 +1,10 @@
 ---
 sidebar_position: 3
+description: Scale LLM inference confidently with InferenceOps workflows and infrastructure best practices.
+keywords:
+    - LLM inference infrastructure management
+    - InferenceOps, inference operations
+    - AI infrastructure
 ---
 
 # InferenceOps and management

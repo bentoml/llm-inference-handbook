@@ -1,5 +1,12 @@
 ---
 sidebar_position: 5
+description: Disaggregate prefill and decode for better parallel execution, resource allocation, and scaling.
+keywords:
+    - Prefill-decode disaggregation
+    - Disaggregating prefill and decode
+    - Prefill, decode
+    - Distributed LLM inference
+    - Inference optimization
 ---
 
 # Prefill-decode disaggregation

@@ -1,5 +1,11 @@
 ---
 sidebar_position: 1
+description: Fast scaling enables AI systems to handle dynamic LLM inference workloads while minimizing latency and cost.
+keywords:
+    - Scalable LLM inference, fast scaling, scalability
+    - LLM cold starts, Kubernetes cold starts, LLM container cold starts
+    - Concurrency, QPS, CPU and GPU utilization
+    - Self-hosted LLM challenges
 ---
 
 # Fast scaling

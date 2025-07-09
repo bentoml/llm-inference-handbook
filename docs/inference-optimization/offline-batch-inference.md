@@ -1,5 +1,9 @@
 ---
 sidebar_position: 9
+description: Run predictions at scale with offline batch inference for efficient, non-real-time processing.
+keywords:
+    - Offline batch inference
+    - Batch inference
 ---
 
 # Offline batch inference

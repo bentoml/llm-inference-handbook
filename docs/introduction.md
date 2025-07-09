@@ -2,6 +2,10 @@
 slug: /
 sidebar_position: 0
 sidebar_class_name: hidden
+description: A practical handbook for engineers building, optimizing, scaling and operating LLM inference systems in production.
+keywords:
+    - LLM inference guide, LLM inference handbook
+    - LLM, LLM inference, AI inference
 ---
 
 # Introduction
