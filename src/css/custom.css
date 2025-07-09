@@ -111,3 +111,17 @@ article p {
 .hidden {
   display: none !important;
 }
+
+/* Note admonition */
+.alert--secondary {
+  --ifm-alert-background-color: rgba(40, 167, 69, 0.1);
+  --ifm-alert-border-color: #28a745;
+  --ifm-alert-color: #155724;
+}
+
+/* Tip admonition */
+.alert--success {
+  --ifm-alert-background-color: rgba(255, 193, 7, 0.1);
+  --ifm-alert-border-color: #ffc107;
+  --ifm-alert-color: #856404;
+}
