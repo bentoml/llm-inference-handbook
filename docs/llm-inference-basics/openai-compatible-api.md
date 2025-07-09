@@ -1,6 +1,13 @@
 ---
 sidebar_position: 6
+description: Learn the concept of OpenAI-compatible API and why you need it.
+keywords:
+    - OpenAI-compatible API
+    - ChatGPT
+    - OpenAI
 ---
+
+import LinkList from '@site/src/components/LinkList';
 
 # OpenAI-compatible API
 
@@ -37,7 +44,7 @@ from openai import OpenAI
 # Use your custom endpoint URL and API key
 client = OpenAI(
     base_url="https://your-custom-endpoint.com/v1",
-    api_key="sk-your-self-hosted-api-key"
+    api_key="your-api-key"
 )
 
 response = client.chat.completions.create(
@@ -51,6 +58,9 @@ response = client.chat.completions.create(
 print(response.choices[0].message)
 ```
 
-If you’re already using OpenAI’s SDKs or REST interface, you can simply redirect them to your own API endpoint.This flexibility allows you to keep control over your LLM deployment, reduce vendor lock-in, and ensure your application remains future-proof.
+If you’re already using OpenAI’s SDKs or REST interface, you can simply redirect them to your own API endpoint. This allows you to keep control over your LLM deployment, reduce vendor lock-in, and ensure your application remains future-proof.
 
-For more information, see [the OpenAI documentation](https://platform.openai.com/docs/quickstart?api-mode=chat).
+<LinkList>
+  ## Additional resources
+  * [OpenAI documentation](https://platform.openai.com/docs/quickstart?api-mode=chat)
+</LinkList>

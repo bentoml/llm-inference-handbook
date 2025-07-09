@@ -1,5 +1,8 @@
 ---
 sidebar_position: 1
+description: Learn what function calling is and its use case.
+keywords:
+    - Function calling
 ---
 
 # Function calling

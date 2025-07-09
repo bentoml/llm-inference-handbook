@@ -2,7 +2,10 @@
 sidebar_position: 1
 description: Understand what LLM inference means.
 keywords:
+    - Large Language Models
+    - LLM
     - LLM inference
+    - AI inference
 ---
 
 import Features from '@site/src/components/Features';

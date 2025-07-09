@@ -1,10 +1,11 @@
 ---
 sidebar_position: 4
+description: Learn the differences between CPUs, GPUs, and TPUs
+keywords:
+    - CPUs
+    - GPUs
+    - TPUs
 ---
-
-import Features from '@site/src/components/Features';
-import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # Where is LLM inference run?
 

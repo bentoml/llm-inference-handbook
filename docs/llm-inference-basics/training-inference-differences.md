@@ -1,10 +1,13 @@
 ---
 sidebar_position: 2
+description: Understand the differences between LLM training and inference.
+keywords:
+    - LLM inference
+    - LLM training
+    - AI inference
+    - AI training
+    - Traning and inference
 ---
-
-import Features from '@site/src/components/Features';
-import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # What is the difference between LLM training and inference?
 

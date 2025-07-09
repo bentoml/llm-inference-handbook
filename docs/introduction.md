@@ -20,7 +20,7 @@ So we started pulling it all together.
 
 It’s written for engineers deploying, scaling or operating LLM applications, whether you're fine-tuning a small open model or running large-scale deployments on your own stack.
 
-## How to use this
+## How to use this handbook
 
 You can read it start-to-finish or treat it like a lookup table. There’s no wrong way to navigate. We’ll keep updating the handbook as the field evolves, because LLM inference is moving fast, and what works today may not be best tomorrow.
 

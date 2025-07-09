@@ -1,5 +1,11 @@
 ---
 sidebar_position: 5
+description: Select the right inference frameworks for your use case.
+keywords:
+    - Inference frameworks
+    - Inference backends
+    - Inference runtimes
+    - vLLM, SGLang, LMDeploy, TensorRT-LLM, Hugging Face TGI, llama.cpp, MLC-LLM, Ollama
 ---
 
 # Choosing the right inference framework

@@ -1,5 +1,10 @@
 ---
 sidebar_position: 3
+description: Understand LLM fine-tuning and different fine-tuning frameworks
+keywords:
+    - LLM fine-tuning
+    - Fine-tuning frameworks
+    - Axolotl, Unsloth, Torchtune, LLaMA Factory
 ---
 
 # LLM fine-tuning

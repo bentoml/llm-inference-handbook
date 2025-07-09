@@ -1,5 +1,12 @@
 ---
 sidebar_position: 3
+description: Learn how prefill and decode work in LLM inference.
+keywords:
+    - LLM inference
+    - Prefill
+    - Decode
+    - Tokenization
+    - Tokens
 ---
 
 # How does LLM inference work?

@@ -1,5 +1,10 @@
 ---
 sidebar_position: 2
+description: Learn how to calculate GPU memory for serving LLMs.
+keywords:
+    - GPU memory calculation
+    - VRAM calculation
+    - LLM memory requirements
 ---
 
 # Calculating GPU memory for serving LLMs

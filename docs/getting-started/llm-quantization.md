@@ -1,5 +1,10 @@
 ---
 sidebar_position: 4
+description: Understand LLM quantization and different quantization formats and methods
+keywords:
+    - LLM quantization
+    - Quantization formats
+    - AWQ, SmoothQuant, GPTQ
 ---
 
 # LLM quantization
