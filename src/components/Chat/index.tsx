@@ -32,7 +32,7 @@ function Chat() {
           </button>
           <h4>Talk to Us</h4>
           <p>
-            At BentoML, we're working to help enterprises leverage the latest
+            At Bento, we're working to help enterprises leverage the latest
             advancements in LLM inference with ease. Have questions about LLM
             inference? Let's talk.
           </p>

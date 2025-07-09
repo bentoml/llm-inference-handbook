@@ -1,6 +1,8 @@
 ---
-slug: /
 sidebar_position: 1
+description: Understand what LLM inference means.
+keywords:
+    - LLM inference
 ---
 
 import Features from '@site/src/components/Features';

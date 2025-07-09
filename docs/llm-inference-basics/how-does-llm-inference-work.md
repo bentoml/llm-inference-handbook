@@ -8,7 +8,7 @@ During inference, an LLM generates text one token at a time, using its internal 
 
 A token is the smallest unit of language that LLMs use to process text. It can be a word, subword, or even a character, depending on the tokenizer. Each LLM has its own tokenizer, with different tokenization algorithms. Tokenization is the process of converting input text (like a sentence or paragraph) into tokens. The tokenized input is then converted into IDs, which are passed into the model during inference. 
 
-Here is an tokenization example for the sentence `BentoML supports custom LLM inference.` using [GPT-4o’s tokenizer](https://platform.openai.com/tokenizer):
+Here is a tokenization example for the sentence `BentoML supports custom LLM inference.` using [GPT-4o’s tokenizer](https://platform.openai.com/tokenizer):
 
 ```bash
 Tokens: "B", "ento", "ML", " supports", " custom", " L", "LM", " inference", "."
@@ -16,7 +16,7 @@ Tokens: "B", "ento", "ML", " supports", " custom", " L", "LM", " inference", "."
 Token IDs: [33, 13969, 4123, 17203, 2602, 451, 19641, 91643, 13]
 ```
 
-For output, LLMs generate these new tokens autoregressively. Starting with an initial sequence of tokens, the model predicts the next token based on everything it has seen so far. This repeats until a stopping criterion is met.
+For output, LLMs generate new tokens autoregressively. Starting with an initial sequence of tokens, the model predicts the next token based on everything it has seen so far. This repeats until a stopping criterion is met.
 
 For transformer-based models like GPT-4, the entire process breaks down into two phases: **prefill and decode**.
 
@@ -32,7 +32,7 @@ During the prefill stage, the entire prompt (namely, the whole sequence of input
 
 As a result, the prefill stage is compute-bound and often saturates GPU utilization. The actual utilization depends on factors like sequence length, batch size, and hardware specifications.
 
-A key metric to monitor for prefill is the Time to First Token (TTFT), which measures the latency from prompt submission to first token generation. More details will be covered in the Inference Optimization chapter.
+A key metric to monitor for prefill is the Time to First Token (TTFT), which measures the latency from prompt submission to first token generation. More details will be covered in the [inference optimization](/inference-optimization) chapter.
 
 ## Decode
 
@@ -40,10 +40,7 @@ After prefill, the LLM enters the decode stage where it generates new tokens seq
 
 For each new token, the model samples from a probability distribution generated based on the prompt and all previously generated tokens. This process is autoregressive, meaning tokens T₀ through Tₙ₋₁ are used to generate token Tₙ, then T₀ through Tₙ to generate Tₙ₊₁, and so on.
 
-<figure>
 ![auto-regressive.png](/img/docs/auto-regressive.png)
-<figcaption>Autoregressive decoding</figcaption>
-</figure>
 
 Each newly generated token is appended to the growing sequence. This autoregressive loop continues until:
 
