@@ -13,6 +13,8 @@ keywords:
 
 During inference, an LLM generates text one token at a time, using its internal attention mechanisms and knowledge of previous context.
 
+## What are tokens and tokenization?
+
 A token is the smallest unit of language that LLMs use to process text. It can be a word, subword, or even a character, depending on the tokenizer. Each LLM has its own tokenizer, with different tokenization algorithms. Tokenization is the process of converting input text (like a sentence or paragraph) into tokens. The tokenized input is then converted into IDs, which are passed into the model during inference. 
 
 Here is a tokenization example for the sentence `BentoML supports custom LLM inference.` using [GPT-4o’s tokenizer](https://platform.openai.com/tokenizer):
@@ -25,9 +27,11 @@ Token IDs: [33, 13969, 4123, 17203, 2602, 451, 19641, 91643, 13]
 
 For output, LLMs generate new tokens autoregressively. Starting with an initial sequence of tokens, the model predicts the next token based on everything it has seen so far. This repeats until a stopping criterion is met.
 
+## The two phases of LLM inference
+
 For transformer-based models like GPT-4, the entire process breaks down into two phases: **prefill and decode**.
 
-## Prefill
+### Prefill
 
 When a user sends a query, the LLM's tokenizer converts the prompt into a sequence of tokens. The prefill phase begins after tokenization:
 
@@ -41,7 +45,7 @@ As a result, the prefill stage is compute-bound and often saturates GPU utilizat
 
 A key metric to monitor for prefill is the Time to First Token (TTFT), which measures the latency from prompt submission to first token generation. More details will be covered in the [inference optimization](/inference-optimization) chapter.
 
-## Decode
+### Decode
 
 After prefill, the LLM enters the decode stage where it generates new tokens sequentially, one at a time.
 
@@ -65,10 +69,10 @@ A key metric to monitor for decode is Inter-token latency (ITL), the average tim
 
 ![llm-inference.png](/img/docs/llm-inference-flow.png)
 
-## Collocating prefill and decode
+### Collocating prefill and decode
 
 Traditional LLM serving systems typically run both the prefill and decode phases on the same hardware. However, this setup introduces several challenges.
 
 One major issue is the interference between the prefill and decode phases, as they cannot run fully in parallel. In production, multiple requests can arrive at once, each with its own prefill and decode stages that overlap across different requests. However, only one phase can run at a time. When the GPU is occupied with compute-heavy prefill tasks, decode tasks must wait, increasing token latency, and vice versa. This makes it difficult to schedule resources.
 
-The open-source community is working on different strategies to separate prefill and decode. More details will be covered in the Inference Optimization [Link] chapter.
+The open-source community is working on different strategies to separate prefill and decode. More details will be covered in the [inference optimization](/inference-optimization) chapter.

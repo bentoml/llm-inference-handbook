@@ -8,27 +8,36 @@ keywords:
     - LLM, LLM inference, AI inference
 ---
 
+import Features from '@site/src/components/Features';
+
 # Introduction
 
-We wrote this handbook to solve a common problem facing developers while working with LLMs: the foundational knowledge about LLM inference is scattered, inconsistent, and often assumes you already know half the stack.
+_LLM Inference in Production_ is your technical glossary, guidebook, and reference - all in one. It covers everything you need to know about LLM inference, from core concepts and performance metrics (e.g., [Time to First Token and Tokens per Second](/inference-optimization/llm-inference-metrics)), to optimization techniques (e.g., [continuous batching](/inference-optimization/static-dynamic-continuous-batching) and [prefix caching](/inference-optimization/prefix-caching)) and operation best practices.
 
-You’ll find explanations buried in academic papers, hidden in vendor blogs, spread across GitHub issues, or tossed around in Discord servers. But very few places tie it all together — like how inference differs from training, why goodput matters more than raw throughput for meeting SLOs, or how prefill-decode disaggregation works in practice.
+<Features>
+  - Practical guidance for deploying, scaling, and operating LLMs in production.
+  - Focus on what truly matters, not edge cases or technical noise.
+  - Boost performance with optimization techniques tailored to your use case.
+  - Continuously updated with the latest best practices and field-tested insights.
+</Features>
+
+## Motivation
+
+We wrote this handbook to solve a common problem facing developers: LLM inference knowledge is often fragmented; it’s buried in academic papers, scattered across vendor blogs, hidden in GitHub issues, or tossed around in Discord threads. Worse, much of it assumes you already understand half the stack.
+
+There aren’t many resources that bring it all together — like how [inference differs from training](/llm-inference-basics/training-inference-differences), why [goodput matters more than raw throughput](/inference-optimization/llm-inference-metrics#goodput) for meeting SLOs, or how [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation) works in practice.
 
 So we started pulling it all together.
 
-## What's inside
-
-**LLM Inference in Production** is meant to serve as a technical glossary, guidebook, and reference - all in one. It covers everything about LLM inference, from basic metrics like Time to First Token (TTFT) and Tokens per Second (TPS), to advanced techniques like [continuous batching](/inference-optimization/static-dynamic-continuous-batching), [speculative decoding](/inference-optimization/speculative-decoding), and [prefix caching](/inference-optimization/prefix-caching).
-
 ## Who this is for
 
-It’s written for engineers deploying, scaling or operating LLM applications, whether you're fine-tuning a small open model or running large-scale deployments on your own stack.
+This handbook is for engineers deploying, scaling or operating LLMs in production, whether you're fine-tuning a small open model or running large-scale deployments on your own stack.
 
 If your goal is to make LLM inference faster, cheaper, or more reliable, this handbook is for you.
 
-## How to use this handbook
+## How to use this
 
-You can read it start-to-finish or treat it like a lookup table. There’s no wrong way to navigate. We’ll keep updating the handbook as the field evolves, because LLM inference is moving fast, and what works today may not be best tomorrow.
+You can read it start-to-finish or treat it like a lookup table. There’s no wrong way to navigate. We’ll keep updating the handbook as the field evolves, because LLM inference is changing fast, and what works today may not be best tomorrow.
 
 ## Contributing
 

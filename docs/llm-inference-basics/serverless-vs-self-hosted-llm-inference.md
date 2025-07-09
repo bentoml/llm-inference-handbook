@@ -25,7 +25,7 @@ Serverless inference services, provided by companies like OpenAI, Anthropic, and
 
 ## Self-hosted LLM inference
 
-Self-hosted LLM inference means deploying and managing your own LLM infrastructure. It provides significant control and flexibility, critical for certain organizations and use cases.
+Self-hosted LLM inference means deploying and managing your own LLM infrastructure. It provides significant control and flexibility, critical for enterprises to build long-term competitive advantage.
 
 Key benefits of self-hosting include:
 
@@ -49,6 +49,8 @@ Choosing between serverless and self-hosted LLM inference depends on your specif
 | **Customization** | ⚠️ Limited | ✅ Full flexibility |
 | **Cost at Scale** | ⚠️ Higher (usage-based, may rise significantly) | ✅ Potentially lower (predictable, optimized infrastructure) |
 | **Hardware Management** | ✅ Abstracted away | ⚠️ Requires GPU setup & maintenance |
+
+Compared with self-hosted inference, serverless model APIs make it hard to get fine-grained control over performance tuning and cost optimization. You are just calling the same API as everyone else. To ship a production system with competitive edges, you need to **own your inference layer**.
 
 For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
 
