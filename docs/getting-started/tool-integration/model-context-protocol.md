@@ -17,7 +17,7 @@ MCP uses a client-server architecture with the following components:
 - **MCP servers**: The connectors that expose different capabilities and data sources. Each server can connect to various backends like databases, third-party APIs, GitHub repositories, local files, or any other data source. Multiple servers can be running simultaneously on your local machine or connected to remotes services.
 - **MCP protocol**: This is the transport layer that enables communication between the host and servers, regardless of how many servers are connected.
 
-![mcp-architecture.png](/img/docs/mcp-architecture.png)
+![mcp-architecture.png](./img/mcp-architecture.png)
 
 When your AI assistant needs to access external data or tools, here's what happens at a high level:
 

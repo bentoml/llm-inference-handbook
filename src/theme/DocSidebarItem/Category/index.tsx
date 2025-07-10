@@ -7,6 +7,7 @@ import {
   Collapsible,
   useCollapsible
 } from '@docusaurus/theme-common'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import { isSamePath } from '@docusaurus/theme-common/internal'
 import {
   isActiveSidebarItem,
@@ -214,7 +215,7 @@ export default function DocSidebarItemCategory({
           {...props}
         >
           {item.customProps?.icon && (
-            <img src={item.customProps.icon as string} />
+            <img src={useBaseUrl(item.customProps.icon as string)} />
           )}
           {label}
         </Link>

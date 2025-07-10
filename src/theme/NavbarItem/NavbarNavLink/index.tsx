@@ -30,7 +30,7 @@ function NavbarNavLinkContent({
       {icon && (
         <div
           className={styles.navbarNavLinkIcon}
-          style={{ background: `url(${icon})` }}
+          style={{ background: `url(${useBaseUrl(icon)})` }}
         />
       )}
       <span className={styles.navbarNavLinkContentLabel}>{label}</span>

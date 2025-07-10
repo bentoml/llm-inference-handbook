@@ -19,7 +19,7 @@ Traditional load balancers treat LLM workers like identical black boxes. They do
 - How much GPU memory is consumed by the KV cache
 - How long the request queue is
 
-![kv-cache-util-lb.png](/img/docs/kv-cache-util-lb.png)
+![kv-cache-util-lb.png](./img/kv-cache-util-lb.png)
 
 When a load balancer can’t see these details, it starts making bad decisions, leading to:
 

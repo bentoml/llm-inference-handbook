@@ -16,7 +16,7 @@ To understand prefill-decode (PD) disaggregation, let’s briefly review how LLM
 - **Prefill**: Processes the entire sequence in parallel and store key and value vectors from the attention layers in a KV cache. Because it’s handling all the tokens at once, prefill is compute-bound, but not too demanding on GPU memory.
 - **Decode**: Generates the output tokens, one at a time, by reusing the KV cache built earlier. Different from prefill, decode requires fast memory access but lower compute.
 
-![llm-inference-flow.png](/img/docs/llm-inference-flow.png)
+![llm-inference-flow.png](./img/llm-inference-flow.png)
 
 For a long time, the standard way of doing inference was to run these two steps together. On the surface, this might seem straightforward.
 
@@ -25,7 +25,7 @@ In practice, you’ll often have multiple requests arriving at once. Each one ha
 Since prefill primarily determines the TTFT and decode impacts ITL, collocating them makes it difficult to optimize both metrics simultaneously.
 
 <figure>
-![pd-disaggregation-results.png](/img/docs/pd-disaggregation-results.png)
+![pd-disaggregation-results.png](./img/pd-disaggregation-results.png)
 <figcaption>Latency increase by co-locating prefill and decode. [Image Source](https://arxiv.org/pdf/2401.09670)</figcaption>
 </figure>
 

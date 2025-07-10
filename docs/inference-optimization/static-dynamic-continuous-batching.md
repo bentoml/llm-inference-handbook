@@ -15,7 +15,7 @@ Batching helps mitigate this bottleneck. In production, your service might be fl
 
 The simplest form of batching is **static batching**. Here, the server waits until a fixed number of requests arrive and then processes them together as a single batch.
 
-![static-batching.png](/img/docs/static-batching.png)
+![static-batching.png](./img/static-batching.png)
 
 While static batching is easy to implement, it has notable downsides. 
 
@@ -26,7 +26,7 @@ While static batching is easy to implement, it has notable downsides.
 
 To address the issues in static batching, many systems use **dynamic batching**. This approach still collects incoming requests into batches, but it doesn’t insist on a fixed batch size. Instead, it sets a time window and processes whatever requests have arrived in that time frame. If the batch reaches its size limit sooner, it launches immediately. This is like a bus that leaves on a strict schedule or whenever it’s full, whichever happens first.
 
-![dynamic-batching.png](/img/docs/dynamic-batching.png)
+![dynamic-batching.png](./img/dynamic-batching.png)
 
 Dynamic batching helps balance throughput and latency. It ensures that early requests aren’t delayed indefinitely by later ones. However, because some batches might not be completely full when launched, it doesn’t always achieve maximum GPU efficiency. Another drawback is that, like static batching, the longest request in a batch still dictates when the batch finishes; short requests have to wait unnecessarily.
 
@@ -37,7 +37,7 @@ For LLM inference, output sequences vary widely in length. Some users might ask 
 Continuous batching, also known as in-flight batching, addressing the inefficiencies. Continuous batching doesn’t force the entire batch to complete before returning results. Instead, it lets each sequence in a batch finish independently and immediately replaces it with a new one. This is like an assembly line where, as soon as one item is finished (no matter how long it takes), a new item is added to keep the line running at full capacity.
 
 <figure>
-![continuous-batching.png](/img/docs/continuous-batching.png)
+![continuous-batching.png](./img/continuous-batching.png)
 <figcaption>Generating seven sequences with continuous batching. On the first iteration (left), each sequence generates a token (blue) from its prompt (yellow). Over time (right), sequences complete at different iterations by emitting an end-of-sequence token (red), at which point new sequences are inserted. [Image source](https://www.anyscale.com/blog/continuous-batching-llm-inference)</figcaption>
 </figure>
 

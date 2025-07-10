@@ -11,7 +11,7 @@ import LinkList from '@site/src/components/LinkList';
 
 Function calling is like giving an LLM a toolbox with specific tools it can use to help you. When you ask the model to do something that requires one of these tools, it can "call" or use that tool to get the job done.
 
-![function-calling-diagram.png](/img/docs/function-calling-diagram.png)
+![function-calling-diagram.png](./img/function-calling-diagram.png)
 
 Here is a specific example:
 

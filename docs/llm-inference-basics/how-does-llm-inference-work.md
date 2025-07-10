@@ -51,7 +51,7 @@ After prefill, the LLM enters the decode stage where it generates new tokens seq
 
 For each new token, the model samples from a probability distribution generated based on the prompt and all previously generated tokens. This process is autoregressive, meaning tokens T₀ through Tₙ₋₁ are used to generate token Tₙ, then T₀ through Tₙ to generate Tₙ₊₁, and so on.
 
-![auto-regressive.png](/img/docs/auto-regressive.png)
+![auto-regressive.png](./img/auto-regressive.png)
 
 Each newly generated token is appended to the growing sequence. This autoregressive loop continues until:
 
@@ -67,7 +67,7 @@ This KV caching mechanism significantly speeds up inference by avoiding redundan
 
 A key metric to monitor for decode is Inter-token latency (ITL), the average time between the generation of consecutive tokens in a sequence. It is also known as Time Per Output Token (TPOT).
 
-![llm-inference.png](/img/docs/llm-inference-flow.png)
+![llm-inference.png](./img/llm-inference-flow.png)
 
 ### Collocating prefill and decode
 

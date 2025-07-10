@@ -30,7 +30,7 @@ Here’s the step-by-step process:
 4. If it accepts *h* tokens, it then generates the *(h+1)*-th token itself (so that generation remains on track).
 5. The process repeats: the draft model proposes the next *K tokens* based on this new extended sequence.
     
-![spec-decoding.png](/img/docs/spec-decoding.png)
+![spec-decoding.png](./img/spec-decoding.png)
     
 Key benefits of speculative decoding:
 
