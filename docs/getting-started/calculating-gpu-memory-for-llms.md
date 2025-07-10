@@ -17,12 +17,12 @@ If you're planning to self-host an LLM, one of the first things you'll need to f
 A rough formula to estimate how much memory is needed to load an LLM is:
 
 ```bash
-Memory (GB) = P * (Q / 8) * Overhead
+Memory (GB) = P * (Q / 8) * (1 + Overhead)
 ```
 
 - **P**: Number of parameters (in billions)
 - **Q**: Bit precision (e.g., 16, 32), division by 8 converts bits to bytes
-- **Overhead**: Additional memory or temporary usage during inference (e.g., KV cache, activation buffers, optimizer states)
+- **Overhead (%)**: Additional memory or temporary usage during inference (e.g., KV cache, activation buffers, optimizer states)
 
 For example, to load a 70B model in FP16 with 20% overhead, you need around 168 GB of GPU memory:
 

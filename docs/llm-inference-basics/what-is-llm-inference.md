@@ -1,20 +1,16 @@
 ---
 sidebar_position: 1
-description: Understand what LLM inference means.
+description: LLM inference is the process of using a trained language model to generate responses or predictions based on prompts.
 keywords:
-    - Large Language Models
-    - LLM
+    - Large Language Models, LLM
+    - LLM inference meaning
     - LLM inference
     - AI inference
 ---
 
-import Features from '@site/src/components/Features';
-import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
-
 # What is LLM inference?
 
-LLM inference refers to using trained LLMs, such as GPT-4, Llama, and DeepSeek, to generate meaningful outputs from user inputs, typically provided as natural language prompts. During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
+LLM inference refers to using trained LLMs, such as GPT-4, Llama 4, and DeepSeek-V3, to generate meaningful outputs from user inputs, typically provided as natural language prompts. During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
 
 Essentially, this is the moment the LLM is actively "in action." Here are some real-world examples:
 

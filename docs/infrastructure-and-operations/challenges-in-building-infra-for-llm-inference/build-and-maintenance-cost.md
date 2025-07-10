@@ -28,7 +28,7 @@ Even if a team pulls it off, every week spent setting up infrastructure is a wee
 
 ## Limited flexibility for ML tools and frameworks
 
-Many AI stacks lock model runtimes—like PyTorch, vLLM, or specific transformers—to fixed versions. The primary reason is to cache container images and ensure compatibility with infrastructure-related components. While this simplifies deployment in clusters, it also restricts flexibility when you need to test or deploy newer models or frameworks that fall outside the supported list.
+Many AI stacks lock model runtimes, such as PyTorch, vLLM, or specific transformers, to fixed versions. The primary reason is to cache container images and ensure compatibility with infrastructure-related components. While this simplifies deployment in clusters, it also restricts flexibility when you need to test or deploy newer models or frameworks that fall outside the supported list.
 
 But this rigidity creates real limitations:
 
@@ -60,6 +60,6 @@ That leads to:
 
 ## The hidden cost: talent
 
-LLM infrastructure requires deep specialization. Companies need engineers who understand GPUs, Kubernetes, ML frameworks, and distributed systems—all in one role. These professionals are rare and expensive, with salaries often 30–50% higher than traditional DevOps engineers.
+LLM infrastructure requires deep specialization. Companies need engineers who understand GPUs, Kubernetes, ML frameworks, and distributed systems — all in one role. These professionals are rare and expensive, with salaries often 30–50% higher than traditional DevOps engineers.
 
 Even for teams that have the right people, hiring and training to maintain in-house capabilities is a major investment. [In this survey](https://www.salesforce.com/news/stories/public-sector-ai-statistics/), over 60% of public sector IT professionals cited AI talent shortages as the biggest barrier to adoption. It’s no different in the private sector.

@@ -19,7 +19,7 @@ For example, fine-tuning can significantly improve a model’s:
 - **Instruction following**: Ensuring the model adheres to specific formats, tones, or styles in its responses.
 - **Safety and alignment**: Reinforcing how the model handles sensitive or high-risk prompts.
 
-## Common fine-tuning Frameworks
+## Common fine-tuning frameworks
 
 Fine-tuning LLMs doesn’t have to mean building everything from the ground up. Several open-source frameworks are designed to streamline the process.
 
@@ -41,7 +41,7 @@ Key features:
 - Scales from single GPU setups to multi-GPU training using FSDP or DeepSpeed.
 - Easy to run locally with Docker or on cloud infrastructure.
 
-Axolotl is great for users who want to focus on their data and tasks instead of the details of deep learning internals. With sensible defaults, strong community support, and lots of integrations, it's a go-to choice for practical fine-tuning of open models.
+Axolotl is great for users who want to focus on their data and tasks instead of the details of deep learning internals. With sensible defaults, strong community support, and various integrations, it's a go-to choice for practical fine-tuning of open models.
 
 ### Unsloth
 

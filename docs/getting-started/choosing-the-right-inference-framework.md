@@ -8,6 +8,8 @@ keywords:
     - vLLM, SGLang, LMDeploy, TensorRT-LLM, Hugging Face TGI, llama.cpp, MLC-LLM, Ollama
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Choosing the right inference framework
 
 Once you’ve selected a model, the next step is choosing how to run it. Your choice of inference framework directly affects latency, throughput, hardware efficiency, and feature support. There's no one-size-fits-all solution. Your decision depends on your deployment scenario, use case, and infrastructure.
@@ -45,3 +47,8 @@ Models, hardware, and workloads vary. The best performance often comes from matc
 Inference runtimes are constantly updated. The best tool today may be missing features next month. Additionally, some models are only optimized (or supported) in specific runtimes at launch.
 
 To stay flexible, your infrastructure should be runtime-agnostic. This lets you combine the best of each tool without getting locked into a single stack.
+
+<LinkList>
+  ## Additional resources
+  * [Benchmarking LLM Inference Backends: vLLM, LMDeploy, MLC-LLM, TensorRT-LLM, and TGI](https://www.bentoml.com/blog/benchmarking-llm-inference-backends)
+</LinkList>

@@ -5,6 +5,8 @@ keywords:
     - Function calling
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Function calling
 
 Function calling is like giving an LLM a toolbox with specific tools it can use to help you. When you ask the model to do something that requires one of these tools, it can "call" or use that tool to get the job done.
@@ -25,4 +27,7 @@ At a technical level, the LLM still predicts the next token, just like any other
 - Triggering actions (e.g., send email, retrieve weather)
 - Passing outputs back into the model for multi-turn conversations
 
-See the blog post [Function Calling with Open-Source LLMs](https://bentoml.com/blog/function-calling-with-open-source-llms) to learn more.
+<LinkList>
+  ## Additional resources
+  * [Function Calling with Open-Source LLMs](https://bentoml.com/blog/function-calling-with-open-source-llms)
+</LinkList>

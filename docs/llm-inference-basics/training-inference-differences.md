@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
-description: Understand the differences between LLM training and inference.
+description: LLM training builds the model; inference applies it to generate real-time outputs from new inputs.
 keywords:
-    - LLM inference
-    - LLM training
+    - LLM training vs. inference
+    - LLM training, LLM inference
     - AI inference
     - AI training
     - Traning and inference

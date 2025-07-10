@@ -69,11 +69,6 @@ const config: Config = {
       items: [
         {
           position: 'left',
-          href: 'https://docs.bentoml.com/en/latest/examples/overview.html#llms',
-          label: 'Examples'
-        },
-        {
-          position: 'left',
           href: 'https://www.bentoml.com/blog',
           label: 'Blog'
         },
