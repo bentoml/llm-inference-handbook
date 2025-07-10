@@ -74,7 +74,7 @@ const config: Config = {
         },
         {
           position: 'left',
-          href: 'https://l.bentoml.com/join-slack',
+          href: 'https://l.bentoml.com/join-slack-llm-inference-handbook',
           label: 'Community'
         },
         {
@@ -85,7 +85,7 @@ const config: Config = {
         },
         {
           position: 'right',
-          href: 'https://cloud.bentoml.com/signup',
+          href: 'https://l.bentoml.com/signup-llm-inference-handbook',
           label: 'Sign Up',
           button: 'light-purple'
         }
