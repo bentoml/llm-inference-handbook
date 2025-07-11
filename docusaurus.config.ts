@@ -59,6 +59,7 @@ const config: Config = {
     colorMode: {
       disableSwitch: true
     },
+    image: 'img/handbook-cover-image.png',
     navbar: {
       hideOnScroll: false,
       logo: {
