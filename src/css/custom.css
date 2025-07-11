@@ -59,9 +59,12 @@
 
   /* navbar */
   --ifm-navbar-height: 81px;
-  /* --ifm-navbar-shadow: none;
-  --ifm-navbar-padding-horizontal: 0;
-  --ifm-navbar-padding-vertical: 0; */
+
+  /* font */
+  --ifm-heading-font-family: 'Inter', sans-serif;
+  --ifm-heading-color: #111827;
+  --ifm-heading-font-weight: 700;
+  --ifm-heading-line-height: 1.33;
 
   /* custom */
   --bentoml-font-family:
@@ -79,10 +82,17 @@ article p {
 }
 
 .markdown > h2 {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 32px;
-  color: rgb(17, 24, 39);
+  --ifm-h2-font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.markdown > h3 {
+  --ifm-h3-font-size: 1.25rem;
+  margin-top: 0;
+}
+
+.markdown > h4 {
+  --ifm-h4-font-size: 1.1rem;
   margin-top: 0;
 }
 
@@ -93,19 +103,19 @@ article p {
 .markdown > p,
 .markdown > ul li,
 .markdown > ol li {
-  font-size: 18px;
-  line-height: 32px;
-  color: rgb(55, 65, 81);
-  margin-bottom: 24px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #374151;
+  margin-bottom: 1.5rem;
 }
 
 .markdown > ul li,
 .markdown > ol li {
-  margin: 12px 0;
+  margin: 0.75rem 0;
 }
 
 .markdown .theme-code-block {
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .hidden {
