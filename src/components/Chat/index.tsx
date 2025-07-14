@@ -1,9 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Button from '@site/src/components/Button'
 import styles from './styles.module.css'
 
 function Chat() {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (window?.innerWidth > 768) {
+      setIsOpen(true)
+    }
+  }, [])
 
   return (
     <>
