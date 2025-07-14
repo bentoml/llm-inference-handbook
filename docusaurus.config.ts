@@ -46,7 +46,6 @@ const config: Config = {
         },
         docs: {
           routeBasePath: '/',
-          sidebarCollapsed: false
         },
         theme: {
           customCss: './src/css/custom.css'
@@ -60,6 +59,11 @@ const config: Config = {
       disableSwitch: true
     },
     image: 'img/handbook-cover-image.png',
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true
+      }
+    },
     navbar: {
       hideOnScroll: false,
       logo: {
