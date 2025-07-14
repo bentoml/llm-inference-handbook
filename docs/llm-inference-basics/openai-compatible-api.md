@@ -58,6 +58,21 @@ response = client.chat.completions.create(
 print(response.choices[0].message)
 ```
 
+You can also call the API directly using a simple HTTP request. Here's an example using `curl`:
+
+```bash
+curl https://your-custom-endpoint.com/v1/chat/completions \
+  -H "Authorization: Bearer your-api-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "your-model-name",
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "How can I integrate OpenAI-compatible APIs?"}
+    ]
+  }'
+```
+
 If you’re already using OpenAI’s SDKs or REST interface, you can simply redirect them to your own API endpoint. This allows you to keep control over your LLM deployment, reduce vendor lock-in, and ensure your application remains future-proof.
 
 <LinkList>
