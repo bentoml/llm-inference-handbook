@@ -23,7 +23,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'bentoml', // Usually your GitHub org/user name.
-  projectName: 'llm-inference-in-production', // Usually your repo name.
+  projectName: 'llm-inference-handbook', // Usually your repo name.
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -45,7 +45,7 @@ const config: Config = {
           containerId: 'GTM-NLGDMK5'
         },
         docs: {
-          routeBasePath: '/',
+          routeBasePath: '/'
         },
         theme: {
           customCss: './src/css/custom.css'
@@ -85,7 +85,7 @@ const config: Config = {
         },
         {
           position: 'right',
-          href: 'https://github.com/bentoml/llm-inference-in-production',
+          href: 'https://github.com/bentoml/llm-inference-handbook',
           label: 'GitHub',
           icon: '/img/github.svg'
         },

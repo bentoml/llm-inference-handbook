@@ -22,4 +22,4 @@ Contributions are welcome! Feel free to open issues, suggest improvements, or su
 
 ## 📄 License
 
-This project is licensed under the [MIT License](https://github.com/bentoml/llm-inference-in-production/blob/main/LICENSE).
+This project is licensed under the [MIT License](https://github.com/bentoml/llm-inference-handbook/blob/main/LICENSE).
