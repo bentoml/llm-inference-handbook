@@ -12,7 +12,7 @@ import Features from '@site/src/components/Features';
 
 # Introduction
 
-_LLM Inference in Production_ is your technical glossary, guidebook, and reference - all in one. It covers everything you need to know about LLM inference, from core concepts and performance metrics (e.g., [Time to First Token and Tokens per Second](/inference-optimization/llm-inference-metrics)), to optimization techniques (e.g., [continuous batching](/inference-optimization/static-dynamic-continuous-batching) and [prefix caching](/inference-optimization/prefix-caching)) and operation best practices.
+_LLM Inference Handbook_ is your technical glossary, guidebook, and reference - all in one. It covers everything you need to know about LLM inference, from core concepts and performance metrics (e.g., [Time to First Token and Tokens per Second](/inference-optimization/llm-inference-metrics)), to optimization techniques (e.g., [continuous batching](/inference-optimization/static-dynamic-continuous-batching) and [prefix caching](/inference-optimization/prefix-caching)) and operation best practices.
 
 <Features>
   - Practical guidance for deploying, scaling, and operating LLMs in production.
