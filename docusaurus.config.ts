@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic'
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'LLM Inference in Production',
-  tagline: 'BentoML LLM Inference in Production',
+  title: 'LLM Inference Handbook',
+  tagline: 'BentoML LLM Inference Handbook',
   favicon: 'img/favicon-32x32.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future

@@ -1,6 +1,6 @@
-# 📖 LLM Inference in Production
+# 📖 LLM Inference Handbook
 
-This repository contains the source content for [LLM Inference in Production](https://bentoml.com/llm/), a practical guide for understanding, optimizing, scaling, and operating LLM inference.
+This repository contains the source content for [LLM Inference Handbook](https://bentoml.com/llm/), a practical guide for understanding, optimizing, scaling, and operating LLM inference.
 
 [![Twitter](https://badgen.net/badge/icon/@bentomlai/1DA1F2?icon=twitter&label=Follow)](https://twitter.com/bentomlai)
 [![Community](https://badgen.net/badge/Join/Community/cyan?icon=slack)](https://l.bentoml.com/join-slack)
