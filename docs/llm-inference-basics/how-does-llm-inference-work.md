@@ -45,6 +45,8 @@ As a result, the prefill stage is compute-bound and often saturates GPU utilizat
 
 A key metric to monitor for prefill is the Time to First Token (TTFT), which measures the latency from prompt submission to first token generation. More details will be covered in the [inference optimization](/inference-optimization) chapter.
 
+![llm-inference-prefill.png](./img/llm-inference-prefill.png)
+
 ### Decode
 
 After prefill, the LLM enters the decode stage where it generates new tokens sequentially, one at a time.
@@ -67,7 +69,7 @@ This KV caching mechanism significantly speeds up inference by avoiding redundan
 
 A key metric to monitor for decode is Inter-token latency (ITL), the average time between the generation of consecutive tokens in a sequence. It is also known as Time Per Output Token (TPOT).
 
-![llm-inference.png](./img/llm-inference-flow.png)
+![llm-inference-itl.png](./img/llm-inference-itl.png)
 
 ### Collocating prefill and decode
 
