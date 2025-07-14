@@ -9,6 +9,8 @@ keywords:
     - Inference optimization
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Prefill-decode disaggregation
 
 To understand prefill-decode (PD) disaggregation, let’s briefly review how LLM inference actually works in two steps:
@@ -46,3 +48,9 @@ As promising as PD disaggregation sounds, it’s not a one-size-fits-all fix.
 - **Thresholds matter**: If your workload is too small, or your GPU setup isn’t tuned for this approach, performance can drop (by 20-30% in our tests).
 - **Local prefill can be faster**: For shorter prompts or when the decode engine has a high prefix cache hit, running prefill locally on the decode worker is often faster and simpler.
 - **Data transfer cost**: Disaggregation requires moving KV caches rapidly and reliably between prefill and decode workers. This means your solution must support fast, low-latency communication protocols that are both hardware- and network-agnostic. Unless the performance gains from disaggregation outweigh the data transfer cost, overall performance can actually degrade. Existing methods for data transfer for your reference: [NVIDIA Inference Xfer Library (NIXL)](https://github.com/ai-dynamo/nixl), CXL, NVMe-oF.
+
+<LinkList>
+  ## Additional resources
+  * [DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving](https://arxiv.org/abs/2401.09670)
+  * [SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills](https://arxiv.org/pdf/2308.16369)
+</LinkList>

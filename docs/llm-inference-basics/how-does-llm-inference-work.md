@@ -9,6 +9,8 @@ keywords:
     - Tokens
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # How does LLM inference work?
 
 During inference, an LLM generates text one token at a time, using its internal attention mechanisms and knowledge of previous context.
@@ -78,3 +80,8 @@ Traditional LLM serving systems typically run both the prefill and decode phases
 One major issue is the interference between the prefill and decode phases, as they cannot run fully in parallel. In production, multiple requests can arrive at once, each with its own prefill and decode stages that overlap across different requests. However, only one phase can run at a time. When the GPU is occupied with compute-heavy prefill tasks, decode tasks must wait, increasing token latency, and vice versa. This makes it difficult to schedule resources for both phases.
 
 The open-source community is actively working on different strategies to separate prefill and decode. For more information, see [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation).
+
+<LinkList>
+  ## Additional resources
+  * [DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving](https://arxiv.org/abs/2401.09670)
+</LinkList>

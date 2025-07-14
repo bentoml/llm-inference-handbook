@@ -5,6 +5,8 @@ keywords:
     - Static batching, dynamic batching and continuous batching
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Static, dynamic and continuous batching
 
 GPUs are designed for highly parallel computation workloads, capable of performing trillions or even quadrillions of floating-point operations per second (FLOPs). Nevertheless, LLMs often fail to fully utilize these GPUs because much of the chip's memory bandwidth is spent loading model parameters.
@@ -42,3 +44,9 @@ Continuous batching, also known as in-flight batching, addressing the inefficien
 </figure>
 
 This technique uses iteration-level scheduling, meaning the batch composition changes dynamically at each decoding iteration. As soon as a sequence in the batch finishes generating tokens, the server inserts a new request in its place. This maximizes GPU occupancy and keeps compute resources busy by avoiding idle time that would otherwise be spent waiting for the slowest sequence in a batch to finish.
+
+<LinkList>
+  ## Additional resources
+  * [How continuous batching enables 23x throughput in LLM inference while reducing p50 latency](https://www.anyscale.com/blog/continuous-batching-llm-inference)
+  * [Mastering LLM Techniques: Inference Optimization](https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/)
+</LinkList>

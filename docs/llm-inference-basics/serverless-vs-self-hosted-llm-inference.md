@@ -56,7 +56,7 @@ For more information, see the blog post [Serverless vs. Dedicated LLM Deployment
 
 ---
 
-At Bento, we work to help enterprises self-host any open and custom LLMs with flexible distributed architecture and tailored inference optimization. With Bento Inference Platform, you can achieve up to 6x lower cost than serverless APIs.
+At [Bento](https://www.bentoml.com/), we work to help enterprises self-host any open and custom LLMs with flexible distributed architecture and tailored inference optimization. With Bento Inference Platform, you can achieve up to 6x lower cost than serverless APIs.
 
 <div style={{ margin: '3rem 0' }}>
 [<Button>Talk to us</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
