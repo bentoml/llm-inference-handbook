@@ -8,6 +8,8 @@ keywords:
     - Inference optimization
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Speculative decoding
 
 Speculative decoding is an inference-time optimization that speeds up autoregressive generation by combining a fast “draft” model with the target model.
@@ -39,3 +41,11 @@ Key benefits of speculative decoding:
 - **Better use of hardware**: Because verification uses hardware resources that would otherwise be idle, overall throughput improves.
 
 However, speculative decoding has its own costs. Because both the draft model and the target model need to be loaded into memory, it increases overall VRAM usage. This reduces the available memory for other tasks (e.g., batch processing), which can limit throughput, especially under high load or when serving large models.
+
+<LinkList>
+  ## Additional resources
+  * [Looking back at speculative decoding](https://research.google/blog/looking-back-at-speculative-decoding/)
+  * [Fast Inference from Transformers via Speculative Decoding](https://arxiv.org/abs/2211.17192)
+  * [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318)
+  * [Blockwise Parallel Decoding for Deep Autoregressive Models](https://arxiv.org/abs/1811.03115)
+</LinkList>

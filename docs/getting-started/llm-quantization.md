@@ -7,6 +7,8 @@ keywords:
     - AWQ, SmoothQuant, GPTQ
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # LLM quantization
 
 Quantization is a technique used to reduce the memory and compute requirements of models by converting their weights and activations from high-precision formats (like `FP32`) to lower-precision formats such as `int8`, `int4`, or even `int2`.
@@ -107,3 +109,11 @@ Highlights:
 - Performance gains: Custom GPU kernels yield ~3.25× speedup over FP16.
 
 GPTQ is widely used in open-source model serving pipelines, especially with AutoGPTQ. It is a go-to choice for high-speed, low-memory inference of large models.
+
+<LinkList>
+  ## Additional resources
+  * [Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference](https://arxiv.org/abs/1712.05877)
+  * [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)
+  * [GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers](https://arxiv.org/abs/2210.17323)
+  * [SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models](https://arxiv.org/abs/2211.10438)
+</LinkList>

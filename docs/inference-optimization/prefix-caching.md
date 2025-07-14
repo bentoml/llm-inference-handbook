@@ -10,6 +10,8 @@ keywords:
     - Dynamo, SGLang, vLLM, llm-d
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Prefix caching
 
 The term "KV cache" originally described caching within a single inference request. As mentioned previously, LLMs work autoregressively during decode as they output the next new token based on the previously generated tokens (i.e. reusing their KV cache). Without the KV cache, the model needs to recompute everything for the previous tokens in each decode step, which would be a huge waste of resources.
@@ -49,3 +51,9 @@ Different open-source projects are exploring their own approaches to prefix cach
         - **Approximate prefix cache on the router**: Let the router maintain an approximate lookup cache of the prefix caches on all the backend servers.
         - **Accurate prefix cache on the router**: Gather KV cache information reported by model servers.
     - The [llm-d](https://github.com/llm-d/llm-d) project uses a component called Inference Scheduler to implement filtering and scoring algorithms, and makes routing decisions based on a combination of factors like cache availability, prefill/decode status, SLA and load.
+
+<LinkList>
+  ## Additional resources
+  * [Prompt Cache: Modular Attention Reuse for Low-Latency Inference](https://arxiv.org/abs/2311.04934)
+  * [Prompt Caching in Claude](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
+</LinkList>

@@ -10,6 +10,8 @@ keywords:
     - Service-Level Objective (SLO)
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Key metrics for LLM inference
 
 Before exploring optimization techniques, let’s understand the key metrics they target. Evaluating LLM performance involves using various tools that define, measure, and calculate these metrics differently.
@@ -97,3 +99,10 @@ When hosting and optimizing LLM inference, there’s always a balance between tw
 To reach the best trade-off for your use case, you’ll need to adjust several important system-level “knobs”, such as Data Parallelism (DP), Tensor Parallelism (TP), Expert Parallelism (EP), batch size, precision (e.g., FP8, FP4), and disaggregation (separating prefill and decode). These tuning options directly impact how well you can optimize for either low latency or high throughput, or find the right middle ground. More details will be covered in the next section.
 
 Using a serverless API can abstract away these optimizations, leaving you with less control over fine-tuning. On the other hand, building your own programmable and low-level stack lets you navigate these tradeoffs and align your system performance with your app’s specific SLO.
+
+<LinkList>
+  ## Additional resources
+  * [NVIDIA NIM LLMs Benchmarking - Metrics](https://docs.nvidia.com/nim/benchmarking/llm/latest/metrics.html)
+  * [Mastering LLM Techniques: Inference Optimization](https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/)
+  * [LLM-Inference-Bench: Inference Benchmarking of Large Language Models on AI Accelerators](https://arxiv.org/pdf/2411.00136)
+</LinkList>

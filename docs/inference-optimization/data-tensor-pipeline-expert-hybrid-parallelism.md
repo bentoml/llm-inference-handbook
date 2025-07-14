@@ -6,6 +6,8 @@ keywords:
     - Data parallelism, tensor parallelism, pipeline parallelism, expert parallelism and hybrid parallelism
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Data, tensor, pipeline, expert and hybrid parallelisms
 
 Parallelism strategies are essential for achieving high-performance computing in modern AI systems. They allow workloads to be distributed across multiple devices, maximizing cost efficiency and improving throughput. Many new parallelization strategies continue to emerge as models grow larger and more complex.
@@ -66,3 +68,10 @@ An alternative configuration is to reduce tensor parallelism and increase data p
 This reduces cross-GPU communication, which may help lower latency during inference. However, there’s a catch: model weights consume a large portion of GPU memory, especially for large models. Lowering tensor parallelism means fewer GPUs share the model, leaving less room for KV cache. This can degrade inference optimizations like prefix caching.
 
 These trade-offs aren’t unique to tensor and data parallelism. When designing a hybrid parallelism plan, it’s essential to benchmark different configurations based on your specific model size, hardware setup, and inference requirements. There’s no one-size-fits-all setup. The optimal strategy is often found through tuning and experimentation.
+
+<LinkList>
+  ## Additional resources
+  * [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](https://arxiv.org/pdf/1909.08053)
+  * [GPipe: Easy Scaling with Micro-Batch Pipeline Parallelism](https://arxiv.org/pdf/1811.06965)
+  * [DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training to Power Next-Generation AI Scale](https://arxiv.org/abs/2201.05596)
+</LinkList>
