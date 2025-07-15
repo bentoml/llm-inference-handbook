@@ -75,8 +75,23 @@ const config: Config = {
       items: [
         {
           position: 'left',
+          href: 'https://www.bentoml.com',
+          label: 'Product'
+        },
+        {
+          position: 'left',
+          href: 'https://www.bentoml.com/pricing',
+          label: 'Pricing'
+        },
+        {
+          position: 'left',
           href: 'https://www.bentoml.com/blog',
           label: 'Blog'
+        },
+        {
+          position: 'left',
+          href: 'https://www.bentoml.com/customers',
+          label: 'Customers'
         },
         {
           position: 'left',
