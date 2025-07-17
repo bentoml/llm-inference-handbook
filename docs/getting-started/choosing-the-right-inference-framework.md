@@ -14,7 +14,7 @@ import LinkList from '@site/src/components/LinkList';
 
 Once you’ve selected a model, the next step is choosing how to run it. Your choice of inference framework directly affects latency, throughput, hardware efficiency, and feature support. There's no one-size-fits-all solution. Your decision depends on your deployment scenario, use case, and infrastructure.
 
-## Inference frameworks
+## Inference frameworks and tools
 
 If you're building high-throughput, low-latency applications, such as chatbots and RAG pipelines, these frameworks are optimized for running LLM inference:
 

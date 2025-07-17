@@ -23,7 +23,7 @@ Latency measures how quickly a model responds to a request. For a single request
 There are two key metrics to measure latency:
 
 - **Time to First Token (TTFT)**: The time it takes to generate the first token after sending a request. It reflects how fast the model can start responding. Different applications usually have different expectations for TTFT. For example, when summarizing a long document, users are usually willing to wait longer for the first token since the task is more demanding.
-- **Time per Output Token (TPOT)**: Also known as inter-token latency (ITL), TPOT measures the time between generating each subsequent token. A lower TPOT means the model can produce tokens faster, leading to higher tokens per second.
+- **Time per Output Token (TPOT)**: Also known as Inter-Token Latency (ITL), TPOT measures the time between generating each subsequent token. A lower TPOT means the model can produce tokens faster, leading to higher tokens per second.
     
   In streaming scenarios where users see text appear word-by-word (like ChatGPT's interface), TPOT determines how smooth the experience feels. It should be fast enough to keep pace with human reading speed.
     
