@@ -2,9 +2,9 @@
 sidebar_position: 6
 description: Learn the concept of OpenAI-compatible API and why you need it.
 keywords:
-    - OpenAI-compatible API
+    - OpenAI-compatible API, OpenAI-compatible endpoint
+    - OpenAI API, OpenAI compatibility
     - ChatGPT
-    - OpenAI
 ---
 
 import LinkList from '@site/src/components/LinkList';
@@ -26,13 +26,21 @@ As a result, it sees rapid adoption and ecosystem growth across various industri
 
 ## Why does compatibility matter?
 
-While OpenAI’s APIs helped kickstart the AI application development, their widespread adoption created ecosystem lock-in. Many developer tools and frameworks now only support the OpenAI API schema. Switching models or providers often requires rewriting significant parts of your application logic.
+While OpenAI’s APIs helped kickstart the AI application development, their widespread adoption created ecosystem lock-in. Many developer tools, frameworks, and SDKs are now built specifically around the OpenAI schema. That becomes a problem if you want to:
+
+- Switch to a different model
+- Move to a self-hosted deployment
+- Try a new inference provider
+
+In these cases, rewriting application logic to fit a new API can be tedious and error-prone.
 
 OpenAI-compatible APIs address these challenges by providing:
 
 - **Drop-in replacement**: Swap out OpenAI’s hosted API for your own self-hosted or open-source model, without changing your application code.
 - **Seamless migration**: Move between providers or self-hosted deployments with minimal disruption.
 - **Consistent integration**: Maintain compatibility with tools and frameworks that rely on the OpenAI API schema (e.g., `chat/completions`, `embeddings` endpoints).
+
+Many inference backends (e.g., vLLM and SGLang) and model serving frameworks (e.g., BentoML) now provide OpenAI-compatible endpoints out of the box. This makes it easy to switch between different models without changing client code.
 
 ## How to call an OpenAI-compatible API
 
@@ -78,4 +86,5 @@ If you’re already using OpenAI’s SDKs or REST interface, you can simply redi
 <LinkList>
   ## Additional resources
   * [OpenAI documentation](https://platform.openai.com/docs/quickstart?api-mode=chat)
+  * [Examples: Serving LLMs with OpenAI-compatible APIs](https://github.com/bentoml/BentoVLLM)
 </LinkList>
