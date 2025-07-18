@@ -75,8 +75,25 @@ const config: Config = {
       items: [
         {
           position: 'left',
-          href: 'https://www.bentoml.com',
-          label: 'Product'
+          label: 'Product',
+          items: [
+            {
+              label: 'Bento Inference Platform',
+              description:
+                'Full control without the complexity. Self-host anywhere. Serve any model. Optimize for performance.',
+              text: 'Book a Demo',
+              href: 'https://l.bentoml.com/signup-llm-inference-handbook',
+              icon: '/img/inference-platform.svg'
+            },
+            {
+              label: 'BentoML Open-Source',
+              description:
+                'The most flexible way to serve AI/ML models and custom inference pipelines in production',
+              text: 'Github',
+              href: 'https://github.com/bentoml',
+              icon: '/img/open-source.svg'
+            }
+          ]
         },
         {
           position: 'left',
@@ -85,18 +102,31 @@ const config: Config = {
         },
         {
           position: 'left',
-          href: 'https://www.bentoml.com/blog',
-          label: 'Blog'
+          href: 'https://docs.bentoml.com/?_gl=1*m5ucq6*_gcl_au*MjA4MzA3MTQ2NS4xNzQ3OTI4MDA5',
+          label: 'Docs'
+        },
+        {
+          position: 'left',
+          label: 'Learn',
+          items: [
+            {
+              href: 'https://www.bentoml.com/blog',
+              label: 'Blog'
+            },
+            {
+              href: 'https://www.bentoml.com/llm',
+              label: 'LLM Inference Handbook'
+            },
+            {
+              href: 'https://docs.bentoml.com/en/latest/examples/overview.html?_gl=1*m5mrt*_gcl_au*MjA4MzA3MTQ2NS4xNzQ3OTI4MDA5',
+              label: 'Featured Examples'
+            }
+          ]
         },
         {
           position: 'left',
           href: 'https://www.bentoml.com/customers',
           label: 'Customers'
-        },
-        {
-          position: 'left',
-          href: 'https://l.bentoml.com/join-slack-llm-inference-handbook',
-          label: 'Community'
         },
         {
           position: 'right',

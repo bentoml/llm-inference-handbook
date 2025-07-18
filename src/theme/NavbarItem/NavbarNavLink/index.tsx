@@ -8,17 +8,7 @@ import Button from '@site/src/components/Button'
 
 import styles from './styles.module.css'
 
-interface CustomNavbarNavLinkProps extends Props {
-  button?: string
-  icon?: string
-}
-
-function NavbarNavLinkContent({
-  html,
-  label,
-  button,
-  icon
-}: CustomNavbarNavLinkProps) {
+function NavbarNavLinkContent({ html, label, button, icon, hasPopup }: Props) {
   if (button) return <Button type="button">{label}</Button>
   if (html) return <span dangerouslySetInnerHTML={{ __html: html }} />
   return (
@@ -28,27 +18,39 @@ function NavbarNavLinkContent({
       })}
     >
       {icon && (
-        <div
+        <i
           className={styles.navbarNavLinkIcon}
           style={{ background: `url(${useBaseUrl(icon)})` }}
         />
       )}
-      <span className={styles.navbarNavLinkContentLabel}>{label}</span>
+      <span className={styles.navbarNavLinkContentLabel}>
+        {label}
+        {hasPopup && (
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth={0}
+            viewBox="0 0 24 24"
+            className={styles.hasPopupIcon}
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+          </svg>
+        )}
+      </span>
     </span>
   )
 }
 
-export default function NavbarNavLink(
-  props: CustomNavbarNavLinkProps
-): ReactNode {
+export function BaseNavLink(props: Props) {
   const {
     activeBasePath,
     activeBaseRegex,
     to,
     href,
-    isDropdownLink,
     prependBaseUrlToHref,
     className,
+    children,
     ...others
   } = props
   // TODO all this seems hacky
@@ -64,7 +66,7 @@ export default function NavbarNavLink(
         className={clsx(className, styles.navbarNavLink)}
         {...others}
       >
-        <NavbarNavLinkContent {...props} />
+        {children}
       </Link>
     )
   }
@@ -81,7 +83,15 @@ export default function NavbarNavLink(
       })}
       {...others}
     >
-      <NavbarNavLinkContent {...props} />
+      {children}
     </Link>
+  )
+}
+
+export default function NavbarNavLink(props: Props): ReactNode {
+  return (
+    <BaseNavLink {...props}>
+      <NavbarNavLinkContent {...props} />
+    </BaseNavLink>
   )
 }
