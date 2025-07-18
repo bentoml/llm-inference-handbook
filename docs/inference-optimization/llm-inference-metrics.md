@@ -18,14 +18,45 @@ Before exploring optimization techniques, let’s understand the key metrics the
 
 ## Latency
 
-Latency measures how quickly a model responds to a request. For a single request, latency is the time from sending the request to receiving the final token on the user end. It’s crucial for user experience, especially in real-time applications.
+Latency measures how quickly a model responds to a request. It’s crucial for user experience, especially in interactive, real-time applications.
 
-There are two key metrics to measure latency:
+Key metrics to measure latency:
 
-- **Time to First Token (TTFT)**: The time it takes to generate the first token after sending a request. It reflects how fast the model can start responding. Different applications usually have different expectations for TTFT. For example, when summarizing a long document, users are usually willing to wait longer for the first token since the task is more demanding.
+- **Time to First Token (TTFT)**: The time it takes to generate the first token after sending a request. It reflects how fast the model can start responding.
 - **Time per Output Token (TPOT)**: Also known as Inter-Token Latency (ITL), TPOT measures the time between generating each subsequent token. A lower TPOT means the model can produce tokens faster, leading to higher tokens per second.
     
-  In streaming scenarios where users see text appear word-by-word (like ChatGPT's interface), TPOT determines how smooth the experience feels. It should be fast enough to keep pace with human reading speed.
+  In streaming scenarios where users see text appear word-by-word (like ChatGPT's interface), TPOT determines how smooth the experience feels. The system should ideally keep up with or exceed human reading speed to ensure a smooth experience.
+
+- **Token Generation Time**: The time between receiving the first and the final token. This measures how long it takes the model to stream out the full response.
+- **Total Latency (E2EL)**: The time from sending the request to receiving the final token on the user end. Note that:
+    
+    ```bash
+    Total Latency = TTFT + Token Generation Time
+    ```
+    
+    Total latency directly affects perceived responsiveness. A fast TTFT followed by slow token generation still leads to a poor experience.
+    
+Acceptable latency depends on the use case. For example, a chatbot might require a TTFT under 500 milliseconds to feel responsive, while a code completion tool may need TTFT below 100 milliseconds for seamless developer experience. In contrast, if you're generating long reports that are reviewed once a day, then even a 30-second total latency may be perfectly acceptable. The key is to match latency targets to the pace and expectations of the task at hand.
+
+### Understanding mean, median, and P99 latency
+
+When analyzing LLM performance, especially latency, it’s not enough to look at just one number. Metrics like mean, median, and P99 each tell a different part of the story.
+
+- **Mean (Average)**: This is the sum of all values divided by the number of values. Mean gives a general sense of average performance, but it can be skewed by extreme values (outliers). For example, if the TTFT of one request is unusually slow, it inflates the mean.
+- **Median**: The middle value when all values are sorted. Median shows what a "typical" user experience. It’s more stable and resistant to outliers than the mean. If your median TTFT is 30 seconds, most users are seeing very slow first responses, which might be unacceptable for real-time use cases.
+- **P99 (99th Percentile)**: The value below which 99% of requests fall. P99 reveals worst-case performance for the slowest 1% of requests. This is important when users expect consistency, or when your SLAs guarantee fast responses for 99% of cases. If your P99 TTFT is nearly 100 seconds, it suggests a small but significant portion of users face very long waits.
+
+  :::note
+  You may also see P90 or P95, which show the 90th and 95th percentile latencies, respectively. These are useful for understanding near-worst-case performance and are often used in cases where P99 may be too strict or sensitive to noise.
+  :::
+
+Together, these metrics give you a complete view:
+
+- **Mean** helps monitor trends over time.
+- **Median** reflects the experience of the majority of users.
+- **P99** captures tail latency, which can make or break user experience in production.
+
+You’ll often see these metrics in LLM performance benchmarks, such as mean TTFT, median TPOT, and P99 E2EL, to capture different aspects of latency and user experience.
     
 ## Throughput
 
@@ -105,4 +136,5 @@ Using a serverless API can abstract away these optimizations, leaving you with l
   * [NVIDIA NIM LLMs Benchmarking - Metrics](https://docs.nvidia.com/nim/benchmarking/llm/latest/metrics.html)
   * [Mastering LLM Techniques: Inference Optimization](https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/)
   * [LLM-Inference-Bench: Inference Benchmarking of Large Language Models on AI Accelerators](https://arxiv.org/pdf/2411.00136)
+  * [Throughput is Not All You Need](https://hao-ai-lab.github.io/blogs/distserve/)
 </LinkList>

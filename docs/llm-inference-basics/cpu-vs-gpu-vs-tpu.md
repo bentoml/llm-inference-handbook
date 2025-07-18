@@ -7,6 +7,8 @@ keywords:
     - TPUs
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Where is LLM inference run?
 
 When deploying LLMs into production, choosing the right hardware is crucial. Different hardware types offer varied levels of performance and cost-efficiency. The three primary options are CPUs, GPUs, and TPUs. Understanding their strengths and weaknesses helps you optimize your inference workloads effectively.
@@ -30,3 +32,19 @@ TPUs are behind some of the most advanced AI applications today: agents, recomme
 ## Choosing the right hardware for your LLM inference
 
 Selecting the appropriate hardware requires you to understand your model size, inference volume, latency requirements, cost constraints, and available infrastructure. GPUs remain the most popular choice due to their versatility and broad support, while TPUs offer compelling advantages for certain specialized scenarios, and CPUs still have a place for lightweight, budget-conscious workloads.
+
+## Choosing the deployment environment
+
+The deployment environment shapes everything from latency and scalability to privacy and cost. Each environment suits different operational needs for enterprises.
+
+- **Cloud**: The cloud is the most popular environment for LLM inference today. It offers on-demand access to high-performance GPUs and TPUs, along with a rich ecosystem of managed services, autoscaling, and monitoring tools.
+- **On-Prem**: On-premises deployments means running LLM inference on your own infrastructure, typically within a private data center. It offers full control over data, performance, and compliance, but requires more operational overhead.
+- **Edge**: In edge deployments, the model runs directly on user devices or local edge nodes, closer to where data is generated. This reduces network latency and increases data privacy, especially for time-sensitive or offline use cases. Edge inference usually uses smaller, optimized models due to limited compute resources.
+
+More details will be covered in the [infrastructure and management](../infrastructure-and-operations) chapter.
+
+<LinkList>
+  ## Additional resources
+  * [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference)
+  * [State of AI Inference Infrastructure Survey Highlights](https://www.bentoml.com/blog/2024-ai-infra-survey-highlights)
+</LinkList>
