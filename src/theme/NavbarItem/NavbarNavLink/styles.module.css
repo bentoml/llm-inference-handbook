@@ -25,7 +25,20 @@
   position: relative;
 }
 
+.hasPopupIcon {
+  display: none;
+}
+
 @media (min-width: 997px) {
+  .hasPopupIcon {
+    display: inline-block;
+    transform: rotate(90deg);
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: middle;
+    margin-left: 0.25rem;
+  }
+
   .navbarNavLinkContentLabel::before {
     content: '';
     position: absolute;

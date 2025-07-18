@@ -1,0 +1,21 @@
+.dropdownNavbarItemMobile {
+  cursor: pointer;
+}
+
+.dropdownMenuList {
+  margin-top: 20px;
+}
+
+.menuCaret:hover {
+  background: none;
+}
+
+.menuCaret:before {
+  background: url('/img/arrow.svg') 50% 50% / 1rem 1rem no-repeat !important;
+  filter: var(--ifm-menu-link-sublist-icon-filter);
+  transform: rotateZ(360deg);
+}
+
+.menuCaret.collapsed:before {
+  transform: rotateZ(270deg);
+}
