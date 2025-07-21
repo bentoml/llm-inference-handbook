@@ -23,7 +23,7 @@ Common techniques used in LLM training include:
 - **Reinforcement learning**: Allow the model to learn by trial and error, optimizing based on feedback or rewards.
 - **Self-supervised learning**: Learn by predicting missing or corrupted parts of the data, without explicit labels.
 
-Training is computationally intensive, often requiring extensive GPU or TPU clusters. While this initial cost can be very high, it is more or less a one-time expense. Once the model achieves desired accuracy, retraining is usually only necessary to update or improve the model periodically.
+Training is computationally intensive, often requiring expensive GPU or TPU clusters. While this initial cost can be very high, it is more or less a one-time expense. Once the model achieves desired accuracy, retraining is usually only necessary to update or improve the model periodically.
 
 ## Inference: Using the model in real-time
 
