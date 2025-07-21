@@ -89,7 +89,7 @@ const config: Config = {
               label: 'BentoML Open-Source',
               description:
                 'The most flexible way to serve AI/ML models and custom inference pipelines in production',
-              text: 'Github',
+              text: 'GitHub',
               href: 'https://github.com/bentoml',
               icon: '/img/open-source.svg'
             }
@@ -102,8 +102,8 @@ const config: Config = {
         },
         {
           position: 'left',
-          href: 'https://docs.bentoml.com/?_gl=1*m5ucq6*_gcl_au*MjA4MzA3MTQ2NS4xNzQ3OTI4MDA5',
-          label: 'Docs'
+          href: 'https://l.bentoml.com/join-slack-llm-inference-handbook',
+          label: 'Community'
         },
         {
           position: 'left',
@@ -114,11 +114,11 @@ const config: Config = {
               label: 'Blog'
             },
             {
-              href: 'https://www.bentoml.com/llm',
-              label: 'LLM Inference Handbook'
+              href: 'https://docs.bentoml.com/en/latest',
+              label: 'Docs'
             },
             {
-              href: 'https://docs.bentoml.com/en/latest/examples/overview.html?_gl=1*m5mrt*_gcl_au*MjA4MzA3MTQ2NS4xNzQ3OTI4MDA5',
+              href: 'https://docs.bentoml.com/en/latest/examples/overview.html',
               label: 'Featured Examples'
             }
           ]
