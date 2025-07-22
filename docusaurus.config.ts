@@ -45,7 +45,21 @@ const config: Config = {
           containerId: 'GTM-NLGDMK5'
         },
         docs: {
-          routeBasePath: '/'
+          routeBasePath: '/',
+          sidebarItemsGenerator: async (args) => {
+            const { defaultSidebarItemsGenerator } = args
+            const items = await defaultSidebarItemsGenerator(args)
+
+            return items.map((item) => {
+              if (item.customProps?.collapsed !== undefined) {
+                return {
+                  ...item,
+                  collapsed: Boolean(item.customProps?.collapsed)
+                }
+              }
+              return item
+            })
+          }
         },
         theme: {
           customCss: './src/css/custom.css'
