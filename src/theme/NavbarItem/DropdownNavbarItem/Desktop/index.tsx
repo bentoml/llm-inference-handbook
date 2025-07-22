@@ -15,16 +15,13 @@ export default function DropdownNavbarItemDesktop({
 }: Props): ReactNode {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [showDropdown, setShowDropdown] = useState(false)
-  const isCardMode = useMemo(() => {
-    console.log(
+  const isCardMode = useMemo(
+    () =>
       items.every(
         (item) => item.description && item.label && item.text && item.icon
-      )
-    )
-    return items.every(
-      (item) => item.description && item.label && item.text && item.icon
-    )
-  }, [items])
+      ),
+    [items]
+  )
 
   useEffect(() => {
     const handleClickOutside = (
