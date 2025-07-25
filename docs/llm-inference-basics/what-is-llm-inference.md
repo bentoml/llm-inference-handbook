@@ -3,9 +3,8 @@ sidebar_position: 1
 description: LLM inference is the process of using a trained language model to generate responses or predictions based on prompts.
 keywords:
     - Large Language Models, LLM
-    - LLM inference meaning
-    - LLM inference
-    - AI inference
+    - LLM inference meaning, LLM inference concept
+    - LLM inference, AI inference, inference layer
 ---
 
 # What is LLM inference?

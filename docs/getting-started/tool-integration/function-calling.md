@@ -2,7 +2,8 @@
 sidebar_position: 1
 description: Learn what function calling is and its use case.
 keywords:
-    - Function calling
+    - Function calling, function calling APIs
+    - LLM tool use, LLM tool integration
 ---
 
 import LinkList from '@site/src/components/LinkList';

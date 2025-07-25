@@ -2,8 +2,9 @@
 sidebar_position: 10
 description: Run predictions at scale with offline batch inference for efficient, non-real-time processing.
 keywords:
-    - Offline batch inference
-    - Batch inference
+    - Offline batch inference, batch inference, batch LLM inference, batch requests, batch processing, LLM inference batching
+    - LLM inference optimization, LLM inference optimization techniques​
+    - Speed up LLM inference
 ---
 
 # Offline batch inference

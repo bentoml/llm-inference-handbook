@@ -1,11 +1,11 @@
 ---
 sidebar_position: 5
-description: Understand the differences between serverless AI APIs and self-hosted deployments.
+description: Understand the differences between serverless LLM APIs and self-hosted LLM deployments.
 keywords:
-    - Serverless APIs
-    - Managed APIs
-    - Self-hosted LLMs
-    - Self-hosted inference
+    - Serverless vs. Self-hosted LLM inference
+    - Serverless APIs, Managed APIs, serverless LLMs, serverless inference
+    - Self-hosted LLMs, Self-hosted inference, open source LLMs, custom LLMs
+    - LLM inference cost
 ---
 
 import LinkList from '@site/src/components/LinkList';

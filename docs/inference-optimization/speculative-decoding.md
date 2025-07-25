@@ -5,7 +5,8 @@ keywords:
     - Speculative decoding, speculative sampling
     - Draft model, target model
     - Distributed inference, distributed LLM inference
-    - Inference optimization
+    - LLM inference optimization, LLM inference optimization techniques​
+    - Speed up LLM inference
 ---
 
 import LinkList from '@site/src/components/LinkList';

@@ -2,12 +2,11 @@
 sidebar_position: 1
 description: Measure key metrics like latency and throughput to optimize LLM inference performance.
 keywords:
-    - LLM inference metrics
-    - LLM benchmarks
-    - Time to First Token (TTFT), Time per Output Token (TPOT)
-    - Requests per Second (RPS), Tokens per Second (TPS)
-    - Latency, Throughput, Goodput
+    - LLM inference, inference metrics
+    - LLM benchmarks, inference benchmarks
+    - Time to First Token (TTFT), Time per Output Token (TPOT), Inter-token Latency (ITL), Requests per Second (RPS), Tokens per Second (TPS), Latency, Throughput, Goodput
     - Service-Level Objective (SLO)
+    - Speed up LLM inference
 ---
 
 import LinkList from '@site/src/components/LinkList';

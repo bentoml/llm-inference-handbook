@@ -1,10 +1,10 @@
 ---
 sidebar_position: 6
-description: Learn the concept of OpenAI-compatible API and why you need it.
+description: An OpenAI-compatible API implements the same request and response formats as OpenAI's official API, allowing developers to switch between different models without changing existing code.
 keywords:
-    - OpenAI-compatible API, OpenAI-compatible endpoint
-    - OpenAI API, OpenAI compatibility
-    - ChatGPT
+    - OpenAI-compatible API, OpenAI-compatible endpoint, OpenAI-compatible server
+    - OpenAI API, OpenAI compatibility, ChatGPT
+    - LLM inference API
 ---
 
 import LinkList from '@site/src/components/LinkList';

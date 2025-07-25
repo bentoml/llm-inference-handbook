@@ -1,6 +1,7 @@
 {
   "label": "Challenges in building infrastructure for LLM inference",
   "position": 2,
+  "collapsed": false,
   "link": {
     "type": "generated-index"
   }

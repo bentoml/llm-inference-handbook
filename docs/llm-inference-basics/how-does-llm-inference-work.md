@@ -1,12 +1,11 @@
 ---
 sidebar_position: 3
-description: Learn how prefill and decode work in LLM inference.
+description: Learn how LLM inference works, from tokenization to prefill and decode stages, with tips on performance, KV caching, and optimization strategies.
 keywords:
-    - LLM inference
-    - Prefill
-    - Decode
-    - Tokenization
-    - Tokens
+    - LLM inference, how LLM inference works, autoregressive decoding, transformer inference
+    - Prefill and decode
+    - LLM tokenization, tokens
+    - KV cache LLM
 ---
 
 import LinkList from '@site/src/components/LinkList';
