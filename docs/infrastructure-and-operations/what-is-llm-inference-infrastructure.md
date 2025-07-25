@@ -2,7 +2,7 @@
 sidebar_position: 1
 description: Deploy, scale, and manage LLMs with purpose-built inference infrastructure.
 keywords:
-    - LLM inference infrastructure
+    - LLM inference infrastructure, inference platform, in-house infrastructure
     - Self-hosted LLM inference
     - AI infrastructure
 ---

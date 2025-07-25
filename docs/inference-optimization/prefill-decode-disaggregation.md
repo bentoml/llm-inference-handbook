@@ -6,7 +6,8 @@ keywords:
     - Disaggregating prefill and decode
     - Prefill, decode
     - Distributed LLM inference
-    - Inference optimization
+    - LLM inference optimization, LLM inference optimization techniques​
+    - Speed up LLM inference
 ---
 
 import LinkList from '@site/src/components/LinkList';

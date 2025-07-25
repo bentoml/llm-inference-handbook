@@ -2,7 +2,7 @@
 sidebar_position: 2
 description: Learn how to calculate GPU memory for serving LLMs.
 keywords:
-    - GPU memory calculation
+    - GPU memory calculation, LLM inference hardware calculator
     - VRAM calculation
     - LLM memory requirements
 ---

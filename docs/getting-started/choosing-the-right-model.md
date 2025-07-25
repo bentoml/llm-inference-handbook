@@ -2,7 +2,7 @@
 sidebar_position: 1
 description: Select the right models for your use case.
 keywords:
-    - LLMs
+    - LLMs, dense models
     - Base models
     - Instruction-tuned models
     - Mixture of Experts models

@@ -3,6 +3,10 @@ sidebar_position: 2
 description: Optimize LLM inference with static, dynamic, and continuous batching for better GPU utilization.
 keywords:
     - Static batching, dynamic batching and continuous batching
+    - Batch LLM inference, batch requests, batch processing, LLM inference batching, LLM batching
+    - Batch size, batch window
+    - LLM inference optimization, LLM inference optimization techniques​, LLM batch API
+    - Speed up LLM inference
 ---
 
 import LinkList from '@site/src/components/LinkList';

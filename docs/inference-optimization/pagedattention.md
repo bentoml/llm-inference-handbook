@@ -4,7 +4,9 @@ description: Improve LLM memory usage with block-based KV cache storage via Page
 keywords:
     - vLLM, Hugging Face TGI, TensorRT-LLM
     - PagedAttention
-    - KV cache
+    - KV cache, KV cache optimization, KV caching
+    - LLM inference optimization, LLM inference optimization techniques​
+    - Speed up LLM inference
 ---
 
 import LinkList from '@site/src/components/LinkList';

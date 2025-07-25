@@ -2,8 +2,7 @@
 sidebar_position: 3
 description: Ensure reliable LLM inference with comprehensive observability across metrics, logs, and GPU performance.
 keywords:
-    - LLM inference observability
-    - LLM-specific metrics
+    - LLM inference observability, LLM-specific metrics, inference metrics
     - GPU utilization, tokens per second, time to first token, total generation time, time per output token
     - LLM monitoring, logging, alerts, tracing
     - Self-hosted LLM challenges

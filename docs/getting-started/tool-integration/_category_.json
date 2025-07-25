@@ -1,6 +1,7 @@
 {
   "label": "Tool integration",
   "position": 6,
+  "collapsed": false,
   "link": {
     "type": "generated-index"
   }

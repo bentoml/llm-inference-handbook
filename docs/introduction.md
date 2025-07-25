@@ -4,8 +4,11 @@ sidebar_position: 0
 sidebar_class_name: hidden
 description: A practical handbook for engineers building, optimizing, scaling and operating LLM inference systems in production.
 keywords:
-    - LLM inference guide, LLM inference handbook
-    - LLM, LLM inference, AI inference
+    - LLM inference guide, LLM inference handbook, LLM inference book, LLM inference best practices
+    - Inference, LLM, LLM inference, AI inference, GenAI inference
+    - Inference optimization, inference techniques, LLM fast inference
+    - Inference platform, inference operations
+    - Efficient generative LLM inference, distributed LLM inference
 ---
 
 import Features from '@site/src/components/Features';

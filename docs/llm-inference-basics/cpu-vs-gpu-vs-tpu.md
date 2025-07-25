@@ -1,10 +1,10 @@
 ---
 sidebar_position: 4
-description: Learn the differences between CPUs, GPUs, and TPUs
+description: Learn the differences between CPUs, GPUs, and TPUs and where you can deploy them.
 keywords:
-    - CPUs
-    - GPUs
-    - TPUs
+    - CPUs, GPUs, TPUs, CPU vs GPU vs TPU
+    - Cloud LLM inference, On-prem LLM inference, On-device LLM inference, GPU inference, Edge LLM inference
+    - LLM inference hardware
 ---
 
 import LinkList from '@site/src/components/LinkList';

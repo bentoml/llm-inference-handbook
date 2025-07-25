@@ -8,6 +8,8 @@ keywords:
     - Distributed inference, distributed LLM inference
     - Inference optimization
     - Dynamo, SGLang, vLLM, llm-d
+    - LLM inference optimization, LLM inference optimization techniques​
+    - Speed up LLM inference
 ---
 
 # Prefix cache-aware routing

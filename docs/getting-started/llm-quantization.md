@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
-description: Understand LLM quantization and different quantization formats and methods
+description: Understand LLM quantization and different quantization formats and methods.
 keywords:
-    - LLM quantization
-    - Quantization formats
+    - LLM quantization, how does quantization work, LLM quantization accuracy
+    - Quantization formats, quantization types, quantization techniques
     - AWQ, SmoothQuant, GPTQ
 ---
 
