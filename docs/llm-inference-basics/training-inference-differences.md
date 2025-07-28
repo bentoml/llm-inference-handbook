@@ -27,6 +27,6 @@ Training is computationally intensive, often requiring expensive GPU or TPU clus
 
 ## Inference: Using the model in real-time
 
-LLM inference means applying the trained model to new data to make predictions. Unlike training, inference happens continuously and in real-time, responding immediately to user input or incoming data. It is the phase where the model is actively "in use." Better-trained and more finely-tuned models typically provide more accurate and useful inference.
+LLM inference means applying the trained model to new data to make predictions. Unlike training, inference [happens continuously and in real-time](./what-is-llm-inference), responding immediately to user input or incoming data. It is the phase where the model is actively "in use." Better-trained and more finely-tuned models typically provide more accurate and useful inference.
 
 Inference compute needs are ongoing and can become very high, especially as user interactions and traffic grow. Each inference request consumes computational resources such as GPUs. While each inference step may be smaller than training in isolation, the cumulative demand over time can lead to significant operational expenses.

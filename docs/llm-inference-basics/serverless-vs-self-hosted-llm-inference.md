@@ -36,10 +36,10 @@ Key benefits of self-hosting include:
 - **Data privacy and compliance**: LLMs are widely used in modern applications like RAG and AI agents. These systems often require frequent access to sensitive data (e.g., customer details, medical records, financial information). This is often not an acceptable option for organizations in regulated industries with compliance and privacy requirements. Self-hosting LLMs makes sure your data always stays within your secure environment.
 - **Advanced customization and optimization**: With self-hosting, you can tailor your inference process to meet specific needs, such as:
     - Adjusting latency and throughput trade-offs precisely.
-    - Implementing advanced optimizations like prefill-decode disaggregation, prefix caching, KV cache-aware routing.
-    - Optimizing for long contexts or batch-processing scenarios.
+    - Implementing advanced optimizations like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation), [prefix caching](../inference-optimization/prefix-caching), and [speculative decoding](../inference-optimization/speculative-decoding).
+    - Optimizing for long contexts or [batch-processing](../inference-optimization/static-dynamic-continuous-batching) scenarios.
     - Enforcing structured decoding to ensure outputs follow strict schemas
-    - Fine-tuning models using proprietary data to achieve competitive advantages.
+    - [Fine-tuning models](../getting-started/llm-fine-tuning) using proprietary data to achieve competitive advantages.
 - **Predictable performance and control**: When you self-host your LLMs, you have complete control over how your system behaves and performs. You’re not at the mercy of external API rate limits or sudden policy changes that might impact your application’s performance and availability.
 
 ## Comparison summary
