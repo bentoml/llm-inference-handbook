@@ -13,7 +13,7 @@ import LinkList from '@site/src/components/LinkList';
 
 # Speculative decoding
 
-LLMs are powerful, but their text generation is slow. The main bottleneck lies in auto-regressive decoding, where each token is generated one at a time. This sequential loop leads to high latency, as each step depends on the previous token. Additionally, while GPUs are optimized for parallelism, this sequential nature leads to underutilized compute resources during inference.
+LLMs are powerful, but their text generation is slow. The main bottleneck lies in [auto-regressive decoding](../llm-inference-basics/how-does-llm-inference-work#the-two-phases-of-llm-inference), where each token is generated one at a time. This sequential loop leads to high latency, as each step depends on the previous token. Additionally, while GPUs are optimized for parallelism, this sequential nature leads to underutilized compute resources during inference.
 
 What if you could parallelize parts of the generation process, even if not all of it?
 
