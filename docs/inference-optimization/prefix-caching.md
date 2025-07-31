@@ -72,7 +72,7 @@ In agent workflows, the benefit is even more pronounced. Some use cases have inp
 
 For applications with long, repetitive prompts, prefix caching can significantly reduce both latency and cost. Over time, however, your KV cache size can be quite large. GPU memory is finite, and storing long prefixes across many users can eat up space quickly. You’ll need cache eviction strategies or memory tiering.
 
-The open-source community is actively working on distributed serving strategies. See [prefix cache-aware routing](./prefix-caching-cache-aware-routing) for details.
+The open-source community is actively working on distributed serving strategies. See [prefix-aware routing](./prefix-caching-cache-aware-routing) for details.
 
 ---
 

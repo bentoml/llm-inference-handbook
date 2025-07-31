@@ -4,7 +4,7 @@ description: Challenges in applying prefix caching
 keywords:
     - Prefix caching, prompt caching, context caching
     - KV cache, KV caching
-    - Prefix cache-aware routing
+    - Prefix aware routing
     - Distributed inference, distributed LLM inference
     - Inference optimization
     - Dynamo, SGLang, vLLM, llm-d
@@ -12,16 +12,16 @@ keywords:
     - Speed up LLM inference
 ---
 
-# Prefix cache-aware routing
+# Prefix-aware routing
 
-In practice, applying prefix caching in a distributed way still has challenges. For example:
+In practice, applying [prefix caching](./prefix-caching) in a distributed way still has challenges. For example:
 
 - How can a new request be routed to the worker that already has the right prefix cached?
 - How does the router know what’s in each worker’s cache?
 
 ![prefix-caching-aware-routing.png](./img/prefix-caching-aware-routing.png)
 
-Different open-source projects are exploring their own approaches to prefix cache-aware routing:
+Different open-source projects are exploring their own approaches to prefix-aware routing:
 
 - **Worker-reported prefix status**
     
