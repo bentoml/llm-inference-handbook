@@ -10,6 +10,7 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import Button from '@site/src/components/Button';
 
 # Key metrics for LLM inference
 
@@ -105,6 +106,16 @@ There are two common ways to measure throughput:
     - GPU memory bandwidth and compute utilization
     
     As the number of concurrent requests increases, the total TPS also grows, until the LLM hits the saturation point of available compute resources. Beyond this point, performance might decrease because the LLM is over capacity.
+
+---
+
+At Bento, we offer deployment and inference optimization strategies tailored to your use case. You can easily leverage them to optimize for throughput, latency, or cost.
+
+![bento-different-inference-optimizations.png](./img/bento-different-inference-optimizations.png)
+
+<div style={{ margin: '3rem 0' }}>
+[<Button>Talk to us</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
+</div>
     
 ## Goodput
 
