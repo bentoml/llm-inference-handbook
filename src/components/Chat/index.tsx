@@ -38,9 +38,9 @@ function Chat() {
           </button>
           <h4>Talk to Us</h4>
           <p>
-            At Bento, we're working to help enterprises leverage the latest
-            advancements in LLM inference with ease. Have questions about LLM
-            inference? Let's talk.
+            At Bento, we help customers build custom LLM serving solutions 
+            tailored for speed, quality, or cost. Schedule a call to 
+            learn how we make it easy to apply advanced inference optimizations to your use case.
           </p>
           <div>
             <a
