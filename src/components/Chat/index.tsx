@@ -36,11 +36,10 @@ function Chat() {
               <path d="m6 6 12 12" />
             </svg>
           </button>
-          <h4>Talk to Us</h4>
+          <h4>Need Help with LLM Inference?</h4>
           <p>
-            At Bento, we help customers build custom LLM serving solutions 
-            tailored for speed, quality, or cost. Schedule a call to 
-            learn how we make it easy to apply advanced inference optimizations to your use case.
+            Top AI teams use Bento to build fast, cost-efficient LLM serving solutions
+            tailored to their workloads.
           </p>
           <div>
             <a
@@ -50,7 +49,7 @@ function Chat() {
               className={styles.chatLink}
             >
               <Button type="green" className={styles.chatButton}>
-                Schedule a Call
+                Request a Demo
               </Button>
             </a>
           </div>
