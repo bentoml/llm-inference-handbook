@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 description: Prefix caching speeds up LLM inference by reusing shared prompt KV cache across requests.
 keywords:
     - Prefix caching, prompt caching, context caching
