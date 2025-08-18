@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 description: Speculative decoding accelerates LLM inference with draft model predictions verified by the target model.
 keywords:
     - Speculative decoding, speculative sampling

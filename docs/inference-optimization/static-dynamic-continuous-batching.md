@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Optimize LLM inference with static, dynamic, and continuous batching for better GPU utilization.
 keywords:
     - Static batching, dynamic batching and continuous batching
