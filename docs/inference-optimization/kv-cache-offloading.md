@@ -10,6 +10,7 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import KVCacheCalculator from '@site/src/components/Calculator/KVCache';
 
 # KV cache offloading
 
@@ -57,23 +58,13 @@ When offloading the KV cache, it’s useful to understand how much memory it act
 
 In transformer-based LLMs, each attention layer needs to store two vectors (a key and a value) for every token in the input sequence. Each layer contains multiple attention heads, and all heads typically have the same dimension.
 
-To estimate how much memory the KV cache consumes, use the following formula:
+To estimate how much memory the KV cache consumes, use the following calculator:
 
-```bash
-KV Cache Size (GB) = 2 × B × S × L × H × D × (Q / 8) / (1024^3)
-```
+<KVCacheCalculator />
 
-:::note 
-If you already know the model’s dimension, you can simplify the formula by replacing `H × D` with it.
+:::info 
+If you already know the model’s dimension, you can simplify the formula by replacing `H × D` with it (Simplified Calculation above).
 :::
-
-- 2: The factor accounts for both key and value vectors per token
-- B: Batch size (number of sequences processed in parallel)
-- S: Sequence length (number of tokens per input)
-- L: Number of transformer layers
-- H: Number of attention heads per layer
-- D: Dimension of each attention head
-- Q: Bit precision per value (e.g., 16 for FP16, 32 for FP32), division by 8 converts bits to bytes
 
 ## Offloading the KV cache with LMCache
 

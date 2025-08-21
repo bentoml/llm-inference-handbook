@@ -18,7 +18,7 @@ const MODE_OPTIONS = {
     title: 'Simplified Calculation',
     default: {
       b: 1,
-      s: 2048,
+      s: 1024,
       l: 32,
       hxd: 4096,
       q: 16
@@ -92,7 +92,7 @@ function KVCacheCalculator() {
             <div className={styles.title}>Model Parameters</div>
             <FormItem
               title="Batch Size (B)"
-              description="Batch size (number of sequences processed in parallel)"
+              description="Number of sequences processed in parallel"
             >
               <input
                 type="number"
@@ -107,7 +107,7 @@ function KVCacheCalculator() {
             <FormItem
               title="Sequence Length (S)"
               note="Common values: 1024, 2048, 4096, 8192"
-              description="Sequence length (number of tokens per input)"
+              description="Number of tokens per input"
             >
               <input
                 type="number"
@@ -167,7 +167,7 @@ function KVCacheCalculator() {
             ) : (
               <FormItem
                 title="Model Dimension"
-                description="Number of attention heads per layer × Dimension of each attention head"
+                description="The hidden model dimension (H × D)"
               >
                 <input
                   type="number"
