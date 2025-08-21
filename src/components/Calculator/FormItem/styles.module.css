@@ -1,0 +1,55 @@
+.formItem {
+  margin-top: 1.25rem;
+}
+
+.formItemTitle {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.formItemTitleText {
+  flex: 1;
+}
+
+.formItem input,
+.formItem select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-family: inherit;
+}
+
+.formItemDescriptionIcon {
+  display: block;
+  background-image: url('/img/note.svg');
+  height: 1rem;
+  width: 1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+:global(.rc-tooltip) {
+  opacity: 1 !important;
+}
+
+:global(.rc-tooltip-inner) {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  box-shadow:
+    0 0 #0000,
+    0 0 #0000,
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: none !important;
+}
