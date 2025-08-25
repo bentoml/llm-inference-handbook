@@ -18,13 +18,26 @@
 
 .formItem input,
 .formItem select {
+  -webkit-appearance: none; /* 移除 iOS Safari 默认 UI */
+  appearance: none;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid #d1d5db;
   width: 100%;
+  color: #000;
+  background: transparent;
   font-size: 1rem;
   line-height: 1.5rem;
+  height: 42px;
   font-family: inherit;
+}
+
+.formItemNote {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.25rem;
+  color: #6b7280;
+  font-weight: 500;
 }
 
 .formItemDescriptionIcon {
@@ -40,6 +53,10 @@
 
 :global(.rc-tooltip) {
   opacity: 1 !important;
+}
+
+:global(.rc-tooltip-hidden) {
+  display: none !important;
 }
 
 :global(.rc-tooltip-inner) {

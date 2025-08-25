@@ -26,7 +26,7 @@ function FormItem({
         </div>
       </div>
       <div>{children}</div>
-      {note && <div>{note}</div>}
+      {note && <div className={styles.formItemNote}>{note}</div>}
     </div>
   )
 }
