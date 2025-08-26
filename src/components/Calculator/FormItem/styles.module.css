@@ -18,7 +18,7 @@
 
 .formItem input,
 .formItem select {
-  -webkit-appearance: none; /* 移除 iOS Safari 默认 UI */
+  -webkit-appearance: none; /* Remove the default UI in iOS Safari */
   appearance: none;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
