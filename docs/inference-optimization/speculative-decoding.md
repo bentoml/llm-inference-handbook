@@ -69,9 +69,9 @@ When evaluating speculative decoding, three metrics matter most:
 - **Speculative token count (γ)**: The number of tokens the draft model proposes each step. It is configurable in most inference frameworks.
 - **Acceptance length (τ)**: The average number of tokens accepted per round of decoding. According to the paper [Fast Inference from Transformers via Speculative Decoding](https://arxiv.org/pdf/2211.17192), you can calculate it with a theoretical formula:
 
-    ```bash
-    τ = (1 - α^(γ+1))/(1 - α)
-    ```
+    $$
+    \tau = \frac{1 - \alpha^{\gamma+1}}{1 - \alpha}
+    $$
     
 ### How acceptance rate impacts performance
 

@@ -45,6 +45,7 @@ More details will be covered in the [infrastructure and management](../infrastru
 
 <LinkList>
   ## Additional resources
+  * [NVIDIA Data Center GPUs Explained: From A100 to B200 and Beyond](https://www.bentoml.com/blog/nvidia-data-center-gpus-explained-a100-h200-b200-and-beyond)
   * [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference)
   * [State of AI Inference Infrastructure Survey Highlights](https://www.bentoml.com/blog/2024-ai-infra-survey-highlights)
 </LinkList>
