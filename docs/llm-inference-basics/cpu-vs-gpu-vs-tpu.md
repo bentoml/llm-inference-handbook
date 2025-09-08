@@ -33,6 +33,8 @@ TPUs are behind some of the most advanced AI applications today: agents, recomme
 
 Selecting the appropriate hardware requires you to understand your model size, inference volume, latency requirements, cost constraints, and available infrastructure. GPUs remain the most popular choice due to their versatility and broad support, while TPUs offer compelling advantages for certain specialized scenarios, and CPUs still have a place for lightweight, budget-conscious workloads.
 
+Learn more about [GPU choices](../getting-started/choosing-the-right-gpu) for different open-source LLMs.
+
 ## Choosing the deployment environment
 
 The deployment environment shapes everything from latency and scalability to privacy and cost. Each environment suits different operational needs for enterprises.
