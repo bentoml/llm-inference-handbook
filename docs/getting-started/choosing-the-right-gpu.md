@@ -1,12 +1,9 @@
 ---
 sidebar_position: 2
-description: Select the right models for your use case.
+description: Select the right NVIDIA or AMD GPUs (e.g., L4, A100, H100, B200, MI250X, MI300X, MI350X) for LLM inference.
 keywords:
-    - LLMs, dense models
-    - Base models
-    - Instruction-tuned models
-    - Mixture of Experts models
-    - Model composition
+    - NVIDIA GPUs, AMD GPUs
+    - GPU inference
 ---
 
 import LinkList from '@site/src/components/LinkList';
