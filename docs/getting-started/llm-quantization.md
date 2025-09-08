@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 description: Understand LLM quantization and different quantization formats and methods.
 keywords:
     - LLM quantization, how does quantization work, LLM quantization accuracy

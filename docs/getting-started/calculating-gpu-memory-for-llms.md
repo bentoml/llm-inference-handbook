@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Learn how to calculate GPU memory for serving LLMs.
 keywords:
     - GPU memory calculation, LLM inference hardware calculator
