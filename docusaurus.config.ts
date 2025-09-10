@@ -108,7 +108,7 @@ const config: Config = {
               description:
                 'Full control without the complexity. Self-host anywhere. Serve any model. Optimize for performance.',
               text: 'Book a Demo',
-              href: 'https://l.bentoml.com/signup-llm-inference-handbook',
+              href: 'https://www.bentoml.com/',
               icon: '/img/inference-platform.svg'
             },
             {
