@@ -140,8 +140,8 @@ const config: Config = {
               label: 'Blog'
             },
             {
-              href: 'https://docs.bentoml.com/en/latest',
-              label: 'Docs'
+              href: 'https://www.bentoml.com/llm-perf',
+              label: 'LLM Performance Explorer'
             },
             {
               href: 'https://docs.bentoml.com/en/latest/examples/overview.html',

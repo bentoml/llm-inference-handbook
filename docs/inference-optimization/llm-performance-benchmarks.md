@@ -5,6 +5,8 @@ keywords:
     - LLM benchmarks, LLM performance benchmarks, LLM performance metrics, inference benchmarks
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # LLM performance benchmarks
 
 You’ve probably seen LLM leaderboards. Those neatly formatted ranking tables show the top LLMs based on various benchmarks. They can be a useful reference for understanding a model’s capabilities. They can also be misleading if you treat them as the only source to choosing the best LLM.
@@ -64,6 +66,22 @@ Tools like [NVIDIA GenAI-Perf](https://docs.nvidia.com/deeplearning/triton-infer
 
 Some inference frameworks like [vLLM](https://github.com/vllm-project/vllm/tree/main/benchmarks) and [SGLang](https://docs.sglang.ai/developer_guide/benchmark_and_profiling.html#) offer their own benchmarking scripts, commands, and usage guidelines. They are helpful for quick experiments and understanding performance with the optimizations from that specific framework. However, always pay close attention to their default parameters and configurations. Results may look strong but might not reflect your production setup.
 
+### End-to-end benchmarking with llm-optimizer
+
+[llm-optimizer](https://www.bentoml.com/blog/announcing-llm-optimizer) is an open-source tool for benchmarking and optimizing LLM inference performance. It evaluates how an LLM behaves across different server parameters, client request patterns, and framework optimizations.
+
+With llm-optimizer, you can:
+
+- Run systematic benchmarks across inference frameworks like SGLang and vLLM using their native arguments.
+- Experiment with different optimization techniques like batching and parallelism strategies.
+- Apply SLO constraints to focus only on configurations that meet your performance goals.
+- Estimate performance theoretically without running full benchmarks
+- View and compare benchmark results on a unified graphic dashboard.
+
+You can view LLM benchmark results on the [LLM Performance Explorer](https://www.bentoml.com/llm-perf/), which is powered by llm-optimizer.
+
+![llm-perf-explorer.png](./img/llm-perf-explorer.png)
+
 ## What metrics should you benchmark
 
 When running performance benchmarks for LLM inference, it’s not enough to report a single number. Real-world performance depends on multiple LLM performance metrics, each with different trade-offs. The most important include:
@@ -117,3 +135,10 @@ Tips for using this template:
 - Include input/output lengths. They heavily influence throughput and latency.
 - Perceived tokens/sec can be a better metric for measuring streaming performance (what the user sees) rather than raw model output rate.
 - Keep cost metrics consistent, like per request or per million/thousand tokens.
+
+<LinkList>
+  ## Additional resources
+  * [LLM Performance Explorer](https://www.bentoml.com/llm-perf/)
+  * [llm-optimizer: An Open-Source Tool for LLM Inference Benchmarking and Performance Optimization](https://www.bentoml.com/blog/announcing-llm-optimizer)
+  * [Benchmarking LLM Inference Backends](https://www.bentoml.com/blog/benchmarking-llm-inference-backends)
+</LinkList>
