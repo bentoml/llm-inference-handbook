@@ -75,7 +75,7 @@ With llm-optimizer, you can:
 - Run systematic benchmarks across inference frameworks like SGLang and vLLM using their native arguments.
 - Experiment with different optimization techniques like batching and parallelism strategies.
 - Apply SLO constraints to focus only on configurations that meet your performance goals.
-- Estimate performance theoretically without running full benchmarks
+- Estimate performance theoretically without running full benchmarks.
 - View and compare benchmark results on a unified graphic dashboard.
 
 You can view LLM benchmark results on the [LLM Performance Explorer](https://www.bentoml.com/llm-perf/), which is powered by llm-optimizer.
