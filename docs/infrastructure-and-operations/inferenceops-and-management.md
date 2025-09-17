@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 description: Scale LLM inference confidently with InferenceOps workflows and infrastructure best practices.
 keywords:
     - LLM inference infrastructure management
