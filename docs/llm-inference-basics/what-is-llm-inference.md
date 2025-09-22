@@ -18,6 +18,41 @@ Essentially, this is the moment the LLM is actively "in action." Here are some r
 - **Developer tools**: Converting natural language descriptions into executable code.
 - **AI agents**: Performing complex, multi-step reasoning and decision-making processes autonomously.
 
+## What is an inference server?
+
+An **inference server** is the component that manages how LLM inference runs. It loads the models, connects to the required hardware (such as GPUs), and processes application requests. When a prompt arrives, the server allocates resources, executes the model, and returns the output.
+
+LLM inference servers do much more than simple request-response. They provide features essential for running LLMs at scale, such as:
+
+- **Batching**: Combining multiple requests to improve GPU efficiency
+- **Streaming**: Sending tokens as they are generated for lower latency
+- **Scaling**: Spinning up or down replicas based on demand
+- **Monitoring**: Exposing metrics for performance and debugging
+
+In the LLM space, people often use **inference server** or **inference framework** somewhat interchangeably.
+
+- **An inference server** usually emphasizes the runtime component that receives requests, runs models, and returns results.
+- **An inference framework** often highlights the broader toolkit or library that provides APIs, optimizations, and integrations for serving models efficiently.
+
+Popular [inference frameworks](../getting-started/choosing-the-right-inference-framework) include vLLM, SGLang, TensorRT-LLM, and Hugging Face TGI. They’re designed to maximize GPU efficiency while making LLMs easier to deploy at scale.
+
+## What is inference optimization?
+
+**Inference optimization** is the set of techniques to make LLM inference faster, cheaper, and more efficient. It’s about reducing latency, improving throughput, and lowering hardware costs without hurting model quality.
+
+Some common strategies include:
+
+- [Continuous batching](../inference-optimization/static-dynamic-continuous-batching): Dynamically grouping requests for better GPU utilization
+- [KV cache management](../inference-optimization/kv-cache-offloading): Reusing or offloading attention caches to handle long prompts efficiently
+- [Speculative decoding](../inference-optimization/speculative-decoding): Using a smaller draft model to speed up token generation
+- [Quantization](../getting-started/llm-quantization): Running models in lower precision (e.g., INT8, FP8) to save memory and compute
+- [Prefix caching](../inference-optimization/prefix-caching): Caching common prompt segments to reduce redundant computation
+- [Multi-GPU distribution/Parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism): Splitting LLMs across multiple GPUs for larger context windows
+
+In practice, inference optimization can make the difference between an application that feels sluggish and expensive, and one that delivers snappy, cost-efficient user experiences.
+
+Learn more in the [inference optimization](../inference-optimization/) chapter.
+
 ## Why should I care about LLM inference?
 
 You might think: _I’m just using OpenAI’s API. Do I really need to understand inference?_

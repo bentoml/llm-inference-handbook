@@ -8,15 +8,15 @@ keywords:
     - Self-hosted LLM challenges
 ---
 
-# Comprehensive observability
+# LLM observability
 
-Running LLM inference in production requires more than just getting the model to respond. You need full visibility into how your system is behaving at every level. Without proper observability, diagnosing latency issues, scaling problems, or GPU underutilization becomes guesswork. Worse, unnoticed issues can degrade performance or break your service without warning.
+LLM observability is the practice of monitoring and understanding the behavior of LLM inference systems in production. It combines metrics, logs, and events across infrastructure, application, and model layers to provide end-to-end visibility. The goal is to detect issues early, explain why they occur, and ensure reliable, efficient, and high-quality model responses.
 
-Effective observability requires the right metrics, dashboards, logs, and event streams, all tailored to the unique demands of LLM inference workloads.
+Without proper observability, diagnosing latency issues, scaling problems, or GPU underutilization becomes guesswork. Worse, unnoticed issues can degrade performance or break your service without warning.
 
 ## What to measure
 
-A production-grade observability stack for LLM inference should cover metrics across the infrastructure, application, and model layers. Here's an example breakdown:
+A production-ready observability stack for LLM inference spans multiple layers. Here's an example breakdown:
 
 | **Category** | **Metric** | **What it tells you** |
 | --- | --- | --- |
