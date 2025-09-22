@@ -23,11 +23,16 @@ Latency measures how quickly a model responds to a request. It’s crucial for u
 Key metrics to measure latency:
 
 - **Time to First Token (TTFT)**: The time it takes to generate the first token after sending a request. It reflects how fast the model can start responding.
-- **Time per Output Token (TPOT)**: Also known as Inter-Token Latency (ITL), TPOT measures the time between generating each subsequent token. A lower TPOT means the model can produce tokens faster, leading to higher tokens per second.
+- **Time per Output Token (TPOT)**: Also known as the average Inter-Token Latency (ITL), TPOT measures the time between generating each subsequent token. A lower TPOT means the model can produce tokens faster, leading to higher tokens per second.
     
   In streaming scenarios where users see text appear word-by-word (like ChatGPT's interface), TPOT determines how smooth the experience feels. The system should ideally keep up with or exceed human reading speed to ensure a smooth experience.
 
-- **Token Generation Time**: The time between receiving the first and the final token. This measures how long it takes the model to stream out the full response.
+- **Token Generation Time**: The time between receiving the first and the final token. This measures how long it takes the model to stream out the full response. The Token Generation Time here excludes TTFT, which is why the following formula subtracts 1 from the total token count. Different frameworks may calculate this differently, so you might see variations in reported Token Generation Time or TPOT/ITL.
+
+    ```bash
+    Token Generation Time = TPOT x (Total Number of Output Tokens - 1)
+    ```
+    
 - **Total Latency (E2EL)**: The time from sending the request to receiving the final token on the user end. Note that:
     
     ```bash
