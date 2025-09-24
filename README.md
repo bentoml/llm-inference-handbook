@@ -20,6 +20,9 @@ It will be running at [http://localhost:3000/llm/](http://localhost:3000/llm/).
 
 Contributions are welcome! Feel free to open issues, suggest improvements, or submit pull requests.
 
-## 📄 License
+## 📄 Licenses
 
-This project is licensed under the [MIT License](https://github.com/bentoml/llm-inference-handbook/blob/main/LICENSE).
+This repository is dual-licensed:
+
+- All files in the `docs/` folder are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0) License](https://creativecommons.org/licenses/by/4.0/).
+- All other files are licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
