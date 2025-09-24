@@ -68,7 +68,7 @@ Compared with prefill, decode is more memory-bound because it frequently reads f
 
 This KV caching mechanism significantly speeds up inference by avoiding redundant computation. However, it comes at the cost of increased memory consumption, since the cache grows with the length of the generated sequence.
 
-A key metric to monitor for decode is Inter-Token Latency (ITL), the average time between the generation of consecutive tokens in a sequence. It is also known as Time Per Output Token (TPOT).
+A key metric to monitor for decode is Inter-Token Latency (ITL), the time between the generation of consecutive tokens in a sequence.
 
 ![llm-inference-itl.png](./img/llm-inference-itl.png)
 

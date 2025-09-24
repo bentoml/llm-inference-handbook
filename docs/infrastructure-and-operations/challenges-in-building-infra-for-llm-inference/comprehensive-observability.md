@@ -3,7 +3,6 @@ sidebar_position: 3
 description: LLM observability provides end-to-end visibility into LLM inference, using metrics, logs, and events to ensure reliable, efficient, and scalable model performance.
 keywords:
     - LLM inference observability, LLM-specific metrics, inference metrics
-    - GPU utilization, tokens per second, time to first token, total generation time, time per output token
     - LLM monitoring, logging, alerts, tracing
     - Self-hosted LLM challenges
 ---
