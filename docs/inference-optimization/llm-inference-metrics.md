@@ -23,23 +23,45 @@ Latency measures how quickly a model responds to a request. It’s crucial for u
 Key metrics to measure latency:
 
 - **Time to First Token (TTFT)**: The time it takes to generate the first token after sending a request. It reflects how fast the model can start responding.
-- **Time per Output Token (TPOT)**: Also known as the average Inter-Token Latency (ITL), TPOT measures the time between generating each subsequent token. A lower TPOT means the model can produce tokens faster, leading to higher tokens per second.
-    
+- **Total Latency (E2EL)**: The time from sending the request to receiving the final token on the user end. Total latency directly affects perceived responsiveness. A fast TTFT followed by slow token generation still leads to a poor experience.
+- **Token Generation Time**: The time it takes to stream all tokens after the first one. TTFT is excluded, since it measures only the steady generation phase:
+
+  $$
+  \text{Token Generation Time} = {\text{E2EL – TTFT}}
+  $$
+
+- **Time per Output Token (TPOT)**: The average time gap between generating each subsequent token (excluding TTFT). A lower TPOT means the model can produce tokens faster, leading to higher tokens per second. TPOT is usually calculated as follows:
+  
+  $$
+  \text{TPOT} = \frac{\text{E2EL – TTFT}}{\text{Total Output Tokens} - 1}
+  $$
+
   In streaming scenarios where users see text appear word-by-word (like ChatGPT's interface), TPOT determines how smooth the experience feels. The system should ideally keep up with or exceed human reading speed to ensure a smooth experience.
 
-- **Token Generation Time**: The time between receiving the first and the final token. This measures how long it takes the model to stream out the full response. The Token Generation Time here excludes TTFT, which is why the following formula subtracts 1 from the total token count. Different frameworks may calculate this differently, so you might see variations in reported Token Generation Time or TPOT/ITL.
+- **Inter-Token Latency (ITL)**: The exact pause between two consecutive tokens. 
 
-    ```bash
-    Token Generation Time = TPOT x (Total Number of Output Tokens - 1)
-    ```
-    
-- **Total Latency (E2EL)**: The time from sending the request to receiving the final token on the user end. Note that:
-    
-    ```bash
-    Total Latency = TTFT + Token Generation Time
-    ```
-    
-    Total latency directly affects perceived responsiveness. A fast TTFT followed by slow token generation still leads to a poor experience.
+  For a single request, the mean of all ITLs equals TPOT, which is why **the two are sometimes used interchangeably**:
+
+  $$
+  \text{Average ITL} = \text{TPOT} = \frac{\text{E2EL – TTFT}}{\text{Total Output Tokens} - 1}
+  $$
+
+  Across multiple requests, however, the difference comes down to how you average:
+
+  $$
+  \text{Average ITL} = \frac{\text{Sum of all ITLs across Requests}}{\text{Total Output Tokens across Requests}}
+  $$
+
+  In this case, the average ITL is different from the average TPOT since the latter is usually calculated as follows:
+
+  $$
+  \text{Average TPOT} = \frac{\text{TPOT}_1 + \text{TPOT}_2 + \cdots + \text{TPOT}_N}{N}
+  $$
+
+  When reading benchmark results, always check how TPOT and ITL are defined. Different frameworks and papers may calculate and use the metrics differently, and this can change how you should interpret performance numbers. In the above equations for multiple requests:
+
+  - **Average TPOT is request-weighted** and is useful when you want to compare per-request latency across systems or configurations. It treats every request equally, regardless of how many tokens are generated.
+  - **Average ITL is token-weighted**, so longer responses (which contribute more total tokens) carry more weight. It's better for measuring overall system throughput and steady-state performance (e.g., aggregate streaming speed).
 
 ![llm-inference-ttft-latency.png](./img/llm-inference-ttft-latency.png)
     

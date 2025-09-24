@@ -38,7 +38,7 @@ Popular [inference frameworks](../getting-started/choosing-the-right-inference-f
 
 ## What is inference optimization?
 
-**Inference optimization** is the set of techniques to make LLM inference faster, cheaper, and more efficient. It’s about reducing latency, improving throughput, and lowering hardware costs without hurting model quality.
+**Inference optimization** is a set of techniques to make LLM inference faster, cheaper, and more efficient. It’s about reducing latency, improving throughput, and lowering hardware costs without hurting model quality.
 
 Some common strategies include:
 

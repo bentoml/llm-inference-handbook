@@ -95,7 +95,7 @@ The Bento team also tested speculative decoding under different concurrency leve
 <figcaption>Llama-3.3-70B-Instruct served with vLLM on a single H100 GPU</figcaption>
 </figure>
 
-With TP = 1, the total throughput plateaued earlier (around 20–30 concurrent requests) compared to the baseline. This indicates that the coordination between the draft and target models might bring overhead at higher loads. Still, ITL (i.e. Time Per Output Token/TPOT) improved by roughly 2×.
+With TP = 1, the total throughput plateaued earlier (around 20–30 concurrent requests) compared to the baseline. This indicates that the coordination between the draft and target models might bring overhead at higher loads. Still, Time Per Output Token (TPOT) improved by roughly 2×.
 
 <figure>
 ![tp-2-spec-decoding.png](./img/tp-2-spec-decoding.png)
@@ -104,7 +104,7 @@ With TP = 1, the total throughput plateaued earlier (around 20–30 concurrent r
 
 With TP = 2, the performance of speculative decoding improved, showing clear throughput gains over baseline. However, a higher speculative token count (γ = 5) saw larger latency spikes under heavy concurrency (40+ requests).
 
-Overall, the results show that speculative decoding reduced ITL across different workloads. Adding parallelism (TP = 2) improves throughput, but you need to tune γ to avoid latency spikes at high load.
+Overall, the results show that speculative decoding reduced TPOT across different workloads. Adding parallelism (TP = 2) improves throughput, but you need to tune γ to avoid latency spikes at high load.
 
 :::note
 These results are from informal tests and for reference only. Performance varies depending on your model, hardware, workload, and framework choices. Always benchmark speculative decoding under your own conditions for production adoption.
