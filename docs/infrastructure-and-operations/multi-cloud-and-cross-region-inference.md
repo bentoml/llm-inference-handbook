@@ -13,7 +13,7 @@ import Button from '@site/src/components/Button';
 
 When teams scale LLM inference, they rarely keep everything in one place. Instead, they spread workloads across multiple clouds or different regions within the same cloud. This way, the system can serve requests from the most suitable location.
 
-For example, you can run inference in AWS and GCP at the same time, or distribute it to three regions of Azure to cover North America, Europe, and Asia. The setup means flexibility. Workloads can shift to wherever GPUs are available, where latency is lowest, or where compliance rules demand data stays.
+For example, you can run inference in AWS and GCP at the same time, or distribute it to three regions of Azure to cover North America, Europe, and Asia. The setup means flexibility. Workloads can shift to wherever GPUs are available and cost-effective, where performance is highest, or where compliance rules demand data stays.
 
 The result is better resilience, faster responses for global users, and less dependence on a single vendor.
 
@@ -33,17 +33,9 @@ Another pattern is hybrid cloud inference, which combines on-premises infrastruc
 
 LLM inference has unique requirements that a single cloud or region often can’t meet. Multi-cloud and cross-region strategies address these gaps by making deployments more flexible and resilient.
 
-### Latency sensitivity
-
-LLM inference is highly latency-sensitive. Unlike traditional web applications, where a few hundred milliseconds might go unnoticed, LLMs generate responses token by token. Delays accumulate quickly. If the [first token takes too long (TTFT) or inter-token latency (ITL)](../inference-optimization/llm-inference-metrics) is high, the entire interaction feels sluggish.
-
-Multi-cloud and cross-region solutions address this by placing inference endpoints closer to users. A request from Singapore doesn’t need to travel to a US data center if there’s a deployment locally. This reduces network round-trip time/hops and improves responsiveness.
-
-For latency-critical use cases, like coding copilots or customer service chatbots, these milliseconds add up to meaningful differences in user experience. By distributing LLM workloads across regions or clouds, teams can cut response time and provide smoother interactions.
-
 ### Unpredictable demand
 
-Different from training, LLM inference is driven by real-time usage, often bursty and hard to predict. A product launch, a viral feature, or seasonal traffic can all cause sudden spikes in requests. Demand can swing from idle to saturation within minutes, increasing operational strain, potential failures, and service interruptions.
+Different from training, LLM inference is driven by real-time usage, often bursty and hard to predict. A product launch, a viral feature, or seasonal traffic can all cause sudden spikes in requests. Demand can swing from idle to saturation within minutes and your compute capacity can run out at the worst possible moment. This increases operational strain, potential failures, and service interruptions.
 
 Multi-cloud and cross-region deployments provide headroom to absorb these bursts. If one region runs out of compute capacity, traffic can shift to elsewhere. If a cloud provider experiences shortages, workloads can overflow to another.
 
@@ -59,7 +51,7 @@ Multi-cloud and cross-region deployments make it possible to meet these rules wi
 
 ### GPU pricing
 
-The cost of LLM inference is tied closely to GPU availability and pricing. GPU prices can vary widely across providers, regions, and even availability zones within the same cloud. Below is an example of on-demand NVIDIA H100 pricing on GCP for the `a3-highgpu-1g` instance (1 GPU). The gap between the cheapest region (us-central1) and the most expensive (southamerica-east1) is nearly 60% higher.
+The cost of LLM inference is tied closely to GPU availability and pricing. GPU prices can vary widely across providers, regions, and even availability zones within the same cloud. Below is an example of on-demand NVIDIA H100 pricing on GCP for the `a3-highgpu-1g` instance (1 GPU).
 
 | Region | Monthly Cost (USD) |
 | --- | --- |
@@ -69,11 +61,13 @@ The cost of LLM inference is tied closely to GPU availability and pricing. GPU p
 | asia-southeast1 | $10,427.89 |
 | southamerica-east1 | $12,816.56 |
 
+The gap between the cheapest region (us-central1) and the most expensive (southamerica-east1) is nearly 60% higher. For single-region or single-cloud deployment, this means you miss out on more cost-efficient GPU options in other regions and clouds.
+
 Multi-cloud and cross-region deployments give teams room to optimize around these differences. By routing workloads to regions where GPUs are more affordable or available, teams can reduce costs without compromising performance. The flexibility is extremely important when running frontier models, since sustained inference can push compute costs into the millions.
 
 ### Vendor lock-in
 
-Once an enterprise builds its LLM inference stack around the APIs and GPU SKUs of one platform, moving away becomes costly and complex. This dependence limits flexibility and exposes teams to sudden pricing changes, regional outages, or supply shortages.
+Once an enterprise builds its LLM inference stack around the APIs and GPU SKUs of one platform, moving away becomes costly and complex. This dependence limits flexibility and exposes you to sudden pricing changes, regional outages, or supply shortages. It also weakens your future negotiating leverage.
 
 Multi-cloud inference helps mitigate this risk. By running workloads across different providers, you avoid tying your infrastructure to a single ecosystem. You can shift inference traffic if a provider raises prices, retires a GPU type, or experiences a disruption.
 
@@ -84,7 +78,6 @@ Not every team needs to run LLMs across multiple clouds or regions. This strateg
 You should consider multi-cloud or cross-region inference if:
 
 - Your LLM application depends on GPUs that are in short supply and you need to diversify sources.
-- You serve a global user base and need to reduce latency.
 - You must meet compliance or data residency requirements.
 - You want leverage against vendor lock-in and pricing changes.
 - Availability and failover within a single cloud (or across providers) are important to you.
@@ -92,14 +85,14 @@ You should consider multi-cloud or cross-region inference if:
 
 ## Build vs. Buy
 
-Once you decide on a multi-cloud or cross-region setup, you need to consider your next step. Should you build it yourself? Or would it be better to use a platform that handles the complexity for you?
+Once you decide on a multi-cloud or cross-region solution, you need to consider your next step. Should you build it yourself? Or would it be better to use a platform that handles the complexity for you?
 
 ### DIY multi-cloud and cross-region inference
 
 Engineering teams can stitch together their own solution using tools like vLLM, Kubernetes, Terraform, and global load balancers. This gives maximum flexibility and control, but also introduces challenges:
 
 - **Model distribution**: You need to consistently replicate LLMs across regions or providers.
-- **Routing logic**: Requests need to be routed to the nearest or healthiest endpoint. This may require real-time capacity checks and rerouting when a region is saturated.
+- **Routing logic**: Requests need to be routed to the region or cloud with the most available and cost-effective GPUs. This may require real-time capacity checks and rerouting when a region is saturated.
 - **Monitoring and observability**: Teams must be able to track performance, latency, and costs across all regions and providers in a unified manner.
 - **Operational overhead**: Managing failover, scaling, compliance, and networking is an ongoing burden.
 
