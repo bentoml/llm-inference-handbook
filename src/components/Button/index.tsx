@@ -12,7 +12,10 @@ interface LinkButtonProps {
     | 'pink'
     | 'light-purple'
     | 'yellow'
+  buttonType?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
   className?: string
+  arrow?: boolean
 }
 
 const colors: { [key in LinkButtonProps['type']]: string } = {
@@ -28,16 +31,20 @@ const colors: { [key in LinkButtonProps['type']]: string } = {
 function Button({
   children,
   type,
-  className
+  buttonType = 'button',
+  className,
+  arrow = true,
+  disabled
 }: PropsWithChildren<LinkButtonProps>) {
   return (
     <button
-      type="button"
+      type={buttonType}
       className={clsx(styles.button, colors[type], className)}
+      disabled={disabled}
     >
       <span className={styles.buttonInner}>
         {children}
-        <ArrowSquare className={styles.buttonIcon} />
+        {arrow && <ArrowSquare className={styles.buttonIcon} />}
       </span>
     </button>
   )

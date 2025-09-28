@@ -38,7 +38,28 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en']
   },
-
+  plugins: [
+    function () {
+      return {
+        name: 'proxy-webpack-plugin',
+        configureWebpack() {
+          return {
+            mergeStrategy: { 'devServer.proxy': 'replace' },
+            devServer: {
+              proxy: {
+                '/api': {
+                  target: 'http://localhost:3001/',
+                  secure: false,
+                  changeOrigin: true,
+                  logLevel: 'debug'
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
   presets: [
     [
       'classic',
