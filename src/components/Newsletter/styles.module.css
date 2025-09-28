@@ -1,11 +1,19 @@
-.emailIcon {
+.emailIcon,
+.checkIcon {
   display: block;
   width: 1.5rem;
   height: 1.5rem;
-  background-image: url('/img/email.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.emailIcon {
+  background-image: url('/img/email.svg');
+}
+
+.checkIcon {
+  background-image: url('/img/check.svg');
 }
 
 .root {
@@ -30,26 +38,15 @@
 
 .root p {
   color: #4b5563;
-  margin-bottom: 1rem;
   line-height: 1.4;
-}
-
-.root ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  row-gap: 0.1rem;
-  list-style: none;
   margin: 0;
-  padding: 0;
 }
 
 .root form {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.75rem;
+  margin: 1rem 0 0.75rem;
   gap: 0.75rem;
   width: 100%;
 }
@@ -75,6 +72,17 @@
 
 .root .note {
   font-size: 0.875rem;
+}
+
+.root ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  row-gap: 0.1rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
 }
 
 .root ul li {
