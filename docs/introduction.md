@@ -12,6 +12,7 @@ keywords:
 ---
 
 import Features from '@site/src/components/Features';
+import Newsletter from '@site/src/components/Newsletter';
 
 # LLM Inference Handbook
 
@@ -45,3 +46,5 @@ You can read it start-to-finish or treat it like a lookup table. There’s no wr
 ## Contributing
 
 We welcome contributions! If you spot an error, have suggestions for improvements, or want to add new topics, please open an issue or submit a pull request on our [GitHub repository](https://github.com/bentoml/llm-inference-handbook).
+
+<Newsletter />

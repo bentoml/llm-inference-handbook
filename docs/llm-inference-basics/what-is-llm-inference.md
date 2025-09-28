@@ -7,6 +7,8 @@ keywords:
     - LLM inference, AI inference, inference layer
 ---
 
+import Newsletter from '@site/src/components/Newsletter';
+
 # What is LLM inference?
 
 LLM inference refers to using trained LLMs, such as GPT-4, Llama 4, and DeepSeek-V3, to generate meaningful outputs from user inputs, typically provided as natural language prompts. During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
@@ -70,3 +72,5 @@ Understanding LLM inference early gives you a clear edge. It helps you make smar
 - **If you're just curious about AI**: Inference is where the magic happens. Knowing how it works helps you separate AI hype from reality and makes you a more informed consumer and contributor to AI discussions.
 
 For more information, see [serverless vs. self-hosted LLM inference](./serverless-vs-self-hosted-llm-inference).
+
+<Newsletter />
