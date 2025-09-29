@@ -72,9 +72,6 @@ function LinkList() {
           {loading ? 'Subscribing...' : 'Subscribe'}
         </Button>
       </form>
-      <p className={styles.note}>
-        No spam, unsubscribe at any time. We respect your privacy.
-      </p>
       <ul>
         <li>Monthly insights</li>
         <li>Latest techniques</li>
