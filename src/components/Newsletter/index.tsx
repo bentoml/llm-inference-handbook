@@ -9,12 +9,13 @@ enum Text {
 }
 
 function LinkList() {
-  const [text, setText] = useState<Text>(Text.Subscribe)
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
   const submit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     try {
       const email = e.target.email.value
       const form = new FormData()
-      
+
       e.preventDefault()
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return
@@ -23,18 +24,31 @@ function LinkList() {
         'data',
         JSON.stringify({ email, table: 'handbook-newsletter' })
       )
-      setText(Text.Subscribing)
+      setLoading(true)
       await fetch('/api/newsletter', {
         method: 'POST',
         body: form
       })
-      setText(Text.Subscribed)
+      setSuccess(true)
+      setLoading(false)
     } catch (error) {
       console.error(error)
-      setText(Text.Subscribe)
+      setLoading(false)
     }
   }, [])
 
+  if (success) {
+    return (
+      <div className={styles.root}>
+        <i className={styles.checkIcon} />
+        <h3>Thank you for subscribing!</h3>
+        <p>
+          You'll receive the latest updates on LLM inference and optimization
+          techniques directly in your inbox.
+        </p>
+      </div>
+    )
+  }
   return (
     <div className={styles.root}>
       <i className={styles.emailIcon} />
@@ -51,11 +65,11 @@ function LinkList() {
         />
         <Button
           arrow={false}
-          disabled={text === Text.Subscribing}
+          disabled={loading}
           type="green"
           buttonType="submit"
         >
-          {text}
+          {loading ? 'Subscribing...' : 'Subscribe'}
         </Button>
       </form>
       <p className={styles.note}>
