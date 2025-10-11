@@ -23,7 +23,7 @@ During this initial phase, known as pretraining, the model learns general langua
 
 To make them useful, they typically undergo fine-tuning on curated datasets, using techniques like instruction fine-tuning.
 
-## Instruction-tuned models
+## Instruction-tuned and chat models
 
 Instruction-tuned models are built on top of base models. After the initial pretraining phase, these models go through a second training stage using datasets made up of instructions and their corresponding responses.
 
@@ -34,6 +34,10 @@ This process teaches the models how to follow user prompts more reliably, so tha
 - “List pros and cons of remote work.”
 
 This makes them more practical for real-world applications like chatbots, virtual assistants, and AI tools that interact with users directly.
+
+If you see “Instruct” in an LLM’s name, it generally means the model has been instruction-tuned. However, “Instruct” models aren’t necessarily full chatbots. They’re optimized to complete a given task or follow instructions, not to maintain multi-turn dialogue.
+
+By contrast, chat models are typically further tuned (often with conversational data and RLHF/DPO) to perform well in interactive chatbot sceaniros. They’re expected to handle context across turns and interact with multiple participants. See [Instruction and Chat Fine-Tuning](https://builder.aws.com/content/2ZVa61RxToXUFzcuY8Hbut6L150/what-is-an-instruct-model-instruction-and-chat-fine-tuning) to learn more.
 
 ## Mixture of Experts models
 
