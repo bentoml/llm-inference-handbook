@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: Learn what function calling is and its use case.
 keywords:
     - Function calling, function calling APIs
