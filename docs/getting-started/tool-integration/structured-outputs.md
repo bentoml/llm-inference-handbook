@@ -145,7 +145,7 @@ Here’s what happens under the hood:
 
 When an LLM generates text, it predicts the probability of each possible next token (these probabilities are called *logits*). With constrained decoding, those logits are modified in real time to remove any tokens that would violate your defined structure. The model can then only generate valid continuations, guaranteeing that the final output always follows your schema.
 
-This approach is fast because it doesn’t rely on retries or post-processing. It works well with open-source models and is supported by libraries such as [Outlines](https://github.com/outlines-dev/outlines), [Microsoft Guidance](https://github.com/guidance-ai/llguidance) and [XGrammar](https://github.com/mlc-ai/xgrammar). Inference frameworks like vLLM have already integrated these tools directly.
+This approach is fast because it doesn’t rely on retries or post-processing. It works well with open-source models and is supported by libraries such as [Outlines](https://github.com/outlines-dev/outlines), [Microsoft Guidance](https://github.com/guidance-ai/llguidance) and [XGrammar](https://github.com/mlc-ai/xgrammar). Inference frameworks like [vLLM](https://docs.vllm.ai/en/latest/features/structured_outputs.html) and [SGLang](https://docs.sglang.ai/advanced_features/structured_outputs.html) have already integrated these tools directly.
 
 The main advantages are speed, precision, and reliability. The Outlines team even showed that [structured output can improve LLM performance](https://blog.dottxt.ai/performance-gsm8k.html).
 
