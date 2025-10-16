@@ -57,7 +57,7 @@ No universal answer exists to whether on-prem is “better” than cloud. Each o
 | **Cost model** | High upfront hardware investment; lower marginal costs for steady traffic | Pay-per-use; flexible for bursty or unpredictable workloads |
 | **Performance control** | Full control over latency, throughput, and scaling behavior | Limited by provider SLAs and shared infrastructure |
 | **Scalability** | Limited by purchased hardware; fast autoscaling for LLMs requires extra setups and configurations | Virtually unlimited, with on-demand GPU access; however, you may also need extra tuning to speed up cold starts for LLMs |
-| **Maintenance and operations**  | Requires dedicated teams for infra, LLM-specific observability, and updates | Faster setup, but still require some infra management; BYOC offloads the burden to service providers |
+| **Maintenance and operations**  | Requires dedicated teams for infra, LLM-specific observability, and updates | Faster setup, but still require some infra management; [BYOC](./bring-your-own-cloud) offloads part of the burdens to service providers |
 | **Flexibility** | Best for long-term, stable workloads | Best for rapid experimentation and dynamic workloads |
 
 The decision usually depends on compliance requirements, traffic patterns, and how much operational complexity your team is willing to manage.

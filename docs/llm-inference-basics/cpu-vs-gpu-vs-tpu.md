@@ -35,13 +35,14 @@ Selecting the appropriate hardware requires you to understand your model size, i
 
 Learn more about [GPU choices](../getting-started/choosing-the-right-gpu) for different open-source LLMs.
 
-## Choosing the deployment environment
+## Choosing the right deployment pattern
 
-The deployment environment shapes everything from latency and scalability to privacy and cost. Each environment suits different operational needs for enterprises.
+The deployment pattern shapes everything from latency and scalability to privacy and cost. Each pattern suits different operational needs for enterprises.
 
 - **Cloud**: The cloud is the most popular environment for LLM inference today. It offers on-demand access to high-performance GPUs and TPUs, along with a rich ecosystem of managed services, autoscaling, and monitoring tools.
-- **On-Prem**: [On-premises deployments](../infrastructure-and-operations/on-prem-llms) means running LLM inference on your own infrastructure, typically within a private data center. It offers full control over data, performance, and compliance, but requires more operational overhead.
 - **Multi-cloud and cross-region**: [This flexible deployment strategy](../infrastructure-and-operations/multi-cloud-and-cross-region-inference) distributes LLM workloads across multiple cloud providers or geographic regions. It helps reduce latency for global users, improves GPU availability, optimizes compute costs, mitigates vendor lock-in, and supports compliance with data residency requirements.
+- **Bring Your Own Cloud (BYOC)**: [BYOC deployments](../infrastructure-and-operations/bring-your-own-cloud) let you run vendor software, such as an LLM inference platform, directly inside your own cloud account. This model combines managed orchestration with full data, network, and cost control. It's ideal for enterprises that need compliance, cost-efficiency, and scalability without full self-hosting.
+- **On-Prem**: [On-premises deployments](../infrastructure-and-operations/on-prem-llms) means running LLM inference on your own infrastructure, typically within a private data center. It offers full control over data, performance, and compliance, but requires more operational overhead.
 - **Edge**: In edge deployments, the model runs directly on user devices or local edge nodes, closer to where data is generated. This reduces network latency and increases data privacy, especially for time-sensitive or offline use cases. Edge inference usually uses smaller, optimized models due to limited compute resources.
 
 <LinkList>
