@@ -62,7 +62,7 @@ Workstation cards sit between consumer and data center hardware. They’re a goo
 
 Enterprises rely on data center GPUs for large-scale AI inference and High-Performance Computing (HPC) workloads. They offer high VRAM (40–192GB), strong memory bandwidth, and features like multi-instance GPU (MIG) or NVLink for scaling across clusters. Examples include NVIDIA A100, H100 and B200, as well as AMD MI300X and MI350X.
 
-For teams renting cloud compute or deploying LLM on-prem, data center GPUs are usually the most practical choice.
+For teams renting cloud compute or [deploying LLM on-prem](../infrastructure-and-operations/on-prem-llms), data center GPUs are usually the most practical choice.
 
 ## Key considerations for choosing GPUs
 
