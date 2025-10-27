@@ -58,7 +58,7 @@ Choosing between serverless and self-hosted LLM inference depends on your specif
 
 With serverless APIs, the cost per token is fixed, but total spend scales linearly with usage. That’s fine for early prototyping, but it becomes expensive fast in production.
 
-With self-hosting, there’s more upfront work and infrastructure cost, but your per-token cost drops significantly as you scale, especially when paired with inference optimization techniques.
+With self-hosting, there’s more upfront work and infrastructure cost. However, your per-token cost will drop significantly as you scale, especially using inference optimization techniques like [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
 At different stages of your AI adoption, you may want to reevaluate your approach and weigh trade-offs between agility and control.
 
@@ -75,7 +75,7 @@ It's also worth noting that both serverless and self-hosted options are getting 
 - Projects like vLLM and SGLang are enhancing the efficiency of model inferencing.
 - Better-performing open-source models that require fewer resources with different optimization techniques.
 
-For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments?_gl=1*1tk0ptt*_gcl_au*MTkzNzg1NDgwMy4xNzQ1MzMwNTc4).
+For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
 
 ## When to start serverless and when to take control
 
@@ -117,5 +117,6 @@ At [Bento](https://www.bentoml.com/), we work to help enterprises self-host any 
   ## Additional resources
   * [Secure and Private DeepSeek Deployment with BentoML](https://www.bentoml.com/blog/secure-and-private-deepseek-deployment-with-bentoml)
   * [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments)
-  * [Building RAG with Open-Source and Custom AI Models](https://www.bentoml.com/blog/building-rag-with-open-source-and-custom-ai-models)
+  * [Building RAG Systems with Open-Source and Custom AI Models](https://www.bentoml.com/blog/building-rag-with-open-source-and-custom-ai-models)
+  * [ChatGPT Usage Limits: What They Are and How to Get Rid of Them](https://www.bentoml.com/blog/chatgpt-usage-limits-explained-and-how-to-remove-them)
 </LinkList>
