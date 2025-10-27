@@ -130,6 +130,22 @@ With [Bento BYOC](https://www.bentoml.com/blog/byoc-to-bentocloud-privacy-flexib
 [<Button>Schedule a Demo</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
 </div>
 
+---
+
+## Frequently asked questions
+
+### Can BYOC work with multi-cloud or hybrid deployments?
+
+Yes. BYOC fits naturally into hybrid and multi-cloud architectures. Depending on your securiy and compliance policy, sensitive workloads can stay on-prem or in one cloud, while overflow or global inference traffic scales into others.
+
+### How does BYOC differ from SaaS?
+
+In SaaS, the vendor hosts and manages everything in their own environment. In BYOC, the vendor manages the control plane while the data plane runs in your cloud. You keep ownership of compute, storage, and network resources.
+
+### What are the trade-offs of BYOC?
+
+You gain more sovereignty and flexibility but take on part of the operational burden, namely managing your own cloud environment, IAM roles, and monitoring. Many teams offset this by using managed BYOC solutions like Bento BYOC.
+
 <LinkList>
   ## Additional resources
   * [BYOC to BentoCloud: Privacy, Flexibility, and Cost Efficiency in One Package](https://www.bentoml.com/blog/byoc-to-bentocloud-privacy-flexibility-and-cost-efficiency-in-one-package)
