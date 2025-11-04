@@ -138,6 +138,38 @@ At [Bento](https://www.bentoml.com/), we work to help enterprises self-host any 
 [<Button>Talk to us</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
 </div>
 
+## FAQs
+
+### What is the best GPU comparison tool for AI workloads?
+
+Most generic GPU comparison tools focus on gaming or graphics performance, which doesn’t reflect real AI inference workloads. For LLMs, you need tools that measure [throughput and latency metrics like TTFT and ITL](../inference-optimization/llm-inference-metrics).
+
+You can start by checking open-source leaderboards from frameworks such as vLLM, SGLang, and TensorRT-LLM. They provide ready-to-use scripts that help you compare inference performance across different GPUs.
+
+However, these frameworks usually require manual configuration and tuning, which can be time-consuming.
+
+A faster option is [llm-optimizer](https://www.bentoml.com/blog/announcing-llm-optimizer), an open-source tool for benchmarking and optimizing LLM inference. It works across multiple inference frameworks and supports any open-source LLM. It lets you define constraints such as *“TTFT under 200ms”* or *“P99 ITL below 10ms.”* This helps you quickly find the optimal configurations that meet your performance goals.
+
+### Where can I buy or rent GPU servers?
+
+You can either buy on-premises GPU servers or rent cloud GPUs depending on your scale, control needs, and budget.
+
+Cloud providers such as AWS, Google Cloud and Azure let you rent H100, H200 or MI300X GPUs on demand.
+
+NeoClouds like CoreWeave and Nebius provide lower-cost access and flexible billing. However, they typically offer less control and fewer compliance guarantees for regulated or enterprise environments.
+
+If you prefer full ownership, you can purchase GPU servers outright from original equipment (OE) partners like Dell, GIGABYTE, or HPE, which work directly with NVIDIA and AMD. This route gives you maximum control, but also means higher upfront costs and longer procurement cycles.
+
+For details, read the [2026 GPU Procurement Guide](https://www.bentoml.com/blog/where-to-buy-or-rent-gpus-for-llm-inference).
+
+### How can I check what GPU I have?
+
+On most systems, you can quickly verify your GPU type using command-line tools:
+
+- **Linux**: `nvidia-smi` (for NVIDIA) or `amd-smi` (for AMD).
+- **macOS**: `system_profiler SPDisplaysDataType`.
+- **Windows**: Open **Device Manager** → **Display Adapters**.
+
 <LinkList>
   ## Additional resources
   * [NVIDIA Data Center GPUs Explained: From A100 to B200 and Beyond](https://www.bentoml.com/blog/nvidia-data-center-gpus-explained-a100-h200-b200-and-beyond)

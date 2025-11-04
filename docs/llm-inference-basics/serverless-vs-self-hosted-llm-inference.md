@@ -19,7 +19,7 @@ When building applications with LLMs, you typically have two main infrastructure
 
 Serverless inference services, provided by companies like OpenAI, Anthropic, and other hosted API providers, simplify application development significantly. They manage everything for you, letting you pay per use with no infrastructure overhead.
 
-These services are powered not just by proprietary models like GPT-4 or Claude. Open-source models such as DeepSeek-R1 and Llama 4 are also available via serverless endpoints through platforms like Together AI and Fireworks.
+These services are powered not just by proprietary models like GPT-5 or Claude-Sonnet-4.5. Open-source models such as DeepSeek-R1 and Llama 4 are also available via serverless endpoints through platforms like Together AI and Fireworks.
 
 Key advantages of serverless APIs include:
 
@@ -112,6 +112,29 @@ At [Bento](https://www.bentoml.com/), we work to help enterprises self-host any 
 <div style={{ margin: '3rem 0' }}>
 [<Button>Talk to us</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
 </div>
+
+## FAQs
+
+### What does self-hosted AI mean?
+
+Self-hosted AI means running and managing AI models on your own infrastructure (e.g., on-premises data centers, private cloud, or dedicated GPU servers).
+
+With self-hosting, you keep full control over data privacy, performance tuning, and cost optimization. It’s useful for teams that need to:
+
+- Deploy open-source models like DeepSeek-R1
+- Customize models with specific optimization techniques
+- Fine-tune models with proprietary data
+- Meet internal compliance or data-sovereignty requirements
+
+### Are proprietary models more powerful than open-source models?
+
+Not always. It depends on your goals.
+
+Proprietary models often lead in general-purpose reasoning, coding, and conversation quality because they’re trained on massive datasets and refined through advanced alignment techniques. They’re great if you want instant access to high performance without managing infrastructure.
+
+Open-source models, such as Llama, Qwen, and DeepSeek, offer far more control, transparency, and flexibility. You can fine-tune them, deploy them anywhere, and optimize for latency and cost. The gap between open and proprietary models has narrowed quickly, especially for domain-specific workloads.
+
+For example, when you fine-tune an open-source LLM with proprietary data in legal, medical or financial contexts, it can outperform proprietary models in that specific domain. This is exactly the kind of specialization many industries need today.
 
 <LinkList>
   ## Additional resources
