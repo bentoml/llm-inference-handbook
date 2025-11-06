@@ -47,6 +47,8 @@ Here’s how it typically works:
 2. **Data plane (customer-managed)**: This is where inference happens. Your models, GPUs, compute instances, and data all live inside your own VPC, ensuring compliance, privacy, and full isolation.
 3. **Networking and IAM boundaries**: BYOC relies on strict permission scoping. The vendor can manage deployments programmatically (for example, through IAM roles or cross-account access), but is unable to view or exfiltrate data. Logs (the vendor may have access to them for debugging purposes), metrics, and model outputs stay within your environment.
 
+![bring-your-own-cloud-byoc-diagram.png](./img/bring-your-own-cloud-byoc-diagram.png)
+
 This hybrid design offers the best of both worlds:
 
 - The ease of a managed platform that handles orchestration and updates.
