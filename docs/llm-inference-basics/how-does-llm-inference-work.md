@@ -80,7 +80,31 @@ One major issue is the interference between the prefill and decode phases, as th
 
 The open-source community is actively working on different strategies to separate prefill and decode. For more information, see [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation).
 
+## Diffusion LLMs (dLLMs)
+
+As mentioned above, most LLMs today are autoregressive, meaning they generate text one token at a time. This sequential process has a natural bottleneck: slow and computationally expensive.
+
+Diffusion LLMs (dLLMs) flip that logic. They output the entire response in parallel through a denoising process inspired by image generation models like Stable Diffusion.
+
+Here’s the basic idea:
+
+1. The model starts with a cloud of noise, representing a rough sketch of possible outputs.
+2. Through several denoising steps, it gradually refines that noise into coherent text.
+3. The final answer emerges all at once, like an image coming into focus.
+
+This parallel process removes the token-by-token bottleneck. It also allows dLLMs to iterate and self-correct during generation, which makes them particularly strong at tasks like editing, mathematical reasoning, and code completion.
+
+Early examples of dLLMs include:
+
+- [Mercury](https://x.com/_inception_ai/status/1894847919624462794) by Inception AI: reportedly delivers inference up to 10× faster and more efficient than traditional LLMs.
+- [Gemini Diffusion](https://deepmind.google/models/gemini-diffusion/) by Google DeepMind: an early exploration of applying diffusion to text generation. It is available as an experimental demo to help develop and refine future models.
+
+The concept is still in its early stages. Inference frameworks like vLLM don’t yet support dLLMs, though there are [active community discussions](https://github.com/vllm-project/vllm/issues/18532) exploring future integration.
+
+For now, autoregressive LLMs remain the mainstream architecture. However, dLLMs represent one of the most promising directions to power the next generation of inference systems. If you’re working with autoregressive LLMs today, it’s worth keeping an eye on dLLMs.
+
 <LinkList>
   ## Additional resources
   * [DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving](https://arxiv.org/abs/2401.09670)
+  * [Large Language Diffusion Models](https://arxiv.org/abs/2502.09992)
 </LinkList>
