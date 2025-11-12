@@ -80,6 +80,18 @@ One major issue is the interference between the prefill and decode phases, as th
 
 The open-source community is actively working on different strategies to separate prefill and decode. For more information, see [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation).
 
+## What is a context window and how does it work in LLM inference?
+
+The context window is the number of tokens an LLM can process in a single inference pass. It includes the entire conversation history that must be resent each turn to maintain coherence.
+
+Technically, LLMs don’t have real memory. To keep context, every new request must resend all previous messages so the model can “see” the full conversation again (it happens under the hood and users don’t see it). In other words, continuity is maintained by reconstructing the context through the input prompt each time.
+
+![context-window.png](./img/context-window.png)
+
+This running text history is called the context window, which has a maximum length (e.g., 8K, 32K, or 128K tokens).
+
+As mentioned above, LLMs use the KV cache from previous tokens to avoid fully reprocessing everything in the decode phase, which helps with latency. When reusing the KV cache across multiple requests, it is more accurate to call this technique [prefix caching](../inference-optimization/prefix-caching).
+
 ## Diffusion LLMs (dLLMs)
 
 As mentioned above, most LLMs today are autoregressive, meaning they generate text one token at a time. This sequential process has a natural bottleneck: slow and computationally expensive.
