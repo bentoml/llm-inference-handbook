@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 12
 description: Understand the differences between data, tensor, pipeline, expert and hybrid parallelisms.
 keywords:
     - LLM inference optimization, LLM inference optimization techniques​

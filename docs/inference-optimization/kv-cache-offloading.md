@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 description: Learn how KV cache offloading improves LLM inference by reducing GPU memory usage, lowering latency, and cutting compute costs.
 keywords:
     - KV cache offloading, KV cache, KV caching, LMCache
