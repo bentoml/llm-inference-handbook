@@ -98,7 +98,7 @@ FlashAttention 4 is not officially released yet, but [Tri Dao previewed it at th
 
 The easiest way to get started is through the official package:
 
-```python
+```bash
 pip install flash-attn --no-build-isolation
 ```
 
