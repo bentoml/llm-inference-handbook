@@ -83,6 +83,40 @@ curl https://your-custom-endpoint.com/v1/chat/completions \
 
 If you’re already using OpenAI’s SDKs or REST interface, you can simply redirect them to your own API endpoint. This allows you to keep control over your LLM deployment, reduce vendor lock-in, and ensure your application remains future-proof.
 
+## FAQs
+
+### Is an OpenAI-compatible API the same as OpenAI’s official API?
+
+No. It only mirrors the interface, not the underlying model or infrastructure. Think of it as speaking the same “language,” but to a different system. Depending on the provider, the backend might be:
+
+- A self-hosted LLM like Llama or DeepSeek
+- A hosted provider like Together AI or Fireworks
+- A custom enterprise deployment inside your VPC
+
+Every backend behaves differently in speed and cost, even if the API shape looks the same.
+
+### What models can I run behind an OpenAI-compatible API?
+
+Any modern open-source LLM can be served behind an OpenAI-compatible API, such as Llama, Qwen, Mistral, DeepSeek, Kimi, and domain-specific fine-tuned models.
+
+If you're using frameworks like vLLM and SGLang, they can expose these models through OpenAI-compatible endpoints automatically.
+
+### Is an OpenAI-compatible API required to self-host an LLM?
+
+Not strictly required, but highly recommended. Without it, you might need to manually rebuild agent integrations, SDK integrations, framework compatibility, and so on. Using the OpenAI schema keeps your stack simple and portable.
+
+### Does using an OpenAI-compatible API save cost?
+
+Not by itself. The API format is just an interface. It doesn’t make inference cheaper.
+
+Cost savings come from where the API is running. Here’s the breakdown:
+
+- **If you self-host LLMs through tools like vLLM and SGLang**, you mainly pay for GPUs instead of per-token pricing. You can apply inference optimizations like [KV cache offloading](../inference-optimization/kv-cache-offloading) and [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) to further cut inference cost. This is usually far cheaper for steady or high-volume workloads.
+- **If you use a hosted provider (e.g., Together AI, Fireworks)**, you still pay per-token or per-request, even if the API is “OpenAI-compatible.”
+- **If you stay on OpenAI**, you pay per-token at OpenAI pricing.
+
+The reason some AI teams save money isn’t the OpenAI-compatible API; it’s the ability to self-host any model without breaking their existing application code. Learn more about [serverless vs. self-hosted LLM inference](./serverless-vs-self-hosted-llm-inference).
+
 <LinkList>
   ## Additional resources
   * [OpenAI documentation](https://platform.openai.com/docs/quickstart?api-mode=chat)
