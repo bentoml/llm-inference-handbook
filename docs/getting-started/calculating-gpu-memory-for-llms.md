@@ -7,6 +7,8 @@ keywords:
     - LLM memory requirements
 ---
 
+import LinkList from '@site/src/components/LinkList';
+
 # Calculating GPU memory for serving LLMs
 
 If you're planning to self-host an LLM, one of the first things you'll need to figure out is how much GPU memory (VRAM) it requires. This depends mainly on the model’s size and the precision used during inference.
@@ -29,3 +31,8 @@ For example, to load a 70B model in FP16 with 20% overhead, you need around 168 
 ```bash
 Memory = 70 × (16 / 8) × 1.2 = 168 GB
 ```
+
+<LinkList>
+  ## Additional resources
+  * [What is GPU Memory and Why it Matters for LLM Inference](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference)
+</LinkList>
