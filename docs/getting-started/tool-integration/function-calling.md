@@ -28,6 +28,25 @@ At a technical level, the LLM still predicts the next token, just like any other
 - Triggering actions (e.g., send email, retrieve weather)
 - Passing outputs back into the model for multi-turn conversations
 
+## FAQs
+
+### What is the difference between function calling and structured outputs?
+
+These two ideas get mixed up a lot. Here’s the simple difference:
+
+- Structured outputs: You decide the [format that the model uses in its responses](./structured-outputs). For example, you can force the model to output JSON, a list, or a specific object.
+- Function calling: You tell the model when to take an action. Function calling tools are often defined in a structured way (e.g., JSON).
+
+Both can be used together.
+
+### Do all LLMs support function calling?
+
+Not all, but many modern models do. Open-source models like Llama, Qwen, and DeepSeek usually work well when served through vLLM or SGLang.
+
+### Is function calling the same as tools or agents?
+
+Tools are the actions. Function calling is how the model requests those actions. Agents are systems that can use function calling in a loop with reasoning; they can plan, call multiple tools in sequence, evaluate results, and adjust their approach based on what they learn.
+
 <LinkList>
   ## Additional resources
   * [Function Calling with Open-Source LLMs](https://bentoml.com/blog/function-calling-with-open-source-llms)
