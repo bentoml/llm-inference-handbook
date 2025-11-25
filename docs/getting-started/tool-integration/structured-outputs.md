@@ -1,13 +1,13 @@
 ---
 sidebar_position: 1
-description: LLM structured outputs are model responses in defined formats like JSON or XML, making AI-generated data predictable, machine-readable, and easy to integrate into applications and workflows.
+description: Structured outputs are model responses in defined formats like JSON or XML, making AI-generated data predictable, machine-readable, and easy to integrate into applications and workflows.
 keywords:
-    - LLM structured outputs, structured generation, constrained decoding
+    - Structured outputs, structured generation, constrained decoding
 ---
 
 import LinkList from '@site/src/components/LinkList';
 
-# LLM structured outputs
+# Structured outputs
 
 Structured outputs are responses from an LLM that follow a specific, machine-readable format, such as JSON, XML, or a regex-defined pattern. Instead of generating free-form prose, the model produces data that can be parsed and used directly by downstream systems.
 
