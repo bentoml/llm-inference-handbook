@@ -190,7 +190,7 @@ If any part of the stack is outdated, you might hit issues like:
 
 A simple rule of thumb:
 
-- Your **driver's CUDA version** must be ≥ the **CUDA toolkit version** your framework was built with
+- Your **driver's CUDA version** must be ≥ the **CUDA toolkit version** your framework was built with.
 - Newer drivers are usually backwards compatible with older CUDA toolkits.
 - Older drivers can’t run newer CUDA runtimes.
 
