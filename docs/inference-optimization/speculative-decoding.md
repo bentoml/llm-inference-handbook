@@ -132,7 +132,7 @@ If your workload has its own characteristics, you’ll likely get better results
 
 <LinkList>
   ## Additional resources
-  * [Get 3× Faster LLM Inference with Speculative Decoding Using the Right Draft Model](https://bentoml.com/llm/inference-optimization/speculative-decoding)
+  * [Get 3× Faster LLM Inference with Speculative Decoding Using the Right Draft Model](https://www.bentoml.com/blog/3x-faster-llm-inference-with-speculative-decoding)
   * [Looking back at speculative decoding](https://research.google/blog/looking-back-at-speculative-decoding/)
   * [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](https://arxiv.org/pdf/2401.15077)
   * [Fast Inference from Transformers via Speculative Decoding](https://arxiv.org/abs/2211.17192)
