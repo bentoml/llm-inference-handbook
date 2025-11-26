@@ -70,7 +70,7 @@ When selecting GPUs, remember that raw benchmark numbers don’t tell the whole 
 
 ### GPU memory (VRAM)
 
-VRAM sets the ceiling on model size and context length. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized.
+[VRAM](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference) sets the ceiling on model size and context length. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized.
 
 A major challenge is the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
@@ -169,6 +169,45 @@ On most systems, you can quickly verify your GPU type using command-line tools:
 - **Linux**: `nvidia-smi` (for NVIDIA) or `amd-smi` (for AMD).
 - **macOS**: `system_profiler SPDisplaysDataType`.
 - **Windows**: Open **Device Manager** → **Display Adapters**.
+
+### How important are CUDA and driver versions when choosing a GPU?
+
+Very important. GPU performance isn’t just about the hardware. Your NVIDIA driver, CUDA version, and framework build (e.g., PyTorch, vLLM, SGLang, TensorRT-LLM) all need to line up. When they don’t, you’ll see errors, slowdowns, or missing features like FP8 or FlashAttention.
+
+For NVIDIA GPUs:
+
+- **Driver** contains the [CUDA Driver API](https://docs.nvidia.com/cuda/cuda-driver-api/index.html) and talks directly to the GPU
+- **CUDA toolkit** provides development tools, compilers and libraries
+- **cuDNN, cuBLAS and NCCL** power operations inside PyTorch and most inference engines
+- **Framework builds** are compiled for a specific CUDA toolkit version
+
+If any part of the stack is outdated, you might hit issues like:
+
+- “CUDA driver version is insufficient”
+- Kernel failures
+- Poor throughput
+- Missing FP8, FlashAttention, or device-level optimizations
+
+A simple rule of thumb:
+
+- Your **driver's CUDA version** must be ≥ the **CUDA toolkit version** your framework was built with.
+- Newer drivers are usually backwards compatible with older CUDA toolkits.
+- Older drivers can’t run newer CUDA runtimes.
+
+You can confirm your driver and GPU with:
+
+```bash
+nvidia-smi
+
+# Example output:
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.129.03             Driver Version: 535.129.03   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+```
+
+This means your driver supports up to CUDA 12.2 runtime. Your framework can be built with CUDA 12.2, 12.1, 11.8, etc., but not 12.3 or newer.
+
+To upgrade, download the official [CUDA toolkit](https://developer.nvidia.com/cuda-downloads) and [driver](https://www.nvidia.com/en-us/drivers/) packages.
 
 <LinkList>
   ## Additional resources
