@@ -104,7 +104,7 @@ Inference doesn’t change weights at all. It only runs the existing model to pr
 
 Here’s a clearer side-by-side comparison:
 
-| Item | **Inference** | **Fine-tuning** |
+| Item | Inference | Fine-tuning |
 | --- | --- | --- |
 | Purpose | Generate outputs (answers, images, etc.) | Adapt the model to perform better on a specific task or domain |
 | Weights updated | No, weights stay frozen | Yes, some or all weights are updated |
