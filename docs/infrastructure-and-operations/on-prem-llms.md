@@ -51,7 +51,7 @@ No universal answer exists to whether on-prem is “better” than cloud. Each o
 - **On-prem LLMs** offer maximum control, stronger data privacy, and predictable costs once hardware is in place. They’re ideal for sensitive workloads or steady, high-volume traffic.
 - **Cloud LLMs** provide flexibility, faster setup, and access to the latest hardware without capital investment. They’re a better fit for teams that need to experiment quickly, handle bursty workloads, or avoid managing infrastructure.
 
-| Aspect | On-prem LLMs | Cloud LLMs |
+| Item | On-prem LLMs | Cloud LLMs |
 | --- | --- | --- |
 | **Data security and compliance** | Data stays inside your infrastructure; easier to meet strict compliance | Data processed by third-party providers; may require extra compliance work |
 | **Cost model** | High upfront hardware investment; lower marginal costs for steady traffic | Pay-per-use; flexible for bursty or unpredictable workloads |

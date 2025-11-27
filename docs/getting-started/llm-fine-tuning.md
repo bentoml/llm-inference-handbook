@@ -94,3 +94,38 @@ Key features:
 - Fine-tuning methods: supervised SFT (including multimodal), reward modeling, and reinforcement learning (PPO, DPO, ORPO, KTO).
 - Quantization and adapter support: 16-bit full-tuning, freeze-tuning, LoRA, and 2–8 bit QLoRA via formats like GPTQ, AWQ, HQQ, and AQLM.
 - Advanced optimization: GaLore, DoRA, LongLoRA, LoftQ, LLaMA Pro, Mixture-of-Depths, and more.
+
+## FAQs
+
+### How is fine-tuning different from inference?
+
+Fine-tuning is a small form of training. You update some of the model’s weights using your own dataset.
+Inference doesn’t change weights at all. It only runs the existing model to produce output.
+
+Here’s a clearer side-by-side comparison:
+
+| Item | Inference | Fine-tuning |
+| --- | --- | --- |
+| Purpose | Generate outputs (answers, images, etc.) | Adapt the model to perform better on a specific task or domain |
+| Weights updated | No, weights stay frozen | Yes, some or all weights are updated |
+| Data required | Just the input prompt | A dataset (often labeled) specific to your use case |
+| Compute cost | Low (single forward pass) | High (multiple epochs of training) |
+| Time | Milliseconds to seconds | Minutes to days (depending on model size & data) |
+| Model changes | The model stays the same | Get a new version/checkpoint of the model |
+| Examples | Asking an LLM questions | Llama 3 fine-tuned on internal docs or medical Q&A |
+
+### How does LLM fine-tuning compare to other techniques like prompt engineering?
+
+Prompt engineering adjusts how you ask the model to get better answers. It’s quick, cheap, and doesn’t require training, but it has limits. Long prompts can get messy, and the model may still behave inconsistently.
+
+Fine-tuning actually changes the model. You feed it examples of what “good” looks like, and it learns to follow that pattern on its own. It’s more reliable for long-term use, especially when you need consistent tone, domain knowledge, or strict formatting.
+
+In short, prompt engineering is great for early exploration, but fine-tuning gives you stable, repeatable performance at scale.
+
+### How much data do I need to fine-tune an LLM?
+
+It depends on the task. Many teams get solid results with a few thousand high-quality examples. For complex domains, you may need tens or hundreds of thousands. Quality matters more than quantity.
+
+### Do I need powerful GPUs to fine-tune an LLM?
+
+Not always. Frameworks like Unsloth, Axolotl, and LLaMA Factory support efficient methods like LoRA and QLoRA, which let you fine-tune large models on a single consumer GPU or even Google Colab. Full fine-tuning often requires stronger hardware.
