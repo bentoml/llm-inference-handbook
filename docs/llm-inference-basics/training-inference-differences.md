@@ -9,7 +9,7 @@ keywords:
     - Traning and inference
 ---
 
-# What is the difference between LLM training and inference?
+# Training vs. inference
 
 LLM training and inference are two different phases in the lifecycle of a model.
 
@@ -30,3 +30,35 @@ Training is computationally intensive, often requiring expensive GPU or TPU clus
 LLM inference means applying the trained model to new data to make predictions. Unlike training, inference [happens continuously and in real-time](./what-is-llm-inference), responding immediately to user input or incoming data. It is the phase where the model is actively "in use." Better-trained and more finely-tuned models typically provide more accurate and useful inference.
 
 Inference compute needs are ongoing and can become very high, especially as user interactions and traffic grow. Each inference request consumes computational resources such as GPUs. While each inference step may be smaller than training in isolation, the cumulative demand over time can lead to significant operational expenses.
+
+--- 
+
+Here is a side-by-side comparison beteew training and inference:
+
+| Item | Training | Inference |
+| --- | --- | --- |
+| Purpose | Teach the model | Use the model |
+| Data | Huge datasets | New, user-provided inputs |
+| Compute | Long, expensive GPU/TPU jobs | Real-time, repeated workloads |
+| Cost model | Mostly one-time | Ongoing and scales with traffic |
+| Hardware | Multi-node clusters | Smaller clusters, optimized runtimes and cache usage |
+| Time | Hours to weeks | Milliseconds to seconds |
+| Tools | PyTorch, JAX, DeepSpeed, Megatron | vLLM, SGLang, TensorRT-LLM, MAX, LMDeploy |
+
+## FAQs
+
+### Where do training and inference fit in the LLM lifecycle?
+
+Training happens early in the lifecycle. The model learns patterns, language structure, and general knowledge. After that, the model goes through alignment and optional fine-tuning. Inference comes last. It’s the stage where the model is deployed and serves real users in production. You can think of training as “building the model” and inference as “putting the model to work.”
+
+### Why does LLM inference often cost more than training?
+
+Even though training an LLM is expensive, it usually happens once. Inference, on the other hand, runs every time a user sends a request. As traffic grows, the number of inference calls grows with it. Each request uses GPU compute, memory, and network bandwidth. Over time, this ongoing demand can make inference the larger long-term expense, especially for applications with heavy usage or long prompts.
+
+### Should I train my own LLM?
+
+In most cases, no. Training a new LLM from scratch requires massive datasets, specialized hardware, and a dedicated research team. Most companies get better results by starting with an existing open-source model and then fine-tuning or customizing it for their domain. Full training only makes sense if you’re solving a problem that existing models can’t handle or you have strict control requirements that fine-tuning can’t meet.
+
+### Is fine-tuning considered training or inference?
+
+Fine-tuning is a form of training. You update some of the model’s weights using new data to adapt it to a specific task or domain. Inference doesn’t change any weights. It only uses the model to generate predictions. See the [fine-tuning section](../getting-started/llm-fine-tuning) to learn more.

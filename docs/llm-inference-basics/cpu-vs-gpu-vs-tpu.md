@@ -29,6 +29,25 @@ Tensor Processing Units (TPUs) are custom-built by Google to accelerate AI workl
 
 TPUs are behind some of the most advanced AI applications today: agents, recommendation systems and personalization, image, video & audio synthesis, and more. Google uses TPUs in Search, Photos, Maps, and to power Gemini and DeepMind models.
 
+---
+
+Here is a side-by-side comparison:
+
+| Item | CPU | GPU | TPU |
+| --- | --- | --- | --- |
+| **Design purpose** | General-purpose computing | Parallel computing for graphics and deep learning | Optimized for dense tensor operations |
+| **Core strength** | Flexibility, handles many types of tasks | Large-scale parallelism, great for training and inference | Extreme efficiency for tensor operations |
+| **Parallelism** | Low | High | Very high |
+| **Best for** | Branching logic, small workloads, classical apps | Training and serving LLMs, image models, video tasks | Large-scale training and high-throughput inference |
+| **Memory type** | DRAM | GDDR / HBM | HBM |
+| **Memory bandwidth** | Low | High | Very high |
+| **Latency** | Low latency per core | Higher latency but amortized by parallelism | Low latency on matrix ops |
+| **Power efficiency** | Moderate | Moderate to high | Very high for ML workloads |
+| **Software ecosystem** | Mature, universal | CUDA, ROCm, PyTorch, TensorFlow | XLA, JAX, TensorFlow |
+| **Cost** | Low | Medium to high | High, available mainly through cloud |
+| **Scalability** | Limited for deep learning | Scales well across multi-GPU setups; LLMs face cold start problems | Strong scaling in TPU pods |
+| **Example use cases** | Data preprocessing, backend services, running small local models | LLM training and inference | Large-batch training, production inference at Google |
+
 ## Choosing the right hardware for your LLM inference
 
 Selecting the appropriate hardware requires you to understand your model size, inference volume, latency requirements, cost constraints, and available infrastructure. GPUs remain the most popular choice due to their versatility and broad support, while TPUs offer compelling advantages for certain specialized scenarios, and CPUs still have a place for lightweight, budget-conscious workloads.
