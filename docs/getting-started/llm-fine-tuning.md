@@ -37,7 +37,7 @@ Key features:
 
 - Supports popular open-weight models like Llama, Pythia, Falcon, and MPT.
 - Flexible training options: full fine-tuning, LoRA, QLoRA, ReLoRA, and GPTQ.
-- Compatible with advanced techniques like xFormers, Flash Attention, ROPE scaling, Liger kernel, and sample packing.
+- Compatible with advanced techniques like xFormers, [FlashAttention](../inference-optimization/flashattention), ROPE scaling, Liger kernel, and sample packing.
 - Scales from single GPU setups to multi-GPU training using FSDP or DeepSpeed.
 - Easy to run locally with Docker or on cloud infrastructure.
 
