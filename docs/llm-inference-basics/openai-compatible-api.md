@@ -40,7 +40,7 @@ OpenAI-compatible APIs address these challenges by providing:
 - **Seamless migration**: Move between providers or self-hosted deployments with minimal disruption.
 - **Consistent integration**: Maintain compatibility with tools and frameworks that rely on the OpenAI API schema (e.g., `chat/completions`, `embeddings` endpoints).
 
-Many [inference backends](../getting-started/choosing-the-right-inference-framework) (e.g., vLLM and SGLang) and model serving frameworks (e.g., BentoML) now provide OpenAI-compatible endpoints out of the box. This makes it easy to switch between different models without changing client code.
+Many [inference backends](../getting-started/choosing-the-right-inference-framework) (e.g., vLLM and SGLang) and model serving frameworks (e.g., BentoML) provide OpenAI-compatible endpoints out of the box. This makes it easy to switch between different models without changing client code.
 
 ## How to call an OpenAI-compatible API
 
@@ -65,6 +65,8 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message)
 ```
+
+Note that the OpenAI API requires the `api_key` field. Most inference frameworks don’t validate this value, so you can use anything, like `api_key="EMPTY"`.
 
 You can also call the API directly using a simple HTTP request. Here's an example using `curl`:
 
