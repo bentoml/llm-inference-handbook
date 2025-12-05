@@ -48,6 +48,18 @@ Inference runtimes are constantly updated. The best tool today may be missing fe
 
 To stay flexible, your infrastructure should be runtime-agnostic. This lets you combine the best of each tool without getting locked into a single stack.
 
+## Scaling from local LLMs to distributed inference
+
+Many teams follow the same general path as they scale LLM inference.
+
+They often begin with tools like Ollama to run models locally on a laptop or small workstation. This works well for quick demos and early prototyping. It’s simple and private, but limited to single-user workloads with no real concurrency or batching.
+
+From there, teams move to high-performance server runtimes like vLLM. These frameworks provide continuous batching, KV cache optimizations, and improved GPU utilization on data center GPUs. However, most of these runtimes lack built-in multi-region routing, automatic failover, and true horizontal scaling. GPU provisioning, performance tuning, and fault tolerance also remain complex and time-consuming to implement.
+
+When teams need to run and scale inference across multiple GPUs clusters, regions or clouds, they typically adopt distributed inference platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide the advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
+
+Read this [blog post](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference) to explore this progression in more detail.
+
 ## FAQs
 
 ### Are all inference frameworks compatible with every LLM?
@@ -65,4 +77,5 @@ A good path is to begin small and level up as you go. Many people start with Oll
 <LinkList>
   ## Additional resources
   * [Benchmarking LLM Inference Backends: vLLM, LMDeploy, MLC-LLM, TensorRT-LLM, and TGI](https://www.bentoml.com/blog/benchmarking-llm-inference-backends)
+  * [3 Levels from Laptop to Cluster-Scale Distributed Inference](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference)
 </LinkList>
