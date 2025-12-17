@@ -23,6 +23,8 @@ If you're building high-throughput, low-latency applications, such as chatbots a
 - [LMDeploy](https://github.com/InternLM/lmdeploy). An inference backend focusing on delivering high decoding speed and efficient handling of concurrent requests. It supports various quantization techniques, making it suitable for deploying large models with reduced memory requirements.
 - [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM). An inference backend that leverages NVIDIA's TensorRT, a high-performance deep learning inference library. It is optimized for running large models on NVIDIA GPUs, providing fast inference and support for advanced optimizations like quantization.
 - [Hugging Face TGI](https://github.com/huggingface/text-generation-inference). A toolkit for deploying and serving LLMs. It is used in production at Hugging Face to power Hugging Chat, the Inference API and Inference Endpoint.
+  
+  Note that Hugging Face TGI is now in **maintenance mode**. This means it is still supported and usable, but there will no longer be major feature development or new performance optimizations. If you’re running TGI in production, it’s worth planning an upgrade path as your performance or scaling needs grow.
 
 If you're working with limited hardware or targeting desktop/edge devices, these tools are optimized for low-resource environments:
 
