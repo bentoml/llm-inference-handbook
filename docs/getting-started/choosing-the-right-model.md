@@ -61,6 +61,7 @@ Here are common examples:
   ## Additional resources
   * [Model composition](https://docs.bentoml.com/en/latest/get-started/model-composition.html)
   * [The Complete Guide to DeepSeek Models: From V3 to R1 and Beyond](https://www.bentoml.com/blog/the-complete-guide-to-deepseek-models-from-v3-to-r1-and-beyond)
+  * [The Best Open-Source Small Language Models (SLMs) in 2026](https://www.bentoml.com/blog/the-best-open-source-small-language-models)
   * [A Guide to Open-Source Image Generation Models](https://www.bentoml.com/blog/a-guide-to-open-source-image-generation-models)
   * [A Guide to Open-Source Embedding Models](https://www.bentoml.com/blog/a-guide-to-open-source-embedding-models)
   * [Multimodal AI: A Guide to Open-Source Vision Language Models](https://www.bentoml.com/blog/multimodal-ai-a-guide-to-open-source-vision-language-models)
