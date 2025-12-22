@@ -57,6 +57,72 @@ Here are common examples:
 - **Vision language models (VLMs)**. Models such as NVLM 1.0 and Qwen2.5-VL combine visual and textual understanding, supporting tasks like image captioning, visual Q&A, or reasoning over screenshots and diagrams.
 - **Text-to-speech (TTS) models**. They can convert text into natural-sounding speech. When integrated with LLMs, they can be used in voice-based agents, accessible interfaces, or immersive experiences.
 
+## Where to get models
+
+Once you know what kind of model you need, the next question is simple: where do you actually find them?
+
+Most teams today don’t train models from scratch. They pull from open model hubs, adapt them, and deploy.
+
+### Hugging Face
+
+[Hugging Face](https://huggingface.co/models) is the default starting point for most teams. It hosts hundreds of thousands of open models across text, vision, audio, and multimodal tasks. You can find base models, instruct models, chat variants, embeddings, diffusion models, and more.
+
+Why people use it:
+
+- Massive ecosystem and community adoption
+- Clear model cards with license, benchmarks, and intended use
+- Native support in most inference frameworks (e.g., vLLM, SGLang, TensorRT-LLM)
+- Easy access to weights, configs, and tokenizers
+
+Note that **not all models are equally accessible on Hugging Face**. Some models are fully open and can be downloaded without authentication. Others are gated, meaning you must accept specific license terms and use a [Hugging Face API token](https://huggingface.co/docs/hub/en/security-tokens) to access the weights.
+
+This usually happens when:
+
+- The model has a restricted or custom license
+- The authors want visibility into who is using the model
+- The model is released for research or controlled commercial use
+
+In practice, this means you may need to:
+
+- Create a Hugging Face account
+- Generate an API token
+- Pass that token to your [inference framework](choosing-the-right-inference-framework) or deployment environment (e.g., via an environment variable like `HF_TOKEN`)
+
+Models that require gated access often come with stricter usage terms, less operational polish, or fewer guarantees around long-term availability.
+
+A simple rule of thumb: If a model requires a token and manual approval, double-check whether it fits your production and legal constraints before building on it.
+
+Other things to watch for:
+
+- License differences (Apache-2.0, MIT, custom)
+- VRAM requirements hidden behind parameter counts
+- Some models are research-grade, not production-ready
+
+Always read the model card before testing. It tells you what the model is actually good at and what it’s bad at.
+
+### ModelScope
+
+[ModelScope](https://www.modelscope.cn/models) is a major open model hub operated by Alibaba. It has strong coverage of:
+
+- Chinese and multilingual LLMs
+- Vision-language models
+- Speech and multimodal models
+- Models optimized for local and regional use cases
+
+For teams building products for Chinese-speaking users, or deploying in regions where Hugging Face access may be slower or restricted, ModelScope is often the first place to look. Many models released here eventually appear on Hugging Face, but some remain ModelScope-first or ModelScope-only for a period of time.
+
+### OpenRouter
+
+[OpenRouter](https://openrouter.ai/) is less of a traditional “model hub” and more of a model access layer.
+
+Instead of downloading weights and running models yourself, OpenRouter lets you:
+
+- Access many open and proprietary models through a single API
+- Compare behavior, latency, and cost across models
+- Route traffic dynamically between models
+
+This is useful for early-stage prototyping, A/B testing, or evaluating models before committing to self-hosting. However, it’s not a replacement for owning your inference stack if you need tight control over performance, data, or cost at scale.
+
 <LinkList>
   ## Additional resources
   * [Model composition](https://docs.bentoml.com/en/latest/get-started/model-composition.html)
