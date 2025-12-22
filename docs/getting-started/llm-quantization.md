@@ -110,6 +110,10 @@ Highlights:
 
 GPTQ is widely used in open-source model serving pipelines, especially with AutoGPTQ. It is a go-to choice for high-speed, low-memory inference of large models.
 
+---
+
+Instead of quantizing a model yourself, you can often start with an already quantized model from [Hugging Face](choosing-the-right-model/#hugging-face). It hosts many pre-quantized variants, such as 8-bit and 4-bit models, that are ready for inference and optimized for lower memory usage and faster deployment. At the same time, it also provides full-precision base models if you want to apply your own quantization strategy.
+
 <LinkList>
   ## Additional resources
   * [Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference](https://arxiv.org/abs/1712.05877)

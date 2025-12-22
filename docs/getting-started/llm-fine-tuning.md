@@ -95,6 +95,10 @@ Key features:
 - Quantization and adapter support: 16-bit full-tuning, freeze-tuning, LoRA, and 2–8 bit QLoRA via formats like GPTQ, AWQ, HQQ, and AQLM.
 - Advanced optimization: GaLore, DoRA, LongLoRA, LoftQ, LLaMA Pro, Mixture-of-Depths, and more.
 
+---
+
+Instead of fine-tuning a model yourself, you can often start with an existing fine-tuned or instruction-tuned model from [Hugging Face](choosing-the-right-model/#hugging-face). It hosts a large collection of community and officially released fine-tuned models that are ready to use out of the box. At the same time, it also provides base models and foundation checkpoints if you want full control and plan to fine-tune the model yourself. In practice, teams frequently explore both options on Hugging Face before deciding whether to reuse an existing model or invest in custom fine-tuning.
+
 ## FAQs
 
 ### How is fine-tuning different from inference?

@@ -65,7 +65,7 @@ Most teams today don’t train models from scratch. They pull from open model hu
 
 ### Hugging Face
 
-[Hugging Face](https://huggingface.co/models) is the default starting point for most teams. It hosts hundreds of thousands of open models across text, vision, audio, and multimodal tasks. You can find base models, instruct models, chat variants, embeddings, diffusion models, and more.
+[Hugging Face](https://huggingface.co/models) is the default starting point for most teams. It hosts hundreds of thousands of open models across text, vision, audio, and multimodal tasks. You can find base models, instruct models, chat variants, embeddings, and diffusion models there. Hugging Face also provides many [fine-tuned](./llm-fine-tuning) and [quantized model](./llm-quantization) variants, making it easy to experiment with instruction-tuned or low-VRAM models without doing fine-tuning yourself.
 
 Why people use it:
 
