@@ -88,7 +88,7 @@ In practice, this means you may need to:
 - Generate an API token
 - Pass that token to your [inference framework](choosing-the-right-inference-framework) or deployment environment (e.g., via an environment variable like `HF_TOKEN`)
 
-This is an early signal of production readiness. Models that require gated access often come with stricter usage terms, less operational polish, or fewer guarantees around long-term availability. They can still be excellent models, but they may require more diligence around licensing, compliance, and deployment workflows.
+Models that require gated access often come with stricter usage terms, less operational polish, or fewer guarantees around long-term availability.
 
 A simple rule of thumb: If a model requires a token and manual approval, double-check whether it fits your production and legal constraints before building on it.
 
