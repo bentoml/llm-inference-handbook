@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 description: An OpenAI-compatible API implements the same request and response formats as OpenAI's official API, allowing developers to switch between different models without changing existing code.
 keywords:
     - OpenAI-compatible API, OpenAI-compatible endpoint, OpenAI-compatible server

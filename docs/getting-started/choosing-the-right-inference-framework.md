@@ -58,7 +58,7 @@ They often begin with tools like Ollama to run models locally on a laptop or sma
 
 From there, teams move to high-performance server runtimes like vLLM. These frameworks provide continuous batching, KV cache optimizations, and improved GPU utilization on data center GPUs. However, most of these runtimes lack built-in multi-region routing, automatic failover, and true horizontal scaling. GPU provisioning, performance tuning, and fault tolerance also remain complex and time-consuming to implement.
 
-When teams need to run and scale inference across multiple GPUs clusters, regions or clouds, they typically adopt distributed inference platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide the advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
+When teams need to run and scale inference across multiple GPUs clusters, regions or clouds, they typically adopt [distributed inference](../llm-inference-basics/distributed-inference) platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide the advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
 
 Read this [blog post](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference) to explore this progression in more detail.
 
