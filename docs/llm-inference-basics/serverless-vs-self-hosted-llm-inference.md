@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 description: Understand the differences between serverless LLM APIs and self-hosted LLM deployments.
 keywords:
     - Serverless vs. Self-hosted LLM inference

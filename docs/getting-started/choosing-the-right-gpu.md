@@ -72,7 +72,7 @@ When selecting GPUs, remember that raw benchmark numbers don’t tell the whole 
 
 [VRAM](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference) sets the ceiling on model size and context length. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized.
 
-A major challenge is the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
+A major challenge is the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](../llm-inference-basics/distributed-inference) techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
 ### Memory bandwidth
 
