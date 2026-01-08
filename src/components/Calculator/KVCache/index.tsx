@@ -193,6 +193,7 @@ function KVCacheCalculator() {
                 <option value={32}>FP32 (32-bit)</option>
                 <option value={16}>FP16 (16-bit)</option>
                 <option value={8}>INT8 (8-bit)</option>
+                <option value={4}>FP4 (4-bit)</option>
               </select>
             </FormItem>
           </div>
