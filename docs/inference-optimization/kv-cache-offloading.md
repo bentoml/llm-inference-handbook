@@ -28,6 +28,20 @@ This results in inefficient memory usage, as valuable GPU memory is tied up by i
 
 To solve these problems, KV cache offloading moves inactive or less frequently accessed cache data from GPU memory to lower-cost, higher-capacity storage such as CPU RAM, local SSDs, or remote object storage. When a user resumes interaction or another user accesses the same content, the cache can be reloaded into GPU memory on demand. This avoids costly recomputation while freeing up GPU resources for active workloads.
 
+## How to calculate the KV cache size
+
+When offloading the KV cache, it’s useful to understand how much memory it actually consumes.
+
+In transformer-based LLMs, each attention layer needs to store two vectors (a key and a value) for every token in the input sequence. Each layer contains multiple attention heads, and all heads typically have the same dimension.
+
+To estimate how much memory the KV cache consumes, use the following calculator:
+
+<KVCacheCalculator />
+
+:::info 
+If you already know the model’s dimension, you can simplify the formula by replacing `H × D` with it (Simplified Calculation above).
+:::
+
 ## When should you offload the KV cache for LLMs?
 
 KV cache offloading is especially useful when:
@@ -51,20 +65,6 @@ Offloading the KV cache offers several important advantages for scaling and opti
 While KV cache offloading can significantly improve memory efficiency and throughput, the speed of the offloading target is critical. If the storage tier (e.g., CPU RAM or disk) is too slow, the overhead of transferring KV data back to the GPU may negate the benefits, especially in latency-sensitive applications.
 
 In short, make sure the cost of transferring data is lower than recomputing the cache from scratch. This is often the case in long, multi-turn conversations, where reusing previous context is crucial and recomputation would be expensive.
-
-## How to calculate the KV cache size
-
-When offloading the KV cache, it’s useful to understand how much memory it actually consumes.
-
-In transformer-based LLMs, each attention layer needs to store two vectors (a key and a value) for every token in the input sequence. Each layer contains multiple attention heads, and all heads typically have the same dimension.
-
-To estimate how much memory the KV cache consumes, use the following calculator:
-
-<KVCacheCalculator />
-
-:::info 
-If you already know the model’s dimension, you can simplify the formula by replacing `H × D` with it (Simplified Calculation above).
-:::
 
 ## Offloading the KV cache with LMCache
 
