@@ -3,6 +3,22 @@ body {
   height: 100%;
 }
 
+/* Fixed wrapper so banner and navbar stick together on scroll */
+.navbarWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--ifm-z-index-fixed);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ifm-navbar-background-color);
+}
+
+.navbarSpacer {
+  flex-shrink: 0;
+}
+
 /* Docusaurus-specific utility class */
 :global(.docusaurus-mt-lg) {
   margin-top: 3rem;
