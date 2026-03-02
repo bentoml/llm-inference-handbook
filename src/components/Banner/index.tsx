@@ -38,16 +38,15 @@ export default function Banner({ onVisibilityChange }: BannerProps) {
 
   return (
     <div className={styles.banner} role="banner">
-      📢{' '}
+      🎉 BentoML is now part of Modular.{' '}
       <a
         className={styles.bannerLink}
-        href="https://www.bentoml.com/blog/bentoml-is-joining-modular"
-        target="_self"
+        href="https://www.modular.com/blog/bentoml-joins-modular"
+        target="_blank"
         rel="noopener noreferrer"
       >
-        BentoML joins Modular
-      </a>{' '}
-      to build a complete stack for production AI inference.
+        Read the announcement.
+      </a>
       <button
         type="button"
         className={styles.closeButton}
