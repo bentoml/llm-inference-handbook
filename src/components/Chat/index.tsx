@@ -43,7 +43,7 @@ function Chat() {
           </p>
           <div>
             <a
-              href="https://l.bentoml.com/contact-us-llm-inference-handbook"
+              href="https://www.modular.com/request-demo?utm_source=bentoml_llm"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.chatLink}

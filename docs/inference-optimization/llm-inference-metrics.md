@@ -142,7 +142,7 @@ At Bento, we offer deployment and inference optimization strategies tailored to 
 ![bento-different-inference-optimizations.png](./img/bento-different-inference-optimizations.png)
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
+[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
 </div>
     
 ## Goodput

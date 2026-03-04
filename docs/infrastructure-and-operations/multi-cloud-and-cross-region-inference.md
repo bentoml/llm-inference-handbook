@@ -119,7 +119,7 @@ This path reduces time-to-market and operational overhead, but you should carefu
 The Bento Inference Platform simplifies multi-cloud and cross-region LLM deployments. Instead of building everything from scratch, you get global load balancing, automated model routing, and unified observability out of the box. Bring your own cloud, deploy in any region, and ensure your data stays within your secure boundary.
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
+[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
 </div>
 
 <LinkList>
