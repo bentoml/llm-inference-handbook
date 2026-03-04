@@ -208,7 +208,7 @@ The Bento Inference Platform provides a production-ready foundation for distribu
 Rather than stitching together everything yourself, a platform-based approach allows teams to focus on models and applications, while the distributed inference system is managed as a cohesive layer.
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
+[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
 </div>
 
 <LinkList>

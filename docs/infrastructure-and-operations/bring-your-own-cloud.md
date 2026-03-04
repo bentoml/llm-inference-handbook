@@ -129,7 +129,7 @@ With [Bento BYOC](https://www.bentoml.com/blog/byoc-to-bentocloud-privacy-flexib
 - [Scale across multiple regions and clouds](./multi-cloud-and-cross-region-inference) while maintaining consistent governance and security policies.
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Schedule a Demo</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
+[<Button>Schedule a Demo</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
 </div>
 
 ---

@@ -86,7 +86,7 @@ If your on-prem cluster runs out of capacity, Bento allows you to seamlessly ove
 ![overflow-to-cloud-gpus.png](./img/overflow-to-cloud-gpus.png)
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://l.bentoml.com/contact-us-llm-inference-handbook)
+[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
 </div>
 
 <LinkList>
