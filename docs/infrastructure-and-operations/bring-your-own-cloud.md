@@ -117,9 +117,9 @@ For most enterprise LLM workloads, BYOC provides the best middle ground. It’s 
 
 ---
 
-At Bento, we offer a fully-featured AI inference platform which can be deployed into your own cloud account for maximum control, security, and customization.
+We offer a fully-featured AI inference platform which can be deployed into your own cloud account for maximum control, security, and customization.
 
-With [Bento BYOC](https://www.bentoml.com/blog/byoc-to-bentocloud-privacy-flexibility-and-cost-efficiency-in-one-package), you can:
+With the BYOC option, you can:
 
 - Deploy models inside your own VPC across major clouds (e.g., AWS, GCP, Azure) or NeoCloud providers (e.g., CoreWeave).
 - Keep full control of your data plane. Your models and data never leave your private environment.
@@ -146,7 +146,7 @@ In SaaS, the vendor hosts and manages everything in their own environment. In BY
 
 ### What are the trade-offs of BYOC?
 
-You gain more sovereignty and flexibility but take on part of the operational burden, namely managing your own cloud environment, IAM roles, and monitoring. Many teams offset this by using managed BYOC solutions like Bento BYOC.
+You gain more sovereignty and flexibility but take on part of the operational burden, namely managing your own cloud environment, IAM roles, and monitoring. Many teams offset this by using managed BYOC solutions.
 
 <LinkList>
   ## Additional resources

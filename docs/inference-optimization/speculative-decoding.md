@@ -75,7 +75,7 @@ When evaluating speculative decoding, three metrics matter most:
     
 ### How acceptance rate impacts performance
 
-In theory, the effectiveness of speculative decoding depends heavily on acceptance rate. To study this, the Bento team patched vLLM to simulate speculative decoding at different α and γ values (no draft model and the target model accepts tokens at preset rates).
+In theory, the effectiveness of speculative decoding depends heavily on acceptance rate. To study this, we patched vLLM to simulate speculative decoding at different α and γ values (no draft model and the target model accepts tokens at preset rates).
 
 Here are the key findings:
 
@@ -88,7 +88,7 @@ In practice, however, the speedup was lower than expected. [Read this blog post]
 
 ### How performance varies under different workloads
 
-The Bento team also tested speculative decoding under different concurrency levels and tensor parallelism (TP) configurations.
+We also tested speculative decoding under different concurrency levels and tensor parallelism (TP) configurations.
 
 <figure>
 ![tp-1-spec-decoding.png](./img/tp-1-spec-decoding.png)

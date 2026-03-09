@@ -137,7 +137,7 @@ There are two common ways to measure throughput:
 
 ---
 
-At Bento, we offer deployment and inference optimization strategies tailored to your use case. You can easily leverage them to optimize for throughput, latency, or cost.
+We provide our customers with tailored deployment and inference optimization strategies. You can easily leverage them to optimize for throughput, latency, or cost.
 
 ![bento-different-inference-optimizations.png](./img/bento-different-inference-optimizations.png)
 

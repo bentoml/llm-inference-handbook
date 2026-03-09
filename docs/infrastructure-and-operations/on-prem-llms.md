@@ -76,12 +76,12 @@ Hybrid deployments give you flexibility without forcing you to compromise entire
 
 ---
 
-At Bento, we provide a unified compute fabric — a layer of orchestration and abstraction that allows enterprises to deploy and scale inference workloads across:
+We work to provide a unified compute fabric — a layer of orchestration and abstraction that allows enterprises to deploy and scale inference workloads across:
 
 - On-prem GPU clusters
 - Bring Your Own Cloud (including NeoCloud, multi-cloud and multi-region setups) environments
 
-If your on-prem cluster runs out of capacity, Bento allows you to seamlessly overflow traffic to cloud GPUs. This ensures you always have enough compute power as you scale.
+If your on-prem cluster runs out of capacity, we allow you to seamlessly overflow traffic to cloud GPUs. This ensures you always have enough compute power as you scale.
 
 ![overflow-to-cloud-gpus.png](./img/overflow-to-cloud-gpus.png)
 

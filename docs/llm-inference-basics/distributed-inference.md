@@ -197,10 +197,10 @@ This orchestration layer is often where most engineering effort goes, especially
 
 For many teams, building and maintaining all of these layers internally becomes a long-term operational burden. This is where a production inference platform can significantly reduce complexity.
 
-The Bento Inference Platform provides a production-ready foundation for distributed inference, integrating:
+Our Inference Platform provides a production-ready foundation for distributed inference, integrating:
 
 - Intelligent request routing and scheduling
-- Support for modern inference runtimes such as vLLM and SGLang
+- Support for modern inference runtimes
 - Multi-GPU, cross-region and multi-cloud deployment
 - Autoscaling, fault tolerance, and unified observability
 - Cost-aware resource management across environments
