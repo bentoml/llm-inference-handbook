@@ -38,8 +38,7 @@ function Chat() {
           </button>
           <h4>Need Help with LLM Inference?</h4>
           <p>
-            Top AI teams use Bento to build fast, cost-efficient LLM serving
-            solutions tailored to their workloads.
+             We help top AI teams build high-performance LLM inference systems - fast, portable, no hardware lock-in.
           </p>
           <div>
             <a

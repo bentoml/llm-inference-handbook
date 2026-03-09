@@ -76,7 +76,7 @@ The open-source community is actively working on distributed serving strategies.
 
 ---
 
-Optimizing LLM prefix caching requires flexible customization in your LLM serving and infrastructure stack. At Bento, we provide the infrastructure for dedicated and customizable LLM deployments with fast auto-scaling and scaling-to-zero capabilities to ensure resource efficiency.
+Optimizing LLM prefix caching requires flexible customization in your LLM serving and infrastructure stack. We work to provide the infrastructure for dedicated and customizable LLM deployments with fast auto-scaling and scaling-to-zero capabilities to ensure resource efficiency.
 
 <div style={{ margin: '3rem 0' }}>
 [<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)

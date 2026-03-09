@@ -132,7 +132,7 @@ Things to keep in mind:
 
 ---
 
-At [Bento](https://www.bentoml.com/), we work to help enterprises self-host any open and custom LLMs on either NVIDIA or AMD GPUs with the best availability and rates. Let us know if you need custom GPU solutions for your use case.
+We work to help enterprises self-host any open and custom LLMs on NVIDIA, AMD or any other accelerators with the best availability and rates. Let us know if you need custom GPU solutions for your use case.
 
 <div style={{ margin: '3rem 0' }}>
 [<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
