@@ -1,0 +1,261 @@
+.calculator {
+  border: 1px solid #bbf7d0;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  padding: 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: linear-gradient(to right, #eef2ff, #eff6ff);
+}
+
+.headerTitle {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #111827;
+}
+
+.headerDescription {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #4b5563;
+  margin-top: 0.375rem;
+}
+
+.body {
+  padding: 1.5rem;
+}
+
+/* ── Preset selector ── */
+
+.presetSelector {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.presetLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+  padding-top: 0.3125rem;
+}
+
+.presetList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.presetList button {
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  border: 1px solid #d1d5db;
+  background: transparent;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  white-space: nowrap;
+}
+
+.presetList button:hover:not(.presetActive) {
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.presetActive {
+  background: #1e40af !important;
+  border-color: #1e40af !important;
+  color: #fff !important;
+}
+
+/* ── Body layout ── */
+
+.bodyContent {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.input,
+.output {
+  flex: 1;
+}
+
+.input .title {
+  color: #111827;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* ── Output panel ── */
+
+.result {
+  color: #111827;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.result span {
+  color: #2563eb;
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #4b5563;
+}
+
+.formula {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #374151;
+}
+
+.note {
+  border: 1px solid #fde68a;
+  background: #fffbeb;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #374151;
+}
+
+.label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.code {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+/* ── GPU recommendations ── */
+
+.gpuSection {
+  margin-top: 1.5rem;
+}
+
+.gpuSectionLabel {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.625rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.gpuGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gpuCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.375rem;
+  border: 1px solid;
+}
+
+.gpuCard1 {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.gpuCard2 {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.gpuCard4 {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.gpuCard8 {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.gpuCount {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #374151;
+  min-width: 1.75rem;
+  text-align: center;
+}
+
+.gpuInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 1;
+}
+
+.gpuName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.gpuVram {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.gpuTotal {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.noGpu {
+  font-size: 0.875rem;
+  color: #6b7280;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .bodyContent {
+    display: block;
+  }
+
+  .output {
+    margin-top: 1.5rem;
+  }
+}

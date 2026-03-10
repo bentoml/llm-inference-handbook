@@ -8,6 +8,7 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import GPUMemoryCalculator from '@site/src/components/Calculator/GPUMemory';
 
 # Calculating GPU memory for serving LLMs
 
@@ -26,11 +27,13 @@ Memory (GB) = P * (Q / 8) * (1 + Overhead)
 - **Q**: Bit precision (e.g., 16, 32), division by 8 converts bits to bytes
 - **Overhead (%)**: Additional memory or temporary usage during inference (e.g., KV cache, activation buffers, optimizer states)
 
-For example, to load a 70B model in FP16 with 20% overhead, you need around 168 GB of GPU memory:
+Use the calculator below to estimate GPU memory requirements for your model:
 
-```bash
-Memory = 70 × (16 / 8) × 1.2 = 168 GB
-```
+<GPUMemoryCalculator />
+
+:::note
+Not all GPUs support all precision formats natively. A100 and other Ampere GPUs support INT8 but do not support FP8 in hardware. Native FP8 requires Hopper, Ada, or newer architectures. If your inference stack relies on FP8 kernels, make sure your GPU supports them. Some 4-bit models use INT4 quantization, while native FP4 support relies on newer architectures and software stacks.
+:::
 
 <LinkList>
   ## Additional resources
