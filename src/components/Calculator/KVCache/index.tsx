@@ -26,7 +26,6 @@ const MODE_OPTIONS = {
   }
 }
 
-// We don't want the content here to affect SEO, so all content tags are implemented using div
 function KVCacheCalculator() {
   const [data, setData] = useState<
     | {

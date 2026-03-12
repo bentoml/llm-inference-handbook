@@ -8,6 +8,7 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import QuantizationVisualizer from '@site/src/components/Calculator/Quantization';
 
 # LLM quantization
 
@@ -40,9 +41,15 @@ Different quantization formats offer a balance between size savings and accuracy
 | **FP32** | 100% | None | Training | High | Full precision, but slow |
 | **FP16** | 50% | Minimal | Training & Inference | Medium | Standard for most LLMs |
 | **FP8** | 25% | Low | Training & Inference | Low | Still emerging |
-| **int8** | 25% | Low | Inference | Low | Good all-around trade-off |
-| **int4** | 12.5% | Moderate | Inference | Very Low | Needs methods like GPTQ/AWQ |
-| **int2** | 6.25% | High | Rare/Experimental | Tiny | Accuracy often poor |
+| **INT8** | 25% | Low | Inference | Low | Good all-around trade-off |
+| **INT4** | 12.5% | Moderate | Inference | Very Low | Needs methods like GPTQ/AWQ |
+| **INT2** | 6.25% | High | Rare/Experimental | Tiny | Accuracy often poor |
+
+Use the visualizer below to see how these tradeoffs play out for your model size. Note that for MoE models, this calculator uses total stored parameters, not activated parameters per token.
+
+<QuantizationVisualizer />
+
+This calculator estimates **weight memory only**. Use the [GPU memory calculator](./calculating-gpu-memory-for-llms) to estimate your overall requirements.
 
 ## What to quantize
 
