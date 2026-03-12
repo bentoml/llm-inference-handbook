@@ -11,7 +11,7 @@ import Newsletter from '@site/src/components/Newsletter';
 
 # What is LLM inference?
 
-LLM inference refers to using trained LLMs, such as GPT-4, Llama 4, and DeepSeek-V3, to generate meaningful outputs from user inputs, typically provided as natural language prompts. During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
+LLM inference refers to using trained LLMs, such as GPT-4, Llama 4, and DeepSeek-V3, to generate meaningful outputs from user inputs, typically provided as natural language [prompts](./../getting-started/prompt-engineering). During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
 
 Essentially, this is the moment the LLM is actively "in action." Here are some real-world examples:
 
@@ -36,7 +36,7 @@ In the LLM space, people often use **inference server** or **inference framework
 - **An inference server** usually emphasizes the runtime component that receives requests, runs models, and returns results.
 - **An inference framework** often highlights the broader toolkit or library that provides APIs, optimizations, and integrations for serving models efficiently.
 
-Popular [inference frameworks](../getting-started/choosing-the-right-inference-framework) include vLLM, SGLang, TensorRT-LLM, and Hugging Face TGI. They’re designed to maximize GPU efficiency while making LLMs easier to deploy at scale.
+Popular [inference frameworks](../getting-started/choosing-the-right-inference-framework) include vLLM, SGLang, MAX, and TensorRT-LLM. They’re designed to maximize GPU efficiency while making LLMs easier to deploy at scale.
 
 ## What is inference optimization?
 

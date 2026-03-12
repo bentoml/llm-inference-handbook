@@ -17,7 +17,7 @@ For example, fine-tuning can significantly improve a model’s:
 
 - **Domain expertise**: Adapting a model for legal, medical, or programming-related tasks.
 - **Instruction following**: Ensuring the model adheres to specific formats, tones, or styles in its responses.
-- **Safety and alignment**: Reinforcing how the model handles sensitive or high-risk prompts.
+- **Safety and alignment**: Reinforcing how the model handles sensitive or high-risk [prompts](./prompt-engineering).
 
 ## Common fine-tuning frameworks
 
@@ -120,7 +120,7 @@ Here’s a clearer side-by-side comparison:
 
 ### How does LLM fine-tuning compare to other techniques like prompt engineering?
 
-Prompt engineering adjusts how you ask the model to get better answers. It’s quick, cheap, and doesn’t require training, but it has limits. Long prompts can get messy, and the model may still behave inconsistently.
+[Prompt engineering](./prompt-engineering) adjusts how you ask the model to get better answers. It’s quick, cheap, and doesn’t require training, but it has limits. Long prompts can get messy, and the model may still behave inconsistently.
 
 Fine-tuning actually changes the model. You feed it examples of what “good” looks like, and it learns to follow that pattern on its own. It’s more reliable for long-term use, especially when you need consistent tone, domain knowledge, or strict formatting.
 

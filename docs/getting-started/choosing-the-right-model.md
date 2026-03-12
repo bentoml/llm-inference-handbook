@@ -36,7 +36,7 @@ Base model examples: Qwen3.5-0.8B-Base, DeepSeek-V3-Base, GPT-style pretraining 
 
 Instruction-tuned models are built on top of base models. After the initial pretraining phase, these models go through a second training stage using datasets made up of instructions and their corresponding responses.
 
-This process teaches the models how to follow user prompts more reliably, so that they are better aligned with human expectations. They understand task intent and respond more coherently to commands like:
+This process teaches the models how to follow user [prompts](./prompt-engineering) more reliably, so that they are better aligned with human expectations. They understand task intent and respond more coherently to commands like:
 
 - “Summarize this article.”
 - “Explain how LLM inference works.”
