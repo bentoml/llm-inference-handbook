@@ -24,7 +24,6 @@ const GPU_CONFIGS = [
 
 const GPU_COUNTS = [1, 2, 4, 8] as const
 
-// We don't want the content here to affect SEO, so all content tags are implemented using div
 function GPUMemoryCalculator() {
   const [preset, setPreset] = useState('Llama 3.1 8B')
   const [params, setParams] = useState(8)
