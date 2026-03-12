@@ -33,7 +33,7 @@ Inference compute needs are ongoing and can become very high, especially as user
 
 --- 
 
-Here is a side-by-side comparison beteew training and inference:
+Here is a side-by-side comparison between training and inference:
 
 | Item | Training | Inference |
 | --- | --- | --- |
@@ -53,11 +53,11 @@ Training happens early in the lifecycle. The model learns patterns, language str
 
 ### Why does LLM inference often cost more than training?
 
-Even though training an LLM is expensive, it usually happens once. Inference, on the other hand, runs every time a user sends a request. As traffic grows, the number of inference calls grows with it. Each request uses GPU compute, memory, and network bandwidth. Over time, this ongoing demand can make inference the larger long-term expense, especially for applications with heavy usage or long prompts.
+Even though training an LLM is expensive, it usually happens once. Inference, on the other hand, runs every time a user sends a request. As traffic grows, the number of inference calls grows with it. Each request uses GPU compute, memory, and network bandwidth. Over time, this ongoing demand can make inference the larger long-term expense, especially for applications with heavy usage or long [prompts](./../getting-started/prompt-engineering).
 
 ### Should I train my own LLM?
 
-In most cases, no. Training a new LLM from scratch requires massive datasets, specialized hardware, and a dedicated research team. Most companies get better results by starting with an existing open-source model and then fine-tuning or customizing it for their domain. Full training only makes sense if you’re solving a problem that existing models can’t handle or you have strict control requirements that fine-tuning can’t meet.
+In most cases, no. Training a new LLM from scratch requires massive datasets, specialized hardware, and a dedicated research team. Most companies get better results by starting with an existing [open-source LLM](https://www.bentoml.com/blog/navigating-the-world-of-open-source-large-language-models) and then fine-tuning or customizing it for their domain. Full training only makes sense if you’re solving a problem that existing models can’t handle or you have strict control requirements that fine-tuning can’t meet.
 
 ### Is fine-tuning considered training or inference?
 

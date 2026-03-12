@@ -124,7 +124,7 @@ Re-prompting is a simple and effective way to get structured outputs using libra
 
 Here’s how it works:
 
-1. You send the model a prompt describing the desired format (for example, a JSON schema).
+1. You send the model a [prompt](./../prompt-engineering) describing the desired format (for example, a JSON schema).
 2. The library checks whether the response is valid.
 3. If not, it automatically re-prompts the model with details about what went wrong.
 4. The process repeats until the output passes validation or a retry limit is reached.

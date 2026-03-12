@@ -122,7 +122,7 @@ There are two common ways to measure throughput:
     Understanding both metrics helps you identify performance bottlenecks based on the nature of your inference workload. For example:
     
     - A summarization request that includes long documents (e.g., 2,000-token inputs) cares more about input TPS.
-    - A chatbot that generates long replies from short prompts (e.g., 20-token prompt → 500-token response) depends heavily on output TPS.
+    - A chatbot that generates long replies from short [prompts](./../getting-started/prompt-engineering) (e.g., 20-token prompt → 500-token response) depends heavily on output TPS.
     
     When reviewing benchmarks or evaluating LLM performance, **always check whether TPS metrics refer to input, output, or a combined view**. They highlight different strengths and limitations depending on the use case.
     
