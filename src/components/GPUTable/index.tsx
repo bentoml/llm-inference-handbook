@@ -115,7 +115,6 @@ function matchesVram(gpu: GPU, filter: VramFilter): boolean {
   return true
 }
 
-// We don't want the content here to affect SEO, so all content tags are implemented using div
 function GPUTable() {
   const [vendor, setVendor] = useState<'all' | Vendor>('all')
   const [vramFilter, setVramFilter] = useState<VramFilter>('all')
