@@ -8,6 +8,7 @@ keywords:
 
 import LinkList from '@site/src/components/LinkList';
 import Button from '@site/src/components/Button';
+import GPUTable from '@site/src/components/GPUTable';
 
 # Choosing the right GPU
 
@@ -107,21 +108,12 @@ Read the blog posts about the data center GPUs from NVIDIA and AMD for details:
 
 ## Matching GPUs to open-source LLMs
 
-Different models perform best on different types of GPUs. The table below maps popular NVIDIA and AMD GPUs to suitable open-source LLMs. Some models require **multiple GPUs to meet VRAM demands** or you may need optimization techniques like [quantization](./llm-quantization). 
+Different models perform best on different types of GPUs. The table below maps popular NVIDIA and AMD GPUs to suitable open-source LLMs. Some models require **multiple GPUs to meet VRAM demands** or you may need optimization techniques like [quantization](./llm-quantization).
 
-| **GPU** | **VRAM** | **Memory Bandwidth** | **Example LLMs** | **Notes** |
-| --- | --- | --- | --- | --- |
-| **NVIDIA T4** | 16 GB | 320 GB/s | Llama-2-7B (4-bit quantized) | Entry-level graphic card; cost-effective inference for small models (&lt;10GB) |
-| **NVIDIA L4** | 24 GB | 300 GB/s | Llama-3-8B, Gemma-3-4B, Qwen2.5-7B, Ministral-8B-Instruct-2410 | Cost-efficient mid-range GPU; widely available in cloud |
-| **AMD MI250** | 128 GB | 3.2 TB/s | Llama-3.1-8B, Qwen2.5-7B, Phi-3-medium-4k-instruct, gemma-7b-it | Strong memory bandwidth; solid AMD mid-tier option |
-| **NVIDIA A100** | 40/80 GB | 1.6–2.0 TB/s | Phi-3-medium-4k-instruct, Gemma-3-12B/27B, gpt-oss-20b, gpt-oss-120b, AI21-Jamba-Mini-1.5, Llama-3.3-70B, Qwen2.5-VL | Workhorse for medium to large models (>10GB) and complex computer vision tasks |
-| **NVIDIA H100** | 80 GB | 3.35 TB/s | Llama-3.3-70B, Llama-4-Scout, Llama 4 Maverick, gpt-oss-120b, DeepSeek-R1-Distill-Llama-70B, Qwen3-Next-80B-A3B-Instruct, GLM-4.5V | Optimized for transformer inference; excellent throughput at scale |
-| **NVIDIA H200** | 141 GB | 4.8 TB/s | DeepSeek-R1-0528, DeepSeek-V3.1-Terminus, DeepSeek-Prover-V2-671B, Qwen3-Coder-480B-A35B-Instruct | Large memory capacity; designed for next-gen LLMs |
-| **AMD MI300X** | 192 GB | 5.3 TB/s | gpt-oss-120b, Llama-3.3-70B, Llama-3.1-405B, DeepSeek-R1-0528, DeepSeek-V3.1-Terminus | High memory capacity; strong choice for large models |
-| **AMD MI325X** | 256 GB | 6.0 TB/s | gpt-oss-120b, Llama 3.3-70B, Llama-3.1-405B, DeepSeek-R1-0528, DeepSeek-V3.1-Terminus | 3rd Gen CDNA architecture; built for massive multi-GPU clusters |
+<GPUTable />
 
 :::note
-Use this table only as a reference. For production deployments, always benchmark your own models against the hardware.
+Use this table as a reference only. For production deployments, always benchmark your own models against the target hardware.
 :::
 
 Things to keep in mind:
