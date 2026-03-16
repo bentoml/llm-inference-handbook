@@ -2,8 +2,8 @@
 
 This repository contains the source content for [LLM Inference Handbook](https://bentoml.com/llm/), a practical guide for understanding, optimizing, scaling, and operating LLM inference.
 
-[![Twitter](https://badgen.net/badge/icon/@bentomlai/1DA1F2?icon=twitter&label=Follow)](https://twitter.com/bentomlai)
-[![Community](https://badgen.net/badge/Join/Community/cyan?icon=slack)](https://l.bentoml.com/join-slack)
+[![X](https://badgen.net/badge/icon/@bentomlai/1DA1F2?label=Follow)](https://x.com/bentomlai)
+[![Forum](https://badgen.net/badge/Join/Forum)](https://forum.modular.com/c/bento/31)
 
 ## 🔧 Local preview
 
