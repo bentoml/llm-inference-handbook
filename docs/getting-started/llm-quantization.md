@@ -4,6 +4,7 @@ description: Understand LLM quantization and different quantization formats and 
 keywords:
     - LLM quantization, how does quantization work, LLM quantization accuracy
     - Quantization formats, quantization types, quantization techniques
+    - Quantization vs pruning
     - AWQ, SmoothQuant, GPTQ
 ---
 
@@ -12,13 +13,13 @@ import QuantizationVisualizer from '@site/src/components/Calculator/Quantization
 
 # LLM quantization
 
-Quantization is a technique used to reduce the memory and compute requirements of models by converting their weights and activations from high-precision formats (like `FP32`) to lower-precision formats such as `int8`, `int4`, or even `int2`.
+Quantization is a technique used to reduce the memory and compute requirements of models by converting their weights and activations from high-precision formats (like FP32) to lower-precision formats such as INT8, INT4, or even INT2.
 
-Fewer bits mean lower the model’s memory consumption will be. For example:
+Fewer bits mean lower memory consumption for the model. For example:
 
 - A 7B model in FP32 format is highly precise, but it requires 28 GB of memory just for the weights.
 - The same model in FP16 cuts memory use in half.
-- Lower-precision formats like int8 or int4 compress the model even further, dramatically reducing the size.
+- Lower-precision formats like INT8 or INT4 compress the model even further, dramatically reducing the size.
 
 These figures only account for model weights. Runtime elements, such as attention caches, activations, and framework overhead, require additional memory.
 
@@ -57,6 +58,27 @@ Generally, you want to focus on what consumes the most memory without hurting pe
 
 - Model weights are the most commonly quantized component. They’re stable and contribute heavily to memory usage.
 - Activations can also be quantized, but this is trickier and may lead to more accuracy loss.
+
+## Quantization vs. pruning
+
+Quantization is not the only way to reduce model size. Another related technique is model pruning.
+
+Pruning removes parameters that contribute little to the output of a model. They can be individual weights, neurons, attention heads, or even entire layers. By eliminating redundant components, pruning produces a smaller and sparser model, which can reduce compute requirements and accelerate inference speed.
+
+Pruning and quantization are often used together in a deployment pipeline:
+
+1. Train the model
+2. Prune less important weights
+3. Fine-tune the model
+4. Quantize the weights
+5. Deploy for inference
+
+In simple terms:
+
+- Quantization reduces the number of bits used to represent each weight.
+- Pruning reduces the number of weights in the model.
+
+Both techniques aim to reduce memory usage and computational cost during inference. However, quantization is generally easier to apply in production systems because modern hardware provides strong support for low-precision arithmetic.
 
 ## When to use quantization
 
