@@ -52,7 +52,7 @@ A key metric to monitor for prefill is the Time to First Token (TTFT), which mea
 
 After prefill, the LLM enters the decode stage where it generates new tokens sequentially, one at a time.
 
-For each new token, the model samples from a probability distribution generated based on the prompt and all previously generated tokens. This process is autoregressive, meaning tokens T₀ through Tₙ₋₁ are used to generate token Tₙ, then T₀ through Tₙ to generate Tₙ₊₁, and so on.
+For each new token, the model [samples from a probability distribution](#how-are-tokens-selected-via-sampling) generated based on the prompt and all previously generated tokens. This process is autoregressive, meaning tokens T₀ through Tₙ₋₁ are used to generate token Tₙ, then T₀ through Tₙ to generate Tₙ₊₁, and so on.
 
 ![auto-regressive.png](./img/auto-regressive.png)
 
@@ -114,6 +114,57 @@ Early examples of dLLMs include:
 The concept is still in its early stages. Inference frameworks like vLLM don’t yet support dLLMs, though there are [active community discussions](https://github.com/vllm-project/vllm/issues/18532) exploring future integration.
 
 For now, autoregressive LLMs remain the mainstream architecture. However, dLLMs represent one of the most promising directions to power the next generation of inference systems. If you’re working with autoregressive LLMs today, it’s worth keeping an eye on dLLMs.
+
+## FAQs
+
+### How are tokens selected via sampling?
+
+At each decode step, the model does not directly output a word. Instead, it produces a probability distribution over all possible tokens.
+
+Sampling is the process of selecting the next token from this distribution.
+
+Before sampling, temperature is applied to the logits (the raw pre-softmax scores). It rescales them, which changes the shape of the distribution before probabilities are computed.
+
+- **Lower temperature**: the distribution becomes more peaked (a few tokens dominate)
+- **Higher temperature**: the distribution becomes flatter (probability spreads across more tokens)
+
+You can think of temperature as reshaping the preferences of the model. A higher temperature reduces the gap between likely and unlikely tokens, making rare tokens more likely to be selected.
+
+After applying temperature and converting logits into probabilities, a sampling strategy determines which token gets picked. Common ones include:
+
+- **Greedy decoding**: Always select the highest probability token. It is deterministic, but prone to repetition.
+- **Top-k sampling:** Restrict candidates to the k most probable tokens, then samples from them. This avoids very unlikely tokens.
+- **Top-p (nucleus) sampling**: Select the smallest set of tokens whose cumulative probability ≥ *p*, then sample from them.
+- **Top-k + top-p combined**: Often used together in practice. Top-k removes extreme outliers first, then top-p refines the candidate set further.
+
+### What happens step by step during LLM inference?
+
+At a high level, LLM inference follows a simple loop:
+
+1. The input text is converted into tokens
+2. Tokens are processed in the prefill phase to build context and KV cache
+3. The model enters the decode phase. At each step:
+    - The model produces a probability distribution
+    - A sampling strategy selects the next token
+5. The process repeats until a stopping condition is met
+6. Tokens are converted back into readable text
+
+Even though the output feels instant, this process runs one token at a time during decoding.
+
+### Why is LLM inference slow?
+
+LLM inference can be slow for two main reasons:
+
+- **Sequential decoding**: tokens are generated one by one, which limits parallelism
+- **Memory bottlenecks**: during decoding, the model repeatedly reads from KV cache in GPU memory
+
+Other factors also affect latency:
+
+- Model size (more parameters mean more computation)
+- Input length (longer prompts increase prefill time)
+- Hardware (GPU type and memory bandwidth)
+
+This is why [inference optimization](../inference-optimization) is a major focus in production systems.
 
 <LinkList>
   ## Additional resources
