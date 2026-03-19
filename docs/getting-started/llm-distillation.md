@@ -1,11 +1,11 @@
 ---
 sidebar_position: 6
-description: Understand LLM distillation and how it produces smaller, faster models that retain the capability of larger ones.
+description: Learn how LLM distillation works, how it compares to quantization, and how to use it to build smaller, faster, and more efficient models for inference.
 keywords:
     - LLM distillation, knowledge distillation, model distillation
     - Teacher-student model, distilled LLM
     - Response distillation, chain-of-thought distillation
-    - DeepSeek-R1 distillation, Phi distillation
+    - DeepSeek-R1 distillation
 ---
 
 import LinkList from '@site/src/components/LinkList';
