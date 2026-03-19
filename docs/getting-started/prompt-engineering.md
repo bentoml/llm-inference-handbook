@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 description: Understand prompt engineering for LLM inference. Learn system & user prompts, zero-shot & few-shot prompting, KV cache impact, token costs, and production best practices.
 keywords:
     - Prompt engineering
