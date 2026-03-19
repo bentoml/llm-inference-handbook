@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 description: Select the right inference frameworks for your use case.
 keywords:
     - Inference frameworks, inference backends, inference runtimes, inference engines, inference platforms
