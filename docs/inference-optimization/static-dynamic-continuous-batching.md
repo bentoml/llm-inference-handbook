@@ -10,12 +10,17 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import BatchingSimulator from '@site/src/components/BatchingSimulator';
 
 # Static, dynamic and continuous batching
 
 GPUs are designed for highly parallel computation workloads, capable of performing trillions or even quadrillions of floating-point operations per second (FLOPs). Nevertheless, LLMs often fail to fully utilize these GPUs because much of the chip's memory bandwidth is spent loading model parameters.
 
 Batching helps mitigate this bottleneck. In production, your service might be flooded with multiple requests arriving at the same time. Instead of processing each request individually, batching them together allows you to use the same loaded model parameters across multiple requests, thus dramatically improving throughput.
+
+Use the simulator below to understand different batching strategies at a high level.
+
+<BatchingSimulator />
 
 ## Static batching
 
