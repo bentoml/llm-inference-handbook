@@ -149,7 +149,7 @@ const config: Config = {
         },
         {
           position: 'left',
-          href: 'https://l.bentoml.com/join-slack-llm-inference-handbook',
+          href: 'https://forum.modular.com/c/bento/31?utm_source=bentoml_llm',
           label: 'Community'
         },
         {
