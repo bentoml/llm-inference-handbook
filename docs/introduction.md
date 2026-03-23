@@ -13,6 +13,7 @@ keywords:
 
 import Features from '@site/src/components/Features';
 import Newsletter from '@site/src/components/Newsletter';
+import StackQuiz from '@site/src/components/StackQuiz';
 
 # LLM Inference Handbook
 
@@ -42,6 +43,8 @@ If your goal is to make LLM inference faster, cheaper, or more reliable, this ha
 ## How to use this
 
 You can read it start-to-finish or treat it like a lookup table. There’s no wrong way to navigate. We’ll keep updating the handbook as the field evolves, because LLM inference is changing fast, and what works today may not be best tomorrow.
+
+<StackQuiz />
 
 ## Contributing
 
