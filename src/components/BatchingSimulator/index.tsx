@@ -384,7 +384,7 @@ export default function BatchingSimulator() {
                     )}
                     {b.end < b.complete && holdEnd > b.end && (
                       <div className={styles.holdBar}
-                        style={{ left: pct(b.end), width: w(b.end, holdEnd), top, height: BAR_H, borderColor: b.color }} />
+                        style={{ left: pct(b.end), width: w(b.end, holdEnd), top, height: BAR_H }} />
                     )}
                     {complete && (
                       <div className={styles.check}
