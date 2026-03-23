@@ -1,0 +1,444 @@
+/* ── Container ── */
+
+.container {
+  border: 1px solid #bbf7d0;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  padding: 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: linear-gradient(to right, #eef2ff, #eff6ff);
+}
+
+.headerTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #111827;
+}
+
+.headerDesc {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-top: 0.375rem;
+}
+
+.body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Section ── */
+
+.section {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+}
+
+.sectionTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader .sectionTitle {
+  margin-bottom: 0;
+}
+
+/* ── Presets ── */
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.presetBtn {
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  border: 1px solid #d1d5db;
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 150ms;
+  white-space: nowrap;
+}
+
+.presetBtn:hover:not(.presetActive) {
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.presetActive {
+  background: #1e40af !important;
+  border-color: #1e40af !important;
+  color: #fff !important;
+}
+
+/* ── Single request layout ── */
+
+.singleLayout {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.inputs {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sliderLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #374151;
+  width: 7.5rem;
+  flex-shrink: 0;
+}
+
+.slider {
+  flex: 1;
+  min-width: 60px;
+  accent-color: #1e40af;
+}
+
+.numInput {
+  width: 4.5rem;
+  padding: 0.25rem 0.375rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  text-align: right;
+  color: #111827;
+}
+
+.unit {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  flex-shrink: 0;
+  width: 1.5rem;
+}
+
+.inlineWarn {
+  font-size: 0.75rem;
+  color: #b45309;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  margin-top: -0.25rem;
+}
+
+/* ── Single request results ── */
+
+.singleResults {
+  flex: 1;
+  min-width: 220px;
+}
+
+.metricCards {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.metricCard {
+  flex: 1;
+  min-width: 110px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1rem;
+}
+
+.metricLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.metricValue {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #1e40af;
+  line-height: 1.2;
+}
+
+.metricUnit {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.metricHint {
+  font-size: 0.6875rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* ── Formula box ── */
+
+.formulaBox {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+  color: #1e40af;
+}
+
+.formulaLine {
+  margin: 0.125rem 0;
+}
+
+/* ── Sample table ── */
+
+.tableWrap {
+  overflow-x: auto;
+  margin-bottom: 0.625rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.table th {
+  padding: 0.375rem 0.625rem;
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  border-bottom: 2px solid #e5e7eb;
+  white-space: nowrap;
+  background: #f9fafb;
+}
+
+.table td {
+  padding: 0.3125rem 0.625rem;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.reqLabel {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #374151;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.cellInput {
+  width: 5rem;
+  padding: 0.25rem 0.375rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  text-align: right;
+  color: #111827;
+}
+
+.cellInput:focus {
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 2px rgba(147, 197, 253, 0.3);
+}
+
+.cellInputWarn {
+  border-color: #f59e0b !important;
+  background: #fffbeb;
+}
+
+.computed {
+  color: #6b7280;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+}
+
+.sloPass {
+  color: #16a34a;
+  font-weight: 700;
+  text-align: center;
+}
+
+.sloFail {
+  color: #dc2626;
+  font-weight: 700;
+  text-align: center;
+}
+
+.removeBtn {
+  padding: 0.0625rem 0.375rem;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: all 120ms;
+}
+
+.removeBtn:hover:not(:disabled) {
+  color: #ef4444;
+  border-color: #fca5a5;
+}
+
+.removeBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.addBtn {
+  padding: 0.375rem 0.75rem;
+  border: 1px dashed #9ca3af;
+  border-radius: 0.375rem;
+  background: none;
+  font-size: 0.8125rem;
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 120ms;
+}
+
+.addBtn:hover {
+  border-color: #1e40af;
+  color: #1e40af;
+}
+
+/* ── SLO row ── */
+
+.sloRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.875rem;
+  font-size: 0.8125rem;
+  color: #374151;
+  flex-wrap: wrap;
+}
+
+.sloLabel {
+  font-weight: 600;
+}
+
+.sloField {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.sloInput {
+  width: 5rem;
+  padding: 0.25rem 0.375rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #111827;
+}
+
+/* ── Goodput ── */
+
+.goodputBox {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  padding: 1rem;
+  margin-top: 1.25rem;
+}
+
+.goodputLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.goodputValue {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.goodputNum {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.goodputText {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.goodputBar {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.goodputFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 200ms ease, background-color 200ms ease;
+}
+
+.goodputNote {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 640px) {
+  .singleLayout {
+    flex-direction: column;
+  }
+  .sliderLabel {
+    width: 6rem;
+  }
+}
