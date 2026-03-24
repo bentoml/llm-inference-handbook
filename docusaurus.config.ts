@@ -144,7 +144,7 @@ const config: Config = {
         },
         {
           position: 'left',
-          href: 'https://www.bentoml.com/pricing',
+          href: 'https://www.modular.com/pricing?utm_source=bentoml_llm',
           label: 'Pricing'
         },
         {
@@ -183,7 +183,7 @@ const config: Config = {
         },
         {
           position: 'right',
-          href: 'https://l.bentoml.com/signup-llm-inference-handbook',
+          href: 'https://console.modular.com/signup?utm_source=bentoml_llm',
           label: 'Sign Up',
           button: 'light-purple'
         }
