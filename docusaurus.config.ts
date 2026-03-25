@@ -172,7 +172,7 @@ const config: Config = {
         },
         {
           position: 'left',
-          href: 'https://www.bentoml.com/customers',
+          href: 'https://www.modular.com/customers?utm_source=bentoml_llm',
           label: 'Customers'
         },
         {
