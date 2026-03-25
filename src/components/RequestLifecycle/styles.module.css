@@ -1,0 +1,397 @@
+/* ── Container ──────────────────────────────────────────────────────────────── */
+
+.container {
+  border: 1px solid #bbf7d0;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  padding: 1.25rem 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: linear-gradient(to right, #eef2ff, #eff6ff);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.headerTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+
+.headerDesc {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.body {
+  padding: 1.25rem 1.5rem 1rem;
+}
+
+/* ── Prompt row ─────────────────────────────────────────────────────────────── */
+
+.promptRow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.875rem;
+}
+
+.promptLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.promptText {
+  font-size: 0.875rem;
+  color: #374151;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', monospace;
+}
+
+/* ── Pipeline ───────────────────────────────────────────────────────────────── */
+
+.pipeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.75rem 0.625rem;
+  border-radius: 0.5rem;
+  min-width: 90px;
+  border: 2px solid transparent;
+  transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  flex-shrink: 0;
+}
+
+.stageInactive {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+.stageActive {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  animation: stagePulse 1.8s ease infinite;
+}
+
+.stageDone {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.stageNum {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.stageNumInactive {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.stageNumActive {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.stageNumDone {
+  background: #22c55e;
+  color: #fff;
+}
+
+.stageLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.stageInactive .stageLabel { color: #9ca3af; }
+.stageActive   .stageLabel { color: #1e40af; }
+.stageDone     .stageLabel { color: #15803d; }
+
+/* ── Arrows ─────────────────────────────────────────────────────────────────── */
+
+.arrow {
+  font-size: 1.375rem;
+  line-height: 1;
+  padding: 0 0.375rem;
+  flex-shrink: 0;
+  transition: color 200ms ease;
+  user-select: none;
+}
+
+.arrowInactive { color: #d1d5db; }
+.arrowDone     { color: #4ade80; }
+.arrowFlowing  {
+  color: #3b82f6;
+  animation: arrowPulse 0.75s ease infinite;
+}
+
+/* ── Detail panel ───────────────────────────────────────────────────────────── */
+
+.detail {
+  min-height: 148px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem 1.125rem;
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.idleMsg {
+  color: #6b7280;
+  font-size: 0.875rem;
+  align-self: center;
+  width: 100%;
+  text-align: center;
+}
+
+.detailContent {
+  width: 100%;
+}
+
+.detailTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.detailDesc {
+  font-size: 0.8125rem;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+/* ── Token chips ────────────────────────────────────────────────────────────── */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', monospace;
+  font-weight: 500;
+  animation: chipIn 140ms ease both;
+}
+
+.chipInput {
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.chipPrefill {
+  background: #e0e7ff;
+  color: #3730a3;
+  border: 1px solid #c7d2fe;
+  animation: chipIn 100ms ease both;
+}
+
+.ellipsis {
+  color: #9ca3af;
+  font-size: 1rem;
+  align-self: center;
+}
+
+.counter {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* ── Serving steps ──────────────────────────────────────────────────────────── */
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: #374151;
+}
+
+.stepOk {
+  color: #22c55e;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.stepPending {
+  color: #6b7280;
+  animation: fadePulse 1.2s ease infinite;
+}
+
+.stepSpinner {
+  display: inline-block;
+  animation: spin 1.1s linear infinite;
+}
+
+/* ── Prefill row ────────────────────────────────────────────────────────────── */
+
+.prefillRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.kvLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #7c3aed;
+  margin-left: 0.25rem;
+}
+
+/* ── Output box ─────────────────────────────────────────────────────────────── */
+
+.outputBox {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  color: #111827;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  min-height: 2.5rem;
+}
+
+.outputText {
+  font-family: inherit;
+}
+
+.cursor {
+  color: #3b82f6;
+  animation: blink 0.75s step-end infinite;
+}
+
+/* ── Controls ───────────────────────────────────────────────────────────────── */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.625rem;
+}
+
+.btnPlay,
+.btnReset,
+.btnNext {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: opacity 150ms ease, transform 100ms ease;
+}
+
+.btnPlay:hover,
+.btnReset:hover,
+.btnNext:hover:not(:disabled) {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btnPlay:active,
+.btnReset:active,
+.btnNext:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btnPlay {
+  background: #1e40af;
+  color: #fff;
+}
+
+.btnReset {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btnNext {
+  background: #1e40af;
+  color: #fff;
+}
+
+.btnNext:disabled {
+  background: #c7d2fe;
+  color: #818cf8;
+  cursor: not-allowed;
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+
+@keyframes stagePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3); }
+  50%       { box-shadow: 0 0 0 5px rgba(59, 130, 246, 0); }
+}
+
+@keyframes arrowPulse {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 1; }
+}
+
+@keyframes chipIn {
+  from { opacity: 0; transform: translateY(-3px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 0.9; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

@@ -8,10 +8,11 @@ keywords:
 ---
 
 import Newsletter from '@site/src/components/Newsletter';
+import RequestLifecycle from '@site/src/components/RequestLifecycle';
 
 # What is LLM inference?
 
-LLM inference refers to using trained LLMs, such as GPT-4, Llama 4, and DeepSeek-V3, to generate meaningful outputs from user inputs, typically provided as natural language [prompts](./../getting-started/prompt-engineering). During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
+LLM inference refers to using trained LLMs, such as GPT-5, GLM-5, and DeepSeek-V3.2, to generate meaningful outputs from user inputs, typically provided as natural language [prompts](./../getting-started/prompt-engineering). During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
 
 Essentially, this is the moment the LLM is actively "in action." Here are some real-world examples:
 
@@ -19,6 +20,10 @@ Essentially, this is the moment the LLM is actively "in action." Here are some r
 - **Writing assistants**: Completing sentences, correcting grammar, or summarizing long documents.
 - **Developer tools**: Converting natural language descriptions into executable code.
 - **AI agents**: Performing complex, multi-step reasoning and decision-making processes autonomously.
+
+Use the visualizer below to see how a request flows during LLM inference. For details, learn [how LLM inference works](./how-does-llm-inference-work).
+
+<RequestLifecycle />
 
 ## What is an inference server?
 
