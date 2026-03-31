@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-description: Kernel optimization for LLM inference improves GPU utilization and performance by writing custom CUDA/Triton kernels tailored to the unique compute patterns of LLMs.
+description: Kernel optimization for LLM inference improves GPU utilization and performance by writing or generating optimized kernels tailored to the compute patterns of LLMs.
 keywords:
     - Kernel optimization
     - LLM inference
@@ -47,7 +47,7 @@ At a high level, there are two common approaches to kernel optimization dependin
     - Reorder computation for better efficiency
     - Generate optimized kernels automatically
     
-    In this model, you describe what to compute, and the compiler determines how to execute it efficiently on the GPU. This significantly lowers the barrier to entry. However, it offers less direct control over low-level execution and may lag behind hand-written kernels when supporting new model architectures or specialized computation patterns.
+    In this model, you describe what to compute, and the compiler determines how to execute it efficiently for the target hardware backend. This significantly lowers the barrier to entry. However, it offers less direct control over low-level execution and may lag behind hand-written kernels when supporting new model architectures or specialized computation patterns.
 
 ## What kernel optimization is not
 
@@ -118,8 +118,8 @@ If you write custom CUDA kernels, they only run on NVIDIA GPUs. That creates loc
 
 This is why portability layers and compiler-based solutions are becoming more important. They try to solve a tough tradeoff:
 
-- **Performance** (handwritten kernels)
-- **Portability** (run anywhere)
+- **Peak performance on a specific backend**
+- **Broader portability across hardware backends**
 
 Most teams want both. Few solutions fully deliver it today. A kernel carefully tuned for one GPU architecture often does not perform well on another without significant rework.
 
@@ -158,7 +158,7 @@ Without fusion:
 With fusion:
 
 - Multiple operations are combined into a single kernel
-- Intermediate results stay in fast on-chip memory
+- Intermediate results can often stay in fast on-chip memory
 - You avoid unnecessary global memory reads/writes
 
 <LinkList>
