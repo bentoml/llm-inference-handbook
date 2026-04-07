@@ -124,7 +124,7 @@ Things to keep in mind:
 
 ---
 
-We work to help enterprises self-host any open and custom LLMs on NVIDIA, AMD or any other accelerators with the best availability and rates. Let us know if you need custom GPU solutions for your use case.
+If you're evaluating GPU options for self-hosting LLMs, we support running both open and custom models across NVIDIA, AMD, Apple Silicon, CPUs, and more with a single codebase. You can run models locally, deploy in your own cloud (BYOC), or use shared and dedicated endpoints depending on your needs.
 
 <div style={{ margin: '3rem 0' }}>
 [<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)

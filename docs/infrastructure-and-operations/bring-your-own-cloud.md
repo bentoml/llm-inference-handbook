@@ -119,14 +119,12 @@ For most enterprise LLM workloads, BYOC provides the best middle ground. It’s 
 
 We offer a fully-featured AI inference platform which can be deployed into your own cloud account for maximum control, security, and customization.
 
-With the BYOC option, you can:
+With our BYOC deployment, you can:
 
-- Deploy models inside your own VPC across major clouds (e.g., AWS, GCP, Azure) or NeoCloud providers (e.g., CoreWeave).
-- Keep full control of your data plane. Your models and data never leave your private environment.
-- Access a wide range of GPUs with the most competitive pricing and availability for your workloads.
-- Apply the latest distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) in your private cloud.
-- Unify management and monitoring with [inference-specific observability](./challenges-in-building-infra-for-llm-inference/comprehensive-observability).
-- [Scale across multiple regions and clouds](./multi-cloud-and-cross-region-inference) while maintaining consistent governance and security policies.
+- Run models inside your own VPC across providers like AWS, GCP, or Azure and leverage your existing credits and commits
+- Keep your data and workloads fully within your environment
+- Run and scale inference across NVIDIA, AMD, CPUs, and more in the same BYOC deployment
+- Apply the latest distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) in your private cloud
 
 <div style={{ margin: '3rem 0' }}>
 [<Button>Schedule a Demo</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
