@@ -200,10 +200,9 @@ For many teams, building and maintaining all of these layers internally becomes 
 Our Inference Platform provides a production-ready foundation for distributed inference, integrating:
 
 - Intelligent request routing and scheduling
-- Support for modern inference runtimes
+- Advanced inference optimization techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation)
 - Multi-GPU, cross-region and multi-cloud deployment
 - Autoscaling, fault tolerance, and unified observability
-- Cost-aware resource management across environments
 
 Rather than stitching together everything yourself, a platform-based approach allows teams to focus on models and applications, while the distributed inference system is managed as a cohesive layer.
 
