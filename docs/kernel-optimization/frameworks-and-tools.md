@@ -51,9 +51,7 @@ However, they have several limitations:
 - **Limited cross-operator optimization**. They are hard to customize across library boundaries. If your critical path spans several operators and the best answer is a new fused kernel, a library call may no longer be enough.
 - **Portability constraints**. CUDA libraries are tied to the NVIDIA ecosystem. They are powerful, but the performance benefit is not transferable to AMD GPUs or other accelerators.
 
-High-level libraries help you quickly get started, but they only cover the operators someone at NVIDIA decided were worth optimizing. The moment your workload steps outside that catalog, you're on your own. 
-
-That's where AI compilers enter the picture.
+High-level libraries help you quickly get started, but they only cover the operators NVIDIA chose to optimize and expose through those libraries. Once your workload steps outside that catalog, you often need a compiler, a DSL, or a custom kernel path.
 
 ## AI compilers
 
@@ -106,12 +104,12 @@ However, TVM faces several important challenges.
 
 For users already working in JAX or TensorFlow, this tight integration is a major advantage. When the compiler can see the full computation graph, XLA can aggressively fuse and reorder operations to achieve strong performance.
 
-Note that XLA exists in two forms:
+Note that people often talk about XLA in two closely related contexts:
 
-- **Internal XLA (TPU-focused)**: the closed-source compiler used inside Google to power TPU workloads
-- **OpenXLA**: the public project targeting CPUs and GPUs
+- **Internal XLA (TPU-focused)**: the compiler stack Google uses internally for TPU workloads
+- **OpenXLA / open-source XLA**: the public compiler ecosystem and related projects targeting CPUs, GPUs, TPUs, and other backends
 
-While they share components like StableHLO, most of the engineering effort is focused on TPU-specific optimizations.
+They share important pieces such as StableHLO, but the public and internal stacks are not identical, and backend maturity varies by framework and target.
 
 Like TVM, XLA faces several practical limitations:
 
@@ -202,7 +200,7 @@ However, they don’t scale well. The effort doesn't transfer easily across mode
     This level of expertise is rare and takes time to build.
     
 - **Hard to maintain**. Every model or hardware change can invalidate the assumptions baked into the kernel: expected memory layouts, tile sizes tuned for a specific GPU, or intrinsics that don't exist on the next architecture.
-- **Hardware lock-in**. Most kernels are written in CUDA, which means:
+- **Hardware lock-in**. Many custom kernels in today's LLM ecosystem are written in CUDA, which means:
     - They only run on NVIDIA GPUs
     - Porting to AMD or other accelerators requires rewriting
     - Teams become tied to one hardware ecosystem
@@ -276,7 +274,7 @@ Most teams should not start at the bottom of the stack.
 - If your workload matches common operator patterns, start with vendor libraries through your framework or inference engine.
 - If graph-level optimization can remove memory round-trips or fuse repeated patterns, an AI compiler may give you leverage.
 - If you need a custom kernel but want a better authoring model than CUDA C++, Triton is often the next step.
-- If you want both kernel-level control and portability across hardware, Mojo and MAX offer another path. They let you write custom kernels in a higher-level language while relying on the compiler to target different backends.
+- If you want both kernel-level control and broader hardware portability, Mojo and MAX offer another path. They let you write custom kernels in a higher-level language while relying on the compiler stack to target different backends where support exists.
 - If a critical bottleneck still needs maximum control on a specific hardware target, then handwritten CUDA kernels may be worth the cost.
 
 The right choice depends on a few practical questions. The answers will point you to a different layer of the stack.
