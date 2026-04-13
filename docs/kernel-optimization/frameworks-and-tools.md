@@ -1,8 +1,12 @@
 ---
 sidebar_position: 2
-description: Frameworks and tools for kernel optimization help teams write, generate, tune, and debug faster GPU kernels for LLM inference.
+description: Compare the main frameworks and tools for kernel optimization in LLM inference, from cuBLAS and cuDNN to TVM, XLA, Triton, custom CUDA kernels, Mojo and MAX.
 keywords:
-    - Kernel optimization tools
+    - Frameworks and tools for kernel optimization
+    - Kernel optimization tools, GPU kernel tooling, LLM kernel optimization
+    - cuBLAS, cuBLASLt, cuDNN, Triton, TVM, XLA, OpenXLA
+    - CUDA kernels, custom GPU kernels, kernel DSLs, AI compilers
+    - Mojo, MAX
 ---
 
 import LinkList from '@site/src/components/LinkList';
