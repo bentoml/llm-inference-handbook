@@ -11,7 +11,7 @@ keywords:
 
 import LinkList from '@site/src/components/LinkList';
 
-# Choosing the Right Tool for GPU Kernel Optimization
+# Choosing the right kernel optimization tool
 
 Today, most teams do not optimize kernels by writing raw CUDA from scratch. They work through a stack of tools that sits between model code and the GPU.
 
