@@ -47,7 +47,7 @@ Axolotl is great for users who want to focus on their data and tasks instead of 
 
 [Unsloth](https://unsloth.ai/) is a fine-tuning framework designed to make training LLMs faster, lighter, and more accessible, especially on limited hardware (e.g., free Google Colab GPUs).
 
-Unsloth is deeply optimized at the kernel level. Built with a custom attention implementation in [Triton](https://openai.com/index/triton), it enables 2× faster training with up to 80% less memory usage.
+Unsloth is deeply optimized at the kernel level. Built with a custom attention implementation in [Triton](https://openai.com/index/triton), it enables 2× faster training with up to 80% less memory usage. If you want more background on where Triton fits relative to CUDA and compiler-based approaches, see [kernel optimization tools](../kernel-optimization/kernel-optimization-tools).
 
 The Unsloth team has collaborated directly with developers behind models like Llama 4, Mistral, Qwen, Gemma, and Phi, often contributing bug fixes and updates that improve prompt handling, accuracy, and overall stability.
 
