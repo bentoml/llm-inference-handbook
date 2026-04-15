@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Compare the main tools for kernel optimization in LLM inference, from cuBLAS and cuDNN to TVM, XLA, Triton, custom CUDA kernels, Mojo and MAX.
 keywords:
     - Tools for kernel optimization
