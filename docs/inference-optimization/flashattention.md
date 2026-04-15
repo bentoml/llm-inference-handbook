@@ -19,6 +19,8 @@ When an LLM reads text, it has to look at every token and compare it with every 
 
 The standard attention mechanism has a fundamental problem: **it's memory-bound rather than compute-bound**. To understand this, we need to look at what happens during attention computation.
 
+If you want the lower-level GPU context behind ideas like HBM, SRAM, warps, and tiling, see [GPU architecture fundamentals](../kernel-optimization/gpu-architecture-fundamentals).
+
 Standard attention calculates:
 
 $$
@@ -65,6 +67,8 @@ FlashAttention speeds up attention by reducing memory traffic. The core idea is 
 </figure>
 
 Simply put, FlashAttention makes the attention computation more efficient. It reorganizes the work so the GPU spends less time waiting on memory and more time doing actual computation.
+
+For a broader view of where Triton, CUDA, compiler stacks, and profiling tools fit into this kind of work, see [Kernel optimization tools](../kernel-optimization/kernel-optimization-tools).
 
 ## The benefits of FlashAttention
 
