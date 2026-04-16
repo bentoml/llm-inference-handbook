@@ -21,7 +21,7 @@ Central Processing Units (CPUs) are general-purpose processors used in all compu
 
 Graphics Processing Units (GPUs) were originally designed for graphics rendering and digital visualization tasks. As they could perform highly parallel operations, they also turned out to be a great fit for ML and AI workloads. Today, GPUs are the default choice for both training and inference of GenAI like LLMs.
 
-The architecture of GPUs is optimized for matrix multiplication and tensor operations, which are core components of transformer-based models. Modern inference frameworks and runtimes (e.g., vLLM, SGLang, LMDeploy, TensorRT-LLM, and Hugging Face TGI) are designed to take full advantage of GPU acceleration.
+[The architecture of GPUs](../kernel-optimization/gpu-architecture-fundamentals) is optimized for matrix multiplication and tensor operations, which are core components of transformer-based models. Modern inference frameworks and runtimes (e.g., vLLM, SGLang, LMDeploy, TensorRT-LLM, and Hugging Face TGI) are designed to take full advantage of GPU acceleration.
 
 ## TPUs
 
