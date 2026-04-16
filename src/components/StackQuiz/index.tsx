@@ -78,6 +78,16 @@ const PROFILES: Record<ProfileId, Profile> = {
         description: 'What to actually measure: TTFT, TPOT, throughput, etc.',
         href: '/inference-optimization/llm-inference-metrics',
       },
+      {
+        title: 'GPU architecture fundamentals',
+        description: 'Threads, warps, SMs, and memory — the hardware LLMs run on',
+        href: '/kernel-optimization/gpu-architecture-fundamentals',
+      },
+      {
+        title: 'Kernel optimization for LLM inference',
+        description: 'What GPU kernels are and why they matter for inference',
+        href: '/kernel-optimization/kernel-optimization-for-llm-inference',
+      },
     ],
   },
   api: {
@@ -134,6 +144,16 @@ const PROFILES: Record<ProfileId, Profile> = {
         description: 'MAX, vLLM, SGLang, TensorRT-LLM — what fits your needs',
         href: '/getting-started/choosing-the-right-inference-framework',
       },
+      {
+        title: 'FlashAttention',
+        description: 'Faster, memory-efficient attention, a classic kernel-level win',
+        href: '/kernel-optimization/flashattention',
+      },
+      {
+        title: 'Kernel optimization tools',
+        description: 'CUDA, Triton, TVM, Mojo, MAX — learn which layer to reach for first',
+        href: '/kernel-optimization/kernel-optimization-tools',
+      },
     ],
   },
   scaler: {
@@ -162,6 +182,16 @@ const PROFILES: Record<ProfileId, Profile> = {
         description: 'Route requests to maximize cache reuse across replicas',
         href: '/inference-optimization/kv-cache-utilization-aware-load-balancing',
       },
+      {
+        title: 'FlashAttention',
+        description: 'Cut attention memory pressure to fit more concurrent requests',
+        href: '/kernel-optimization/flashattention',
+      },
+      {
+        title: 'Kernel optimization tools',
+        description: 'Pick the right layer of the stack for kernel optimization',
+        href: '/kernel-optimization/kernel-optimization-tools',
+      },
     ],
   },
   leader: {
@@ -189,6 +219,16 @@ const PROFILES: Record<ProfileId, Profile> = {
         title: 'Choosing an inference framework',
         description: 'How the major frameworks compare on features and maturity',
         href: '/getting-started/choosing-the-right-inference-framework',
+      },
+      {
+        title: 'Kernel optimization for LLM inference',
+        description: 'Why kernels matter and when custom kernel work pays off',
+        href: '/kernel-optimization/kernel-optimization-for-llm-inference',
+      },
+      {
+        title: 'GPU architecture fundamentals',
+        description: 'The hardware model behind every capacity and cost decision',
+        href: '/kernel-optimization/gpu-architecture-fundamentals',
       },
     ],
   },
