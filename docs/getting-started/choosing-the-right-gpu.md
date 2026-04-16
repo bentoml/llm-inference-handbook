@@ -164,7 +164,7 @@ On most systems, you can quickly verify your GPU type using command-line tools:
 
 ### How important are CUDA and driver versions when choosing a GPU?
 
-Very important. GPU performance isn’t just about the hardware. Your NVIDIA driver, CUDA version, and framework build (e.g., PyTorch, vLLM, SGLang, TensorRT-LLM) all need to line up. When they don’t, you’ll see errors, slowdowns, or missing features like FP8 or [FlashAttention](../inference-optimization/flashattention). If you want the lower-level reason these mismatches matter, refer to [GPU architecture fundamentals](../kernel-optimization/gpu-architecture-fundamentals).
+Very important. GPU performance isn’t just about the hardware. Your NVIDIA driver, CUDA version, and framework build (e.g., PyTorch, vLLM, SGLang, TensorRT-LLM) all need to line up. When they don’t, you’ll see errors, slowdowns, or missing features like FP8 or [FlashAttention](../kernel-optimization/flashattention). If you want the lower-level reason these mismatches matter, refer to [GPU architecture fundamentals](../kernel-optimization/gpu-architecture-fundamentals).
 
 For NVIDIA GPUs:
 

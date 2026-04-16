@@ -58,7 +58,18 @@ const config: Config = {
           }
         }
       }
-    }
+    },
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/inference-optimization/flashattention',
+            to: '/kernel-optimization/flashattention'
+          }
+        ]
+      }
+    ]
   ],
   presets: [
     [
