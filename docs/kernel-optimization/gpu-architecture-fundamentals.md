@@ -9,12 +9,15 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import GPUExecutionVisualizer from '@site/src/components/GPUExecutionVisualizer';
 
 # GPU architecture fundamentals
 
 Before writing or tuning GPU kernels, you need a working model of how a GPU actually runs code. Without it, suggestions like "increase occupancy" or "reduce shared memory bank conflicts" are just a set of rules to memorize. You don’t fully understand when they apply and when they don't.
 
 This page covers the execution model and memory system of modern GPUs at a level useful for kernel work. The details lean toward NVIDIA's architecture since CUDA dominates the LLM inference ecosystem today. However, the core concepts apply broadly to AMD GPUs and other accelerators as well.
+
+<GPUExecutionVisualizer />
 
 ## How a GPU runs code
 
