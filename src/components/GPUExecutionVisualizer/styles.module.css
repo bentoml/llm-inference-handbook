@@ -1,0 +1,522 @@
+/* ── Container ── */
+
+.container {
+  border: 1px solid #bbf7d0;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.header {
+  padding: 1.5rem;
+  background: linear-gradient(to right, #eef2ff, #eff6ff);
+}
+
+.headerTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #111827;
+}
+
+.headerDesc {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+.body {
+  padding: 1.5rem;
+}
+
+/* ── Legend ── */
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  background: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: all 150ms ease;
+  font-family: inherit;
+}
+
+.legendItem:hover,
+.legendActive {
+  border-color: #1e40af;
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendArrow {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* ── Diagram ── */
+
+.diagram {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Die (on-chip) ── */
+
+.die {
+  border: 2px dashed #a8a29e;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(180deg, #fafaf9 0%, #f5f5f4 100%);
+}
+
+.dieLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #78716c;
+}
+
+.dieLabelChip {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  background: #e7e5e4;
+  color: #57534e;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── SMs row ── */
+
+.smsRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  align-items: stretch;
+}
+
+.compactSMsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .smsRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── SM card ── */
+
+.sm {
+  border: 1.5px solid #8b5cf6;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  background: #faf5ff;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.smHighlight {
+  border-color: #6d28d9;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12);
+}
+
+.smCompact {
+  min-width: 180px;
+}
+
+.smHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.smTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #5b21b6;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.smBadge {
+  font-size: 0.625rem;
+  color: #8b5cf6;
+  font-weight: 500;
+}
+
+/* ── Block ── */
+
+.block {
+  border: 1.5px solid #60a5fa;
+  border-radius: 0.625rem;
+  padding: 0.625rem;
+  background: #eff6ff;
+  margin-bottom: 0.5rem;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.blockHighlight {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.blockHeader {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 0.375rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.blockCollapsed {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px dashed #93c5fd;
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  background: #f8faff;
+  margin-bottom: 0.5rem;
+  transition: border-color 200ms ease;
+}
+
+.blockCollapsedTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.blockCollapsedNote {
+  font-size: 0.6875rem;
+  color: #6b7280;
+}
+
+/* ── Warp ── */
+
+.warp {
+  border: 1.5px solid #86efac;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background: #f0fdf4;
+  margin-bottom: 0.375rem;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.warpHighlight {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.warpHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.375rem;
+}
+
+.warpTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #166534;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.warpMeta {
+  font-size: 0.625rem;
+  color: #6b7280;
+}
+
+.warpCollapsed {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px dashed #86efac;
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  background: #f8fdf9;
+  margin-bottom: 0.375rem;
+  transition: border-color 200ms ease;
+}
+
+/* ── Thread grid: 32 cells in 16 columns ── */
+
+.threadGrid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 2px;
+}
+
+@media (max-width: 640px) {
+  .threadGrid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+.threadCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 0.5rem;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  transition: all 200ms ease;
+  min-width: 0;
+}
+
+.threadHighlight {
+  background: #86efac;
+  border-color: #16a34a;
+  color: #052e16;
+}
+
+/* ── More indicator ── */
+
+.moreIndicator {
+  text-align: center;
+  font-size: 0.6875rem;
+  color: #9ca3af;
+  padding: 0.25rem 0;
+  letter-spacing: 0.01em;
+}
+
+/* ── SM resources ── */
+
+.smResources {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.375rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .smResources {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resourceCard {
+  border: 1px solid #ddd6fe;
+  border-radius: 0.375rem;
+  padding: 0.375rem 0.5rem;
+  background: #faf5ff;
+}
+
+.resourceTitle {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #5b21b6;
+}
+
+.resourceMeta {
+  font-size: 0.5625rem;
+  color: #7c3aed;
+  margin-top: 0.125rem;
+}
+
+.smResourcesCompact {
+  font-size: 0.625rem;
+  color: #7c3aed;
+  padding: 0.375rem 0.5rem;
+  border: 1px solid #ddd6fe;
+  border-radius: 0.375rem;
+  background: #faf5ff;
+  text-align: center;
+  margin-top: 0.375rem;
+}
+
+/* ── More SMs ── */
+
+.moreSMs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0 0.5rem;
+}
+
+.moreSMsDots {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.moreSMsDots span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a8a29e;
+}
+
+.moreSMsLabel {
+  font-size: 0.625rem;
+  color: #78716c;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ── L2 cache ── */
+
+.l2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  border: 1.5px solid #fbbf24;
+  border-radius: 0.625rem;
+  padding: 0.625rem 0.875rem;
+  background: #fefce8;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.l2Highlight {
+  border-color: #d97706;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+}
+
+.l2Title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #92400e;
+  white-space: nowrap;
+}
+
+.l2Meta {
+  font-size: 0.6875rem;
+  color: #a16207;
+}
+
+/* ── Bus separator ── */
+
+.busSeparator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.busLine {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    #d6d3d1 0px,
+    #d6d3d1 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.busTag {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #78716c;
+  white-space: nowrap;
+}
+
+.busIcon {
+  font-size: 0.875rem;
+}
+
+/* ── HBM (off-chip) ── */
+
+.hbm {
+  border: 1.5px solid #fb923c;
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+  background: #fff7ed;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.hbmHighlight {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+}
+
+.hbmHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 0.625rem;
+}
+
+.hbmTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #9a3412;
+  margin-left: 0.375rem;
+}
+
+.hbmSpec {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #c2410c;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.hbmItems {
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.hbmItem {
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  background: #fed7aa;
+  color: #9a3412;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.hbmNote {
+  font-size: 0.6875rem;
+  color: #9a3412;
+  line-height: 1.5;
+  opacity: 0.8;
+}
