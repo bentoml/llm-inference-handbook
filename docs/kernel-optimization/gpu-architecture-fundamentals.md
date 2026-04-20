@@ -29,7 +29,7 @@ When you launch a GPU kernel, you create a large number of threads. They are org
 
 - **Thread**: The smallest unit of execution. Each thread runs the same kernel code but operates on different data. This is called SIMT (Single Instruction, Multiple Threads). 
 
-    You don’t manually assign each thread what to do. Instead, each thread uses its position (`threadIdx`) inside a block to compute which part of the input they should process.
+    You don’t manually assign each thread what to do. Instead, each thread typically combines its position inside a block (`threadIdx`) with the block position (`blockIdx`) to compute which part of the input it should process.
     
 - **Warp**: A group of 32 threads (on NVIDIA GPUs) that execute instructions in lockstep. The warp is the actual scheduling unit. It can only execute one instruction at a time. If threads within a warp take different code paths (branch divergence), the warp executes both paths sequentially. This reduces efficiency because some threads are inactive at any given time.
     
@@ -45,8 +45,8 @@ When launching a kernel, you define a grid of blocks:
 kernel<<<gridDim, blockDim>>>();
 ```
 
-- `gridDim`: Number of blocks
-- `blockDim`: Number of threads per block
+- `gridDim`: Grid dimensions, namely the number of blocks in each dimension
+- `blockDim`: Block dimensions, namely the number of threads in each dimension of a block
 
 The GPU assigns IDs automatically:
 
@@ -59,7 +59,7 @@ Each thread combines them to get a global index:
 int i = blockIdx.x * blockDim.x + threadIdx.x;
 ```
 
-This indexing mechanism is what makes the SIMT model practical. All threads run the same code, but each derives a different index from its position in the grid and operates on its own data. This also ensures that all threads together cover the entire dataset.
+This indexing mechanism is what makes the SIMT model practical. All threads run the same code, but each derives a different index from its position in the grid and operates on its own data.
 
 ### Streaming Multiprocessors (SMs)
 
