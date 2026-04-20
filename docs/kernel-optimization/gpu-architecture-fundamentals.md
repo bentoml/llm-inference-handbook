@@ -25,16 +25,41 @@ The high-level idea is simple. GPUs keep thousands of lightweight threads in fli
 
 ### Threads, warps, and thread blocks
 
-A GPU kernel launches a large number of threads. They are organized into a hierarchy:
+When you launch a GPU kernel, you create a large number of threads. They are organized in a simple hierarchy that helps the GPU run them efficiently.
 
-- **Thread**: The smallest unit of execution. Each thread runs the same kernel code but operates on different data (SIMT: Single Instruction, Multiple Threads).
-- **Warp**: A group of 32 threads (on NVIDIA GPUs) that execute in the SIMT model. The warp is still the key scheduling and occupancy unit. When threads within a warp take different code paths (branch divergence), the hardware has to execute both paths sequentially. This reduces efficiency because some threads are inactive at any given time.
-    
-    Different warps can execute different instructions at the same time.
-    
-- **Thread block (or block)**: A group of threads that can cooperate through shared memory and synchronization barriers. A block can contain up to 1024 threads (32 warps). All threads in a block are scheduled on the same Streaming Multiprocessor (SM), but may execute over time rather than all at once.
+- **Thread**: The smallest unit of execution. Each thread runs the same kernel code but operates on different data. This is called SIMT (Single Instruction, Multiple Threads). 
 
-When you launch a kernel, you specify a grid of thread blocks. The GPU hardware assigns each block to an SM, and the SM schedules warps from that block for execution.
+    You don’t manually assign each thread what to do. Instead, each thread uses its position (`threadIdx`) inside a block to compute which part of the input they should process.
+    
+- **Warp**: A group of 32 threads (on NVIDIA GPUs) that execute instructions in lockstep. The warp is the actual scheduling unit. It can only execute one instruction at a time. If threads within a warp take different code paths (branch divergence), the warp executes both paths sequentially. This reduces efficiency because some threads are inactive at any given time.
+    
+    Different warps are independent and can run different instructions at the same time.
+    
+- **Thread block (or block)**: A group of threads that can cooperate through shared memory and synchronization barriers. A block can contain up to 1024 threads (32 warps). The size is available as `blockDim`. All threads in a block are scheduled on the same Streaming Multiprocessor (SM), but may execute over time rather than all at once.
+
+### Grid and indexing
+
+When launching a kernel, you define a grid of blocks:
+
+```cpp
+kernel<<<gridDim, blockDim>>>();
+```
+
+- `gridDim`: Number of blocks
+- `blockDim`: Number of threads per block
+
+The GPU assigns IDs automatically:
+
+- `blockIdx`: Block’s position in the grid
+- `threadIdx`: Thread’s position in the block
+
+Each thread combines them to get a global index:
+
+```cpp
+int i = blockIdx.x * blockDim.x + threadIdx.x;
+```
+
+This indexing mechanism is what makes the SIMT model practical. All threads run the same code, but each derives a different index from its position in the grid and operates on its own data. This also ensures that all threads together cover the entire dataset.
 
 ### Streaming Multiprocessors (SMs)
 
