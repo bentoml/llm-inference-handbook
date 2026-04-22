@@ -75,6 +75,8 @@ Here are common examples:
 - **Vision language models (VLMs)**. Models such as NVLM 1.0 and Qwen2.5-VL combine visual and textual understanding, supporting tasks like image captioning, visual Q&A, or reasoning over screenshots and diagrams.
 - **Text-to-speech (TTS) models**. They can convert text into natural-sounding speech. When integrated with LLMs, they can be used in voice-based agents, accessible interfaces, or immersive experiences.
 
+Learn more about [multi-model inference pipelines](../infrastructure-and-operations/multi-model-inference-pipelines).
+
 ## Where to get models
 
 Once you know what kind of model you need, the next question is simple: where do you actually find them?

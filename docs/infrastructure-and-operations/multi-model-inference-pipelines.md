@@ -12,9 +12,7 @@ import LinkList from '@site/src/components/LinkList';
 
 # Multi-model inference pipelines
 
-A multi-model inference pipeline is a system where several models work together to produce one result.
-
-Instead of asking a single model to do everything, you split the work into stages. Each stage focuses on a specific task, like retrieval, OCR, classification, generation, or post-processing.
+A multi-model inference pipeline is a system where several models work together to produce one result. Instead of asking a single model to do everything, you split the work into stages. Each stage focuses on a specific task, like retrieval, OCR, classification, generation, or post-processing.
 
 This is different from running one model behind a single endpoint. It’s also different from [pipeline parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism), which splits one model across multiple devices. Here, the main question is not how to distribute one model. It is how to design, deploy, and operate a system where several models cooperate in one request path.
 
@@ -170,7 +168,7 @@ A multimodal application may route image, audio, and text through separate encod
 
 These systems are often strong examples of hardware specialization. The speech stage, image stage, and language stage may have very different runtime profiles and scaling needs.
 
-## Single model vs multi-model pipeline
+## Single model vs. multi-model pipeline
 
 There is no universal winner. The right choice depends on what constraint matters most.
 
