@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 description: Understand LLM fine-tuning and different fine-tuning frameworks.
 keywords:
     - LLM fine-tuning, LoRA, how does LLM fine-tuning work
@@ -17,7 +17,7 @@ For example, fine-tuning can significantly improve a model’s:
 
 - **Domain expertise**: Adapting a model for legal, medical, or programming-related tasks.
 - **Instruction following**: Ensuring the model adheres to specific formats, tones, or styles in its responses.
-- **Safety and alignment**: Reinforcing how the model handles sensitive or high-risk [prompts](./prompt-engineering).
+- **Safety and alignment**: Reinforcing how the model handles sensitive or high-risk [prompts](../model-interaction/prompt-engineering).
 
 ## Common fine-tuning frameworks
 
@@ -97,7 +97,7 @@ Key features:
 
 ---
 
-Instead of fine-tuning a model yourself, you can often start with an existing fine-tuned or instruction-tuned model from [Hugging Face](choosing-the-right-model/#hugging-face). It hosts a large collection of community and officially released fine-tuned models that are ready to use out of the box. At the same time, it also provides base models and foundation checkpoints if you want full control and plan to fine-tune the model yourself. In practice, teams frequently explore both options on Hugging Face before deciding whether to reuse an existing model or invest in custom fine-tuning.
+Instead of fine-tuning a model yourself, you can often start with an existing fine-tuned or instruction-tuned model from [Hugging Face](../getting-started/choosing-the-right-model/#hugging-face). It hosts a large collection of community and officially released fine-tuned models that are ready to use out of the box. At the same time, it also provides base models and foundation checkpoints if you want full control and plan to fine-tune the model yourself. In practice, teams frequently explore both options on Hugging Face before deciding whether to reuse an existing model or invest in custom fine-tuning.
 
 ## FAQs
 
@@ -120,7 +120,7 @@ Here’s a clearer side-by-side comparison:
 
 ### How does LLM fine-tuning compare to other techniques like prompt engineering?
 
-[Prompt engineering](./prompt-engineering) adjusts how you ask the model to get better answers. It’s quick, cheap, and doesn’t require training, but it has limits. Long prompts can get messy, and the model may still behave inconsistently.
+[Prompt engineering](../model-interaction/prompt-engineering) adjusts how you ask the model to get better answers. It’s quick, cheap, and doesn’t require training, but it has limits. Long prompts can get messy, and the model may still behave inconsistently.
 
 Fine-tuning actually changes the model. You feed it examples of what “good” looks like, and it learns to follow that pattern on its own. It’s more reliable for long-term use, especially when you need consistent tone, domain knowledge, or strict formatting.
 

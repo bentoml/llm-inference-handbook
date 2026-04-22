@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Select the right NVIDIA or AMD GPUs (e.g., L4, A100, H100, B200, MI250X, MI300X, MI350X) for LLM inference.
 keywords:
     - NVIDIA GPUs, AMD GPUs
@@ -63,7 +63,7 @@ Workstation cards sit between consumer and data center hardware. They’re a goo
 
 Enterprises rely on data center GPUs for large-scale AI inference and High-Performance Computing (HPC) workloads. They offer high VRAM (40–192GB), strong memory bandwidth, and features like multi-instance GPU (MIG) or NVLink for scaling across clusters. Examples include NVIDIA A100, H100 and B200, as well as AMD MI300X and MI350X.
 
-For teams renting cloud compute or [deploying LLM on-prem](../infrastructure-and-operations/on-prem-llms), data center GPUs are usually the most practical choice.
+For teams renting cloud compute or [deploying LLM on-prem](./on-prem-llms), data center GPUs are usually the most practical choice.
 
 ## Key considerations for choosing GPUs
 
@@ -73,7 +73,7 @@ When selecting GPUs, remember that raw benchmark numbers don’t tell the whole 
 
 [VRAM](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference) sets the ceiling on model size and context length. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized.
 
-A major challenge is the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](../llm-inference-basics/distributed-inference) techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
+A major challenge is the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](../infrastructure-and-operations/distributed-inference) techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
 ### Memory bandwidth
 
@@ -108,7 +108,7 @@ Read the blog posts about the data center GPUs from NVIDIA and AMD for details:
 
 ## Matching GPUs to open-source LLMs
 
-Different models perform best on different types of GPUs. The table below maps popular NVIDIA and AMD GPUs to suitable open-source LLMs. Some models require **multiple GPUs to meet VRAM demands** or you may need optimization techniques like [quantization](./llm-quantization).
+Different models perform best on different types of GPUs. The table below maps popular NVIDIA and AMD GPUs to suitable open-source LLMs. Some models require **multiple GPUs to meet VRAM demands** or you may need optimization techniques like [quantization](../model-preparation/llm-quantization).
 
 <GPUTable />
 
@@ -134,7 +134,7 @@ If you're evaluating GPU options for self-hosting LLMs, we support running both 
 
 ### What is the best GPU comparison tool for AI workloads?
 
-Most generic GPU comparison tools focus on gaming or graphics performance, which doesn’t reflect real AI inference workloads. For LLMs, you need tools that measure [throughput and latency metrics like TTFT and ITL](../inference-optimization/llm-inference-metrics).
+Most generic GPU comparison tools focus on gaming or graphics performance, which doesn’t reflect real AI inference workloads. For LLMs, you need tools that measure [throughput and latency metrics like TTFT and ITL](../llm-inference-basics/llm-inference-metrics).
 
 You can start by checking open-source leaderboards from frameworks such as vLLM, SGLang, and TensorRT-LLM. They provide ready-to-use scripts that help you compare inference performance across different GPUs.
 

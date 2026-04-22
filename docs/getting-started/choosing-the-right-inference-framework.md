@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 5
 description: Select the right inference frameworks for your use case.
 keywords:
     - Inference frameworks, inference backends, inference runtimes, inference engines, inference platforms
@@ -58,7 +58,7 @@ They often begin with tools like Ollama to run models locally on a laptop or sma
 
 From there, teams move to high-performance server runtimes like vLLM. These frameworks provide continuous batching, KV cache optimizations, and improved GPU utilization on data center GPUs. However, most of these runtimes lack built-in multi-region routing, automatic failover, and true horizontal scaling. GPU provisioning, performance tuning, and fault tolerance also remain complex and time-consuming to implement.
 
-When teams need to run and scale inference across multiple GPUs clusters, regions or clouds, they typically adopt [distributed inference](../llm-inference-basics/distributed-inference) platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide the advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
+When teams need to run and scale inference across multiple GPUs clusters, regions or clouds, they typically adopt [distributed inference](../infrastructure-and-operations/distributed-inference) platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide the advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
 
 Read this [blog post](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference) to explore this progression in more detail.
 
@@ -74,7 +74,7 @@ Some models are too large to fit on a single GPU, so you need distributed infere
 
 ### What’s the best way to start experimenting with inference frameworks?
 
-A good path is to begin small and level up as you go. Many people start with Ollama because it runs on a laptop with almost no setup. It’s perfect for quick tests, [prompt tinkering](./prompt-engineering), or getting a feel for how different models behave. Once you understand the basics and want to evaluate real performance for production, move to vLLM, SGLang, or MAX. These frameworks are built for production-level workloads, so you can measure latency, throughput, batching behavior, and GPU efficiency in a realistic environment.
+A good path is to begin small and level up as you go. Many people start with Ollama because it runs on a laptop with almost no setup. It’s perfect for quick tests, [prompt tinkering](../model-interaction/prompt-engineering), or getting a feel for how different models behave. Once you understand the basics and want to evaluate real performance for production, move to vLLM, SGLang, or MAX. These frameworks are built for production-level workloads, so you can measure latency, throughput, batching behavior, and GPU efficiency in a realistic environment.
 
 <LinkList>
   ## Additional resources

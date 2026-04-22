@@ -76,7 +76,7 @@ const PROFILES: Record<ProfileId, Profile> = {
       {
         title: 'Key inference metrics',
         description: 'What to actually measure: TTFT, TPOT, throughput, etc.',
-        href: '/inference-optimization/llm-inference-metrics',
+        href: '/llm-inference-basics/llm-inference-metrics',
       },
       {
         title: 'GPU architecture fundamentals',
@@ -99,22 +99,22 @@ const PROFILES: Record<ProfileId, Profile> = {
       {
         title: 'Serverless vs. self-hosted',
         description: 'When to switch, what you gain, what you give up',
-        href: '/llm-inference-basics/serverless-vs-self-hosted-llm-inference',
+        href: '/getting-started/serverless-vs-self-hosted-llm-inference',
       },
       {
         title: 'Key inference metrics',
         description: 'Metrics that matter to your SLO: TTFT, TPOT, goodput, etc.',
-        href: '/inference-optimization/llm-inference-metrics',
+        href: '/llm-inference-basics/llm-inference-metrics',
       },
       {
         title: 'Quantization',
         description: 'Lower cost and memory without hurting quality much',
-        href: '/getting-started/llm-quantization',
+        href: '/model-preparation/llm-quantization',
       },
       {
         title: 'Prompt engineering',
         description: 'Reduce token usage and improve output quality',
-        href: '/getting-started/prompt-engineering',
+        href: '/model-interaction/prompt-engineering',
       },
     ],
   },
@@ -203,7 +203,7 @@ const PROFILES: Record<ProfileId, Profile> = {
       {
         title: 'Serverless vs. self-hosted',
         description: 'Cost, control, and compliance tradeoffs laid out clearly',
-        href: '/llm-inference-basics/serverless-vs-self-hosted-llm-inference',
+        href: '/getting-started/serverless-vs-self-hosted-llm-inference',
       },
       {
         title: 'GPU memory requirements',
@@ -213,7 +213,7 @@ const PROFILES: Record<ProfileId, Profile> = {
       {
         title: 'Key inference metrics',
         description: 'The numbers your team should be tracking and optimizing',
-        href: '/inference-optimization/llm-inference-metrics',
+        href: '/llm-inference-basics/llm-inference-metrics',
       },
       {
         title: 'Choosing an inference framework',

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 11
 description: LLM performance benchmarks are standardized tests that measure how LLMs perform under specific conditions. Unlike leaderboards that rank the best LLMs based on accuracy or reasoning ability, performance benchmarks focus on practical LLM performance metrics such as throughput, latency, cost efficiency, and resource utilization. Learn how to run and interpret LLM performance benchmarks.
 keywords:
     - LLM benchmarks, LLM performance benchmarks, LLM performance metrics, inference benchmarks
@@ -89,7 +89,7 @@ When running performance benchmarks for LLM inference, it’s not enough to repo
 - **Throughput**: How many tokens or requests per second the model can process or produce. This measures scalability and raw efficiency.
 - **Latency**: How quickly the model responds to a request. Key latency metrics include TTFT, ITL, median latency, and tail latencies (P95, P99). These determine how responsive your LLM feels to users.
     
-  See [LLM inference metrics](./llm-inference-metrics) for more information.
+  See [LLM inference metrics](../llm-inference-basics/llm-inference-metrics) for more information.
     
 - **Cost**: Usually measured as cost per thousand tokens, cost per request, or cost per unit time. For self-hosted inference, GPUs are often the biggest driver of cost. Many top LLMs require large, expensive GPUs to run efficiently.
 - **Resource utilization**: GPU/CPU utilization, memory allocation, and cache hit rates. High utilization often means better hardware efficiency. This is especially important in production since it directly determines how much performance you get per dollar.

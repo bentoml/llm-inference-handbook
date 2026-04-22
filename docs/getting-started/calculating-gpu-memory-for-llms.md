@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 description: Learn how to calculate GPU memory for serving LLMs.
 keywords:
     - GPU memory calculation, LLM inference hardware calculator
@@ -15,7 +15,7 @@ import GPUMemoryCalculator from '@site/src/components/Calculator/GPUMemory';
 If you're planning to self-host an LLM, one of the first things you'll need to figure out is how much GPU memory (VRAM) it requires. This depends mainly on the model’s size and the precision used during inference.
 
 - **Model size (number of parameters)**. Larger models need more memory. Models with tens or hundreds of billions of parameters usually require high-end GPUs like NVIDIA H100 or H200.
-- **Bit precision**. The precision used (e.g., FP16, FP8, INT8) affects memory consumption. Lower precision formats can significantly reduce memory footprint, but may have accuracy drops. See [LLM quantization](/getting-started/llm-quantization) for details.
+- **Bit precision**. The precision used (e.g., FP16, FP8, INT8) affects memory consumption. Lower precision formats can significantly reduce memory footprint, but may have accuracy drops. See [LLM quantization](/model-preparation/llm-quantization) for details.
 
 A rough formula to estimate how much memory is needed to load an LLM is:
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 description: Structured outputs are model responses in defined formats like JSON or XML, making AI-generated data predictable, machine-readable, and easy to integrate into applications and workflows.
 keywords:
     - Structured outputs, structured generation, constrained decoding
@@ -124,7 +124,7 @@ Re-prompting is a simple and effective way to get structured outputs using libra
 
 Here’s how it works:
 
-1. You send the model a [prompt](./../prompt-engineering) describing the desired format (for example, a JSON schema).
+1. You send the model a [prompt](./prompt-engineering) describing the desired format (for example, a JSON schema).
 2. The library checks whether the response is valid.
 3. If not, it automatically re-prompts the model with details about what went wrong.
 4. The process repeats until the output passes validation or a retry limit is reached.

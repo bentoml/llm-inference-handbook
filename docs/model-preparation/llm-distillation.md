@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 description: Learn how LLM distillation works, how it compares to quantization, and how to use it to build smaller, faster, and more efficient models for inference.
 keywords:
     - LLM distillation, knowledge distillation, model distillation

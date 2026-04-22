@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 description: Building LLM infrastructure in-house is costly, complex, and slows AI product development and innovation.
 keywords:
     - LLM infrastructure cost, inference challenges
@@ -19,7 +19,7 @@ LLM inference requires much more than standard cloud-native stacks can provide. 
 - Provisioning high-performance GPUs (often scarce and regionally limited)
 - Managing CUDA version compatibility and driver dependencies
 - Configuring autoscaling, concurrency control, and scale-to-zero behavior
-- Applying advanced inference optimization techniques such as [prefix caching](../../inference-optimization/prefix-caching) and [prefill-decode disaggregation](../../inference-optimization/prefill-decode-disaggregation)
+- Applying advanced inference optimization techniques such as [prefix caching](../inference-optimization/prefix-caching) and [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation)
 - Setting up observability tools for GPU monitoring, request tracing, and failure detection
 - Handling model-specific behaviors like streaming, caching, and routing
 

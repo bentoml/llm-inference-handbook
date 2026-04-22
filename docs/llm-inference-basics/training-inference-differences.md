@@ -53,7 +53,7 @@ Training happens early in the lifecycle. The model learns patterns, language str
 
 ### Why does LLM inference often cost more than training?
 
-Even though training an LLM is expensive, it usually happens once. Inference, on the other hand, runs every time a user sends a request. As traffic grows, the number of inference calls grows with it. Each request uses GPU compute, memory, and network bandwidth. Over time, this ongoing demand can make inference the larger long-term expense, especially for applications with heavy usage or long [prompts](./../getting-started/prompt-engineering).
+Even though training an LLM is expensive, it usually happens once. Inference, on the other hand, runs every time a user sends a request. As traffic grows, the number of inference calls grows with it. Each request uses GPU compute, memory, and network bandwidth. Over time, this ongoing demand can make inference the larger long-term expense, especially for applications with heavy usage or long [prompts](./../model-interaction/prompt-engineering).
 
 ### Should I train my own LLM?
 
@@ -61,4 +61,4 @@ In most cases, no. Training a new LLM from scratch requires massive datasets, sp
 
 ### Is fine-tuning considered training or inference?
 
-Fine-tuning is a form of training. You update some of the model’s weights using new data to adapt it to a specific task or domain. Inference doesn’t change any weights. It only uses the model to generate predictions. See the [fine-tuning section](../getting-started/llm-fine-tuning) to learn more.
+Fine-tuning is a form of training. You update some of the model’s weights using new data to adapt it to a specific task or domain. Inference doesn’t change any weights. It only uses the model to generate predictions. See the [fine-tuning section](../model-preparation/llm-fine-tuning) to learn more.
