@@ -22,3 +22,5 @@ yarn-error.log*
 # AI agent
 .claude/
 .codex/
+
+nginx/

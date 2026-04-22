@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 description: Multi-cloud and cross-region inference is the practice of running LLM workloads across multiple cloud providers or regions to improve latency, availability, and cost efficiency.
 keywords:
     - Multi-cloud LLM inference, multi-region LLM inference

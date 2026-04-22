@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 description: On-prem LLMs are large language models deployed within an organization’s own infrastructure, such as private data centers or air-gapped environments. This pattern offers full control over data, models, performance, and cost.
 keywords:
     - On-premises LLMs, on-prem LLMs, on-prem AI

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 description: Bring Your Own Cloud (BYOC) is a deployment model where vendors run software in your cloud, combining managed orchestration with complete data control.
 keywords:
     - Bring Your Own Cloud, BYOC
