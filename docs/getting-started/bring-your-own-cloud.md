@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 9
 description: Bring Your Own Cloud (BYOC) is a deployment model where vendors run software in your cloud, combining managed orchestration with complete data control.
 keywords:
     - Bring Your Own Cloud, BYOC
@@ -110,8 +110,8 @@ Here’s a quick comparison:
 | --- | --- | --- | --- | --- |
 | SaaS | Vendor’s cloud | Vendor | Low: data resides in vendor’s multi-tenant environment | Fast setup, minimal ops overhead, quick prototyping, non-sensitive data |
 | BYOC | Customer’s cloud account (e.g., AWS, GCP, Azure) | Shared between vendor and customer | High: data stays in customer’s VPC | Enterprises with security/compliance needs, GPU cost optimization, flexible scaling |
-| [On-prem](./on-prem-llms) | Customer’s private data center | Customer |  Full: data and compute remain entirely on customer infrastructure | Air-gapped or highly regulated industries (e.g., defense, healthcare) |
-| [Hybrid (On-prem + BYOC)](./on-prem-llms#overflowing-to-the-cloud-a-hybrid-approach) | Split between customer data center and cloud account | Shared between customer and vendor | Full: on-prem for sensitive workloads, cloud for burst capacity | Organizations needing more flexibility while maintaining strict data boundaries |
+| [On-prem](../infrastructure-and-operations/on-prem-llms) | Customer’s private data center | Customer |  Full: data and compute remain entirely on customer infrastructure | Air-gapped or highly regulated industries (e.g., defense, healthcare) |
+| [Hybrid (On-prem + BYOC)](../infrastructure-and-operations/on-prem-llms#overflowing-to-the-cloud-a-hybrid-approach) | Split between customer data center and cloud account | Shared between customer and vendor | Full: on-prem for sensitive workloads, cloud for burst capacity | Organizations needing more flexibility while maintaining strict data boundaries |
 
 For most enterprise LLM workloads, BYOC provides the best middle ground. It’s fast to deploy, secure by design, and cost-efficient at scale. However, hybrid architectures are becoming the bridge between full control and global agility. In a hybrid setup, you can deploy models on-prem for maximum control, data security, and compliance, while overflowing to cloud GPUs during traffic spikes. Learn more in the [GPU CAP Theorem blog post](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference).
 
