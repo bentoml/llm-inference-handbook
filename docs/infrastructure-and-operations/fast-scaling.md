@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 description: Fast scaling enables AI systems to handle dynamic LLM inference workloads while minimizing latency and cost.
 keywords:
     - Scalable LLM inference, fast scaling, scalability, LLM inference scaling, LLM scaling law

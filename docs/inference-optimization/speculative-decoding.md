@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 description: Speculative decoding accelerates LLM inference with draft model predictions verified by the target model.
 keywords:
     - Speculative decoding, speculative sampling
@@ -28,7 +28,7 @@ With the right draft model, you can achieve **up to 3× faster LLM inference** u
 
 This sequential process has two major issues:
 
-- **High Inter-Token Latency (ITL)**: [The delay between tokens](./llm-inference-metrics) makes generation feel slow.
+- **High Inter-Token Latency (ITL)**: [The delay between tokens](../llm-inference-basics/llm-inference-metrics) makes generation feel slow.
 - **Poor GPU utilization**: The model can’t compute future tokens in advance even if the GPU is idle.
 
 What if you could parallelize parts of the generation process, even if not all of it?

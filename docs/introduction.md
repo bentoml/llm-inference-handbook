@@ -17,7 +17,7 @@ import StackQuiz from '@site/src/components/StackQuiz';
 
 # LLM Inference Handbook
 
-_LLM Inference Handbook_ is your technical glossary, guidebook, and reference - all in one. It covers everything you need to know about LLM inference, from core concepts and performance metrics (e.g., [Time to First Token and Tokens per Second](/inference-optimization/llm-inference-metrics)), to optimization techniques (e.g., [continuous batching](/inference-optimization/static-dynamic-continuous-batching) and [prefix caching](/inference-optimization/prefix-caching)), [GPU achitecture](./kernel-optimization/gpu-architecture-fundamentals), and deployment patterns like [BYOC](./getting-started/bring-your-own-cloud) and [on-prem](./infrastructure-and-operations/on-prem-llms).
+_LLM Inference Handbook_ is your technical glossary, guidebook, and reference - all in one. It covers everything you need to know about LLM inference, from core concepts and performance metrics (e.g., [Time to First Token and Tokens per Second](/llm-inference-basics/llm-inference-metrics)), to optimization techniques (e.g., [continuous batching](/inference-optimization/static-dynamic-continuous-batching) and [prefix caching](/inference-optimization/prefix-caching)), [GPU achitecture](./kernel-optimization/gpu-architecture-fundamentals), and deployment patterns like [BYOC](./getting-started/bring-your-own-cloud) and [on-prem](./getting-started/on-prem-llms).
 
 <Features>
   - Practical guidance for deploying, scaling, and operating LLMs in production.
@@ -30,7 +30,7 @@ _LLM Inference Handbook_ is your technical glossary, guidebook, and reference - 
 
 We wrote this handbook to solve a common problem facing developers: LLM inference knowledge is often fragmented; it’s buried in academic papers, scattered across vendor blogs, hidden in GitHub issues, or tossed around in Discord threads. Worse, much of it assumes you already understand half the stack.
 
-There aren’t many resources that bring it all together — like how [inference differs from training](/llm-inference-basics/training-inference-differences), why [goodput matters more than raw throughput](/inference-optimization/llm-inference-metrics#goodput) for meeting SLOs, or how [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation) works in practice.
+There aren’t many resources that bring it all together — like how [inference differs from training](/llm-inference-basics/training-inference-differences), why [goodput matters more than raw throughput](/llm-inference-basics/llm-inference-metrics#goodput) for meeting SLOs, or how [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation) works in practice.
 
 So we started pulling it all together.
 

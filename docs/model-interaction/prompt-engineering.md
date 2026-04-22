@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 5
 description: Understand prompt engineering for LLM inference. Learn system & user prompts, zero-shot & few-shot prompting, KV cache impact, token costs, and production best practices.
 keywords:
     - Prompt engineering
@@ -274,7 +274,7 @@ Small wording changes sometimes produce large differences. Prompt engineering of
 
 ---
 
-As you build real systems, you’ll likely combine LLM prompt engineering with other techniques such as [structured outputs](./tool-integration/structured-outputs), [tool calling](./tool-integration/function-calling), and [fine-tuning](./llm-fine-tuning). Understanding how prompts impact model behavior is the first step toward building robust LLM applications.
+As you build real systems, you’ll likely combine LLM prompt engineering with other techniques such as [structured outputs](./structured-outputs), [tool calling](./function-calling), and [fine-tuning](../model-preparation/llm-fine-tuning). Understanding how prompts impact model behavior is the first step toward building robust LLM applications.
 
 ## FAQs
 
@@ -372,7 +372,7 @@ Therefore, some production systems generate reasoning internally and only return
 
 ### When does prompt engineering fail?
 
-Prompt engineering is powerful, but it has limits. If a task requires domain knowledge that the model does not possess, or you need strict consistency across millions of requests, prompt engineering alone may not be sufficient. In these cases, techniques such as [fine-tuning](./llm-fine-tuning), RAG, or [constrained decoding](./tool-integration/structured-outputs#constrained-decoding) may be necessary.
+Prompt engineering is powerful, but it has limits. If a task requires domain knowledge that the model does not possess, or you need strict consistency across millions of requests, prompt engineering alone may not be sufficient. In these cases, techniques such as [fine-tuning](../model-preparation/llm-fine-tuning), RAG, or [constrained decoding](./structured-outputs#constrained-decoding) may be necessary.
 
 <LinkList>
   ## Additional resources

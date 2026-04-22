@@ -12,7 +12,7 @@ import RequestLifecycle from '@site/src/components/RequestLifecycle';
 
 # What is LLM inference?
 
-LLM inference refers to using trained LLMs, such as GPT-5, GLM-5, and DeepSeek-V3.2, to generate meaningful outputs from user inputs, typically provided as natural language [prompts](./../getting-started/prompt-engineering). During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
+LLM inference refers to using trained LLMs, such as GPT-5, GLM-5, and DeepSeek-V3.2, to generate meaningful outputs from user inputs, typically provided as natural language [prompts](./../model-interaction/prompt-engineering). During inference, the model processes the prompt through its vast set of parameters to generate responses like text, code snippets, summaries, and translations.
 
 Essentially, this is the moment the LLM is actively "in action." Here are some real-world examples:
 
@@ -52,7 +52,7 @@ Some common strategies include:
 - [Continuous batching](../inference-optimization/static-dynamic-continuous-batching): Dynamically grouping requests for better GPU utilization
 - [KV cache management](../inference-optimization/kv-cache-offloading): Reusing or offloading attention caches to handle long prompts efficiently
 - [Speculative decoding](../inference-optimization/speculative-decoding): Using a smaller draft model to speed up token generation
-- [Quantization](../getting-started/llm-quantization): Running models in lower precision (e.g., INT8, FP8) to save memory and compute
+- [Quantization](../model-preparation/llm-quantization): Running models in lower precision (e.g., INT8, FP8) to save memory and compute
 - [Prefix caching](../inference-optimization/prefix-caching): Caching common prompt segments to reduce redundant computation
 - [Multi-GPU distribution/Parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism): Splitting LLMs across multiple GPUs for larger context windows
 
@@ -76,6 +76,6 @@ Understanding LLM inference early gives you a clear edge. It helps you make smar
 - **If you're a technical leader**: Inference efficiency directly affects your bottom line. A poorly optimized setup can cost 10× more in GPU hours while delivering worse performance. Understanding inference helps you evaluate vendors, make build-vs-buy decisions, and set realistic performance goals for your team.
 - **If you're just curious about AI**: Inference is where the magic happens. Knowing how it works helps you separate AI hype from reality and makes you a more informed consumer and contributor to AI discussions.
 
-For more information, see [serverless vs. self-hosted LLM inference](./serverless-vs-self-hosted-llm-inference).
+For more information, see [serverless vs. self-hosted LLM inference](../getting-started/serverless-vs-self-hosted-llm-inference).
 
 <Newsletter />

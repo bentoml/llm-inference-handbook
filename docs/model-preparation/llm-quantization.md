@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 description: Understand LLM quantization and different quantization formats and methods.
 keywords:
     - LLM quantization, how does quantization work, LLM quantization accuracy
@@ -50,7 +50,7 @@ Use the visualizer below to see how these tradeoffs play out for your model size
 
 <QuantizationVisualizer />
 
-This calculator estimates **weight memory only**. Use the [GPU memory calculator](./calculating-gpu-memory-for-llms) to estimate your overall requirements.
+This calculator estimates **weight memory only**. Use the [GPU memory calculator](../getting-started/calculating-gpu-memory-for-llms) to estimate your overall requirements.
 
 ## What to quantize
 
@@ -141,7 +141,7 @@ GPTQ is widely used in open-source model serving pipelines, especially with Auto
 
 ---
 
-Instead of quantizing a model yourself, you can often start with an already quantized model from [Hugging Face](choosing-the-right-model/#hugging-face). It hosts many pre-quantized variants, such as 8-bit and 4-bit models, that are ready for inference and optimized for lower memory usage and faster deployment. At the same time, it also provides full-precision base models if you want to apply your own quantization strategy.
+Instead of quantizing a model yourself, you can often start with an already quantized model from [Hugging Face](../getting-started/choosing-the-right-model/#hugging-face). It hosts many pre-quantized variants, such as 8-bit and 4-bit models, that are ready for inference and optimized for lower memory usage and faster deployment. At the same time, it also provides full-precision base models if you want to apply your own quantization strategy.
 
 <LinkList>
   ## Additional resources

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 description: Distributed inference is the practice of running model inference across multiple GPUs, workers, nodes, or regions to achieve scalable, reliable, and cost-efficient serving. This document explains what distributed inference is, why teams use it in production, its key challenges, and how modern runtimes and platforms support distributed LLM inference at scale.
 keywords:
     - Distributed inference
@@ -24,7 +24,7 @@ On the macro level, distributed inference refers to high-level deployment and to
 
 - Running a model, or multiple replicas of it, across multiple geographic regions
 - Serving traffic on heterogeneous GPU clusters with different hardware profiles
-- Orchestrating inference across [multiple cloud (or NeoCloud) providers](../infrastructure-and-operations/multi-cloud-and-cross-region-inference), and [on-prem data centers](../infrastructure-and-operations/on-prem-llms)
+- Orchestrating inference across [multiple cloud (or NeoCloud) providers](./multi-cloud-and-cross-region-inference), and [on-prem data centers](../getting-started/on-prem-llms)
 
 At this level, teams distribute inference geographically to reduce latency, meet data residency requirements, improve fault tolerance, or take advantage of cheaper or more available GPU capacity in specific regions.
 
@@ -144,7 +144,7 @@ Teams often struggle with:
 - Attributing cost to specific models, workloads, or tenants
 - Detecting inefficiencies such as idle GPUs or imbalanced traffic
 
-Without [centralized observability](../infrastructure-and-operations/challenges-in-building-infra-for-llm-inference/comprehensive-observability) and cost visibility, distributed inference systems can become opaque. This makes it difficult to optimize performance and troubleshoot issues.
+Without [centralized observability](./comprehensive-observability) and cost visibility, distributed inference systems can become opaque. This makes it difficult to optimize performance and troubleshoot issues.
 
 ### State management and consistency
 
@@ -188,7 +188,7 @@ To run distributed inference in production, teams must also integrate:
 
 - Autoscaling policies across GPU pools
 - Health checks and failure recovery
-- Unified observability for [latency (e.g., TTFT and ITL)](../inference-optimization/llm-inference-metrics), throughput, GPU utilization, and errors
+- Unified observability for [latency (e.g., TTFT and ITL)](../llm-inference-basics/llm-inference-metrics), throughput, GPU utilization, and errors
 - Cost attribution across models, regions, and workloads
 
 This orchestration layer is often where most engineering effort goes, especially when operating across multiple clusters or clouds.

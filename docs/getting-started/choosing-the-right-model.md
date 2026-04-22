@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: Select the right models for your use case.
 keywords:
     - How to choose an LLM
@@ -36,7 +36,7 @@ Base model examples: Qwen3.5-0.8B-Base, DeepSeek-V3-Base, GPT-style pretraining 
 
 Instruction-tuned models are built on top of base models. After the initial pretraining phase, these models go through a second training stage using datasets made up of instructions and their corresponding responses.
 
-This process teaches the models how to follow user [prompts](./prompt-engineering) more reliably, so that they are better aligned with human expectations. They understand task intent and respond more coherently to commands like:
+This process teaches the models how to follow user [prompts](../model-interaction/prompt-engineering) more reliably, so that they are better aligned with human expectations. They understand task intent and respond more coherently to commands like:
 
 - “Summarize this article.”
 - “Explain how LLM inference works.”
@@ -85,7 +85,7 @@ Most teams today don’t train models from scratch. They pull from open model hu
 
 ### Hugging Face
 
-[Hugging Face](https://huggingface.co/models) is the default starting point for most teams. It hosts hundreds of thousands of open models across text, vision, audio, and multimodal tasks. You can find base models, instruct models, chat variants, embeddings, and diffusion models there. Hugging Face also provides many [fine-tuned](./llm-fine-tuning) and [quantized model](./llm-quantization) variants, making it easy to experiment with instruction-tuned or low-VRAM models without doing fine-tuning yourself.
+[Hugging Face](https://huggingface.co/models) is the default starting point for most teams. It hosts hundreds of thousands of open models across text, vision, audio, and multimodal tasks. You can find base models, instruct models, chat variants, embeddings, and diffusion models there. Hugging Face also provides many [fine-tuned](../model-preparation/llm-fine-tuning) and [quantized model](../model-preparation/llm-quantization) variants, making it easy to experiment with instruction-tuned or low-VRAM models without doing fine-tuning yourself.
 
 Why people use it:
 
@@ -223,7 +223,7 @@ Some LLMs have long, confusing names, but they usually encode useful information
 
 - The number usually indicates the number of parameters in the model. The letter B stands for billion parameters.
 - “Instruct” means the model has been instruction-tuned. “Chat” models are optimized for multi-turn conversations.
-- Some models have [“quantized” versions](./llm-quantization), meaning the model weights are compressed to reduce memory usage.
+- Some models have [“quantized” versions](../model-preparation/llm-quantization), meaning the model weights are compressed to reduce memory usage.
 - Some model names include a year, month, or date to indicate when the model was released or updated. This helps users quickly identify the generation of the model.
 - MoE models sometimes include two numbers in their names to describe how the expert system works, such as Qwen3.5-35B-A3B. These numbers usually indicate:
   - The total number of experts

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 description: Multi-cloud and cross-region inference is the practice of running LLM workloads across multiple cloud providers or regions to improve latency, availability, and cost efficiency.
 keywords:
     - Multi-cloud LLM inference, multi-region LLM inference
@@ -26,7 +26,7 @@ Multi-cloud inference means running LLM workloads across more than one cloud pro
 Cross-region inference refers to running LLM workloads across multiple geographic regions within the same cloud provider. Note that this doesn’t mean running a different model in each region. Instead, the same application is replicated across multiple sites so requests can be served from the nearest or most available location. For instance, a deployment might run in AWS us-east-1 for North America, eu-west-1 for Europe, and ap-southeast-1 for Asia.
 
 :::note
-Another pattern is hybrid cloud inference, which combines on-premises infrastructure with public and private cloud deployments. Instead of choosing one or the other, enterprises run part of their LLM workloads in private data centers and extend to the cloud when needed. Refer to [on-prem LLM deployments](./on-prem-llms) for details.
+Another pattern is hybrid cloud inference, which combines on-premises infrastructure with public and private cloud deployments. Instead of choosing one or the other, enterprises run part of their LLM workloads in private data centers and extend to the cloud when needed. Refer to [on-prem LLM deployments](../getting-started/on-prem-llms) for details.
 :::
 
 ## Why multi-cloud and cross-region inference matters

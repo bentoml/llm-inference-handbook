@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 1
 description: An OpenAI-compatible API implements the same request and response formats as OpenAI's official API, allowing developers to switch between different models without changing existing code.
 keywords:
     - OpenAI-compatible API, OpenAI-compatible endpoint, OpenAI-compatible server
@@ -117,7 +117,7 @@ Cost savings come from where the API is running. Here’s the breakdown:
 - **If you use a hosted provider (e.g., Together AI, Fireworks)**, you still pay per-token or per-request, even if the API is “OpenAI-compatible.”
 - **If you stay on OpenAI**, you pay per-token at OpenAI pricing.
 
-The reason some AI teams save money isn’t the OpenAI-compatible API; it’s the ability to self-host any model without breaking their existing application code. Learn more about [serverless vs. self-hosted LLM inference](./serverless-vs-self-hosted-llm-inference).
+The reason some AI teams save money isn’t the OpenAI-compatible API; it’s the ability to self-host any model without breaking their existing application code. Learn more about [serverless vs. self-hosted LLM inference](../getting-started/serverless-vs-self-hosted-llm-inference).
 
 <LinkList>
   ## Additional resources

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 1
 description: Understand the differences between serverless LLM APIs and self-hosted LLM deployments.
 keywords:
     - Serverless vs. Self-hosted LLM inference
@@ -39,7 +39,7 @@ Key benefits of self-hosting include:
     - Implementing advanced optimizations like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation), [prefix caching](../inference-optimization/prefix-caching), and [speculative decoding](../inference-optimization/speculative-decoding).
     - Optimizing for long contexts or [batch-processing](../inference-optimization/static-dynamic-continuous-batching) scenarios.
     - Enforcing structured decoding to ensure outputs follow strict schemas
-    - [Fine-tuning models](../getting-started/llm-fine-tuning) using proprietary data to achieve competitive advantages.
+    - [Fine-tuning models](../model-preparation/llm-fine-tuning) using proprietary data to achieve competitive advantages.
 - **Predictable performance and control**: When you self-host your LLMs, you have complete control over how your system behaves and performs. You’re not at the mercy of external API rate limits or sudden policy changes that might impact your application’s performance and availability.
 
 ## Comparison summary
