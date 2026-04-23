@@ -9,6 +9,7 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import ContextWindowSimulator from '@site/src/components/ContextWindowSimulator';
 
 # How does LLM inference work?
 
@@ -83,6 +84,8 @@ The open-source community is actively working on different strategies to separat
 ## What is a context window and how does it work in LLM inference?
 
 The context window is the number of tokens an LLM can process in a single inference pass. It includes the entire conversation history that must be resent each turn to maintain coherence.
+
+<ContextWindowSimulator />
 
 Technically, LLMs don’t have real memory. To keep context, every new request must resend all previous messages so the model can “see” the full conversation again (it happens under the hood and users don’t see it). In other words, continuity is maintained by reconstructing the context through the input prompt each time.
 
