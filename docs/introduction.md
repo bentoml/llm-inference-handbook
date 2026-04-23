@@ -21,7 +21,7 @@ _LLM Inference Handbook_ is your technical glossary, guidebook, and reference - 
 
 <Features>
   - Practical guidance for deploying, scaling, and operating LLMs in production.
-  - Focus on what truly matters, not edge cases or technical noise.
+  - Explore concepts with interactive calculators, simulators, and visual tools.
   - Boost performance with optimization techniques tailored to your use case.
   - Continuously updated with the latest best practices and field-tested insights.
 </Features>
@@ -45,6 +45,19 @@ If your goal is to make LLM inference faster, cheaper, or more reliable, this ha
 You can read it start-to-finish or treat it like a lookup table. There’s no wrong way to navigate. We’ll keep updating the handbook as the field evolves, because LLM inference is changing fast, and what works today may not be best tomorrow.
 
 <StackQuiz />
+
+## Interactive tools
+
+This handbook provides various interactive tools to help you learn by trying the concepts directly:
+
+- [LLM Inference Visualizer](/llm-inference-basics/what-is-llm-inference): Walk through the request lifecycle and see how tokens flow through prefill and decode.
+- [Latency Metrics Playground](/llm-inference-basics/llm-inference-metrics#latency): Explore TTFT, E2EL, TPOT, and SLO-based goodput.
+- [GPU Memory Calculator](/getting-started/calculating-gpu-memory-for-llms#): Estimate VRAM requirements for serving an LLM.
+- [Batching Strategy Simulator](/inference-optimization/static-dynamic-continuous-batching): Compare static, dynamic, and continuous batching behavior.
+- [KV Cache Memory Calculator](/inference-optimization/kv-cache-offloading#how-to-calculate-the-kv-cache-size): Estimate how much memory the KV cache consumes.
+- [Quantization Memory Impact Visualizer](/model-preparation/llm-quantization#quantization-formats): Compare weight memory across quantization formats.
+- [GPU Comparison Table](/getting-started/choosing-the-right-gpu#matching-gpus-to-open-source-llms): Match popular open-source LLMs to suitable NVIDIA and AMD GPUs.
+- [GPU Execution and Memory Map](/kernel-optimization/gpu-architecture-fundamentals): Visualize how threads, warps, SMs, and the GPU memory hierarchy fit together.
 
 ## Contributing
 

@@ -22,6 +22,8 @@ Before exploring optimization techniques, you need to understand the key metrics
 
 Latency measures how quickly a model responds to a request. It’s crucial for user experience, especially in interactive, real-time applications.
 
+<LatencyMetrics />
+
 Key metrics to measure latency:
 
 - **Time to First Token (TTFT)**: The time it takes to generate the first token after sending a request. It reflects how fast the model can start responding.
@@ -66,8 +68,6 @@ Key metrics to measure latency:
   - **Average ITL is token-weighted**, so longer responses (which contribute more total tokens) carry more weight. It's better for measuring overall system throughput and steady-state performance (e.g., aggregate streaming speed).
 
 ![llm-inference-ttft-latency.png](./img/llm-inference-ttft-latency.png)
-
-<LatencyMetrics />
 
 Acceptable latency depends on the use case. For example, a chatbot might require a TTFT under 500 milliseconds to feel responsive, while a code completion tool may need TTFT below 100 milliseconds for seamless developer experience. In contrast, if you're generating long reports that are reviewed once a day, then even a 30-second total latency may be perfectly acceptable. The key is to match latency targets to the pace and expectations of the task at hand.
 
