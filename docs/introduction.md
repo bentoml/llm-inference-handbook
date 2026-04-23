@@ -51,6 +51,7 @@ You can read it start-to-finish or treat it like a lookup table. There’s no wr
 This handbook provides various interactive tools to help you learn by trying the concepts directly:
 
 - [LLM Inference Visualizer](/llm-inference-basics/what-is-llm-inference): Walk through the request lifecycle and see how tokens flow through prefill and decode.
+- [Context Window Simulator](/llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference): See how the full conversation is re-sent each turn and fills the context window.
 - [Latency Metrics Playground](/llm-inference-basics/llm-inference-metrics#latency): Explore TTFT, E2EL, TPOT, and SLO-based goodput.
 - [GPU Memory Calculator](/getting-started/calculating-gpu-memory-for-llms#): Estimate VRAM requirements for serving an LLM.
 - [Batching Strategy Simulator](/inference-optimization/static-dynamic-continuous-batching): Compare static, dynamic, and continuous batching behavior.
