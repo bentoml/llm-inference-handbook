@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './styles.module.css'
 
 interface Candidate {
@@ -33,21 +33,48 @@ const DECODE_STEPS: DecodeStep[] = [
     ],
   },
   {
-    token: ' serving',
+    token: ' deploying',
     candidates: [
-      { token: ' serving', probability: 0.62 },
-      { token: ' running', probability: 0.16 },
-      { token: ' inference', probability: 0.13 },
-      { token: ' deploying', probability: 0.09 },
+      { token: ' deploying', probability: 0.55 },
+      { token: ' serving', probability: 0.22 },
+      { token: ' running', probability: 0.14 },
+      { token: ' building', probability: 0.09 },
+    ],
+  },
+  {
+    token: ' and',
+    candidates: [
+      { token: ' and', probability: 0.61 },
+      { token: ',', probability: 0.18 },
+      { token: ' &', probability: 0.12 },
+      { token: ' plus', probability: 0.09 },
+    ],
+  },
+  {
+    token: ' scaling',
+    candidates: [
+      { token: ' scaling', probability: 0.57 },
+      { token: ' serving', probability: 0.2 },
+      { token: ' running', probability: 0.14 },
+      { token: ' managing', probability: 0.09 },
+    ],
+  },
+  {
+    token: ' AI',
+    candidates: [
+      { token: ' AI', probability: 0.52 },
+      { token: ' LLM', probability: 0.24 },
+      { token: ' ML', probability: 0.15 },
+      { token: ' large', probability: 0.09 },
     ],
   },
   {
     token: ' models',
     candidates: [
       { token: ' models', probability: 0.67 },
-      { token: ' LLMs', probability: 0.17 },
-      { token: ' APIs', probability: 0.09 },
-      { token: ' workloads', probability: 0.07 },
+      { token: ' workloads', probability: 0.14 },
+      { token: ' systems', probability: 0.11 },
+      { token: ' apps', probability: 0.08 },
     ],
   },
   {
@@ -64,7 +91,8 @@ const DECODE_STEPS: DecodeStep[] = [
 const AUTO_PLAY_MS = 950
 
 function formatToken(token: string) {
-  return token.trimStart()
+  const trimmed = token.trimStart()
+  return trimmed === '' ? token : trimmed
 }
 
 export default function AutoregressiveDecodeStepper() {
@@ -87,14 +115,16 @@ export default function AutoregressiveDecodeStepper() {
   }, [playing, step])
 
   const generatedSteps = DECODE_STEPS.slice(0, step)
-  const visibleTokens = useMemo(
-    () => [...PREFILL_TOKENS, ...generatedSteps.map((decodeStep) => decodeStep.token)],
-    [generatedSteps]
-  )
+  const visibleTokens = [
+    ...PREFILL_TOKENS,
+    ...generatedSteps.map((decodeStep) => decodeStep.token),
+  ]
 
   const nextStep = step < DECODE_STEPS.length ? DECODE_STEPS[step] : null
-  const generatedText = visibleTokens.join('')
+  const isDone = !nextStep
   const progress = (step / DECODE_STEPS.length) * 100
+  const cachedCount = visibleTokens.length
+  const generatedCount = generatedSteps.length
 
   function handleStep() {
     if (step < DECODE_STEPS.length) {
@@ -120,40 +150,44 @@ export default function AutoregressiveDecodeStepper() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.headerTitle}>Autoregressive decode stepper</div>
+        <div className={styles.headerTitle}>Token-by-Token Decode Loop</div>
         <div className={styles.headerDesc}>
-          Step through one decode loop and watch each new token extend the sequence and KV cache.
+          Step through the decode loop. Each step picks one token from a distribution and appends it to the sequence.
         </div>
       </div>
 
       <div className={styles.body}>
         <div className={styles.controls}>
-          <button
-            type="button"
-            className={styles.primaryButton}
-            onClick={handleStep}
-            disabled={playing || step >= DECODE_STEPS.length}
-          >
-            Step
-          </button>
-          <button
-            type="button"
-            className={styles.secondaryButton}
-            onClick={handleTogglePlay}
-          >
-            {step >= DECODE_STEPS.length ? 'Replay' : playing ? 'Pause' : 'Autoplay'}
-          </button>
-          <button
-            type="button"
-            className={styles.secondaryButton}
-            onClick={handleReset}
-            disabled={step === 0 && !playing}
-          >
-            Reset
-          </button>
+          <div className={styles.buttonGroup}>
+            <button
+              type="button"
+              className={styles.primaryButton}
+              onClick={handleStep}
+              disabled={playing || isDone}
+            >
+              Step
+            </button>
+            <button
+              type="button"
+              className={styles.secondaryButton}
+              onClick={handleTogglePlay}
+            >
+              {isDone ? 'Replay' : playing ? 'Pause' : 'Autoplay'}
+            </button>
+            <button
+              type="button"
+              className={styles.secondaryButton}
+              onClick={handleReset}
+              disabled={step === 0 && !playing}
+            >
+              Reset
+            </button>
+          </div>
           <div className={styles.progressWrap}>
             <div className={styles.progressLabel}>
-              Decode step {Math.min(step + 1, DECODE_STEPS.length)} / {DECODE_STEPS.length}
+              {isDone
+                ? `Done · ${DECODE_STEPS.length} / ${DECODE_STEPS.length}`
+                : `Step ${step + 1} / ${DECODE_STEPS.length}`}
             </div>
             <div className={styles.progressTrack}>
               <div className={styles.progressFill} style={{ width: `${progress}%` }} />
@@ -161,118 +195,106 @@ export default function AutoregressiveDecodeStepper() {
           </div>
         </div>
 
+        <div className={styles.sequenceBlock}>
+          <div className={styles.sectionLabel}>Sequence</div>
+          <div className={styles.tokenRow}>
+            {visibleTokens.map((token, index) => {
+              const isGenerated = index >= PREFILL_TOKENS.length
+              return (
+                <div
+                  key={`${token}-${index}`}
+                  className={`${styles.tokenChip} ${isGenerated ? styles.generatedToken : styles.prefillToken}`}
+                >
+                  <span className={styles.tokenIndex}>T{index}</span>
+                  <span className={styles.tokenValue}>{formatToken(token)}</span>
+                </div>
+              )
+            })}
+            {nextStep && (
+              <div className={`${styles.tokenChip} ${styles.pendingToken}`}>
+                <span className={styles.tokenIndex}>T{visibleTokens.length}</span>
+                <span className={styles.tokenValue}>?</span>
+              </div>
+            )}
+          </div>
+          <div className={styles.legendRow}>
+            <span className={styles.legendItem}>
+              <span className={`${styles.legendSwatch} ${styles.legendPrefill}`} />
+              Existing · {PREFILL_TOKENS.length}
+            </span>
+            <span className={styles.legendItem}>
+              <span className={`${styles.legendSwatch} ${styles.legendGenerated}`} />
+              Generated · {generatedCount}
+            </span>
+            {nextStep && (
+              <span className={styles.legendItem}>
+                <span className={`${styles.legendSwatch} ${styles.legendPending}`} />
+                Next
+              </span>
+            )}
+          </div>
+        </div>
+
         <div className={styles.grid}>
-          <div className={styles.mainPanel}>
-            <div className={styles.sectionLabel}>Sequence so far</div>
-            <div className={styles.tokenRow}>
+          <div className={styles.panel}>
+            <div className={styles.sectionLabel}>Next-token distribution</div>
+            {nextStep ? (
+              <div className={styles.candidateList}>
+                {nextStep.candidates.map((candidate) => {
+                  const isChosen = candidate.token === nextStep.token
+                  return (
+                    <div
+                      key={candidate.token}
+                      className={`${styles.candidateRow} ${isChosen ? styles.candidateChosen : ''}`}
+                    >
+                      <div className={styles.candidateHead}>
+                        <code>{formatToken(candidate.token)}</code>
+                        <span>{Math.round(candidate.probability * 100)}%</span>
+                      </div>
+                      <div className={styles.candidateTrack}>
+                        <div
+                          className={styles.candidateFill}
+                          style={{ width: `${candidate.probability * 100}%` }}
+                        />
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            ) : (
+              <div className={styles.doneBox}>
+                <div className={styles.doneTitle}>Stop criterion reached</div>
+                <div className={styles.doneBody}>
+                  In practice, this is an EOS token, a stop string, or the max-token limit.
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className={styles.panel}>
+            <div className={styles.sectionLabel}>KV cache</div>
+            <div className={styles.cacheRow}>
               {visibleTokens.map((token, index) => {
                 const isGenerated = index >= PREFILL_TOKENS.length
                 return (
-                  <div
-                    key={`${token}-${index}`}
-                    className={`${styles.tokenChip} ${isGenerated ? styles.generatedToken : styles.prefillToken}`}
-                  >
-                    <span className={styles.tokenIndex}>T{index + 1}</span>
-                    <span className={styles.tokenValue}>{formatToken(token)}</span>
-                  </div>
+                  <span
+                    key={`cache-${token}-${index}`}
+                    className={`${styles.cacheBlock} ${isGenerated ? styles.cacheGenerated : styles.cachePrefill}`}
+                  />
                 )
               })}
-              {nextStep && (
-                <div className={`${styles.tokenChip} ${styles.pendingToken}`}>
-                  <span className={styles.tokenIndex}>T{visibleTokens.length + 1}</span>
-                  <span className={styles.tokenValue}>?</span>
-                </div>
-              )}
+              {nextStep && <span className={`${styles.cacheBlock} ${styles.cachePending}`} />}
             </div>
-
-            <div className={styles.outputBox}>
-              <div className={styles.outputLabel}>Decoded text</div>
-              <div className={styles.outputText}>
-                {generatedText}
-                {nextStep && <span className={styles.cursor}>▋</span>}
-              </div>
-            </div>
-
-            <div className={styles.summaryCard}>
+            <div className={styles.cacheCaption}>
               {nextStep ? (
                 <>
-                  <div className={styles.summaryTitle}>
-                    Predicting T{visibleTokens.length + 1}: <code>{formatToken(nextStep.token)}</code>
-                  </div>
+                  Reuses <strong>{cachedCount}</strong> cached K/V pair{cachedCount === 1 ? '' : 's'}; computes <strong>1</strong> new one this step.
                 </>
               ) : (
                 <>
-                  <div className={styles.summaryTitle}>Decode complete</div>
+                  Cache holds <strong>{cachedCount}</strong> K/V pairs from prefill + decode, ready to seed the next request.
                 </>
               )}
-            </div>
-          </div>
-
-          <div className={styles.sidePanel}>
-            <div className={styles.sideSection}>
-              <div className={styles.sectionLabel}>Next-token distribution</div>
-              {nextStep ? (
-                <div className={styles.candidateList}>
-                  {nextStep.candidates.map((candidate) => {
-                    const isChosen = candidate.token === nextStep.token
-                    return (
-                      <div
-                        key={candidate.token}
-                        className={`${styles.candidateRow} ${isChosen ? styles.candidateChosen : ''}`}
-                      >
-                        <div className={styles.candidateHead}>
-                          <code>{formatToken(candidate.token)}</code>
-                          <span>{Math.round(candidate.probability * 100)}%</span>
-                        </div>
-                        <div className={styles.candidateTrack}>
-                          <div
-                            className={styles.candidateFill}
-                            style={{ width: `${candidate.probability * 100}%` }}
-                          />
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              ) : (
-                <div className={styles.doneBox}>
-                  Stop condition reached. In real systems this may be EOS, a stop string, or the max token limit.
-                </div>
-              )}
-            </div>
-
-            <div className={styles.sideSection}>
-              <div className={styles.sectionLabel}>KV cache reuse</div>
-              <div className={styles.kvPanel}>
-                <div className={styles.metrics}>
-                  <div className={styles.metricCard}>
-                    <span className={styles.metricValue}>{visibleTokens.length}</span>
-                    <span className={styles.metricLabel}>tokens already cached</span>
-                  </div>
-                  <div className={styles.metricCard}>
-                    <span className={styles.metricValue}>{nextStep ? 1 : 0}</span>
-                    <span className={styles.metricLabel}>new token computed now</span>
-                  </div>
-                </div>
-                <div className={styles.cacheStrip}>
-                  <div className={styles.cacheStripLabel}>Cache blocks</div>
-                  <div className={styles.cacheRow}>
-                    {visibleTokens.map((token, index) => {
-                      const isGenerated = index >= PREFILL_TOKENS.length
-                      return (
-                        <span
-                          key={`cache-${token}-${index}`}
-                          className={`${styles.cacheBlock} ${isGenerated ? styles.cacheGenerated : styles.cachePrefill}`}
-                        />
-                      )
-                    })}
-                    {nextStep && <span className={`${styles.cacheBlock} ${styles.cachePending}`} />}
-                  </div>
-                </div>
-                <div className={styles.cacheCaption}>
-                  Decode reads the growing cache every step and writes K/V only for the newest token.
-                </div>
-              </div>
             </div>
           </div>
         </div>

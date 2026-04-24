@@ -1,68 +1,78 @@
+/* ── Container ── */
+
 .container {
-  border: 1px solid #bfdbfe;
-  border-radius: 0.75rem;
-  margin: 1rem 0 1.5rem;
+  border: 1px solid #bbf7d0;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 18px 36px -32px rgba(15, 23, 42, 0.5);
 }
 
 .header {
-  padding: 1.125rem 1.25rem;
-  background: linear-gradient(90deg, #eff6ff 0%, #ecfeff 100%);
-  border-bottom: 1px solid #dbeafe;
+  padding: 1.25rem 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: linear-gradient(to right, #eef2ff, #eff6ff);
 }
 
 .headerTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  letter-spacing: -0.02em;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #111827;
 }
 
 .headerDesc {
+  font-size: 0.8125rem;
+  color: #4b5563;
   margin-top: 0.25rem;
-  font-size: 0.875rem;
-  color: #475569;
-  line-height: 1.5;
 }
 
 .body {
-  padding: 1rem 1.25rem 1.25rem;
+  padding: 1.25rem 1.5rem 1.5rem;
   background: #fff;
 }
+
+/* ── Controls row ── */
 
 .controls {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .primaryButton,
 .secondaryButton {
-  border-radius: 0.55rem;
-  padding: 0.6rem 0.9rem;
-  font-size: 0.875rem;
+  border-radius: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   border: 1px solid transparent;
   cursor: pointer;
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  font-family: inherit;
 }
 
 .primaryButton {
-  background: #0284c7;
+  background: #1e40af;
   color: #fff;
 }
 
 .secondaryButton {
-  background: #f8fafc;
-  color: #334155;
-  border-color: #cbd5e1;
+  background: #fff;
+  color: #374151;
+  border-color: #e5e7eb;
 }
 
-.primaryButton:hover,
-.secondaryButton:hover {
+.primaryButton:hover:not(:disabled),
+.secondaryButton:hover:not(:disabled) {
   transform: translateY(-1px);
 }
 
@@ -74,63 +84,61 @@
 }
 
 .progressWrap {
-  min-width: 220px;
+  min-width: 200px;
   flex: 1;
 }
 
 .progressLabel {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #64748b;
+  color: #6b7280;
   margin-bottom: 0.35rem;
 }
 
 .progressTrack {
-  height: 0.45rem;
+  height: 0.4rem;
   border-radius: 999px;
-  background: #e2e8f0;
+  background: #e5e7eb;
   overflow: hidden;
 }
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%);
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
   transition: width 220ms ease;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 1fr);
-  gap: 1rem;
-}
+/* ── Sequence (full-width hero) ── */
 
-.mainPanel,
-.sidePanel {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
+.sequenceBlock {
+  padding: 0.9rem 1rem 0.95rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #f9fafb;
+  margin-bottom: 1rem;
 }
 
 .sectionLabel {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #64748b;
+  color: #6b7280;
+  margin-bottom: 0.55rem;
 }
 
 .tokenRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
 .tokenChip {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.42rem 0.6rem;
-  border-radius: 0.6rem;
+  gap: 0.4rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.4rem;
   border: 1px solid;
   font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', monospace;
   font-size: 0.8rem;
@@ -138,13 +146,13 @@
 }
 
 .prefillToken {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  color: #334155;
+  background: #fff;
+  border-color: #e5e7eb;
+  color: #4b5563;
 }
 
 .generatedToken {
-  background: #ecfdf5;
+  background: #f0fdf4;
   border-color: #86efac;
   color: #166534;
 }
@@ -159,90 +167,90 @@
 .tokenIndex {
   font-size: 0.65rem;
   font-weight: 700;
-  color: inherit;
-  opacity: 0.75;
+  opacity: 0.7;
 }
 
 .tokenValue {
   font-weight: 600;
 }
 
-.outputBox,
-.summaryCard,
-.sideSection,
-.doneBox {
-  border: 1px solid #e2e8f0;
-  border-radius: 0.75rem;
-  background: #f8fafc;
-}
+/* ── Legend ── */
 
-.outputBox {
-  padding: 0.9rem 1rem;
-}
-
-.outputLabel {
+.legendRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.7rem;
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #64748b;
-  margin-bottom: 0.35rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: #6b7280;
 }
 
-.outputText {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #0f172a;
-  line-height: 1.6;
-  word-break: break-word;
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
-.cursor {
-  color: #0284c7;
-  margin-left: 0.12rem;
+.legendSwatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 0.2rem;
+  border: 1px solid;
+  display: inline-block;
 }
 
-.summaryCard {
-  padding: 0.9rem 1rem;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+.legendPrefill {
+  background: #fff;
+  border-color: #e5e7eb;
 }
 
-.summaryTitle {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.3rem;
+.legendGenerated {
+  background: #bbf7d0;
+  border-color: #86efac;
 }
 
-.summaryTitle code {
-  font-size: 0.85rem;
+.legendPending {
+  background: #fff7ed;
+  border-color: #fdba74;
+  border-style: dashed;
 }
 
-.sideSection {
-  padding: 0.9rem 1rem;
+/* ── Two-column grid ── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
 }
 
-.sideSection .sectionLabel {
-  margin-bottom: 0.7rem;
+.panel {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-direction: column;
 }
+
+/* ── Candidate distribution ── */
 
 .candidateList {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  margin-top: 0.7rem;
+  gap: 0.55rem;
 }
 
 .candidateRow {
-  border-radius: 0.65rem;
-  border: 1px solid #dbeafe;
-  background: #fff;
-  padding: 0.65rem 0.75rem;
+  border-radius: 0.4rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 0.5rem 0.65rem;
 }
 
 .candidateChosen {
-  border-color: #38bdf8;
-  background: #f0f9ff;
+  border-color: #60a5fa;
+  background: #eff6ff;
 }
 
 .candidateHead {
@@ -252,88 +260,50 @@
   gap: 0.75rem;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #334155;
-  margin-bottom: 0.4rem;
+  color: #374151;
+  margin-bottom: 0.35rem;
+}
+
+.candidateChosen .candidateHead {
+  color: #1e40af;
 }
 
 .candidateTrack {
-  height: 0.42rem;
+  height: 0.35rem;
   border-radius: 999px;
-  background: #e2e8f0;
+  background: #e5e7eb;
   overflow: hidden;
 }
 
 .candidateFill {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #0ea5e9 0%, #22c55e 100%);
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
 }
 
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
+.candidateChosen .candidateFill {
+  background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
 }
 
-.kvPanel {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.metricCard {
-  border-radius: 0.7rem;
-  background: #fff;
-  border: 1px solid #dbeafe;
-  padding: 0.7rem 0.8rem;
-}
-
-.metricValue {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.metricLabel {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 0.76rem;
-  line-height: 1.4;
-  color: #64748b;
-}
-
-.cacheStrip {
-  border-radius: 0.7rem;
-  background: #fff;
-  border: 1px solid #dbeafe;
-  padding: 0.7rem 0.8rem 0.8rem;
-}
-
-.cacheStripLabel {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #64748b;
-}
+/* ── KV cache panel ── */
 
 .cacheRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-top: 0.55rem;
+  gap: 0.3rem;
+  margin-bottom: 0.7rem;
 }
 
 .cacheBlock {
   width: 18px;
   height: 18px;
-  border-radius: 0.35rem;
-  border: 1px solid #cbd5e1;
+  border-radius: 0.3rem;
+  border: 1px solid;
 }
 
 .cachePrefill {
-  background: #dbeafe;
-  border-color: #93c5fd;
+  background: #fff;
+  border-color: #cbd5e1;
 }
 
 .cacheGenerated {
@@ -348,50 +318,55 @@
 }
 
 .cacheCaption {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
-  color: #475569;
+  color: #4b5563;
+  margin-top: auto;
 }
+
+.cacheCaption strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ── Done / stop state ── */
 
 .doneBox {
-  margin-top: 0.7rem;
-  padding: 0.85rem 0.95rem;
-  font-size: 0.82rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.4rem;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: 0.8125rem;
   line-height: 1.5;
-  color: #475569;
 }
 
-@media (max-width: 900px) {
+.doneTitle {
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.doneBody {
+  color: #1e3a8a;
+  opacity: 0.85;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 760px) {
   .grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 640px) {
   .body {
-    padding: 0.95rem;
+    padding: 1rem;
   }
 
   .controls {
-    gap: 0.6rem;
-  }
-
-  .primaryButton,
-  .secondaryButton {
-    flex: 1 1 calc(50% - 0.3rem);
-    justify-content: center;
+    gap: 0.75rem;
   }
 
   .progressWrap {
     min-width: 100%;
-  }
-
-  .metrics {
-    grid-template-columns: 1fr;
-  }
-
-  .tokenChip {
-    width: 100%;
-    justify-content: space-between;
   }
 }
