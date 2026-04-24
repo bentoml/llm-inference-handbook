@@ -1,0 +1,397 @@
+.container {
+  border: 1px solid #bfdbfe;
+  border-radius: 0.75rem;
+  margin: 1rem 0 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 18px 36px -32px rgba(15, 23, 42, 0.5);
+}
+
+.header {
+  padding: 1.125rem 1.25rem;
+  background: linear-gradient(90deg, #eff6ff 0%, #ecfeff 100%);
+  border-bottom: 1px solid #dbeafe;
+}
+
+.headerTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.headerDesc {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.body {
+  padding: 1rem 1.25rem 1.25rem;
+  background: #fff;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: 0.55rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.primaryButton {
+  background: #0284c7;
+  color: #fff;
+}
+
+.secondaryButton {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.progressWrap {
+  min-width: 220px;
+  flex: 1;
+}
+
+.progressLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+
+.progressTrack {
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%);
+  transition: width 220ms ease;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 1fr);
+  gap: 1rem;
+}
+
+.mainPanel,
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.sectionLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.tokenRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tokenChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.prefillToken {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.generatedToken {
+  background: #ecfdf5;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.pendingToken {
+  background: #fff7ed;
+  border-color: #fdba74;
+  color: #9a3412;
+  border-style: dashed;
+}
+
+.tokenIndex {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: inherit;
+  opacity: 0.75;
+}
+
+.tokenValue {
+  font-weight: 600;
+}
+
+.outputBox,
+.summaryCard,
+.sideSection,
+.doneBox {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+}
+
+.outputBox {
+  padding: 0.9rem 1rem;
+}
+
+.outputLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.outputText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.cursor {
+  color: #0284c7;
+  margin-left: 0.12rem;
+}
+
+.summaryCard {
+  padding: 0.9rem 1rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.summaryTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.3rem;
+}
+
+.summaryTitle code {
+  font-size: 0.85rem;
+}
+
+.sideSection {
+  padding: 0.9rem 1rem;
+}
+
+.sideSection .sectionLabel {
+  margin-bottom: 0.7rem;
+}
+
+.candidateList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.7rem;
+}
+
+.candidateRow {
+  border-radius: 0.65rem;
+  border: 1px solid #dbeafe;
+  background: #fff;
+  padding: 0.65rem 0.75rem;
+}
+
+.candidateChosen {
+  border-color: #38bdf8;
+  background: #f0f9ff;
+}
+
+.candidateHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.4rem;
+}
+
+.candidateTrack {
+  height: 0.42rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.candidateFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0ea5e9 0%, #22c55e 100%);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.kvPanel {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.metricCard {
+  border-radius: 0.7rem;
+  background: #fff;
+  border: 1px solid #dbeafe;
+  padding: 0.7rem 0.8rem;
+}
+
+.metricValue {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.metricLabel {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+.cacheStrip {
+  border-radius: 0.7rem;
+  background: #fff;
+  border: 1px solid #dbeafe;
+  padding: 0.7rem 0.8rem 0.8rem;
+}
+
+.cacheStripLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.cacheRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.cacheBlock {
+  width: 18px;
+  height: 18px;
+  border-radius: 0.35rem;
+  border: 1px solid #cbd5e1;
+}
+
+.cachePrefill {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.cacheGenerated {
+  background: #bbf7d0;
+  border-color: #86efac;
+}
+
+.cachePending {
+  background: #fff7ed;
+  border-color: #fb923c;
+  border-style: dashed;
+}
+
+.cacheCaption {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.doneBox {
+  margin-top: 0.7rem;
+  padding: 0.85rem 0.95rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #475569;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .body {
+    padding: 0.95rem;
+  }
+
+  .controls {
+    gap: 0.6rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    flex: 1 1 calc(50% - 0.3rem);
+    justify-content: center;
+  }
+
+  .progressWrap {
+    min-width: 100%;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .tokenChip {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -10,6 +10,7 @@ keywords:
 
 import LinkList from '@site/src/components/LinkList';
 import ContextWindowSimulator from '@site/src/components/ContextWindowSimulator';
+import AutoregressiveDecodeStepper from '@site/src/components/AutoregressiveDecodeStepper';
 
 # How does LLM inference work?
 
@@ -55,7 +56,9 @@ After prefill, the LLM enters the decode stage where it generates new tokens seq
 
 For each new token, the model [samples from a probability distribution](#how-are-tokens-selected-via-sampling) generated based on the prompt and all previously generated tokens. This process is autoregressive, meaning tokens T₀ through Tₙ₋₁ are used to generate token Tₙ, then T₀ through Tₙ to generate Tₙ₊₁, and so on.
 
-![auto-regressive.png](./img/auto-regressive.png)
+Use the stepper below to see that loop in slow motion. Each click predicts one new token from the full sequence built so far.
+
+<AutoregressiveDecodeStepper />
 
 Each newly generated token is appended to the growing sequence. This autoregressive loop continues until:
 
