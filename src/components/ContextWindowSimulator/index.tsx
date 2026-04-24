@@ -104,7 +104,7 @@ export default function ContextWindowSimulator() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.headerTitle}>Context window simulator</div>
+        <div className={styles.headerTitle}>Context Window Simulator</div>
         <div className={styles.headerDesc}>
           Every turn, the full conversation is re-sent to the model. Watch the window fill up.
         </div>

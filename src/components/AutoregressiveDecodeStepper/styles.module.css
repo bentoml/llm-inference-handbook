@@ -1,0 +1,372 @@
+/* ── Container ── */
+
+.container {
+  border: 1px solid #bbf7d0;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.header {
+  padding: 1.25rem 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: linear-gradient(to right, #eef2ff, #eff6ff);
+}
+
+.headerTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #111827;
+}
+
+.headerDesc {
+  font-size: 0.8125rem;
+  color: #4b5563;
+  margin-top: 0.25rem;
+}
+
+.body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: #fff;
+}
+
+/* ── Controls row ── */
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  font-family: inherit;
+}
+
+.primaryButton {
+  background: #1e40af;
+  color: #fff;
+}
+
+.secondaryButton {
+  background: #fff;
+  color: #374151;
+  border-color: #e5e7eb;
+}
+
+.primaryButton:hover:not(:disabled),
+.secondaryButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.progressWrap {
+  min-width: 200px;
+  flex: 1;
+}
+
+.progressLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 0.35rem;
+}
+
+.progressTrack {
+  height: 0.4rem;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  transition: width 220ms ease;
+}
+
+/* ── Sequence (full-width hero) ── */
+
+.sequenceBlock {
+  padding: 0.9rem 1rem 0.95rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #f9fafb;
+  margin-bottom: 1rem;
+}
+
+.sectionLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.55rem;
+}
+
+.tokenRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tokenChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.4rem;
+  border: 1px solid;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.prefillToken {
+  background: #fff;
+  border-color: #e5e7eb;
+  color: #4b5563;
+}
+
+.generatedToken {
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.pendingToken {
+  background: #fff7ed;
+  border-color: #fdba74;
+  color: #9a3412;
+  border-style: dashed;
+}
+
+.tokenIndex {
+  font-size: 0.65rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.tokenValue {
+  font-weight: 600;
+}
+
+/* ── Legend ── */
+
+.legendRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.7rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legendSwatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 0.2rem;
+  border: 1px solid;
+  display: inline-block;
+}
+
+.legendPrefill {
+  background: #fff;
+  border-color: #e5e7eb;
+}
+
+.legendGenerated {
+  background: #bbf7d0;
+  border-color: #86efac;
+}
+
+.legendPending {
+  background: #fff7ed;
+  border-color: #fdba74;
+  border-style: dashed;
+}
+
+/* ── Two-column grid ── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.panel {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Candidate distribution ── */
+
+.candidateList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.candidateRow {
+  border-radius: 0.4rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 0.5rem 0.65rem;
+}
+
+.candidateChosen {
+  border-color: #60a5fa;
+  background: #eff6ff;
+}
+
+.candidateHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.35rem;
+}
+
+.candidateChosen .candidateHead {
+  color: #1e40af;
+}
+
+.candidateTrack {
+  height: 0.35rem;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.candidateFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+}
+
+.candidateChosen .candidateFill {
+  background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+}
+
+/* ── KV cache panel ── */
+
+.cacheRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.7rem;
+}
+
+.cacheBlock {
+  width: 18px;
+  height: 18px;
+  border-radius: 0.3rem;
+  border: 1px solid;
+}
+
+.cachePrefill {
+  background: #fff;
+  border-color: #cbd5e1;
+}
+
+.cacheGenerated {
+  background: #bbf7d0;
+  border-color: #86efac;
+}
+
+.cachePending {
+  background: #fff7ed;
+  border-color: #fb923c;
+  border-style: dashed;
+}
+
+.cacheCaption {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin-top: auto;
+}
+
+.cacheCaption strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ── Done / stop state ── */
+
+.doneBox {
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.4rem;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.doneTitle {
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.doneBody {
+  color: #1e3a8a;
+  opacity: 0.85;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .body {
+    padding: 1rem;
+  }
+
+  .controls {
+    gap: 0.75rem;
+  }
+
+  .progressWrap {
+    min-width: 100%;
+  }
+}
