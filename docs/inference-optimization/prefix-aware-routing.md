@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 description: Challenges in applying prefix caching
 keywords:
     - Prefix caching, prompt caching, context caching
