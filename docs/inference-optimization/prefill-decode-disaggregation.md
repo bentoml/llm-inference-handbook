@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 description: Disaggregate prefill and decode for better parallel execution, resource allocation, and scaling.
 keywords:
     - Prefill-decode disaggregation

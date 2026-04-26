@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 description: Route LLM requests based on KV cache usage for faster, smarter inference.
 keywords:
     - KV cache

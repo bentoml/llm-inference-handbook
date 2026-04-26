@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 1
 description: LLM performance benchmarks are standardized tests that measure how LLMs perform under specific conditions. Unlike leaderboards that rank the best LLMs based on accuracy or reasoning ability, performance benchmarks focus on practical LLM performance metrics such as throughput, latency, cost efficiency, and resource utilization. Learn how to run and interpret LLM performance benchmarks.
 keywords:
     - LLM benchmarks, LLM performance benchmarks, LLM performance metrics, inference benchmarks
