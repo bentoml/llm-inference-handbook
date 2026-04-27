@@ -65,8 +65,18 @@ const GPU_DATA: GPU[] = [
     vramDisplay: '141 GB',
     bandwidthGBs: 4800,
     bandwidthDisplay: '4.8 TB/s',
-    exampleLLMs: ['DeepSeek-R1-0528', 'DeepSeek-V4-Pro', 'Kimi-K2.6', 'Qwen3.5-397B-A17B', 'GLM-5.1'],
+    exampleLLMs: ['DeepSeek-R1-0528', 'Kimi-K2.6', 'Qwen3.5-397B-A17B', 'Step 3.5 Flash'],
     notes: 'High memory capacity; designed for frontier-scale LLMs'
+  },
+  {
+    name: 'NVIDIA B200',
+    vendor: 'NVIDIA',
+    vram: 192,
+    vramDisplay: '192 GB',
+    bandwidthGBs: 8000,
+    bandwidthDisplay: '8.0 TB/s',
+    exampleLLMs: ['DeepSeek-V4-Flash', 'DeepSeek-V4-Pro', 'GLM-5.1', 'MiniMax-M2.7'],
+    notes: 'Blackwell architecture; native FP4 support; massive throughput for trillion-parameter models'
   },
   {
     name: 'AMD MI250',
@@ -97,6 +107,16 @@ const GPU_DATA: GPU[] = [
     bandwidthDisplay: '6.0 TB/s',
     exampleLLMs: ['Gemma-4-31B', 'MiniMax-M2.7', 'DeepSeek-V3.2', 'GLM-5.1', 'Qwen3.5-397B-A17B'],
     notes: '3rd Gen CDNA architecture; built for massive multi-GPU clusters'
+  },
+  {
+    name: 'AMD MI355X',
+    vendor: 'AMD',
+    vram: 288,
+    vramDisplay: '288 GB',
+    bandwidthGBs: 8000,
+    bandwidthDisplay: '8.0 TB/s',
+    exampleLLMs: ['GLM-5.1', 'Kimi-K2.6', 'MiniMax-M2.7'],
+    notes: '4th Gen CDNA architecture; FP4/FP6 support; competes with B200 for the largest open models'
   }
 ]
 
