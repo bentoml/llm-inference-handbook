@@ -45,7 +45,7 @@ const GPU_DATA: GPU[] = [
     vramDisplay: '40 / 80 GB',
     bandwidthGBs: 2000,
     bandwidthDisplay: '1.6–2.0 TB/s',
-    exampleLLMs: ['Gemma-4-26B-A4B', 'gpt-oss-20b', 'Llama-3.3-70B'],
+    exampleLLMs: ['Gemma-4-26B-A4B', 'gpt-oss-20b', 'gpt-oss-120b', 'Llama-3.3-70B'],
     notes: 'Workhorse for medium to large models (>10GB) and complex computer vision tasks; strong CUDA ecosystem'
   },
   {
@@ -55,7 +55,7 @@ const GPU_DATA: GPU[] = [
     vramDisplay: '80 GB',
     bandwidthGBs: 3350,
     bandwidthDisplay: '3.35 TB/s',
-    exampleLLMs: ['Gemma-4-31B', 'Llama-4-Maverick', 'gpt-oss-120b', 'GLM-4.7', 'MiMo-V2-Flash'],
+    exampleLLMs: ['Gemma-4-31B', 'Qwen3.6-35B-A3B', 'DeepSeek-V4-Flash', 'MiniMax-M2.7', 'MiMo-V2-Flash'],
     notes: 'Optimized for transformer inference; native FP8 support; excellent throughput at scale'
   },
   {
@@ -65,8 +65,18 @@ const GPU_DATA: GPU[] = [
     vramDisplay: '141 GB',
     bandwidthGBs: 4800,
     bandwidthDisplay: '4.8 TB/s',
-    exampleLLMs: ['DeepSeek-R1-0528', 'DeepSeek-V3.2', 'Kimi-K2.5', 'Qwen3.5-397B-A17B', 'GLM-5.1'],
+    exampleLLMs: ['DeepSeek-R1-0528', 'Kimi-K2.6', 'Qwen3.5-397B-A17B', 'Step 3.5 Flash'],
     notes: 'High memory capacity; designed for frontier-scale LLMs'
+  },
+  {
+    name: 'NVIDIA B200',
+    vendor: 'NVIDIA',
+    vram: 192,
+    vramDisplay: '192 GB',
+    bandwidthGBs: 8000,
+    bandwidthDisplay: '8.0 TB/s',
+    exampleLLMs: ['DeepSeek-V4-Flash', 'DeepSeek-V4-Pro', 'GLM-5.1', 'MiniMax-M2.7'],
+    notes: 'Blackwell architecture; native FP4 support; massive throughput for trillion-parameter models'
   },
   {
     name: 'AMD MI250',
@@ -85,7 +95,7 @@ const GPU_DATA: GPU[] = [
     vramDisplay: '192 GB',
     bandwidthGBs: 5300,
     bandwidthDisplay: '5.3 TB/s',
-    exampleLLMs: ['gpt-oss-120b', 'MiniMax-M2.7', 'DeepSeek-R1-0528', 'Qwen3.5-397B-A17B'],
+    exampleLLMs: ['gpt-oss-120b', 'MiniMax-M2.7', 'DeepSeek-R1-0528', 'GLM-5.1', 'Qwen3.5-397B-A17B'],
     notes: 'Large memory capacity; strong choice for large models'
   },
   {
@@ -95,8 +105,18 @@ const GPU_DATA: GPU[] = [
     vramDisplay: '256 GB',
     bandwidthGBs: 6000,
     bandwidthDisplay: '6.0 TB/s',
-    exampleLLMs: ['Gemma-4-31B', 'MiniMax-M2.7', 'DeepSeek-V3.2', 'Qwen3.5-397B-A17B'],
+    exampleLLMs: ['Gemma-4-31B', 'MiniMax-M2.7', 'DeepSeek-V3.2', 'GLM-5.1', 'Qwen3.5-397B-A17B'],
     notes: '3rd Gen CDNA architecture; built for massive multi-GPU clusters'
+  },
+  {
+    name: 'AMD MI355X',
+    vendor: 'AMD',
+    vram: 288,
+    vramDisplay: '288 GB',
+    bandwidthGBs: 8000,
+    bandwidthDisplay: '8.0 TB/s',
+    exampleLLMs: ['GLM-5.1', 'Kimi-K2.6', 'MiniMax-M2.7'],
+    notes: '4th Gen CDNA architecture; FP4/FP6 support; competes with B200 for the largest open models'
   }
 ]
 
