@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 description: Structured outputs are model responses in defined formats like JSON or XML, making AI-generated data predictable, machine-readable, and easy to integrate into applications and workflows.
 keywords:
     - Structured outputs, structured generation, constrained decoding
