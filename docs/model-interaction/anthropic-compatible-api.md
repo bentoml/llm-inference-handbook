@@ -115,7 +115,7 @@ Use any returned `id` as the `model` field in your `messages.create()` calls.
 
 A compatible endpoint speaks the Anthropic schema, but it isn’t the official Anthropic API. A few practical caveats:
 
-- **The API key is accepted but not validated**. Most self-hosted inference frameworks don’t verify the value, so you can pass any string (e.g., `"EMPTY"`). Only treat it as a real secret when the endpoint is fronted by a gateway that actually checks it.
+- **The API key may be accepted but not validated**. Many self-hosted inference frameworks don’t verify the value, so you can often pass any string (e.g., `"EMPTY"`). Treat it as a real secret when the endpoint or a gateway actually checks it.
 - **Configuration is often done via environment variables**. Many frameworks’ docs recommend setting the API key and base URL through environment variables (so the Anthropic SDK picks them up automatically) rather than hard-coding them in client code. The idea is the same across frameworks, but the specific variable names can differ.
 - **Not all API fields are supported**. Common fields like `model`, `messages`, and `max_tokens` are usually fine, but coverage thins out beyond that. For example:
   - **Modalities**. The official Anthropic API accepts types like `"image"` and `"document"`. For many open-source LLMs, these are simply not supported. Always check the compatibility doc before assuming a content type will go through.
@@ -144,7 +144,7 @@ Both APIs let applications send prompts, receive model responses, stream output,
 | --- | --- | --- |
 | Main chat endpoint | Usually `/v1/chat/completions` or newer Responses API endpoints | `/v1/messages` |
 | Client shape | OpenAI SDK conventions around chat completions, responses, tools, and choices | Anthropic SDK conventions around messages, content blocks, and typed stream events |
-| System prompt | Usually represented as a `system` message or equivalent instruction field | Passed as a top-level `system` field in the Messages API |
+| System prompt | Usually represented as a `system` or `developer` message, or an equivalent instruction field | Passed as a top-level `system` field in the Messages API |
 | Authentication header | Usually `Authorization: Bearer ...` | Usually `x-api-key` plus an `anthropic-version` header |
 | Tool use | OpenAI-style tool definitions and tool call fields | Anthropic-style tool definitions and tool-use content blocks |
 

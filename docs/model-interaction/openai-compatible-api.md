@@ -15,7 +15,7 @@ Once an LLM is running, you’ll need a standard way to interact with it. That�
 
 ## What is an OpenAI-compatible API?
 
-An OpenAI-compatible API is any API that replicates the interface, request/response schema, and authentication model of OpenAI’s original API. While OpenAI didn’t formally define this as an industry standard, their API has become the de facto interface for LLMs.
+An OpenAI-compatible API is any API that replicates common OpenAI interface, request/response schema, and authentication conventions. While OpenAI didn’t formally define this as an industry standard, their API has become the de facto interface for LLMs.
 
 The rise of ChatGPT in late 2022 demonstrated how powerful and user-friendly this approach could be:
 
@@ -36,15 +36,17 @@ In these cases, rewriting application logic to fit a new API can be tedious and 
 
 OpenAI-compatible APIs address these challenges by providing:
 
-- **Drop-in replacement**: Swap out OpenAI’s hosted API for your own self-hosted or open-source model, without changing your application code.
+- **Drop-in replacement**: Swap out OpenAI’s hosted API for your own self-hosted or open-source model, often without changing application code.
 - **Seamless migration**: Move between providers or self-hosted deployments with minimal disruption.
 - **Consistent integration**: Maintain compatibility with tools and frameworks that rely on the OpenAI API schema (e.g., `chat/completions`, `embeddings` endpoints).
 
-Many [inference backends](../getting-started/choosing-the-right-inference-framework) (e.g., vLLM and SGLang) and model serving frameworks (e.g., BentoML) provide OpenAI-compatible endpoints out of the box. This makes it easy to switch between different models without changing client code.
+Many [inference backends](../getting-started/choosing-the-right-inference-framework) (e.g., vLLM and SGLang) and model serving frameworks (e.g., BentoML) provide OpenAI-compatible endpoints out of the box. This makes it easier to switch between different models without changing client code.
 
 ## How to call an OpenAI-compatible API
 
-Point your existing OpenAI client to a self-hosted or alternative provider’s endpoint like this:
+Many compatible servers target the Chat Completions API because it is widely supported by existing SDKs and frameworks. The official OpenAI documentation now recommends the newer Responses API for new OpenAI-hosted applications, but compatibility coverage for Responses varies by serving framework.
+
+Point your existing OpenAI client to a self-hosted or alternative provider’s Chat Completions endpoint like this:
 
 ```python
 from openai import OpenAI
@@ -83,7 +85,7 @@ curl https://your-custom-endpoint.com/v1/chat/completions \
   }'
 ```
 
-If you’re already using OpenAI’s SDKs or REST interface, you can simply redirect them to your own API endpoint. This allows you to keep control over your LLM deployment, reduce vendor lock-in, and ensure your application remains future-proof.
+If you’re already using the OpenAI SDKs or REST interface, you can often redirect them to your own API endpoint. This allows you to keep control over your LLM deployment and reduce vendor lock-in.
 
 ### Streaming responses
 
@@ -111,7 +113,7 @@ for chunk in stream:
         print(delta.content, end="", flush=True)
 ```
 
-The specific schema may be different depending on the framework you use. Always check their official documentation.
+The exact streaming schema can vary depending on the framework you use. Always check their official documentation.
 
 ### Listing available models
 
@@ -158,7 +160,7 @@ If you're using frameworks like vLLM and SGLang, they can expose these models th
 
 ### Is an OpenAI-compatible API required to self-host an LLM?
 
-Not strictly required, but highly recommended. Without it, you might need to manually rebuild agent integrations, SDK integrations, framework compatibility, and so on. Using the OpenAI schema keeps your stack simple and portable.
+Not strictly required, but it is often the practical choice. Without it, you might need to manually rebuild agent integrations, SDK integrations, framework compatibility, and so on. Using the OpenAI schema keeps your stack simpler and more portable.
 
 ### Does using an OpenAI-compatible API save cost?
 
@@ -166,7 +168,7 @@ Not by itself. The API format is just an interface. It doesn’t make inference 
 
 Cost savings come from where the API is running. Here’s the breakdown:
 
-- **If you self-host LLMs through tools like vLLM and SGLang**, you mainly pay for GPUs instead of per-token pricing. You can apply inference optimizations like [KV cache offloading](../inference-optimization/kv-cache-offloading) and [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) to further cut inference cost. This is usually far cheaper for steady or high-volume workloads.
+- **If you self-host LLMs through tools like vLLM and SGLang**, you mainly pay for GPUs instead of per-token pricing. You can apply inference optimizations like [KV cache offloading](../inference-optimization/kv-cache-offloading) and [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) to improve utilization and potentially reduce serving cost. This can be far cheaper for steady or high-volume workloads when the deployment is well utilized.
 - **If you use a hosted provider (e.g., Together AI, Fireworks)**, you still pay per-token or per-request, even if the API is “OpenAI-compatible.”
 - **If you stay on OpenAI**, you pay per-token at OpenAI pricing.
 
