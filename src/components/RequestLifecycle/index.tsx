@@ -10,7 +10,7 @@ const INPUT_TOKENS = ['What', ' is', ' LLM', ' infer', 'ence', '?']
 const OUTPUT_TOKENS = [
   'LLM', ' inference', ' is', ' the', ' process',
   ' of', ' using', ' a', ' trained', ' model',
-  ' to', ' generate', ' text', '.',
+  ' to', ' generate', ' respon', 'ses', '.',
 ]
 
 const TOKEN_INTERVAL_MS  = 200  // ms between each input token reveal
