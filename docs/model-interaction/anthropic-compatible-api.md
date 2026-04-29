@@ -136,6 +136,18 @@ For new applications without an existing integration, the [OpenAI-compatible API
 
 Choose based on your existing stack, not just the model. If your clients, agent frameworks, or SDKs already speak the OpenAI schema, an OpenAI-compatible endpoint is the easiest path. If they use the Anthropic schema, an Anthropic-compatible endpoint avoids rewriting that integration. The model behind either endpoint can be the same; only the API surface changes.
 
+### What is the difference between the OpenAI API and the Anthropic API?
+
+Both APIs let applications send prompts, receive model responses, stream output, and use tools, but they use different request and response schemas. A compatible endpoint needs to match the schema your client expects.
+
+| Area | OpenAI API | Anthropic API |
+| --- | --- | --- |
+| Main chat endpoint | Usually `/v1/chat/completions` or newer Responses API endpoints | `/v1/messages` |
+| Client shape | OpenAI SDK conventions around chat completions, responses, tools, and choices | Anthropic SDK conventions around messages, content blocks, and typed stream events |
+| System prompt | Usually represented as a `system` message or equivalent instruction field | Passed as a top-level `system` field in the Messages API |
+| Authentication header | Usually `Authorization: Bearer ...` | Usually `x-api-key` plus an `anthropic-version` header |
+| Tool use | OpenAI-style tool definitions and tool call fields | Anthropic-style tool definitions and tool-use content blocks |
+
 <LinkList>
   ## Additional resources
   * [Anthropic Messages API documentation](https://docs.claude.com/en/api/messages)
