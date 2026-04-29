@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 description: Learn what Model Context Protocol (MCP) is and its use case.
 keywords:
     - Model Context Protocol, MCP protocol

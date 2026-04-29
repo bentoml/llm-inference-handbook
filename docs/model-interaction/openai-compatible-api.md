@@ -44,7 +44,7 @@ Many [inference backends](../getting-started/choosing-the-right-inference-framew
 
 ## How to call an OpenAI-compatible API
 
-Here’s a quick example of how easy it is to point your existing OpenAI client to a self-hosted or alternative provider’s endpoint:
+Point your existing OpenAI client to a self-hosted or alternative provider’s endpoint like this:
 
 ```python
 from openai import OpenAI
@@ -84,6 +84,59 @@ curl https://your-custom-endpoint.com/v1/chat/completions \
 ```
 
 If you’re already using OpenAI’s SDKs or REST interface, you can simply redirect them to your own API endpoint. This allows you to keep control over your LLM deployment, reduce vendor lock-in, and ensure your application remains future-proof.
+
+### Streaming responses
+
+Set `stream=True` to receive tokens incrementally as they’re generated. This is useful for chat UIs and any latency-sensitive application.
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://your-custom-endpoint.com/v1",
+    api_key="your-api-key"
+)
+
+stream = client.chat.completions.create(
+    model="your-model-name",
+    messages=[
+        {"role": "user", "content": "Write a short poem about streaming."}
+    ],
+    stream=True,
+)
+
+for chunk in stream:
+    delta = chunk.choices[0].delta
+    if delta.content:
+        print(delta.content, end="", flush=True)
+```
+
+The specific schema may be different depending on the framework you use. Always check their official documentation.
+
+### Listing available models
+
+Most OpenAI-compatible servers also implement the `/v1/models` endpoint. Use it to discover what `model` names the backend accepts:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://your-custom-endpoint.com/v1",
+    api_key="your-api-key"
+)
+
+for model in client.models.list().data:
+    print(model.id)
+```
+
+Or via `curl`:
+
+```bash
+curl https://your-custom-endpoint.com/v1/models \
+  -H "Authorization: Bearer your-api-key"
+```
+
+Use any returned `id` as the `model` field in your chat completion requests. Note that not every framework exposes this endpoint.
 
 ## FAQs
 
