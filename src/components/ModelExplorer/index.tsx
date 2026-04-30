@@ -3,6 +3,7 @@ import styles from './styles.module.css'
 
 type Architecture = 'Dense' | 'MoE'
 type Modality = 'Text' | 'Multimodal'
+type BackendName = 'vLLM' | 'SGLang'
 
 interface Model {
   name: string
@@ -19,6 +20,34 @@ interface Model {
   modalityNote?: string
   precisions: string[]
   deployment: string[]
+  vllmDocs?: string
+  sglangDocs: string
+}
+
+interface Backend {
+  name: BackendName
+  href: string
+  logoSrc: string
+}
+
+const BACKEND_LOGOS: Record<BackendName, string> = {
+  vLLM: 'https://raw.githubusercontent.com/vllm-project/media-kit/main/vLLM-Full-Logo.svg',
+  SGLang: 'https://docs.sglang.io/logo/logo.png',
+}
+
+function getBackends(model: Model): Backend[] {
+  return [
+    {
+      name: 'vLLM',
+      href: model.vllmDocs ?? `https://recipes.vllm.ai/${model.huggingface}`,
+      logoSrc: BACKEND_LOGOS.vLLM,
+    },
+    {
+      name: 'SGLang',
+      href: model.sglangDocs,
+      logoSrc: BACKEND_LOGOS.SGLang,
+    },
+  ]
 }
 
 const MODELS: Model[] = [
@@ -37,6 +66,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H200', '8× B200', '8× MI300X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V3_2',
   },
   {
     name: 'DeepSeek-R1-0528',
@@ -52,6 +82,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H200', '8× B200', '8× MI300X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-R1',
   },
   {
     name: 'DeepSeek-V4-Pro',
@@ -67,6 +98,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['FP4 + FP8 Mixed'],
     deployment: ['8× H200', '8× B200'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4',
   },
   {
     name: 'DeepSeek-V4-Flash',
@@ -82,6 +114,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['FP4 + FP8 Mixed'],
     deployment: ['4× H100', '4× B200'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4',
   },
 
   // ── GLM ──
@@ -99,6 +132,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H200', '8× B200', '8× MI355X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/GLM/GLM-5',
   },
   {
     name: 'GLM-5.1',
@@ -114,6 +148,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H200', '8× B200', '8× MI355X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/GLM/GLM-5.1',
   },
 
   // ── MiMo ──
@@ -131,6 +166,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['FP8'],
     deployment: ['2-node 8× H200'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Xiaomi/MiMo-V2.5',
   },
   {
     name: 'MiMo-V2.5',
@@ -147,6 +183,7 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image, Video, Audio',
     precisions: ['FP8'],
     deployment: ['8× H100', '4× B200'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Xiaomi/MiMo-V2.5',
   },
 
   // ── Kimi ──
@@ -165,6 +202,7 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image, Video',
     precisions: ['INT4'],
     deployment: ['8× H200', '8× B300', '4× MI350X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2.6',
   },
   {
     name: 'Kimi-K2.5',
@@ -181,6 +219,7 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image, Video',
     precisions: ['INT4'],
     deployment: ['8× H200', '8× B300', '4× MI350X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2.5',
   },
 
   // ── MiniMax ──
@@ -198,6 +237,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['FP8'],
     deployment: ['4× H100', '4× H200', '4× MI325X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/MiniMax/MiniMax-M2.7',
   },
 
   // ── Gemma ──
@@ -215,6 +255,8 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image',
     precisions: ['BF16'],
     deployment: ['2× H200', '1x MI325X', '1× TPU v7 Ironwood'],
+    vllmDocs: 'https://recipes.vllm.ai/Google/gemma-4-31B-it',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Google/Gemma4',
   },
   {
     name: 'gemma-4-26B-A4B-it',
@@ -231,6 +273,8 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image',
     precisions: ['BF16'],
     deployment: ['1× H200', '1x MI325X', '1× TPU v7 Ironwood'],
+    vllmDocs: 'https://recipes.vllm.ai/Google/gemma-4-26B-A4B-it',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Google/Gemma4',
   },
 
   // ── OpenAI (gpt-oss) ──
@@ -248,6 +292,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['MXFP4'],
     deployment: ['8× H100', '8× H200', '8× MI300X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/OpenAI/GPT-OSS',
   },
   {
     name: 'gpt-oss-20b',
@@ -263,6 +308,7 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['MXFP4'],
     deployment: ['1× H100', '1× H200', '1× MI355X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/OpenAI/GPT-OSS',
   },
 
   // ── Qwen ──
@@ -280,6 +326,7 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image, Video',
     precisions: ['BF16', 'FP8'],
     deployment: ['1× H100', '1× H200'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Qwen/Qwen3.6',
   },
   {
     name: 'Qwen3.6-35B-A3B',
@@ -296,6 +343,7 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image, Video',
     precisions: ['BF16', 'FP8'],
     deployment: ['1× H100', '1× H200'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Qwen/Qwen3.6',
   },
   {
     name: 'Qwen3.5-397B-A17B',
@@ -312,6 +360,7 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image, Video',
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H100', '8× H200', '8× MI300X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Qwen/Qwen3.5',
   }
 ]
 
@@ -332,6 +381,7 @@ function ModelExplorer() {
   })
 
   const current = MODELS.find(m => m.name === selected) ?? visibleModels[0] ?? MODELS[0]
+  const backends = getBackends(current)
 
   function pickFamily(f: Family) {
     setFamily(f)
@@ -442,6 +492,30 @@ function ModelExplorer() {
             <div className={styles.kvRow}>
               <span className={styles.kvLabel}>License</span>
               <span className={styles.kvValue}>{current.license}</span>
+            </div>
+
+            <div className={styles.kvRow}>
+              <span className={styles.kvLabel}>Backend</span>
+              <div className={styles.backendLinks}>
+                {backends.map(backend => (
+                  <a
+                    key={backend.name}
+                    className={styles.backendLink}
+                    href={backend.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${backend.name} docs for ${current.name}`}
+                    aria-label={`${backend.name} docs for ${current.name}`}
+                  >
+                    <img
+                      className={`${styles.backendLogo} ${backend.name === 'SGLang' ? styles.sglangLogo : ''}`}
+                      src={backend.logoSrc}
+                      alt={`${backend.name} logo`}
+                      loading="lazy"
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
 
             <div className={styles.kvRow}>
