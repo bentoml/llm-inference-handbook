@@ -59,6 +59,7 @@ This handbook provides various interactive tools to help you learn by trying the
 - [KV Cache Memory Calculator](/inference-optimization/kv-cache-offloading#how-to-calculate-the-kv-cache-size): Estimate how much memory the KV cache consumes.
 - [Quantization Memory Impact Visualizer](/model-preparation/llm-quantization#quantization-formats): Compare weight memory across quantization formats.
 - [GPU Comparison Table](/getting-started/choosing-the-right-gpu#matching-gpus-to-open-source-llms): Match popular open-source LLMs to suitable NVIDIA and AMD GPUs.
+- [Model Explorer](/getting-started/choosing-the-right-model): Browse popular open-source LLMs and compare their architecture, scale, context, and typical GPU deployment.
 - [GPU Execution and Memory Map](/kernel-optimization/gpu-architecture-fundamentals): Visualize how threads, warps, SMs, and the GPU memory hierarchy fit together.
 
 ## Contributing

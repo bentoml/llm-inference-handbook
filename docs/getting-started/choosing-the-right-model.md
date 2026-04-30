@@ -11,12 +11,15 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import ModelExplorer from '@site/src/components/ModelExplorer';
 
 # Choosing the right model
 
 Choosing the right LLM is one of the first decisions when building an AI application.
 
 Different models are designed for different purposes. Some models are trained to generate text, others are optimized to follow instructions, and some focus on efficiency or multimodal tasks.
+
+<ModelExplorer />
 
 ## What are base models?
 
