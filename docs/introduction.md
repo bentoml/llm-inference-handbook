@@ -51,15 +51,15 @@ You can read it start-to-finish or treat it like a lookup table. There’s no wr
 This handbook provides various interactive tools to help you learn by trying the concepts directly:
 
 - [LLM Inference Visualizer](/llm-inference-basics/what-is-llm-inference): Walk through the request lifecycle and see how tokens flow through prefill and decode.
-- [Context Window Simulator](/llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference): See how the full conversation is re-sent each turn and fills the context window.
 - [Token-by-Token Decode Loop](/llm-inference-basics/how-does-llm-inference-work#decode): Step through autoregressive decoding and watch each new token extend the sequence and KV cache.
+- [Context Window Simulator](/llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference): See how the full conversation is re-sent each turn and fills the context window.
 - [Latency Metrics Playground](/llm-inference-basics/llm-inference-metrics#latency): Explore TTFT, E2EL, TPOT, and SLO-based goodput.
+- [Model Explorer](/getting-started/choosing-the-right-model): Browse popular open-source LLMs and compare their architecture, scale, context, and typical GPU deployment.
+- [GPU Comparison Table](/getting-started/choosing-the-right-gpu#matching-gpus-to-open-source-llms): Match popular open-source LLMs to suitable NVIDIA and AMD GPUs.
 - [GPU Memory Calculator](/getting-started/calculating-gpu-memory-for-llms#): Estimate VRAM requirements for serving an LLM.
+- [Quantization Memory Impact Visualizer](/model-preparation/llm-quantization#quantization-formats): Compare weight memory across quantization formats.
 - [Batching Strategy Simulator](/inference-optimization/static-dynamic-continuous-batching): Compare static, dynamic, and continuous batching behavior.
 - [KV Cache Memory Calculator](/inference-optimization/kv-cache-offloading#how-to-calculate-the-kv-cache-size): Estimate how much memory the KV cache consumes.
-- [Quantization Memory Impact Visualizer](/model-preparation/llm-quantization#quantization-formats): Compare weight memory across quantization formats.
-- [GPU Comparison Table](/getting-started/choosing-the-right-gpu#matching-gpus-to-open-source-llms): Match popular open-source LLMs to suitable NVIDIA and AMD GPUs.
-- [Model Explorer](/getting-started/choosing-the-right-model): Browse popular open-source LLMs and compare their architecture, scale, context, and typical GPU deployment.
 - [GPU Execution and Memory Map](/kernel-optimization/gpu-architecture-fundamentals): Visualize how threads, warps, SMs, and the GPU memory hierarchy fit together.
 
 ## Contributing
