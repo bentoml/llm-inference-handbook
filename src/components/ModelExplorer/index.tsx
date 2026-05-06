@@ -432,21 +432,25 @@ const MODELS: Model[] = [
   }
 ]
 
-const FAMILIES = ['All', 'DeepSeek', 'GLM', 'gpt-oss', 'MiMo', 'Kimi', 'Ling', 'MiniMax', 'Mistral', 'Gemma', 'Qwen'] as const
+const FAMILIES = ['All', 'DeepSeek', 'Gemma', 'GLM', 'gpt-oss', 'Kimi', 'Ling', 'MiMo', 'MiniMax', 'Mistral', 'Qwen'] as const
 type Family = typeof FAMILIES[number]
 
 function ModelExplorer() {
   const [family, setFamily] = useState<Family>('All')
-  const [selected, setSelected] = useState<string>(MODELS[0].name)
+  const [selected, setSelected] = useState<string>('DeepSeek-V4-Pro')
 
-  const visibleModels = (family === 'All'
+  function sortModels(models: Model[]) {
+    return models.slice().sort((a, b) => {
+      const fam = a.family.localeCompare(b.family, 'en', { sensitivity: 'base' })
+      if (fam !== 0) return fam
+      return b.released.localeCompare(a.released)
+    })
+  }
+
+  const visibleModels = sortModels(family === 'All'
     ? MODELS
     : MODELS.filter(m => m.family === family)
-  ).slice().sort((a, b) => {
-    const fam = a.family.localeCompare(b.family, 'en', { sensitivity: 'base' })
-    if (fam !== 0) return fam
-    return b.released.localeCompare(a.released)
-  })
+  )
 
   const current = MODELS.find(m => m.name === selected) ?? visibleModels[0] ?? MODELS[0]
   const logos: Record<BackendName, string> = {
@@ -458,7 +462,7 @@ function ModelExplorer() {
   function pickFamily(f: Family) {
     setFamily(f)
     if (f !== 'All') {
-      const first = MODELS.find(m => m.family === f)
+      const first = sortModels(MODELS.filter(m => m.family === f))[0]
       if (first) setSelected(first.name)
     }
   }
