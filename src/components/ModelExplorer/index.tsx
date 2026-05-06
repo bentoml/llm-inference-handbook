@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 import styles from './styles.module.css'
 
 type Architecture = 'Dense' | 'MoE'
@@ -30,22 +31,17 @@ interface Backend {
   logoSrc: string
 }
 
-const BACKEND_LOGOS: Record<BackendName, string> = {
-  vLLM: 'https://raw.githubusercontent.com/vllm-project/media-kit/main/vLLM-Full-Logo.svg',
-  SGLang: 'https://docs.sglang.io/logo/logo.png',
-}
-
-function getBackends(model: Model): Backend[] {
+function getBackends(model: Model, logos: Record<BackendName, string>): Backend[] {
   return [
     {
       name: 'vLLM',
       href: model.vllmDocs ?? `https://recipes.vllm.ai/${model.huggingface}`,
-      logoSrc: BACKEND_LOGOS.vLLM,
+      logoSrc: logos.vLLM,
     },
     {
       name: 'SGLang',
       href: model.sglangDocs,
-      logoSrc: BACKEND_LOGOS.SGLang,
+      logoSrc: logos.SGLang,
     },
   ]
 }
@@ -453,7 +449,11 @@ function ModelExplorer() {
   })
 
   const current = MODELS.find(m => m.name === selected) ?? visibleModels[0] ?? MODELS[0]
-  const backends = getBackends(current)
+  const logos: Record<BackendName, string> = {
+    vLLM: useBaseUrl('/img/vllm-logo.svg'),
+    SGLang: useBaseUrl('/img/sglang-logo.png'),
+  }
+  const backends = getBackends(current, logos)
 
   function pickFamily(f: Family) {
     setFamily(f)
