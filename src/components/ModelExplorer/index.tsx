@@ -221,6 +221,59 @@ const MODELS: Model[] = [
     deployment: ['8× H200', '8× B300', '4× MI350X'],
     sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2.5',
   },
+  {
+    name: 'Kimi-K2-Thinking',
+    family: 'Kimi',
+    company: 'Moonshot AI',
+    architecture: 'MoE',
+    released: '2025-11',
+    license: 'Modified MIT',
+    huggingface: 'moonshotai/Kimi-K2-Thinking',
+    totalParams: '1T',
+    activeParams: '32B',
+    contextLength: '256K',
+    modality: 'Text',
+    precisions: ['INT4'],
+    deployment: ['8× H200', '8× B200', '8× MI300X'],
+    vllmDocs: 'https://recipes.vllm.ai/moonshotai/Kimi-K2-Thinking',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2',
+  },
+
+  // ── Ling ──
+  {
+    name: 'Ling-2.6-1T',
+    family: 'Ling',
+    company: 'InclusionAI',
+    architecture: 'MoE',
+    released: '2026-04',
+    license: 'MIT',
+    huggingface: 'inclusionAI/Ling-2.6-1T',
+    totalParams: '1T',
+    activeParams: '63B',
+    contextLength: '256K',
+    modality: 'Text',
+    precisions: ['FP8'],
+    deployment: ['2-node 8× H200'],
+    vllmDocs: 'https://recipes.vllm.ai/inclusionAI/Ling-2.6-1T',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/InclusionAI/Ling-2.6',
+  },
+  {
+    name: 'Ling-2.6-flash',
+    family: 'Ling',
+    company: 'InclusionAI',
+    architecture: 'MoE',
+    released: '2026-04',
+    license: 'MIT',
+    huggingface: 'inclusionAI/Ling-2.6-flash',
+    totalParams: '104B',
+    activeParams: '7.4B',
+    contextLength: '128K',
+    modality: 'Text',
+    precisions: ['BF16'],
+    deployment: ['4× H100', '4× H200'],
+    vllmDocs: 'https://recipes.vllm.ai/inclusionAI/Ling-2.6-flash',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/InclusionAI/Ling-2.6',
+  },
 
   // ── MiniMax ──
   {
@@ -238,6 +291,25 @@ const MODELS: Model[] = [
     precisions: ['FP8'],
     deployment: ['4× H100', '4× H200', '4× MI325X'],
     sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/MiniMax/MiniMax-M2.7',
+  },
+
+  // ── Mistral ──
+  {
+    name: 'Mistral-Medium-3.5-128B',
+    family: 'Mistral',
+    company: 'Mistral AI',
+    architecture: 'Dense',
+    released: '2026-04',
+    license: 'Modified MIT',
+    huggingface: 'mistralai/Mistral-Medium-3.5-128B',
+    totalParams: '128B',
+    contextLength: '256K',
+    modality: 'Multimodal',
+    modalityNote: 'Text, Image',
+    precisions: ['FP8'],
+    deployment: ['4× H100', '4× H200', '2× B200'],
+    vllmDocs: 'https://recipes.vllm.ai/mistralai/Mistral-Medium-3.5-128B',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Mistral/Mistral-Medium-3.5',
   },
 
   // ── Gemma ──
@@ -364,7 +436,7 @@ const MODELS: Model[] = [
   }
 ]
 
-const FAMILIES = ['All', 'DeepSeek', 'GLM', 'gpt-oss', 'MiMo', 'Kimi', 'MiniMax', 'Gemma', 'Qwen'] as const
+const FAMILIES = ['All', 'DeepSeek', 'GLM', 'gpt-oss', 'MiMo', 'Kimi', 'Ling', 'MiniMax', 'Mistral', 'Gemma', 'Qwen'] as const
 type Family = typeof FAMILIES[number]
 
 function ModelExplorer() {
