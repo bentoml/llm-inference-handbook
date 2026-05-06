@@ -19,6 +19,7 @@ interface Model {
   contextLength: string
   modality: Modality
   modalityNote?: string
+  useCase?: string
   precisions: string[]
   deployment: string[]
   vllmDocs?: string
@@ -92,6 +93,7 @@ const MODELS: Model[] = [
     activeParams: '49B',
     contextLength: '1M',
     modality: 'Text',
+    useCase: 'Advanced reasoning, coding, and long-horizon agent workflows',
     precisions: ['FP4 + FP8 Mixed'],
     deployment: ['8× H200', '8× B200'],
     sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4',
@@ -142,6 +144,7 @@ const MODELS: Model[] = [
     activeParams: '40B',
     contextLength: '198K',
     modality: 'Text',
+    useCase: 'Reasoning and coding assistants',
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H200', '8× B200', '8× MI355X'],
     sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/GLM/GLM-5.1',
@@ -160,6 +163,7 @@ const MODELS: Model[] = [
     activeParams: '42B',
     contextLength: '1M',
     modality: 'Text',
+    useCase: 'Long-context reasoning and agent workloads',
     precisions: ['FP8'],
     deployment: ['2-node 8× H200'],
     sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Xiaomi/MiMo-V2.5',
@@ -196,6 +200,7 @@ const MODELS: Model[] = [
     contextLength: '256K',
     modality: 'Multimodal',
     modalityNote: 'Text, Image, Video',
+    useCase: 'Multimodal long-context agents and visual reasoning',
     precisions: ['INT4'],
     deployment: ['8× H200', '8× B300', '4× MI350X'],
     sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2.6',
@@ -457,6 +462,18 @@ function ModelExplorer() {
     vLLM: useBaseUrl('/img/vllm-logo.svg'),
     SGLang: useBaseUrl('/img/sglang-logo.png'),
   }
+  const familyLogos: Partial<Record<Family, string>> = {
+    DeepSeek: useBaseUrl('/img/model-logos/deepseek.webp'),
+    Gemma: useBaseUrl('/img/model-logos/gemma.webp'),
+    GLM: useBaseUrl('/img/model-logos/glm.webp'),
+    'gpt-oss': useBaseUrl('/img/model-logos/gpt-oss.webp'),
+    Kimi: useBaseUrl('/img/model-logos/kimi.webp'),
+    Ling: useBaseUrl('/img/model-logos/ling.webp'),
+    MiMo: useBaseUrl('/img/model-logos/mimo.webp'),
+    MiniMax: useBaseUrl('/img/model-logos/minimax.webp'),
+    Mistral: useBaseUrl('/img/model-logos/mistral.webp'),
+    Qwen: useBaseUrl('/img/model-logos/qwen.webp'),
+  }
   const backends = getBackends(current, logos)
 
   function pickFamily(f: Family) {
@@ -484,6 +501,15 @@ function ModelExplorer() {
               className={`${styles.familyPill} ${family === f ? styles.familyPillActive : ''}`}
               onClick={() => pickFamily(f)}
             >
+              {familyLogos[f] && (
+                <img
+                  className={styles.familyLogo}
+                  src={familyLogos[f]}
+                  alt=""
+                  loading="lazy"
+                  aria-hidden="true"
+                />
+              )}
               {f}
             </button>
           ))}
@@ -569,6 +595,13 @@ function ModelExplorer() {
               <span className={styles.kvLabel}>License</span>
               <span className={styles.kvValue}>{current.license}</span>
             </div>
+
+            {current.useCase && (
+              <div className={`${styles.kvRow} ${styles.useCaseRow}`}>
+                <span className={styles.kvLabel}>Use Case</span>
+                <span className={`${styles.kvValue} ${styles.useCaseValue}`}>{current.useCase}</span>
+              </div>
+            )}
 
             <div className={styles.kvRow}>
               <span className={styles.kvLabel}>Backend</span>

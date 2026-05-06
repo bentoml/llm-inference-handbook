@@ -40,6 +40,9 @@
 }
 
 .familyPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
   padding: 0.3125rem 0.75rem;
   border: 1px solid #e5e7eb;
   border-radius: 9999px;
@@ -50,6 +53,15 @@
   font-family: inherit;
   color: #374151;
   white-space: nowrap;
+}
+
+.familyLogo {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #f3f4f6;
 }
 
 .familyPill:hover:not(.familyPillActive) {
@@ -136,8 +148,8 @@
 }
 
 .archDense {
-  background: #fef3c7;
-  color: #92400e;
+  background: #ecfeff;
+  color: #155e75;
 }
 
 .archMoE {
@@ -295,6 +307,20 @@
   color: #111827;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
+}
+
+.useCaseRow {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.5rem 0.75rem;
+}
+
+.useCaseValue {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
 }
 
 .chips {
