@@ -5,6 +5,7 @@ keywords:
     - Static batching, dynamic batching and continuous batching
     - Batch LLM inference, batch requests, batch processing, LLM inference batching, LLM batching
     - Batch size, batch window
+    - Padding tokens, pad tokens, ragged tensors
     - LLM inference optimization, LLM inference optimization techniques​, LLM batch API
     - Speed up LLM inference
 ---
@@ -45,7 +46,7 @@ Dynamic batching helps balance throughput and latency. It ensures that early req
 
 For LLM inference, output sequences vary widely in length. Some users might ask simple questions, while others request detailed explanations. Static and dynamic batching force the short requests to wait for the longest one. This leaves GPU resources unsaturated.
 
-Continuous batching, also known as in-flight batching, addressing the inefficiencies. Continuous batching doesn’t force the entire batch to complete before returning results. Instead, it lets each sequence in a batch finish independently and immediately replaces it with a new one. This is like an assembly line where, as soon as one item is finished (no matter how long it takes), a new item is added to keep the line running at full capacity.
+Continuous batching, also known as in-flight batching, addresses these inefficiencies. Continuous batching doesn’t force the entire batch to complete before returning results. Instead, it lets each sequence in a batch finish independently and immediately replaces it with a new one. This is like an assembly line where, as soon as one item is finished (no matter how long it takes), a new item is added to keep the line running at full capacity.
 
 <figure>
 ![continuous-batching.png](./img/continuous-batching.png)
@@ -54,7 +55,32 @@ Continuous batching, also known as in-flight batching, addressing the inefficien
 
 This technique uses iteration-level scheduling, meaning the batch composition changes dynamically at each decoding iteration. As soon as a sequence in the batch finishes generating tokens, the server inserts a new request in its place. This maximizes GPU occupancy and keeps compute resources busy by avoiding idle time that would otherwise be spent waiting for the slowest sequence in a batch to finish.
 
-Major [inference frameworks](../getting-started/choosing-the-right-inference-framework) such as vLLM, SGLang, TensorRT-LLM (in-flight batching), LMDeploy (persistent batching), and Hugging Face TGI all support continuous batching or similar mechanisms.
+Major [inference frameworks](../getting-started/choosing-the-right-inference-framework) such as vLLM, SGLang, TensorRT-LLM (in-flight batching) and LMDeploy (persistent batching) all support continuous batching or similar mechanisms. For memory management in long or mixed-length batches, see [PagedAttention](./pagedattention).
+
+## FAQs
+
+### What are padding tokens in LLM batching?
+
+Text sequences naturally have different lengths after tokenization. For example:
+
+```bash
+Sentence A: "Hello world"        # [15496, 995] - length 2
+Sentence B: "How are you today?" # [2437, 389, 345, 1909] - length 4
+```
+
+You cannot directly stack these sequences into one dense rectangular tensor because their lengths differ. Padding solves this by adding placeholder tokens to shorter sequences so every request in the batch has the same tensor length. Common padding token forms include `PAD`, `<pad>`, or token ID `0`, though the exact ID depends on the tokenizer.
+
+An attention mask tells the model which positions are padding, but padding can still waste compute and memory. If a batch contains sequences with lengths like this:
+
+```bash
+[1024, 1000, 50, 20]
+```
+
+The shorter sequences may be padded to length `1024`. That keeps the tensor shape regular for GPU kernels, but the `50`-token and `20`-token requests now carry a lot of unused positions.
+
+### What are ragged tensors in LLM inference?
+
+Ragged tensors represent variable-length sequences without padding them all to one fixed length. Instead, the runtime stores the real tokens plus metadata such as sequence lengths, offsets, or KV cache block locations. This helps inference engines handle mixed-length prompts and continuous batching more efficiently, especially when paired with paged KV cache layouts such as [PagedAttention](./pagedattention).
 
 <LinkList>
   ## Additional resources
