@@ -4,7 +4,7 @@ description: Learn how LLM inference works, from tokenization to prefill and dec
 keywords:
     - LLM inference, how LLM inference works, autoregressive decoding, transformer inference
     - Prefill and decode
-    - LLM tokenization, tokens
+    - LLM tokenization, tokens, LLM vocabulary
     - KV cache LLM
 ---
 
@@ -18,7 +18,11 @@ During inference, an LLM generates text one token at a time, using its internal 
 
 ## What are tokens and tokenization?
 
-A token is the smallest unit of language that LLMs use to process text. It can be a word, subword, or even a character, depending on the tokenizer. Each LLM has its own tokenizer, with different tokenization algorithms. Tokenization is the process of converting input text (like a sentence or paragraph) into tokens. The tokenized input is then converted into IDs, which are passed into the model during inference. 
+A token is the smallest unit of language that LLMs use to process text. It can be a word, subword, or even a character, depending on the tokenizer. Each LLM has its own tokenizer, with different tokenization algorithms. 
+
+Before text can be processed by the model, it must first go through tokenization. Tokenization is the process of splitting input text, such as a sentence or paragraph, into tokens.
+
+Each LLM has a vocabulary: a fixed set of tokens the model can represent. Each token in the vocabulary maps to a token ID. During tokenization, tokens are converted into token IDs before being passed into the model during inference.
 
 Here is a tokenization example for the sentence `BentoML supports custom LLM inference.` using [GPT-4o’s tokenizer](https://platform.openai.com/tokenizer):
 
@@ -56,7 +60,9 @@ After prefill, the LLM enters the decode stage where it generates new tokens seq
 
 For each new token, the model [samples from a probability distribution](#how-are-tokens-selected-via-sampling) generated based on the prompt and all previously generated tokens. This process is autoregressive, meaning tokens T₀ through Tₙ₋₁ are used to generate token Tₙ, then T₀ through Tₙ to generate Tₙ₊₁, and so on.
 
-Use the stepper below to see that loop in slow motion. Each click predicts one new token from the full sequence built so far.
+The model can only predict tokens from its own vocabulary during decoding. A larger vocabulary can represent more text patterns directly, but it also makes the final prediction layer larger because the model scores every possible next token.
+
+Use the stepper below to see the autoregressive loop in slow motion. Each click predicts one new token from the full sequence built so far.
 
 <AutoregressiveDecodeStepper />
 
@@ -100,7 +106,7 @@ As mentioned above, LLMs use the KV cache from previous tokens to avoid fully re
 
 ## Diffusion LLMs (dLLMs)
 
-As mentioned above, most LLMs today are autoregressive, meaning they generate text one token at a time. This sequential process has a natural bottleneck: slow and computationally expensive.
+The autoregressive pattern of LLMs has a natural bottleneck: slow and computationally expensive.
 
 Diffusion LLMs (dLLMs) flip that logic. They output the entire response in parallel through a denoising process inspired by image generation models like Stable Diffusion.
 
