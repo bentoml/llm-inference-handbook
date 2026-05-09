@@ -178,9 +178,9 @@ const PROFILES: Record<ProfileId, Profile> = {
         href: '/inference-optimization/prefill-decode-disaggregation',
       },
       {
-        title: 'KV cache-aware load balancing',
-        description: 'Route requests to maximize cache reuse across replicas',
-        href: '/inference-optimization/kv-cache-utilization-aware-load-balancing',
+        title: 'Inference routing',
+        description: 'Route requests based on cache locality, load, memory pressure, and more',
+        href: '/inference-optimization/inference-routing',
       },
       {
         title: 'FlashAttention',
