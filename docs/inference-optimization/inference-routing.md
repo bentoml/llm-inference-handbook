@@ -47,7 +47,7 @@ LLM inference breaks those assumptions in several ways:
 
 - **Requests are not equal**. A 100-token prompt and a 100k-token prompt have completely different memory and compute footprints. Some requests finish in milliseconds, while others may generate tokens for minutes.
 - **Workers carry state**. During prefill, the model builds KV cache that can be reused by later requests. However, that reuse only happens if the next request reaches a worker that already owns the right cache. This is especially important for multi-turn chats and agent workflows where prompts often share large prefixes.
-- **Prefill and decode stress different resources**. Prefill is mostly compute-bound, while decode is usually memory-bandwidth-bound. A worker busy decoding a long output can still accept new prefill work, and vice versa. Many distributed systems separate them entirely to avoid wasted GPU cycles and memory bandwidth. See [prefill-decode disaggregation](http://localhost:3000/llm/inference-optimization/prefill-decode-disaggregation) to learn more.
+- **Prefill and decode stress different resources**. Prefill is mostly compute-bound, while decode is usually memory-bandwidth-bound. A worker busy decoding a long output can still accept new prefill work, and vice versa. Many distributed systems separate them entirely to avoid wasted GPU cycles and memory bandwidth. See [prefill-decode disaggregation](./prefill-decode-disaggregation) to learn more.
 - **Latency goals differ across workloads**. Code completion, chat applications, agents, and batch inference jobs all have different latency requirements. Some workloads prioritize low TTFT, while others care more about throughput or total cost. If every worker is treated identically, expensive long-running requests can interfere with latency-sensitive ones. For example, a code completion request may end up waiting behind long agent generations even though the user expects an instant response.
 
 When the router can't see these details, it starts making bad decisions, leading to:
@@ -174,6 +174,7 @@ Not necessarily. Start with simple routing if traffic is low, prompts are short,
 <LinkList>
   ## Additional resources
   * [Kubernetes Gateway API Inference Extension](https://gateway-api-inference-extension.sigs.k8s.io/)
-  * [NVIDIA Dynamo Router Guide](https://docs.dynamo.nvidia.com/dynamo/dev/components/router/router-guide)
+  * [Dynamo Router Guide](https://docs.nvidia.com/dynamo/components/router/router-guide)
   * [Intelligent Inference Scheduling with llm-d](https://llm-d.ai/blog/intelligent-inference-scheduling-with-llm-d)
+  * [KV-Cache Wins You Can See](https://llm-d.ai/blog/kvcache-wins-you-can-see)
 </LinkList>

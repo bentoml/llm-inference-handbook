@@ -42,7 +42,7 @@ Common examples include:
 
 - [Prefill–decode disaggregation](../inference-optimization/prefill-decode-disaggregation). Separating prefill and decode work so each stage can run on specialized hardware.
 - [KV cache offloading](../inference-optimization/kv-cache-offloading). Moving KV cache data to CPU memory or remote storage to reduce GPU memory pressure and compute costs.
-- [Prefix-aware routing](../inference-optimization/prefix-aware-routing). Routing a request to the worker that holds the KV cache for that session, reducing recomputation and improving throughput.
+- [Inference routing](../inference-optimization/inference-routing). Routing a request to the worker that holds useful cache or has enough capacity, reducing recomputation and improving throughput.
 - [Parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism). Splitting a large model across multiple GPUs when it cannot fit on a single device. This can take several forms, such as single-node multi-GPU and multi-node multi-GPU.
 
 Micro-level distributed inference is mainly about how inference runs efficiently, independent of where the infrastructure is deployed.
