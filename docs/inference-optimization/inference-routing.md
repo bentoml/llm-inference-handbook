@@ -41,13 +41,11 @@ On this page, a worker refers to a routable unit that can independently run infe
 
 # Why routing is different for inference
 
-Earlier generations of model serving systems could often rely on simple load balancing because requests were shorter and less stateful. As context windows, agent workflows, and KV cache sizes grew, routing decisions started having a much larger impact on latency, throughput, and GPU efficiency.
-
 Traditional load balancers treat backends as identical black boxes. A request comes in, any backend can serve it, and the response leaves little useful state behind. This pattern works well when requests are short, stateless, and similar in cost.
 
 LLM inference breaks those assumptions in several ways:
 
-- **Requests are not equal**. A 100-token prompt and a 100k-token prompt have completely different memory and compute footprints. Some requests finish in milliseconds, while others may generate tokens for minutes. A router cannot rely on raw request count alone.
+- **Requests are not equal**. A 100-token prompt and a 100k-token prompt have completely different memory and compute footprints. Some requests finish in milliseconds, while others may generate tokens for minutes.
 - **Workers carry state**. During prefill, the model builds KV cache that can be reused by later requests. However, that reuse only happens if the next request reaches a worker that already owns the right cache. This is especially important for multi-turn chats and agent workflows where prompts often share large prefixes.
 - **Prefill and decode stress different resources**. Prefill is mostly compute-bound, while decode is usually memory-bandwidth-bound. A worker busy decoding a long output can still accept new prefill work, and vice versa. Many distributed systems separate them entirely to avoid wasted GPU cycles and memory bandwidth. See [prefill-decode disaggregation](http://localhost:3000/llm/inference-optimization/prefill-decode-disaggregation) to learn more.
 - **Latency goals differ across workloads**. Code completion, chat applications, agents, and batch inference jobs all have different latency requirements. Some workloads prioritize low TTFT, while others care more about throughput or total cost. If every worker is treated identically, expensive long-running requests can interfere with latency-sensitive ones. For example, a code completion request may end up waiting behind long agent generations even though the user expects an instant response.
@@ -122,7 +120,7 @@ This is relevant because prefix caching only helps if the request reaches a wor
 Different systems use different approaches to estimating or tracking cache locality:
 
 - **Prefix affinity.** Requests with similar prefixes are routed to the same worker using an affinity mechanism. A simple implementation may rely on client-level session affinity, such as routing requests from the same client IP to the same backend. This is easy to implement, but it can overload workers when one client or prefix becomes hot. It also misses cache reuse opportunities across different clients.
-- **Prefix-aware consistent hashing**. Instead of hashing client identity, the router hashes part of the request prefix so similar prompts land on the same or nearby workers. For example, a simple strategy may hash only the first N tokens or characters of the prompt. This solution requires little routing metadata, but the effectiveness depends heavily on the quality of the hashing strategy and the prompt length distribution.
+- **Prefix-aware consistent hashing**. The router hashes part of the request prefix so similar prompts land on the same or nearby workers. For example, a simple strategy may hash only the first N tokens or characters of the prompt. This solution requires little routing metadata, but the effectiveness depends heavily on the quality of the hashing strategy and the prompt length distribution.
 - **Approximate prefix cache on the router.** Let the router maintain an approximate lookup cache of the prefix caches on all the backend servers. This avoids detailed cache reporting, but the router's view can become stale after evictions or restarts.
 - **Precise cache-aware routing.** Workers emit KV cache events or detailed cache metadata so the router can maintain an accurate global view of cache placement. For example, [llm-d](https://llm-d.ai/docs/guides/precise-prefix-cache-aware) uses KV cache events from vLLM and SGLang to track where cache blocks live across serving Pods. The scheduler then scores workers based on how much of the incoming request’s prefix is already available there. It also combines cache locality with load-aware signals to avoid overloading hot replicas.
 
@@ -150,14 +148,14 @@ Some inference routers become multi-signal scoring systems. They combine several
 - **Queue length**. How many requests are waiting?
 - **Active tokens and decode load**. How many tokens are currently being generated? This is often a good proxy for decode-time memory-bandwidth pressure.
 - **LoRA adapter availability**. Does the worker already have the right adapter loaded? Swapping adapters mid-flight is expensive.
-- **Prefill vs decode role**. In disaggregated setups, is this worker dedicated to prefill or decode?
+- **Prefill vs. decode role**. In disaggregated setups, is this worker dedicated to prefill or decode?
 - **SLA or priority class**. Does the request have strict latency requirements or higher scheduling priority?
 
 Several open-source projects already follow this direction:
 
 - [The SGLang router](https://github.com/sgl-project/sglang/blob/4d2a88bdffe91168dfc73ef7e3bc9100ba96686b/sgl-router/src/router.rs#L61) uses a cache-aware routing heuristic with load-balancing fallback. It tracks approximate prefix locality using radix trees and queue counts, then switches between cache-aware routing and shortest-queue routing depending on system imbalance.
 - [Dynamo](https://docs.nvidia.com/dynamo/components/router/router-guide) routes requests by estimating both prefill and decode costs across workers. It considers KV cache overlap, active decode blocks, and workload placement to reduce redundant computation and improve serving efficiency.
-- [llm-d](https://llm-d.ai/docs/architecture/core/router) builds inference scheduling on top of the [Gateway API Inference Extension](https://github.com/kubernetes-sigs/gateway-api-inference-extension) project. It combines cache locality, worker load, and other runtime signals to provide LLM-aware request routing and scheduling on Kubernetes.
+- [llm-d](https://llm-d.ai/docs/architecture/core/router) builds inference scheduling on top of the [Gateway API Inference Extension](https://github.com/kubernetes-sigs/gateway-api-inference-extension) project. It combines cache locality, worker load, and other runtime signals to provide intelligent request routing and scheduling on Kubernetes.
 
 # FAQs
 
