@@ -123,8 +123,6 @@ Early examples of dLLMs include:
 - [Mercury](https://x.com/_inception_ai/status/1894847919624462794) by Inception AI: reportedly delivers inference up to 10× faster and more efficient than traditional LLMs.
 - [Gemini Diffusion](https://deepmind.google/models/gemini-diffusion/) by Google DeepMind: an early exploration of applying diffusion to text generation. It is available as an experimental demo to help develop and refine future models.
 
-The concept is still in its early stages. Inference frameworks like vLLM don’t yet support dLLMs, though there are [active community discussions](https://github.com/vllm-project/vllm/issues/18532) exploring future integration.
-
 For now, autoregressive LLMs remain the mainstream architecture. However, dLLMs represent one of the most promising directions to power the next generation of inference systems. If you’re working with autoregressive LLMs today, it’s worth keeping an eye on dLLMs.
 
 ## FAQs
