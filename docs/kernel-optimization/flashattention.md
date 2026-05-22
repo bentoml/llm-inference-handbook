@@ -3,6 +3,8 @@ sidebar_position: 4
 description: FlashAttention is a fast, memory-efficient attention algorithm for Transformers that accelerates LLM training and inference and helps achieve longer context windows.
 keywords:
     - FlashAttention
+    - FlashAttention-4
+    - Blackwell attention kernels
     - LLM inference optimization, LLM inference optimization techniques​
     - Speed up LLM inference
 ---
@@ -88,15 +90,22 @@ Currently, FlashAttention is widely used in:
 
 ## FlashAttention version comparison
 
-As of today, FlashAttention has 4 major versions. Below is a side-by-side comparison that explains how the algorithm has evolved across versions.
+The main FlashAttention line now has 4 major versions. Below is a side-by-side comparison that explains how the algorithm has evolved across versions.
 
 | Version | Year | Key Improvements | Performance | Notes |
 | --- | --- | --- | --- | --- |
 | FlashAttention-1 | 2022 | Introduced the IO-aware, tiled attention algorithm. Fused softmax + matmul kernels. Avoided materializing the full attention matrix | 2–4× faster attention, up to 10× lower memory | First version; supports practical long-context; exact attention (no approximation) |
 | FlashAttention-2 | 2023 | Better parallelism and work partitioning across warps; reduced non-matmul FLOPs | 2× faster than FA-1, especially on long sequences | Powers many long-context LLMs; widely integrated in inference/training frameworks |
-| FlashAttention-3 | 2024 | Tensor core acceleration (FP8/BF16); optimized for Hopper GPUs (e.g., H100) | Up to 2× faster than FA-2 and 740 TFLOPS on H100 (75% util); reduced FP8 numerical error by 2.6× | Latest version; leverages new GPU features. Many frameworks still upgrading from FA-2 |
+| FlashAttention-3 | 2024 | Tensor core acceleration (FP8/BF16); optimized for Hopper GPUs (e.g., H100) | Up to 2× faster than FA-2 and 740 TFLOPS on H100 (75% util); reduced FP8 numerical error by 2.6× | Leverages Hopper asynchronous execution and warp specialization. Many frameworks still upgrade from FA-2 first |
+| FlashAttention-4 | 2026 | Fully asynchronous MMA, larger tiles, software-emulated exponentials, conditional softmax rescaling, tensor memory, and 2-CTA MMA | Up to 1.3× faster over cuDNN 9.13, up to 2.7× over Triton, and up to 1613 TFLOPS/s (71% utilization) on B200 BF16 benchmarks | Written in CuTeDSL. The official implementation is exposed through `flash-attn-4` and targets Hopper and Blackwell GPUs such as H100 aB200 |
 
-FlashAttention 4 is not officially released yet, but [Tri Dao previewed it at the HotChips conference](https://x.com/SemiAnalysis_/status/1960070677379133949), showing that it is up to 22% faster than the attention kernel implementation from cuDNN.
+FlashAttention-4 is specifically tuned for the NVIDIA Blackwell architecture. The key insight is asymmetric hardware scaling. Tensor cores (which do the big matrix multiplies like QKᵀ and PV) got much faster on Blackwell. However, other critical resources did not scale as much:
+
+- Shared memory bandwidth.
+- Special function units (SFUs) used for exponentials in softmax.
+- Register pressure and scheduling overheads.
+
+As a result, on B200, the bottleneck shifts. Learn more in the [FlashAttention-4 paper](https://arxiv.org/abs/2603.05451).
 
 ## How to use FlashAttention
 
@@ -110,9 +119,33 @@ Recent PyTorch versions automatically dispatch to FlashAttention via `scaled_dot
 
 Many inference frameworks have already integrated FlashAttention, including [vLLM](https://docs.vllm.ai/en/latest/getting_started/quickstart/#on-attention-backends) and [SGLang](https://docs.sglang.ai/advanced_features/attention_backend.html), but their versions may be different depending on their release cycle.
 
+For FlashAttention-4 specifically, the official repository documents a separate CuTeDSL package:
+
+```bash
+pip install flash-attn-4
+```
+
+On CUDA 13, the repository recommends:
+
+```bash
+pip install "flash-attn-4[cu13]"
+```
+
+The FA4 API is exposed through `flash_attn.cute`:
+
+```python
+from flash_attn.cute import flash_attn_func
+
+out = flash_attn_func(q, k, v, causal=True)
+```
+
+Check the current [FlashAttention repository](https://github.com/Dao-AILab/flash-attention) before relying on it in production, because the FA4 package and framework integrations are moving quickly.
+
 <LinkList>
   ## Additional resources
   * [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135)
   * [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691)
   * [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](https://arxiv.org/abs/2407.08608)
+  * [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](https://arxiv.org/abs/2603.05451)
+  * [Official FlashAttention repository](https://github.com/Dao-AILab/flash-attention)
 </LinkList>
