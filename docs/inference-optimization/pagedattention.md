@@ -17,7 +17,7 @@ import LinkList from '@site/src/components/LinkList';
 
 ## Why contiguous KV cache allocation wastes memory
 
-When an LLM is generating a response, it needs to [remember past information (i.e. the KV cache) for every token it generates](../llm-inference-basics/how-does-llm-inference-work#the-two-phases-of-llm-inference). Normally, the KV cache takes up a big chunk of memory because it’s stored as one giant continuous block. This can lead to memory fragmentation or wasted space because you need to reserve a big block even if you don’t fill it fully.
+When an LLM is generating a response, it needs to [remember past information (i.e. the KV cache) for every token it generates](../llm-inference-basics/how-does-llm-inference-work#the-two-phases-of-llm-inference). Normally, the KV cache takes up a big chunk of memory because it’s stored as one giant contiguous block. This can lead to memory fragmentation or wasted space because you need to reserve a big block even if you don’t fill it fully.
 
 Specifically, early serving engines often allocated KV cache as a contiguous tensor sized for the worst case. A simplified shape is:
 
