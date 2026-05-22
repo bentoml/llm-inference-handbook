@@ -50,8 +50,19 @@ As promising as PD disaggregation sounds, it’s not a one-size-fits-all fix.
 - **Local prefill can be faster**: For shorter prompts or when the decode engine has a high prefix cache hit, running prefill locally on the decode worker is often faster and simpler.
 - **Data transfer cost**: Disaggregation requires moving KV caches rapidly and reliably between prefill and decode workers. This means your solution must support fast, low-latency communication protocols that are both hardware- and network-agnostic. Unless the performance gains from disaggregation outweigh the data transfer cost, overall performance can actually degrade. Existing methods for data transfer for your reference: [NVIDIA Inference Xfer Library (NIXL)](https://github.com/ai-dynamo/nixl), CXL, NVMe-oF.
 
+  For production, consider the following design questions:
+
+  - Should the decode worker fetch KV blocks directly from the prefill worker, or should both sides use a shared cache tier?
+  - Should KV blocks move eagerly after prefill, or lazily when decode actually needs them?
+  - How does the router decide whether to reuse an existing cache, run local prefill, or send the request to a separate prefill pool?
+
+  These questions connect PD disaggregation to [KV cache offloading](./kv-cache-offloading) and [prefix caching](./prefix-caching). Treat them as parts of the same serving architecture, not isolated tuning knobs.
+
+- **Cache compatibility matters**: The prefill worker and decode worker must agree on KV layout, page size, dtype, attention variant, and any extra cache metadata. Heterogeneous KV types (e.g., quantized KV caches, VLM encoder states, and speculative decoding caches) can make this handoff more complex than moving one standard full-attention KV tensor.
+
 <LinkList>
   ## Additional resources
   * [DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving](https://arxiv.org/abs/2401.09670)
   * [SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills](https://arxiv.org/pdf/2308.16369)
+  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache)
 </LinkList>

@@ -74,6 +74,10 @@ For applications with long, repetitive prompts, prefix caching can significantly
 
 The open-source community is actively working on distributed serving strategies. See [prefix-aware routing](./prefix-aware-routing) for details.
 
+Another practical limitation is feature composition. Prefix caching is easy to reason about when the model has one standard full-attention KV cache. Newer serving stacks may need to manage several cache-like states at once: draft and target model caches for [speculative decoding](./speculative-decoding), image encoder states for VLMs, scaling metadata for quantized KV cache, or separate caches for hybrid attention layers.
+
+For these models, a shared text prefix does not always mean every cached state can be reused in the same way. Sliding-window attention, for example, only keeps a bounded recent window, so the cache manager must know which tokens are still valid. In production, treat prefix cache hit rate as a per-workload metric rather than a single global number, and verify that your inference framework can compose prefix caching with the other optimizations you enable.
+
 ---
 
 Optimizing LLM prefix caching requires flexible customization in your LLM serving and infrastructure stack. We work to provide the infrastructure for dedicated and customizable LLM deployments with fast auto-scaling and scaling-to-zero capabilities to ensure resource efficiency.
@@ -87,4 +91,5 @@ Optimizing LLM prefix caching requires flexible customization in your LLM servin
   * [Prompt Cache: Modular Attention Reuse for Low-Latency Inference](https://arxiv.org/abs/2311.04934)
   * [Prompt Caching in Claude](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
   * [Design Around the KV-Cache](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
+  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache)
 </LinkList>
