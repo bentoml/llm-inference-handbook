@@ -6,7 +6,7 @@ keywords:
     - Disaggregating prefill and decode
     - Prefill, decode
     - Distributed LLM inference
-    - LLM inference optimization, LLM inference optimization techniques​
+    - LLM inference optimization, LLM inference optimization techniques
     - Speed up LLM inference
 ---
 

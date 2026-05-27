@@ -5,7 +5,7 @@ keywords:
     - KV cache offloading, KV cache, KV caching, LMCache
     - Distributed inference, distributed LLM inference
     - Inference optimization
-    - LLM inference optimization, LLM inference optimization techniques​
+    - LLM inference optimization, LLM inference optimization techniques
     - Speed up LLM inference
 ---
 
@@ -16,7 +16,7 @@ import KVCacheCalculator from '@site/src/components/Calculator/KVCache';
 
 KV cache offloading is the process of moving attention key/value data from GPU memory to lower-cost storage like CPU memory or disk. It frees up GPU resources while preserving the ability to resume inference without recomputation. This helps scale LLM workloads efficiently by balancing performance and memory usage.
 
-## Why KV cache becomes a bottleneck in LLM inference?
+## Why does KV cache become a bottleneck in LLM inference?
 
 LLMs rely heavily on the KV cache to speed up inference. The cache stores attention keys and values for every token in the input sequence, allowing the model to reuse them in future steps instead of recalculating them. Although this saves a significant amount of compute resources and delivers faster inference, it comes with a steep memory cost.
 
@@ -72,7 +72,7 @@ There is also a quality trade-off when the system uses selective KV offloading. 
 
 ## Offloading the KV cache with LMCache
 
-[LMCache](https://github.com/LMCache/LMCache) is an LLM serving engine extension designed to optimize LLM inference by reducing TTFT and increasing throughput, especially for long-context workloads. It supports the reuse of KV caches for repeated input content (not just prefixes) across different engine instances.
+[LMCache](https://github.com/LMCache/LMCache) is an LLM serving engine extension designed to optimize LLM inference by reducing TTFT and increasing throughput, especially for long-context workloads. It supports the reuse of KV caches for repeated input content (not just prefixes) across different engine instances.
 
 By storing KV caches in multiple tiers of memory, including GPU, CPU DRAM, and local disk, LMCache significantly reduces redundant computation. This improves response time and saves GPU cycles, making it ideal for workloads like multi-turn QA, RAG, and document-level reasoning.
 

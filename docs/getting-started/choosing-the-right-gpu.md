@@ -61,7 +61,7 @@ Workstation cards sit between consumer and data center hardware. They’re a goo
 
 ### Data center GPUs
 
-Enterprises rely on data center GPUs for large-scale AI inference and High-Performance Computing (HPC) workloads. They offer high VRAM (40–192GB), strong memory bandwidth, and features like multi-instance GPU (MIG) or NVLink for scaling across clusters. Examples include NVIDIA A100, H100 and B200, as well as AMD MI300X and MI350X.
+Enterprises rely on data center GPUs for large-scale AI inference and high-performance computing (HPC) workloads. They offer high VRAM (40–192GB), strong memory bandwidth, and features like multi-instance GPU (MIG) or NVLink for scaling across clusters. Examples include NVIDIA A100, H100, and B200, as well as AMD MI300X and MI350X.
 
 For teams renting cloud compute or [deploying LLM on-prem](./on-prem-llms), data center GPUs are usually the most practical choice.
 
@@ -73,7 +73,7 @@ When selecting GPUs, remember that raw benchmark numbers don’t tell the whole 
 
 [VRAM](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference) sets the ceiling on model size and context length. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized.
 
-A major challenge is the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](../infrastructure-and-operations/distributed-inference) techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
+A major challenge is the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](../infrastructure-and-operations/distributed-inference) techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
 ### Memory bandwidth
 
@@ -81,15 +81,15 @@ Memory bandwidth determines how quickly tokens can be processed. You can prevent
 
 ### Compute throughput
 
-Floating point operations per second (FLOPS) are commonly used to compare cards, but in practice what matters more is tokens per second. It becomes extremely important in high-concurrency scenarios, where latency directly affects user experience. To further improve throughput, you can apply techniques like [speculative decoding](../inference-optimization/speculative-decoding).
+Floating point operations per second (FLOPS) are commonly used to compare cards, but in practice what matters more is tokens per second. It becomes extremely important in high-concurrency scenarios, where latency directly affects user experience. To further improve throughput, you can apply techniques like [speculative decoding](../inference-optimization/speculative-decoding).
 
 ### Cost and availability
 
 Consumer and workstation GPUs are accessible and cheaper but often limited in VRAM. Data center GPUs provide the scale and reliability for enterprise AI deployments, though **at a premium**. This is especially true for high-performance GPUs like NVIDIA H100 and H200.
 
-For enterprise AI teams, a bigger challenge is what we call the **GPU CAP Theorem**: a GPU infrastructure cannot guarantee **Control**, on-demand **Availability**, and **Price** at the same time.
+For enterprise AI teams, a bigger challenge is the **GPU CAP Theorem**: a GPU infrastructure cannot guarantee **Control**, on-demand **Availability**, and **Price** at the same time.
 
-|  | Hyperscaler | NeoCloud (Serverless) | NeoCloud (Long-term Commitment) | On-Prem |
+|  | Hyperscaler | NeoCloud (Serverless) | NeoCloud (Long-term Commitment) | On-prem |
 | --- | --- | --- | --- | --- |
 | **Control** | ✅ High | ❌ Low | 🟡 Medium | ✅ High |
 | On-demand **Availability** | 🟡 Medium | ✅ High | ❌ Low | ❌ Low |
@@ -146,7 +146,7 @@ A faster option is [llm-optimizer](https://www.bentoml.com/blog/announcing-llm-o
 
 You can either buy on-premises GPU servers or rent cloud GPUs depending on your scale, control needs, and budget.
 
-Cloud providers such as AWS, Google Cloud and Azure let you rent H100, H200 or MI300X GPUs on demand.
+Cloud providers such as AWS, Google Cloud, and Azure let you rent H100, H200, or MI300X GPUs on demand.
 
 NeoClouds like CoreWeave and Nebius provide lower-cost access and flexible billing. However, they typically offer less control and fewer compliance guarantees for regulated or enterprise environments.
 
