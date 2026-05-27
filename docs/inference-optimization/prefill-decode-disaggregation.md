@@ -5,7 +5,9 @@ keywords:
     - Prefill-decode disaggregation
     - Disaggregating prefill and decode
     - Prefill, decode
+    - Cross-cluster prefill, cross-datacenter prefill
     - Distributed LLM inference
+    - KV cache transfer
     - LLM inference optimization, LLM inference optimization techniques​
     - Speed up LLM inference
 ---
