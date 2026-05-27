@@ -19,6 +19,19 @@ For example, fine-tuning can significantly improve a model’s:
 - **Instruction following**: Ensuring the model adheres to specific formats, tones, or styles in its responses.
 - **Safety and alignment**: Reinforcing how the model handles sensitive or high-risk [prompts](../model-interaction/prompt-engineering).
 
+## Where fine-tuning fits in the customization stack
+
+Fine-tuning is only one approach to customization. It changes model weights, which makes it different from other techniques such as [prompt engineering](../model-interaction/prompt-engineering), [function calling](../model-interaction/function-calling), and [structured outputs](../model-interaction/structured-outputs).
+
+The difference matters in production. Runtime techniques are usually faster to test, easier to roll back, and more portable across model providers. Fine-tuning is more appropriate when the behavior you want is stable, appears across many requests, and cannot be handled cleanly by prompts or retrieved context alone.
+
+A practical improvement loop often looks like this:
+
+1. Build an evaluation set from real or representative inputs.
+2. Improve prompts, examples, retrieval, tools, and output validation.
+3. Measure the result with the same evaluation set.
+4. Fine-tune only if the remaining failures are systematic and worth moving into the model.
+
 ## Common fine-tuning frameworks
 
 Fine-tuning LLMs doesn’t have to mean building everything from the ground up. Several open-source frameworks are designed to streamline the process.
@@ -99,6 +112,14 @@ Key features:
 
 Instead of fine-tuning a model yourself, you can often start with an existing fine-tuned or instruction-tuned model from [Hugging Face](../getting-started/choosing-the-right-model/#hugging-face). It hosts a large collection of community and officially released fine-tuned models that are ready to use out of the box. At the same time, it also provides base models and foundation checkpoints if you want full control and plan to fine-tune the model yourself. In practice, teams frequently explore both options on Hugging Face before deciding whether to reuse an existing model or invest in custom fine-tuning.
 
+## Fine-tuning through a hosted provider
+
+Fine-tuning through a hosted provider can be convenient because you don't need to manage training infrastructure yourself. However, it also means your fine-tuned model depends on the provider and the base model it was trained from.
+
+OpenAI's [self-serve fine-tuning update](https://developers.openai.com/api/docs/deprecations#update-to-openais-self-serve-fine-tuning) is a useful example. After May 7, 2026, new organizations can no longer create fine-tuning jobs, and active existing customers can create new jobs only until January 6, 2027. Existing fine-tuned models can still run until their base models are deprecated.
+
+That does not mean hosted fine-tuning is a bad choice. It means teams should treat a fine-tuned hosted model as a maintained production artifact. Track the base model lifecycle, keep evaluation sets for replacement testing, and know whether you can migrate to another hosted model or open-source fine-tuning if needed.
+
 ## FAQs
 
 ### How is fine-tuning different from inference?
@@ -125,6 +146,14 @@ Here’s a clearer side-by-side comparison:
 Fine-tuning actually changes the model. You feed it examples of what “good” looks like, and it learns to follow that pattern on its own. It’s more reliable for long-term use, especially when you need consistent tone, domain knowledge, or strict formatting.
 
 In short, prompt engineering is great for early exploration, but fine-tuning gives you stable, repeatable performance at scale.
+
+### When should I avoid fine-tuning?
+
+Avoid fine-tuning when the main problem is missing or frequently changing information. A [RAG pipeline](../infrastructure-and-operations/multi-model-inference-pipelines/#rag-pipeline), prompt template, or tool call is usually a better fit because it can fetch fresh data at inference time.
+
+Fine-tuning is also a poor first step when you do not have a reliable evaluation set. Without it, it is hard to tell whether a fine-tuned model actually improved the target behavior or simply changed its style.
+
+Finally, avoid fine-tuning if the deployment path is uncertain. A fine-tuned model depends on a base model, training method, serving stack, and provider lifecycle. If you expect to switch providers or base models soon, keep more behavior in portable runtime logic until the system stabilizes.
 
 ### How much data do I need to fine-tune an LLM?
 
