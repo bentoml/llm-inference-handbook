@@ -60,11 +60,15 @@ Offloading the KV cache offers several important advantages for scaling and opti
 - **Lower compute costs.** GPU memory is expensive and limited. Offloading allows workloads to take advantage of cheaper storage (e.g., CPU RAM or disk), reducing the need to over-provision high-end GPUs just to manage cache.
 - **Reduced latency**: Offloading allows the model to skip redundant KV computations during inference, especially for overlapping context in multi-turn interactions. This significantly reduces TTFT and overall latency. NVIDIA reports that KV cache offloading can [deliver up to 14× faster TTFT](https://developer.nvidia.com/blog/nvidia-gh200-superchip-accelerates-inference-by-2x-in-multiturn-interactions-with-llama-models/) for large input sequences compared to recalculating the KV cache from scratch.
 
-## Performance trade-offs in KV cache offloading
+## Trade-offs in KV cache offloading
 
 While KV cache offloading can significantly improve memory efficiency and throughput, the speed of the offloading target is critical. If the storage tier (e.g., CPU RAM or disk) is too slow, the overhead of transferring KV data back to the GPU may negate the benefits, especially in latency-sensitive applications.
 
-In short, make sure the cost of transferring data is lower than recomputing the cache from scratch. This is often the case in long, multi-turn conversations, where reusing previous context is crucial and recomputation would be expensive.
+Make sure the cost of transferring data is lower than recomputing the cache from scratch. This is often the case in long, multi-turn conversations, where reusing previous context is crucial and recomputation would be expensive.
+
+There is also a quality trade-off when the system uses selective KV offloading. During decoding, the runtime may need to decide which keys and values should return to the GPU. If it misses important context tokens, the model can produce worse answers. This risk is high in context-intensive workloads such as multi-document QA, legal review, and codebase reasoning, where many details from the prompt may matter.
+
+[This paper](https://arxiv.org/abs/2604.08426) highlights the problem: some KV offloading methods perform well on common long-context benchmarks but degrade on tasks that require retrieving many facts from the prompt. The practical lesson is that long context length and context intensity are different things. Before enabling selective KV offloading in production, compare it with a full-attention baseline on tasks that match your workload. Track answer quality alongside TTFT, TPOT, throughput, GPU memory usage, and host-to-device transfer.
 
 ## Offloading the KV cache with LMCache
 
@@ -87,4 +91,5 @@ LMCache currently supports offloading KV cache data to a variety of storage back
   * [LMCache Documentation](https://docs.lmcache.ai/)
   * [NVIDIA GH200 Superchip Accelerates Inference by 2x in Multiturn Interactions with Llama Models](https://developer.nvidia.com/blog/nvidia-gh200-superchip-accelerates-inference-by-2x-in-multiturn-interactions-with-llama-models/)
   * [5x Faster Time to First Token with NVIDIA TensorRT-LLM KV Cache Early Reuse](https://developer.nvidia.com/blog/5x-faster-time-to-first-token-with-nvidia-tensorrt-llm-kv-cache-early-reuse/)
+  * [KV Cache Offloading for Context-Intensive Tasks](https://arxiv.org/abs/2604.08426)
 </LinkList>
