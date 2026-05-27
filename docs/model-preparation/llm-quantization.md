@@ -58,6 +58,7 @@ Generally, you want to focus on what consumes the most memory without hurting pe
 
 - Model weights are the most commonly quantized component. They’re stable and contribute heavily to memory usage.
 - Activations can also be quantized, but this is trickier and may lead to more accuracy loss.
+- The KV cache can be quantized at runtime to reduce memory pressure in long-context serving. This is different from weight quantization because the cache is generated during inference and is read repeatedly during decoding. The main challenge is preserving attention quality: the model still needs accurate key/query similarity scores after the key and value vectors are stored in fewer bits.
 
 ## Quantization vs. pruning
 
