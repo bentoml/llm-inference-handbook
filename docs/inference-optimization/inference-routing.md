@@ -27,8 +27,11 @@ A routing decision affects things like:
 - Whether it gets stuck behind long-running generations
 - Whether the target worker has enough memory headroom
 - Whether prefill or decode work is already saturating the worker
+- Whether the overall GPU pool stays busy across uneven traffic patterns
 
 Therefore, inference routing is closely tied to concepts like [prefix caching](./prefix-caching), [KV cache offloading](./kv-cache-offloading), and [prefill-decode disaggregation](./prefill-decode-disaggregation).
+
+At platform scale, routing is also an economic tool. Better placement keeps GPUs useful across heterogeneous tenants and bursty workloads, not just faster for one request.
 
 :::note
 On this page, a worker refers to a routable unit that can independently run inference and own some runtime state, especially KV cache. Depending on the deployment, it can map to different things:
