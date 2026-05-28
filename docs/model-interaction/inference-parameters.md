@@ -10,6 +10,8 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
+import TopPvsTopK from '@site/src/components/TopPvsTopK';
+import UseCasePresets from '@site/src/components/UseCasePresets';
 
 # LLM inference parameters
 
@@ -75,6 +77,10 @@ This adapts to the model's uncertainty. If the next token is obvious, the candid
 `top_k` keeps only the `k` most likely tokens. For example, `top_k: 50` means the model samples from the top 50 candidates and ignores everything below them.
 
 This is simple and predictable, but it does not adapt to the shape of the probability distribution. Sometimes the top 50 tokens contain too many weak options. Sometimes there may be more than 50 reasonable options.
+
+The visualizer below shows the same distribution under both filters. Switch between a peaky, mixed, and flat distribution, and notice how top-p keeps fewer tokens when one answer dominates and more when many are plausible. Top-k always keeps the same number, regardless of shape.
+
+<TopPvsTopK />
 
 ### Which one should you tune
 
@@ -176,18 +182,9 @@ Use advanced controls when the output is consumed by software. For example, extr
 
 There is no universal best parameter configuration. Good defaults depend on the task, the model family, and the serving stack. Different models can behave very differently even with the same settings.
 
-Still, the following ranges are useful starting points for evaluation:
+Still, the following ranges are useful starting points for evaluation. Pick a use case to learn more.
 
-| Use case | Temperature | Top-p | max_tokens | Notes |
-| --- | --- | --- | --- | --- |
-| Classification | `0.0–0.2` | `1.0` | Small, often `< 20` | Prefer deterministic output |
-| Extraction / structured parsing | `0.0–0.2` | `1.0` | Small | Minimize variation and formatting drift |
-| RAG / factual QA | `0.1–0.5` | `0.9–1.0` | Moderate | Lower randomness may reduce hallucinations |
-| General chat assistant | `0.5–0.8` | `0.9–1.0` | Moderate | Balanced stability and variation |
-| Summarization | `0.2–0.7` | `0.9–1.0` | Moderate | Depends on how extractive vs. creative you want the summary to be |
-| Code generation | `0.0–0.3` | `1.0` | Moderate to large | Lower temperature usually improves syntax stability |
-| Brainstorming / ideation | `0.7–1.2` | `0.9–0.95` | Moderate to large | Encourage more diverse outputs |
-| Creative writing | `0.8–1.3` | `0.9–0.95` | Large | Higher diversity, but also higher instability |
+<UseCasePresets />
 
 These are starting points, not rules. Always evaluate parameters with your actual prompts, model versions, and workloads.
 
