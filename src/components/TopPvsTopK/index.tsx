@@ -115,6 +115,7 @@ function Column({
       </div>
       <input
         type="range"
+        aria-label={`${title} filter value`}
         min={min}
         max={max}
         step={step}
@@ -169,8 +170,10 @@ export default function TopPvsTopK() {
         <div className={styles.presets}>
           {(Object.keys(DISTRIBUTIONS) as Preset[]).map((p) => (
             <button
+              type="button"
               key={p}
               className={preset === p ? styles.presetActive : styles.preset}
+              aria-pressed={preset === p}
               onClick={() => setPreset(p)}
             >
               {DISTRIBUTIONS[p].label}

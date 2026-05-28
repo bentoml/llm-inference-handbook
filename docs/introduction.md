@@ -55,7 +55,6 @@ This handbook provides various interactive tools to help you learn by trying the
 - [Context Window Simulator](/llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference): See how the full conversation is re-sent each turn and fills the context window.
 - [Latency Metrics Playground](/llm-inference-basics/llm-inference-metrics#latency): Explore TTFT, E2EL, TPOT, and SLO-based goodput.
 - [Top-p vs Top-k Filter](/model-interaction/inference-parameters#top-p-and-top-k-sampling): Compare how each filter handles peaky, mixed, and flat distributions.
-- [Inference Parameter Preset Explorer](/model-interaction/inference-parameters#recommended-starting-points): See typical temperature, top-p, and max_tokens ranges across common LLM tasks.
 - [Model Explorer](/getting-started/choosing-the-right-model): Browse popular open-source LLMs and compare their architecture, scale, context, and typical GPU deployment.
 - [GPU Comparison Table](/getting-started/choosing-the-right-gpu#matching-gpus-to-open-source-llms): Match popular open-source LLMs to suitable NVIDIA and AMD GPUs.
 - [GPU Memory Calculator](/getting-started/calculating-gpu-memory-for-llms#): Estimate VRAM requirements for serving an LLM.
