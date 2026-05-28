@@ -60,7 +60,7 @@ Common patterns:
 
 Low temperature does not guarantee factual accuracy. It only reduces randomness in the decode step. A model can still give a confident wrong answer if the [prompt](./prompt-engineering) lacks grounding, the model lacks knowledge, or the application does not verify outputs.
 
-## Top-p and top-k
+## Top-p and top-k sampling
 
 `top_p` and `top_k` limit which tokens are eligible before sampling.
 
@@ -83,10 +83,10 @@ Many systems let you use `temperature`, `top_p`, and `top_k` together. This 
 A practical starting point:
 
 - Tune `temperature` first.
-- Use [greedy decoding](../llm-inference-basics/how-does-llm-inference-work#how-are-tokens-selected-via-sampling) if you want the model to always select the highest probability token. It is deterministic, but prone to repetition.
+- Use [greedy decoding](../llm-inference-basics/how-does-llm-inference-work#how-are-tokens-selected-via-sampling) if you want the model to select the highest probability token at each step. It is deterministic in a fixed serving setup, but can be prone to repetition.
 - Use `top_p` when you want to bound the long tail and keep sampling adaptive.
 - Use `top_k` when your inference framework or model family recommends it, or when you need a hard cap on candidate tokens.
-- Combine `top_k` and `top_p`: Top-k removes extreme outliers first, then top-p refines the candidate set further.
+- Combine `top_k` and `top_p`: In many samplers, top-k removes the low-ranked tail first, then top-p refines the candidate set further.
 - Avoid changing all of them at once during evaluation.
 
 ## Output length
@@ -146,7 +146,7 @@ Use them deliberately:
 
 ## Reproducibility and log probabilities
 
-LLM sampling involves randomness. As mentioned above, at each step the model picks the next token probabilistically based on parameters like `temperature` and `top_p`. `seed` initializes the random number generator that drives this sampling. Pass the same `seed` with identical inputs and parameters, and you get the same (or near-identical) output every time. This is useful for testing prompts, comparing model versions, or debugging an unexpected output.
+LLM sampling involves randomness. As mentioned above, at each step the model picks the next token probabilistically based on parameters like `temperature` and `top_p`. `seed` initializes the random number generator that drives this sampling. With the same `seed`, identical inputs, identical parameters, and a stable serving setup, you can often get the same or near-identical output. This is useful for testing prompts, comparing model versions, or debugging an unexpected output.
 
 However, do not treat seeds as a perfect production guarantee. Reproducibility can still change when the model version, tokenizer, serving framework, hardware kernels, batching behavior, or floating-point implementation changes.
 
