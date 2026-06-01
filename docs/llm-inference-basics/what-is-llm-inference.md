@@ -43,6 +43,19 @@ In the LLM space, people often use **inference server** or **inference framework
 
 Popular [inference frameworks](../getting-started/choosing-the-right-inference-framework) include vLLM, SGLang, MAX, and TensorRT-LLM. They’re designed to maximize GPU efficiency while making LLMs easier to deploy at scale.
 
+## What's the difference between serving and inference?
+
+Inference is the computation. Serving is the production process that makes that computation available to users and applications.
+
+In everyday conversations, people often use the terms interchangeably because modern frameworks handle both. Tools like vLLM, SGLang, and TensorRT-LLM not only run inference efficiently but also manage requests and expose APIs. As a result, "inference framework" and "serving framework" often refer to the same systems.
+
+Strictly speaking, however, they're not the same thing, and the distinction matters the moment you start designing infrastructure.
+
+- Inference is the forward pass: tokens in, next-token distribution out, repeated through prefill and the decode loop. This is a computational operation. You can run inference in a Jupyter notebook or a Python script with no server in sight. That's still inference, but you are not serving anything.
+- Serving is everything required to turn that capability into a reliable production service: an API surface (HTTP/gRPC), request queuing and scheduling, batching across concurrent requests, load balancing across replicas, autoscaling, model loading and version management, health checks, observability, and resource allocation.
+
+So when someone uses them interchangeably, they're usually being loose about the fact that their inference engine happens to also be their server, which is perfectly common.
+
 ## What is inference optimization?
 
 **Inference optimization** is a set of techniques to make LLM inference faster, cheaper, and more efficient. It’s about reducing latency, improving throughput, and lowering hardware costs without hurting model quality.
