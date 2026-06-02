@@ -24,7 +24,7 @@ Before text can be processed by the model, it must first go through tokenization
 
 Each LLM has a vocabulary: a fixed set of tokens the model can represent. Each token in the vocabulary maps to a token ID. During tokenization, tokens are converted into token IDs before being passed into the model during inference.
 
-Here is a tokenization example for the sentence `The quick brown fox jumps over the lazy dog.` using GPT-5's tokenizer:
+Here is a tokenization example for the sentence `The quick brown fox jumps over the lazy dog.` using [GPT-5's tokenizer](https://platform.openai.com/tokenizer):
 
 ```bash
 Tokens: "The", " quick", " brown", " fox", " jumps", " over", " the", " lazy", " dog", "."
