@@ -36,7 +36,7 @@ For output, LLMs generate new tokens autoregressively. Starting with an initial 
 
 ## The two phases of LLM inference
 
-For transformer-based models like GPT-4, the entire inference process breaks down into two phases: **prefill and decode**.
+For decoder-only Transformer models like GPT-4, the entire inference process breaks down into two phases: **prefill and decode**.
 
 ### Prefill
 
@@ -126,6 +126,22 @@ Early examples of dLLMs include:
 For now, autoregressive LLMs remain the mainstream architecture. However, dLLMs represent one of the most promising directions to power the next generation of inference systems. If you’re working with autoregressive LLMs today, it’s worth keeping an eye on dLLMs.
 
 ## FAQs
+
+### Are all LLMs decoder-only Transformer models?
+
+No. LLMs can be built using different Transformer architectures, including encoder-only, encoder-decoder, and decoder-only models.
+
+However, when people talk about LLMs today, they are usually referring to decoder-only Transformer models. They dominate modern generative AI applications such as chatbots and coding assistants. Most inference techniques discussed today, including KV caching, continuous batching, speculative decoding, and prefill-decode disaggregation, are designed around this architecture.
+
+| Architecture    | Examples                           | Prefill and decode phases                                                                             | Note                                                   |
+| --------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Encoder-only    | BERT, RoBERTa                      | No. The input is processed in a single forward pass with no autoregressive generation.                | Mostly used for classification, embeddings, and search |
+| Encoder-decoder | T5, FLAN-T5, BART                  | Partially. The encoder processes the input once, while the decoder generates tokens autoregressively. | Less common for frontier LLMs                          |
+| Decoder-only    | GPT, Llama, Qwen, DeepSeek, Claude | Yes. Inference consists of a prefill phase followed by a token-by-token decode phase.                 | The dominant architecture for modern LLMs              |
+
+:::note
+Unless stated otherwise, "LLM" in this handbook refers to decoder-only Transformer models.
+:::
 
 ### How are tokens selected via sampling?
 
