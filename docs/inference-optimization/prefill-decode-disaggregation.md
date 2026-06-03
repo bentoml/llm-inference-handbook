@@ -16,8 +16,8 @@ import LinkList from '@site/src/components/LinkList';
 
 To understand prefill-decode (PD) disaggregation, let’s briefly review how [LLM inference works](../llm-inference-basics/how-does-llm-inference-work) in two steps:
 
-- **Prefill**: Processes the entire sequence in parallel and store key and value vectors from the attention layers in a KV cache. Because it’s handling all the tokens at once, prefill is compute-bound, but not too demanding on GPU memory.
-- **Decode**: Generates the output tokens, one at a time, by reusing the KV cache built earlier. Different from prefill, decode requires fast memory access but lower compute.
+- **Prefill**: Processes the entire sequence in parallel and store key and value vectors from the attention layers in a KV cache. Because it’s handling all the tokens at once with large matrix operations, prefill is compute-bound, but not too demanding on GPU memory.
+- **Decode**: Generates the output tokens, one at a time, by reusing the KV cache built earlier. Each generated token requires repeatedly loading model weights and accessing an ever-growing KV cache. Therefore, decode requires fast memory access but lower compute.
 
 ![llm-inference-flow.png](./img/llm-inference-flow.png)
 
