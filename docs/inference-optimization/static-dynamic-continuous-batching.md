@@ -6,7 +6,7 @@ keywords:
     - Batch LLM inference, batch requests, batch processing, LLM inference batching, LLM batching
     - Batch size, batch window
     - Padding tokens, pad tokens, ragged tensors
-    - LLM inference optimization, LLM inference optimization techniques​, LLM batch API
+    - LLM inference optimization, LLM inference optimization techniques, LLM batch API
     - Speed up LLM inference
 ---
 

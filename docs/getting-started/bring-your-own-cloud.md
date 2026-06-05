@@ -124,7 +124,7 @@ With our BYOC deployment, you can:
 - Run models inside your own VPC across providers like AWS, GCP, or Azure and leverage your existing credits and commits
 - Keep your data and workloads fully within your environment
 - Run and scale inference across NVIDIA, AMD, CPUs, and more in the same BYOC deployment
-- Apply the latest distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) in your private cloud
+- Apply the latest distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) in your private cloud
 
 <div style={{ margin: '3rem 0' }}>
 [<Button>Schedule a Demo</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)

@@ -74,7 +74,7 @@ Each newly generated token is appended to the growing sequence. This autoregress
 
 Finally, the sequence of generated tokens is decoded back into human-readable text.
 
-Compared with prefill, decode is more memory-bound because it frequently reads from the growing KV cache. KV caching stores these key and value matrices in memory so that, during subsequent token generation, the LLM only needs to compute the keys and values for the new tokens rather than recomputing everything from scratch.
+Compared with prefill, decode is more memory-bound because it requires the model weights and the growing KV cache to be frequently read from memory. KV caching stores these key and value matrices in memory so that, during subsequent token generation, the LLM only needs to compute the keys and values for the new tokens rather than recomputing everything from scratch.
 
 This KV caching mechanism significantly speeds up inference by avoiding redundant computation. However, it comes at the cost of increased memory consumption, since the cache grows with the length of the generated sequence. KV cache memory can become a serving bottleneck even when the model weights already fit on the GPU. Some inference systems reduce this pressure by compressing or quantizing the KV cache, while others move inactive cache blocks to cheaper memory through [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
