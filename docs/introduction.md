@@ -17,7 +17,7 @@ import StackQuiz from '@site/src/components/StackQuiz';
 
 # LLM Inference Handbook
 
-_LLM Inference Handbook_ is your technical glossary, guidebook, and reference - all in one. It covers everything you need to know about LLM inference, from core concepts and performance metrics (e.g., [Time to First Token and Tokens per Second](/llm-inference-basics/llm-inference-metrics)), to optimization techniques (e.g., [continuous batching](/inference-optimization/static-dynamic-continuous-batching) and [prefix caching](/inference-optimization/prefix-caching)), [GPU achitecture](./kernel-optimization/gpu-architecture-fundamentals), and deployment patterns like [BYOC](./getting-started/bring-your-own-cloud) and [on-prem](./getting-started/on-prem-llms).
+_LLM Inference Handbook_ is your technical glossary, guidebook, and reference - all in one. It covers everything you need to know about LLM inference, from core concepts and performance metrics (e.g., [Time to First Token and Tokens per Second](/llm-inference-basics/llm-inference-metrics)), to optimization techniques (e.g., [continuous batching](/inference-optimization/static-dynamic-continuous-batching) and [prefix caching](/inference-optimization/prefix-caching)), [GPU architecture](./kernel-optimization/gpu-architecture-fundamentals), and deployment patterns like [BYOC](./getting-started/bring-your-own-cloud) and [on-prem](./getting-started/on-prem-llms).
 
 <Features>
   - Practical guidance for deploying, scaling, and operating LLMs in production.
@@ -51,9 +51,11 @@ You can read it start-to-finish or treat it like a lookup table. There’s no wr
 This handbook provides various interactive tools to help you learn by trying the concepts directly:
 
 - [LLM Inference Visualizer](/llm-inference-basics/what-is-llm-inference): Walk through the request lifecycle and see how tokens flow through prefill and decode.
+- [LLM Lifecycle Visualizer](/llm-inference-basics/training-inference-differences): See where training and inference sit in the model lifecycle, and how inference runs on every request.
 - [Token-by-Token Decode Loop](/llm-inference-basics/how-does-llm-inference-work#decode): Step through autoregressive decoding and watch each new token extend the sequence and KV cache.
 - [Context Window Simulator](/llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference): See how the full conversation is re-sent each turn and fills the context window.
 - [Latency Metrics Playground](/llm-inference-basics/llm-inference-metrics#latency): Explore TTFT, E2EL, TPOT, and SLO-based goodput.
+- [Top-p vs Top-k Filter](/model-interaction/inference-parameters#top-p-and-top-k-sampling): Compare how each filter handles peaky, mixed, and flat distributions.
 - [Model Explorer](/getting-started/choosing-the-right-model): Browse popular open-source LLMs and compare their architecture, scale, context, and typical GPU deployment.
 - [GPU Comparison Table](/getting-started/choosing-the-right-gpu#matching-gpus-to-open-source-llms): Match popular open-source LLMs to suitable NVIDIA and AMD GPUs.
 - [GPU Memory Calculator](/getting-started/calculating-gpu-memory-for-llms#): Estimate VRAM requirements for serving an LLM.

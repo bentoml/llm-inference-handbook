@@ -5,7 +5,7 @@ keywords:
     - FlashAttention
     - FlashAttention-4
     - Blackwell attention kernels
-    - LLM inference optimization, LLM inference optimization techniques​
+    - LLM inference optimization, LLM inference optimization techniques
     - Speed up LLM inference
 ---
 
@@ -97,7 +97,7 @@ The main FlashAttention line now has 4 major versions. Below is a side-by-side c
 | FlashAttention-1 | 2022 | Introduced the IO-aware, tiled attention algorithm. Fused softmax + matmul kernels. Avoided materializing the full attention matrix | 2–4× faster attention, up to 10× lower memory | First version; supports practical long-context; exact attention (no approximation) |
 | FlashAttention-2 | 2023 | Better parallelism and work partitioning across warps; reduced non-matmul FLOPs | 2× faster than FA-1, especially on long sequences | Powers many long-context LLMs; widely integrated in inference/training frameworks |
 | FlashAttention-3 | 2024 | Tensor core acceleration (FP8/BF16); optimized for Hopper GPUs (e.g., H100) | Up to 2× faster than FA-2 and 740 TFLOPS on H100 (75% util); reduced FP8 numerical error by 2.6× | Leverages Hopper asynchronous execution and warp specialization. Many frameworks still upgrade from FA-2 first |
-| FlashAttention-4 | 2026 | Fully asynchronous MMA, larger tiles, software-emulated exponentials, conditional softmax rescaling, tensor memory, and 2-CTA MMA | Up to 1.3× faster over cuDNN 9.13, up to 2.7× over Triton, and up to 1613 TFLOPS/s (71% utilization) on B200 BF16 benchmarks | Written in CuTeDSL. The official implementation is exposed through `flash-attn-4` and targets Hopper and Blackwell GPUs such as H100 aB200 |
+| FlashAttention-4 | 2026 | Fully asynchronous MMA, larger tiles, software-emulated exponentials, conditional softmax rescaling, tensor memory, and 2-CTA MMA | Up to 1.3× faster over cuDNN 9.13, up to 2.7× over Triton, and up to 1613 TFLOPS/s (71% utilization) on B200 BF16 benchmarks | Written in CuTeDSL. The official implementation is exposed through `flash-attn-4` and targets Hopper and Blackwell GPUs such as H100 and B200 |
 
 FlashAttention-4 is specifically tuned for the NVIDIA Blackwell architecture. The key insight is asymmetric hardware scaling. Tensor cores (which do the big matrix multiplies like QKᵀ and PV) got much faster on Blackwell. However, other critical resources did not scale as much:
 

@@ -124,7 +124,7 @@ SmoothQuant is a great choice when you want:
 - Minimal accuracy drop
 - Plug-and-play compatibility with most transformer models
 
-It’s a turn-key solution that balances accuracy, performance, and ease of use. It’s ideal for production scenarios that demand efficiency at scale.
+It’s a turnkey solution that balances accuracy, performance, and ease of use. It’s ideal for production scenarios that demand efficiency at scale.
 
 ### GPTQ
 

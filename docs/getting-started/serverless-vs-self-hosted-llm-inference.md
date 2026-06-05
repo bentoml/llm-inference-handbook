@@ -72,10 +72,10 @@ It's also worth noting that both serverless and self-hosted options are getting 
   </figure>
     
 - GPU hardware is becoming more efficient and affordable.
-- Projects like vLLM and SGLang are enhancing the efficiency of model inferencing.
+- Projects like vLLM and SGLang improve model inference efficiency.
 - Better-performing open-source models that require fewer resources with different optimization techniques.
 
-For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
+For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
 
 ## When to start serverless and when to take control
 
@@ -93,7 +93,7 @@ At the end of the day, **inference quality is product quality**. If your AI is m
 
 That’s when it’s time to go beyond APIs and start owning your inference.
 
-## What I have to solve if choosing self-hosting?
+## What do I need to solve if I choose self-hosting?
 
 Self-hosting LLMs gives you full control and flexibility, but also comes with operational responsibilities beyond just spinning up GPU servers, such as:
 

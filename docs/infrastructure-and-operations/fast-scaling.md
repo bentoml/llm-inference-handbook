@@ -25,7 +25,7 @@ However, many organizations treat inference like training: they pre-allocate fix
 The scaling problem seems familiar, one that serverless computing solved years ago. Platforms like AWS Lambda made it easy to scale to demand, but serverless doesn’t map well to AI workloads. Here’s why:
 
 - **No GPU support**: Most serverless platforms don’t support GPUs. This isn't merely a technical oversight; it's rooted in architectural and practical considerations.
-- **GPUs can’t be sliced easily**: GPUs, while powerful and highly parallelizable as devices, is not as flexible as CPUs in handling multiple inference tasks on different models simultaneously.
+- **GPUs can’t be sliced easily**: GPUs are powerful and highly parallel, but they are not as flexible as CPUs for handling many inference tasks across different models at the same time.
 - **High cost of idle GPUs**: They're the high-performance sports cars of the computing world, exceptional for specific tasks but costly to maintain, especially if not utilized continuously.
 
 ## The cold start problem
@@ -36,12 +36,12 @@ In the context of deploying LLMs in containers, a cold start occurs when a Kuber
 
 This issue presents itself in three different stages:
 
-1. **Cloud provisioning**: This step involves the time it takes for the cloud provider to allocate a new instance and attach it to the Kubernetes cluster. Depending on the instance type and availability, this can take anywhere from 30 seconds to several minutes, or even hours for high-demand GPUs like Nvidia A100 and H100.
+1. **Cloud provisioning**: This step involves the time it takes for the cloud provider to allocate a new instance and attach it to the Kubernetes cluster. Depending on the instance type and availability, this can take anywhere from 30 seconds to several minutes, or even hours for high-demand GPUs like NVIDIA A100 and H100.
 2. **Container image pulling**: LLM images are significantly larger and more complex than typical Python job images, due to numerous dependencies and custom libraries. Despite claims of multi-gigabit bandwidth by cloud providers, actual image download speeds are often much slower. As a result, pulling images can take three to five minutes.
 3. **Model loading**. The time required to load the model depends heavily on its size. LLMs introduce significant delays due to their billions of parameters. Key bottlenecks include:
 
    - **Slow downloads from model hubs**: Platforms like Hugging Face are not optimized for high-throughput, multi-part downloads, making the retrieval of large model files time-consuming.
-   - **Sequential data flow**: Model files are transferred through multiple hops: **remote storage → local disk → memory → GPU**. This is minimal or no parallelization between them. Each step adds latency, particularly for large files that are difficult to cache or stream.
+   - **Sequential data flow**: Model files are transferred through multiple hops: **remote storage → local disk → memory → GPU**. There is little or no parallelization between these steps. Each step adds latency, particularly for large files that are difficult to cache or stream.
    - **Lack of on-demand streaming**: Model files must be fully downloaded and written to disk before inference can begin. This introduces additional I/O operations and delays startup.
 
 Each phase of the cold start issue demands specific strategies to minimize delays. For more information, see how BentoML solves the cold start problem: [25x Faster Cold Starts for LLMs on Kubernetes](https://www.bentoml.com/blog/25x-faster-cold-starts-for-llms-on-kubernetes).

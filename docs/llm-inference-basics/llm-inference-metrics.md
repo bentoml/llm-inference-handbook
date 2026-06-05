@@ -76,7 +76,7 @@ Acceptable latency depends on the use case. For example, a chatbot might require
 When analyzing LLM performance, especially latency, it’s not enough to look at just one number. Metrics like mean, median, and P99 each tell a different part of the story.
 
 - **Mean (Average)**: This is the sum of all values divided by the number of values. Mean gives a general sense of average performance, but it can be skewed by extreme values (outliers). For example, if the TTFT of one request is unusually slow, it inflates the mean.
-- **Median**: The middle value when all values are sorted. Median shows what a "typical" user experience. It’s more stable and resistant to outliers than the mean. If your median TTFT is 30 seconds, most users are seeing very slow first responses, which might be unacceptable for real-time use cases.
+- **Median**: The middle value when all values are sorted. Median shows the typical user experience. It’s more stable and resistant to outliers than the mean. If your median TTFT is 30 seconds, most users are seeing very slow first responses, which might be unacceptable for real-time use cases.
 - **P99 (99th Percentile)**: The value below which 99% of requests fall. P99 reveals worst-case performance for the slowest 1% of requests. This is important when users expect consistency, or when your SLAs guarantee fast responses for 99% of cases. If your P99 TTFT is nearly 100 seconds, it suggests a small but significant portion of users face very long waits.
 
   :::note

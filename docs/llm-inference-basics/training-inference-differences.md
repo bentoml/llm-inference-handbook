@@ -9,9 +9,13 @@ keywords:
     - Traning and inference
 ---
 
+import LLMLifecycleMap from '@site/src/components/LLMLifecycleMap';
+
 # Training vs. inference
 
 LLM training and inference are two different phases in the lifecycle of a model.
+
+<LLMLifecycleMap />
 
 ## Training: Building the model’s understanding
 
@@ -25,7 +29,7 @@ Common techniques used in LLM training include:
 
 Training is computationally intensive, often requiring expensive GPU or TPU clusters. While this initial cost can be very high, it is more or less a one-time expense. Once the model achieves desired accuracy, retraining is usually only necessary to update or improve the model periodically.
 
-## Inference: Using the model in real-time
+## Inference: Using the model in real time
 
 LLM inference means applying the trained model to new data to make predictions. Unlike training, inference [happens continuously and in real-time](./what-is-llm-inference), responding immediately to user input or incoming data. It is the phase where the model is actively "in use." Better-trained and more finely-tuned models typically provide more accurate and useful inference.
 
@@ -47,9 +51,15 @@ Here is a side-by-side comparison between training and inference:
 
 ## FAQs
 
+### What is model serving?
+
+Model serving is the production process of making a trained model available to applications, users, or systems so it can run inference on new inputs. It usually includes packaging the model, loading it onto suitable hardware, exposing it through an API or service, monitoring its behavior, and keeping latency, reliability, security, and cost under control.
+
+Learn more about the difference between [serving and inference](./what-is-llm-inference#whats-the-difference-between-serving-and-inference).
+
 ### Where do training and inference fit in the LLM lifecycle?
 
-Training happens early in the lifecycle. The model learns patterns, language structure, and general knowledge. After that, the model goes through alignment and optional fine-tuning. Inference comes last. It’s the stage where the model is deployed and serves real users in production. You can think of training as “building the model” and inference as “putting the model to work.”
+Training happens early in the lifecycle. The model learns patterns, language structure, and general knowledge. After that, the model goes through alignment, optional fine-tuning, evaluation, and deployment. Inference comes after deployment. It is the stage where the model serves real users in production, usually through an API, service, or application workflow. You can think of training as "building the model" and inference as "putting the model to work."
 
 ### Why does LLM inference often cost more than training?
 

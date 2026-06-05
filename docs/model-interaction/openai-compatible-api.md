@@ -140,6 +140,8 @@ curl https://your-custom-endpoint.com/v1/models \
 
 Use any returned `id` as the `model` field in your chat completion requests. Note that not every framework exposes this endpoint.
 
+Most compatible endpoints also accept common [LLM inference parameters](./inference-parameters), such as `temperature`, `top_p`, and `max_tokens`. Support varies across providers and self-hosted backends, so verify the exact fields your server accepts before using them in production.
+
 ## FAQs
 
 ### Is an OpenAI-compatible API the same as OpenAI’s official API?

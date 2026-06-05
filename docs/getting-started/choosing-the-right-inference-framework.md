@@ -66,16 +66,16 @@ Popular inference frameworks for building high-throughput, low-latency LLM appli
 
 If you're working with limited hardware or targeting desktop/edge devices, these tools are optimized for low-resource environments:
 
-- [llama.cpp](https://github.com/ggml-org/llama.cpp). A lightweight inference runtime for LLMs, implemented in plain C/C++ with no external dependencies. Its primary goal is to make LLM inference fast, portable, and easy to run across a wide range of hardware. Despite the name, llama.cpp supports far more than just Llama models. It supports many popular architectures like Qwen, DeepSeek, and Mistral. The tool is ideal in low-latency inference and performs well on consumer-grade GPUs.
+- [llama.cpp](https://github.com/ggml-org/llama.cpp). A lightweight inference runtime for LLMs, implemented in plain C/C++ with no external dependencies. Its primary goal is to make LLM inference fast, portable, and easy to run across a wide range of hardware. Despite the name, llama.cpp supports far more than just Llama models. It supports many popular architectures like Qwen, DeepSeek, and Mistral. The tool is ideal for low-latency inference and performs well on consumer-grade GPUs.
 - [MLC-LLM](https://github.com/mlc-ai/mlc-llm). An ML compiler and high-performance deployment engine for LLMs. It is built on top of Apache TVM and requires compilation and weight conversion before serving models. MLC-LLM can be used for a wide range of hardware platforms, supporting AMD, NVIDIA, Apple, and Intel GPUs across Linux, Windows, macOS, iOS, Android, and web browsers.
 - [Ollama](https://ollama.com/). A user-friendly local inference tool built on top of llama.cpp. It’s designed for simplicity and ease of use, ideal for running models on your laptop with minimal setup. However, Ollama is mainly used for single-request use cases. Unlike runtimes like vLLM or SGLang, it doesn’t support concurrent requests. This difference matters since many inference optimizations, such as paged attention, prefix caching, and dynamic batching, are only effective when handling multiple requests in parallel.
 
 Several of these frameworks have also evolved beyond text generation to serve diffusion models. 
 - [SGLang Diffusion](https://docs.sglang.io/docs/sglang-diffusion) supports image and video models like FLUX, Wan, and Qwen-Image. 
 - [vLLM-Omni](https://docs.vllm.ai/projects/vllm-omni/en/latest/) extends vLLM to Diffusion Transformers (DiT) and other parallel, non-autoregressive generation models across text, image, video, and audio.
-- [MAX](https://www.modular.com/solutions/image-generation?utm_source=bentoml_llm) serves diffusion models like FLUX with up to 4x faster than native PyTorch.
+- [MAX](https://www.modular.com/solutions/image-generation?utm_source=bentoml_llm) serves diffusion models like FLUX up to 4x faster than native PyTorch.
 
-## Why you might need multiple inference runtimes
+## Why do you need multiple inference runtimes?
 
 In real-world deployments, no single runtime is perfect for every scenario. Here’s why AI teams often end up using more than one:
 
@@ -102,7 +102,7 @@ They often begin with tools like Ollama to run models locally on a laptop or sma
 
 From there, teams move to high-performance server runtimes like vLLM. These frameworks provide continuous batching, KV cache optimizations, and improved GPU utilization on data center GPUs. However, most of these runtimes lack built-in multi-region routing, automatic failover, and true horizontal scaling. GPU provisioning, performance tuning, and fault tolerance also remain complex and time-consuming to implement.
 
-When teams need to run and scale inference across multiple GPUs clusters, regions or clouds, they typically adopt [distributed inference](../infrastructure-and-operations/distributed-inference) platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide the advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
+When teams need to run and scale inference across multiple GPU clusters, regions, or clouds, they typically adopt [distributed inference](../infrastructure-and-operations/distributed-inference) platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
 
 Read this [blog post](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference) to explore this progression in more detail.
 

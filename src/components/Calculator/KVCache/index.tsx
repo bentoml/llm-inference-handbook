@@ -174,7 +174,7 @@ function KVCacheCalculator() {
                   min="1"
                   value={data.hxd}
                   onChange={(e) =>
-                    setData({ ...data, d: Number(e.target.value) })
+                    setData({ ...data, hxd: Number(e.target.value) })
                   }
                 />
               </FormItem>

@@ -74,7 +74,7 @@ Each newly generated token is appended to the growing sequence. This autoregress
 
 Finally, the sequence of generated tokens is decoded back into human-readable text.
 
-Compared with prefill, decode is more memory-bound because it frequently reads from the growing KV cache. KV caching stores these key and value matrices in memory so that, during subsequent token generation, the LLM only needs to compute the keys and values for the new tokens rather than recomputing everything from scratch.
+Compared with prefill, decode is more memory-bound because it requires the model weights and the growing KV cache to be frequently read from memory. KV caching stores these key and value matrices in memory so that, during subsequent token generation, the LLM only needs to compute the keys and values for the new tokens rather than recomputing everything from scratch.
 
 This KV caching mechanism significantly speeds up inference by avoiding redundant computation. However, it comes at the cost of increased memory consumption, since the cache grows with the length of the generated sequence. KV cache memory can become a serving bottleneck even when the model weights already fit on the GPU. Some inference systems reduce this pressure by compressing or quantizing the KV cache, while others move inactive cache blocks to cheaper memory through [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
@@ -138,14 +138,9 @@ Before sampling, temperature is applied to the logits (the raw pre-softmax score
 - **Lower temperature**: the distribution becomes more peaked (a few tokens dominate)
 - **Higher temperature**: the distribution becomes flatter (probability spreads across more tokens)
 
-You can think of temperature as reshaping the preferences of the model. A higher temperature reduces the gap between likely and unlikely tokens, making rare tokens more likely to be selected.
+After applying temperature and converting logits into probabilities, a sampling strategy determines which token gets picked. Common ones include greedy decoding, top-k, and top-p.
 
-After applying temperature and converting logits into probabilities, a sampling strategy determines which token gets picked. Common ones include:
-
-- **Greedy decoding**: Always select the highest probability token. It is deterministic, but prone to repetition.
-- **Top-k sampling:** Restrict candidates to the k most probable tokens, then samples from them. This avoids very unlikely tokens.
-- **Top-p (nucleus) sampling**: Select the smallest set of tokens whose cumulative probability ≥ *p*, then sample from them.
-- **Top-k + top-p combined**: Often used together in practice. Top-k removes extreme outliers first, then top-p refines the candidate set further.
+Learn more about [LLM inference parameters](../model-interaction/inference-parameters).
 
 ### What happens step by step during LLM inference?
 

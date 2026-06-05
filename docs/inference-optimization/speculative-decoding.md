@@ -5,7 +5,7 @@ keywords:
     - Speculative decoding, speculative sampling
     - Draft model, target model
     - Distributed inference, distributed LLM inference
-    - LLM inference optimization, LLM inference optimization techniques​
+    - LLM inference optimization, LLM inference optimization techniques
     - Speed up LLM inference
 ---
 
@@ -15,8 +15,8 @@ import LinkList from '@site/src/components/LinkList';
 
 Speculative decoding is an inference-time optimization that speeds up LLM token generation without reducing output quality. It works by pairing two models:
 
-- **Draft model**: A smaller, fast model proposes several draft tokens ahead.
-- **Target model**: A larger model verifies these proposed tokens in parallel and accepts those that match its own predictions.
+- **Draft model**: A smaller, fast model proposes several draft tokens ahead.
+- **Target model**: A larger model verifies these proposed tokens in parallel and accepts those that match its own predictions.
 
 This draft-then-verify pattern guarantees the final output matches exactly what the original target model would have produced on its own. Therefore, it does not sacrifice output quality.
 
@@ -35,22 +35,22 @@ What if you could parallelize parts of the generation process, even if not all o
 
 Inspired by speculative execution (operations are computed ahead of time and discarded if unnecessary), speculative decoding allows parts of token generation to run in parallel. When the target model verifies multiple draft tokens at once, it makes better use of GPU resources and reduces ITL. This is especially useful for latency-sensitive applications like chatbots and code completion tools.
 
-This technique builds on [two key observations about LLM inference](https://research.google/blog/looking-back-at-speculative-decoding/):
+This technique builds on [two key observations about LLM inference](https://research.google/blog/looking-back-at-speculative-decoding/):
 
 1. **LLM inference is memory-bound**. GPUs have massive compute capacity but limited memory bandwidth. Much of their compute sits unused while waiting on memory access.
-2. **Some tokens are easier to predict than others**. Many next tokens are obvious from context and can be proposed by a smaller model.
+2. **Some tokens are easier to predict than others**. Many next tokens are obvious from context and can be proposed by a smaller model.
 
-The draft-then-verify idea was first introduced by [Stern et al. (2018)](https://arxiv.org/abs/1811.03115), and later [extended by DeepMind](https://arxiv.org/pdf/2302.01318) into a statistically grounded method called **Speculative Sampling**. Speculative decoding is the application of speculative sampling to inference from autoregressive models, like transformers.
+The draft-then-verify idea was first introduced by [Stern et al. (2018)](https://arxiv.org/abs/1811.03115), and later [extended by DeepMind](https://arxiv.org/pdf/2302.01318) into a statistically grounded method called **Speculative Sampling**. Speculative decoding is the application of speculative sampling to inference from autoregressive models, like transformers.
 
 ## How does speculative decoding work
 
 At a high level, speculative decoding runs in a loop:
 
-1. The draft model predicts the next *K tokens* after the input sequence.
-2. The target model then verifies these *K tokens* in parallel to see if it would also predict them.
-3. The target model accepts the longest prefix of these *K tokens* that it agrees with.
-4. If it accepts *h* tokens, it then generates the *(h+1)*th token itself (so that generation remains on track).
-5. The process repeats: the draft model proposes the next *K tokens* based on this new extended sequence.
+1. The draft model predicts the next *K tokens* after the input sequence.
+2. The target model then verifies these *K tokens* in parallel to see if it would also predict them.
+3. The target model accepts the longest prefix of these *K tokens* that it agrees with.
+4. If it accepts *h* tokens, it then generates the *(h+1)*th token itself (so that generation remains on track).
+5. The process repeats: the draft model proposes the next *K tokens* based on this new extended sequence.
 
 ![spec-decoding.png](./img/spec-decoding.png)
 
@@ -67,7 +67,7 @@ When evaluating speculative decoding, three metrics matter most:
     A high α value means more tokens are accepted per round and you have fewer target model forward passes. This results in lower latency, higher throughput, and better GPU utilization. On the contrary, a low α indicates many tokens are rejected. This means you waste compute on drafting and verification. It also means reverting to sequential decoding more frequently.
     
 - **Speculative token count (γ)**: The number of tokens the draft model proposes each step. It is configurable in most inference frameworks.
-- **Acceptance length (τ)**: The average number of tokens accepted per round of decoding. According to the paper [Fast Inference from Transformers via Speculative Decoding](https://arxiv.org/pdf/2211.17192), you can calculate it with a theoretical formula:
+- **Acceptance length (τ)**: The average number of tokens accepted per round of decoding. According to the paper [Fast Inference from Transformers via Speculative Decoding](https://arxiv.org/pdf/2211.17192), you can calculate it with a theoretical formula:
 
     $$
     \tau = \frac{1 - \alpha^{\gamma+1}}{1 - \alpha}
