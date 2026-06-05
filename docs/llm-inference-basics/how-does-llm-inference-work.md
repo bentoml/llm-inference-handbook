@@ -138,14 +138,9 @@ Before sampling, temperature is applied to the logits (the raw pre-softmax score
 - **Lower temperature**: the distribution becomes more peaked (a few tokens dominate)
 - **Higher temperature**: the distribution becomes flatter (probability spreads across more tokens)
 
-You can think of temperature as reshaping the preferences of the model. A higher temperature reduces the gap between likely and unlikely tokens, making rare tokens more likely to be selected.
+After applying temperature and converting logits into probabilities, a sampling strategy determines which token gets picked. Common ones include greedy decoding, top-k, and top-p.
 
-After applying temperature and converting logits into probabilities, a sampling strategy determines which token gets picked. Common ones include:
-
-- **Greedy decoding**: Always select the highest probability token. It is deterministic, but prone to repetition.
-- **Top-k sampling:** Restrict candidates to the k most probable tokens, then samples from them. This avoids very unlikely tokens.
-- **Top-p (nucleus) sampling**: Select the smallest set of tokens whose cumulative probability ≥ *p*, then sample from them.
-- **Top-k + top-p combined**: Often used together in practice. Top-k removes extreme outliers first, then top-p refines the candidate set further.
+Learn more about [LLM inference parameters](../model-interaction/inference-parameters).
 
 ### What happens step by step during LLM inference?
 
