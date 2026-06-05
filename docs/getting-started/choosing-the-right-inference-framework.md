@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-description: Select the right inference frameworks for your use case.
+description: Learn what LLM inference frameworks do, why raw model execution is not enough for production, and how to choose the right inference frameworks for your use case.
 keywords:
     - Inference frameworks, inference backends, inference runtimes, inference engines, inference platforms
     - Best inference frameworks, best LLM inference providers, LLM inference benchmark
@@ -11,20 +11,58 @@ import LinkList from '@site/src/components/LinkList';
 
 # Choosing the right inference framework
 
-Once you’ve selected a model, the next step is choosing how to run it. Your choice of inference framework directly affects latency, throughput, hardware efficiency, and feature support. There's no one-size-fits-all solution. Your decision depends on your deployment scenario, use case, and infrastructure.
+Once you’ve selected a model, the next step is choosing how to run it. Your choice of inference framework directly affects latency, throughput, hardware efficiency, and feature support. There's no one-size-fits-all solution. The right choice depends on your deployment scenario, workload, model, and infrastructure.
+
+## What are inference frameworks?
+
+An inference framework is the software layer that loads a model, runs it on the right hardware, and serves outputs to applications. For LLMs, this usually means more than calling the `forward()` function of the model. A framework also manages token generation, [KV cache](../inference-optimization/kv-cache-offloading), batching, streaming responses, memory limits, and request handling.
+
+You may also see these tools called inference runtimes, inference engines, inference backends, or model servers. The exact meaning varies by project, but the core job is the same: make model execution efficient and usable outside a training notebook.
+
+## Why do I need an inference framework?
+
+You can run inference directly with a raw model in PyTorch or Hugging Face Transformers. That is often enough for experiments, local testing, or one request at a time. It is usually not enough for production inference.
+
+Training frameworks are built around learning weights. They support backpropagation, optimizer steps, gradient accumulation, and large training batches. Inference has different goals: low latency, high throughput, stable memory use, streaming output, and predictable behavior under concurrent traffic.
+
+Inference frameworks handle the serving-specific work that raw model execution does not solve well, such as:
+
+- **Batching and scheduling**: Combine active requests so GPUs stay busy.
+- **KV cache management**: Store attention state efficiently for long prompts and multi-turn chats.
+- **Streaming**: Return tokens as they are generated instead of waiting for the full response.
+- **Memory control**: Fit larger models and more concurrent requests into limited GPU memory.
+- **Production APIs**: Expose [OpenAI-compatible](../model-interaction/openai-compatible-api) or framework-specific endpoints.
+- **Multi-GPU support**: Split large models across devices when one GPU is not enough.
+
+These frameworks hide much of the model execution complexity behind serving options you can tune. Here is an example of using vLLM to serve DeepSeek-V4-Flash. You can tune different configurations directly without touching the model itself. vLLM automatically handles it for you.
+
+```bash
+vllm serve deepseek-ai/DeepSeek-V4-Flash \
+  --trust-remote-code \
+  --kv-cache-dtype fp8 \
+  --block-size 256 \
+  --enable-expert-parallel \
+  --tensor-parallel-size 8 \
+  --attention_config.use_fp4_indexer_cache=True \
+  --moe-backend deep_gemm_mega_moe \
+  --tokenizer-mode deepseek_v4 \
+  --tool-call-parser deepseek_v4 \
+  --enable-auto-tool-choice \
+  --reasoning-parser deepseek_v4
+```
+
+The benefit is not just convenience. A good inference framework can improve the latency, throughput, and cost profile of the same model on the same hardware. For example, [in a 2023 benchmark](https://vllm.ai/blog/2023-06-20-vllm), the vLLM team reported up to 24× higher throughput than Hugging Face Transformers without requiring any changes to the underlying model architecture.
 
 ## Inference frameworks and tools
 
-If you're building high-throughput, low-latency applications, such as chatbots and RAG pipelines, these frameworks are optimized for running LLM inference:
+Popular inference frameworks for building high-throughput, low-latency LLM applications include:
 
 - [vLLM](https://github.com/vllm-project/vllm). A high-performance inference engine optimized for serving LLMs. It is known for its efficient use of GPU resources and fast decoding capabilities.
 - [SGLang](https://github.com/sgl-project/sglang). A fast serving framework for LLMs and vision language models. It makes your interaction with models faster and more controllable by co-designing the backend runtime and frontend language.
 - [Max](https://github.com/modular/modular). A high-performance AI serving framework from Modular. It provides an integrated suite of tools for AI compute workloads across CPUs and GPUs and supports customization at both the model and [kernel level](../kernel-optimization/kernel-optimization-tools).
 - [LMDeploy](https://github.com/InternLM/lmdeploy). An inference backend focusing on delivering high decoding speed and efficient handling of concurrent requests. It supports various quantization techniques, making it suitable for deploying large models with reduced memory requirements.
 - [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM). An inference backend that leverages NVIDIA's TensorRT, a high-performance deep learning inference library. It is optimized for running large models on NVIDIA GPUs, providing fast inference and support for advanced optimizations like quantization.
-- [Hugging Face TGI](https://github.com/huggingface/text-generation-inference). A toolkit for deploying and serving LLMs. It is used in production at Hugging Face to power Hugging Chat, the Inference API and Inference Endpoint.
-  
-  Note that Hugging Face TGI is now in **maintenance mode**. This means it is still supported and usable, but there will no longer be major feature development or new performance optimizations. If you’re running TGI in production, it’s worth planning an upgrade path as your performance or scaling needs grow.
+- [Hugging Face TGI](https://github.com/huggingface/text-generation-inference). A toolkit for deploying and serving LLMs. It is used in production at Hugging Face to power Hugging Chat, the Inference API and Inference Endpoint. Note that Hugging Face TGI is now in **maintenance mode**. This means it is still supported and usable, but there will no longer be major feature development or new performance optimizations. If you’re running TGI in production, it’s worth planning an upgrade path as your performance or scaling needs grow.
 
 If you're working with limited hardware or targeting desktop/edge devices, these tools are optimized for low-resource environments:
 

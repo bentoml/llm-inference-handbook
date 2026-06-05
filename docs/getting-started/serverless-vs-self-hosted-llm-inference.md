@@ -81,9 +81,9 @@ For more information, see the blog post [Serverless vs. Dedicated LLM Deployment
 
 If you're just getting started with LLMs, serverless APIs are a great way to move fast. They make prototyping easy, lower the barrier to entry, and let you validate use cases without dealing with infrastructure.
 
-But that simplicity comes with trade-offs. As your AI use cases grow, along with your need for performance, privacy, and differentiation, the limitations of serverless become hard to ignore.
+But that simplicity comes with trade-offs. Serverless APIs still leave you with serving decisions: which endpoint type to use, how to connect the service to your application and data systems, how to manage privacy boundaries, and how to reason about latency and spend as traffic grows.
 
-Why? Every company building serious AI products needs more than just a good model. **The inference layer is what brings that model to life**. Relying solely on third-party APIs might get your app off the ground, but it won’t give you the long-term control or competitive edge you need. Compared with self-hosted inference, serverless model APIs make it hard to get fine-grained control over performance tuning and cost optimization. You are just calling the same API as everyone else. And that lack of customization hamstrings your ability to build lasting advantage:
+As your AI use cases grow, along with your need for performance, privacy, and differentiation, the limitations of serverless become hard to ignore. Every company building serious AI products needs more than just a good model. **The inference layer is what brings that model to life**. Relying solely on third-party APIs might get your app off the ground, but it won’t give you the long-term control or competitive edge you need. Compared with self-hosted inference, serverless model APIs make it hard to get fine-grained control over performance tuning and cost optimization. You are just calling the same API as everyone else. And that lack of customization hamstrings your ability to build lasting advantage:
 
 1. **Compound AI systems** are how top teams win. [They chain multiple models and tools into rich, flexible workflows](https://www.bentoml.com/blog/a-guide-to-compound-ai-systems).
 2. **Tailored inference stacks** let you architect for precise SLAs and cost targets across different workloads.
