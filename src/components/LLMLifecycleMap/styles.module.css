@@ -1,0 +1,257 @@
+.container {
+  border: 1px solid #c7d2fe;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(to right, #eef2ff, #eff6ff);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.title {
+  color: #111827;
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+
+.subtitle {
+  margin-top: 0.2rem;
+  color: #4b5563;
+  font-size: 0.85rem;
+}
+
+.controls {
+  display: inline-flex;
+  align-self: flex-start;
+  overflow: hidden;
+  border: 1px solid #dbeafe;
+  border-radius: 0.375rem;
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+
+.control {
+  border: 0;
+  border-right: 1px solid #dbeafe;
+  background: transparent;
+  color: #475569;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.65rem;
+}
+
+.control:last-child {
+  border-right: 0;
+}
+
+.control:hover {
+  background: #eff6ff;
+}
+
+.controlActive {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+/* ── Flow: two phases side by side ──────────────────────────────────── */
+
+.flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  padding: 1.25rem 1.25rem 0.75rem;
+}
+
+.phase {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+  transition: opacity 160ms ease, box-shadow 160ms ease;
+}
+
+.phaseHead {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-bottom: 0.55rem;
+  padding: 0 0.1rem;
+}
+
+.phaseTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.build {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.operate {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.phaseActive {
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.phaseMuted {
+  opacity: 0.4;
+}
+
+.steps {
+  display: flex;
+  align-items: stretch;
+  gap: 0.25rem;
+}
+
+.stepWrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.step {
+  position: relative;
+  width: 100%;
+  min-height: 64px;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background: #fff;
+  padding: 0.5rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.stepHighlight {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 1px #16a34a inset;
+}
+
+.stepLabel {
+  color: #111827;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.stepTag {
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.arrow {
+  color: #94a3b8;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0 0.15rem;
+}
+
+.handoff {
+  align-self: center;
+  color: #64748b;
+  font-size: 1.4rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ── Loop-back note ─────────────────────────────────────────────────── */
+
+.loopback {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 1.25rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px dashed #fcd34d;
+  border-radius: 0.375rem;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.loopbackIcon {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+/* ── Summary ────────────────────────────────────────────────────────── */
+
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem 1.25rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background: #f9fafb;
+  padding: 0.55rem 0.65rem;
+}
+
+.statLabel {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.statValue {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: #374151;
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .flow {
+    flex-direction: column;
+  }
+
+  .handoff {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
+  .controls {
+    width: 100%;
+  }
+
+  .control {
+    flex: 1;
+    padding: 0.5rem 0.35rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+}
