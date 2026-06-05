@@ -315,6 +315,23 @@ const MODELS: Model[] = [
 
   // ── Gemma ──
   {
+    name: 'gemma-4-12B-it',
+    family: 'Gemma',
+    company: 'Google',
+    architecture: 'Dense',
+    released: '2026-06',
+    license: 'Apache 2.0',
+    huggingface: 'google/gemma-4-12B-it',
+    totalParams: '11.95B',
+    contextLength: '256K',
+    modality: 'Multimodal',
+    modalityNote: 'Text, Image, Audio',
+    precisions: ['BF16'],
+    deployment: ['1× H100', '1× H200'],
+    vllmDocs: 'https://recipes.vllm.ai/Google/gemma-4-12B-it',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Google/Gemma4',
+  },
+  {
     name: 'gemma-4-31B-it',
     family: 'Gemma',
     company: 'Google',
