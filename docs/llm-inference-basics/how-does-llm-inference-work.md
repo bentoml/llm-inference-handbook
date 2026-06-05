@@ -24,12 +24,12 @@ Before text can be processed by the model, it must first go through tokenization
 
 Each LLM has a vocabulary: a fixed set of tokens the model can represent. Each token in the vocabulary maps to a token ID. During tokenization, tokens are converted into token IDs before being passed into the model during inference.
 
-Here is a tokenization example for the sentence `BentoML supports custom LLM inference.` using [GPT-4o’s tokenizer](https://platform.openai.com/tokenizer):
+Here is a tokenization example for the sentence `The quick brown fox jumps over the lazy dog.` using [GPT-5's tokenizer](https://platform.openai.com/tokenizer):
 
 ```bash
-Tokens: "B", "ento", "ML", " supports", " custom", " L", "LM", " inference", "."
+Tokens: "The", " quick", " brown", " fox", " jumps", " over", " the", " lazy", " dog", "."
 
-Token IDs: [33, 13969, 4123, 17203, 2602, 451, 19641, 91643, 13]
+Token IDs: [976, 4853, 19705, 68347, 65613, 1072, 290, 29082, 6446, 13]
 ```
 
 For output, LLMs generate new tokens autoregressively. Starting with an initial sequence of tokens, the model predicts the next token based on everything it has seen so far. This repeats until a stopping criterion is met.

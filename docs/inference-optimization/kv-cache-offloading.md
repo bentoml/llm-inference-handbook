@@ -39,7 +39,7 @@ To estimate how much memory the KV cache consumes, use the following calculator:
 <KVCacheCalculator />
 
 :::info 
-If you already know the model’s dimension, you can simplify the formula by replacing `H × D` with it (Simplified Calculation above).
+You can often find the architecture details of an LLM in the `config.json` file of its Hugging Face repository, including the model architecture (e.g., a Transformer decoder), the number of layers, hidden size, number of attention heads, vocabulary size, and other architectural hyperparameters. If you already know the model’s dimension, you can simplify the formula by replacing `H × D` with it (Simplified Calculation above).
 :::
 
 ## When should you offload the KV cache for LLMs?
