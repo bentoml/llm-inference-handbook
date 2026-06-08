@@ -51,6 +51,8 @@ vllm serve deepseek-ai/DeepSeek-V4-Flash \
   --reasoning-parser deepseek_v4
 ```
 
+By abstracting away low-level infrastructure work, inference frameworks let you focus on building applications instead of reimplementing inference logic for each model architecture.
+
 The benefit is not just convenience. A good inference framework can improve the latency, throughput, and cost profile of the same model on the same hardware. For example, [in a 2023 benchmark](https://vllm.ai/blog/2023-06-20-vllm), the vLLM team reported up to 24× higher throughput than Hugging Face Transformers without requiring any changes to the underlying model architecture.
 
 ## Inference frameworks and tools
