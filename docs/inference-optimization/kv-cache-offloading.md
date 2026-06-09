@@ -82,7 +82,7 @@ Several open-source projects have already integrated LMCache to support efficien
 
 - [llm-d](https://www.redhat.com/en/about/press-releases/red-hat-launches-llm-d-community-powering-distributed-gen-ai-inference-scale) offloads KV cache data with LMCache from GPU memory to more cost-effective and abundant storage such as CPU memory and network disks.
 - [KServe](https://kserve.github.io/website/docs/next/model-serving/generative-inference/kvcache-offloading) integrates LMCache to reduce inference costs and ensure SLOs for both latency and throughput at scale.
-- [vLLM](https://docs.vllm.ai/en/latest/examples/others/lmcache.html) uses LMCache for CPU offloading, cache sharing between requests, and disaggregated prefilling. This enables better memory management and improves resource efficiency.
+- [vLLM](https://docs.vllm.ai/en/latest/examples/disaggregated/lmcache/) uses LMCache for CPU offloading, cache sharing between requests, and disaggregated prefilling. This enables better memory management and improves resource efficiency.
 
 LMCache currently supports offloading KV cache data to a variety of storage backends, ranging from local options like CPU memory and the file system, to distributed systems such as Mooncake and ValKey.
 
