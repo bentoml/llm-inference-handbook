@@ -143,8 +143,8 @@ Adaptive speculative decoding addresses this problem by adjusting speculative de
 
 Adaptive speculative decoding can modify one or more aspects of the speculation process.
 
-- **Speculative length.** How many tokens the draft model proposes before handing off to the target for verification. Tuning this is the most common and lowest-risk form of adaptivity. It changes speed only, and the output remains identical to what the target would have produced (lossless). For example, the system may increase speculative length when acceptance rates are high and resources are available, then reduce it when acceptance rates decline or the system becomes saturated.
-- **Acceptance criterion.** How strictly the target verifies each draft token. Relaxing verification lets more "close enough" tokens through, which accelerates generation but allows the output to drift from the exact distribution by the target model (lossy). This trades a small amount of quality for additional speed and should be used deliberately.
+- **Speculative length**. How many tokens the draft model proposes before handing off to the target for verification. Tuning this is the most common and lowest-risk form of adaptivity. It changes speed only, and the output remains identical to what the target would have produced (lossless). For example, the system may increase speculative length when acceptance rates are high and resources are available, then reduce it when acceptance rates decline or the system becomes saturated.
+- **Acceptance criterion**. How strictly the target verifies each draft token. Relaxing verification lets more "close enough" tokens through, which accelerates generation but allows the output to drift from the exact distribution by the target model (lossy). This trades a small amount of quality for additional speed and should be used deliberately.
 
 ### Existing solutions
 
