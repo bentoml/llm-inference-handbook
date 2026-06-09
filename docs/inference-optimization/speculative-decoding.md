@@ -3,6 +3,7 @@ sidebar_position: 4
 description: Speculative decoding accelerates LLM inference with draft model predictions verified by the target model.
 keywords:
     - Speculative decoding, speculative sampling
+    - Adaptive speculative decoding
     - Draft model, target model
     - Distributed inference, distributed LLM inference
     - LLM inference optimization, LLM inference optimization techniques
@@ -19,8 +20,6 @@ Speculative decoding is an inference-time optimization that speeds up LLM token 
 - **Target model**: A larger model verifies these proposed tokens in parallel and accepts those that match its own predictions.
 
 This draft-then-verify pattern guarantees the final output matches exactly what the original target model would have produced on its own. Therefore, it does not sacrifice output quality.
-
-With the right draft model, you can achieve **up to 3× faster LLM inference** using speculative decoding.
 
 ## Why speculative decoding
 
@@ -56,7 +55,7 @@ At a high level, speculative decoding runs in a loop:
 
 ## Understanding the performance of speculative decoding
 
-Speculative decoding can accelerate LLM inference, but only when the draft and target models align well. Before enabling it in production, always benchmark performance under your workload. Frameworks like vLLM and SGLang provide built-in support for this inference optimization technique.
+Speculative decoding can accelerate LLM inference, but only when the draft and target models align well. Before enabling it in production, always benchmark performance under your workload. For a quick test, you can choose [inference frameworks](../getting-started/choosing-the-right-inference-framework) like vLLM and SGLang, which provide built-in support for this inference optimization technique.
 
 ### Key metrics
 
@@ -75,7 +74,7 @@ When evaluating speculative decoding, three metrics matter most:
     
 ### How acceptance rate impacts performance
 
-In theory, the effectiveness of speculative decoding depends heavily on acceptance rate. To study this, we patched vLLM to simulate speculative decoding at different α and γ values (no draft model and the target model accepts tokens at preset rates).
+In theory, the effectiveness of speculative decoding depends heavily on acceptance rate. To study this, the BentoML team patched vLLM to simulate speculative decoding at different α and γ values (no draft model and the target model accepts tokens at preset rates).
 
 Here are the key findings:
 
@@ -88,7 +87,7 @@ In practice, however, the speedup was lower than expected. [Read this blog post]
 
 ### How performance varies under different workloads
 
-We also tested speculative decoding under different concurrency levels and tensor parallelism (TP) configurations.
+They also tested speculative decoding under different concurrency levels and tensor parallelism (TP) configurations.
 
 <figure>
 ![tp-1-spec-decoding.png](./img/tp-1-spec-decoding.png)
@@ -130,12 +129,70 @@ How closely your draft model’s distribution matches with the target model dete
 
 If your workload has its own characteristics, you’ll likely get better results by [fine-tuning a draft model on your data](https://www.bentoml.com/blog/3x-faster-llm-inference-with-speculative-decoding). That way, it learns to mimic the target more closely, boosting acceptance rates and speedups. On the flip side, if you already see good acceptance, you can skip the training and still benefit.
 
+## Adaptive speculative decoding
+
+Most speculative decoding deployments use a fixed speculative token count or number of draft steps (γ). It may work for a benchmark, but it is rarely optimal for every request in production.
+
+Real workloads are dynamic. The predictability of the next token changes throughout generation, and batch sizes fluctuate as requests enter and leave the system. A large speculative window can work well when the draft model is highly accurate and batch sizes are small. The same window may become inefficient when acceptance rates fall or batch sizes grow, because every unnecessary draft step consumes additional compute across more sequences.
+
+A fixed γ is therefore a compromise. It may be too conservative when the GPU has spare capacity and could benefit from more aggressive drafting, and too aggressive when the system is busy and rejected draft tokens become wasted work.
+
+Adaptive speculative decoding addresses this problem by adjusting speculative decoding parameters at runtime instead of relying on a single configuration. The goal is to keep speculation aligned with current conditions.
+
+### What can be adaptive?
+
+Adaptive speculative decoding can modify one or more aspects of the speculation process.
+
+- **Speculative length.** How many tokens the draft model proposes before handing off to the target for verification. Tuning this is the most common and lowest-risk form of adaptivity. It changes speed only, and the output remains identical to what the target would have produced (lossless). For example, the system may increase speculative length when acceptance rates are high and resources are available, then reduce it when acceptance rates decline or the system becomes saturated.
+- **Acceptance criterion.** How strictly the target verifies each draft token. Relaxing verification lets more "close enough" tokens through, which accelerates generation but allows the output to drift from the exact distribution by the target model (lossy). This trades a small amount of quality for additional speed and should be used deliberately.
+
+### Existing solutions
+
+Adaptive speculative decoding is an active area, and current solutions span a spectrum from production-ready features to research prototypes.
+
+#### SGLang adaptive speculative decoding
+
+SGLang provides a [built-in adaptive speculative decoding mechanism](https://docs.sglang.io/docs/advanced_features/adaptive_speculative_decoding) that dynamically adjusts speculative length during inference.
+
+After each verification round, SGLang measures the number of accepted draft tokens and maintains an exponential moving average (EMA) of the accepted length. Based on this value, it switches between a small set of predefined speculative-length tiers (for example, `[1, 3, 7]` by default).
+
+Each tier has its own pre-captured CUDA graph, so switching between tiers is inexpensive and does not require graph recapture. The method is reactive, batch-level, and lossless because it only adjusts speculative length and preserves the original verification algorithm.
+
+#### AdaSpec
+
+[AdaSpec](https://arxiv.org/abs/2503.05096) is a research LLM inference system built on vLLM that takes a more sophisticated, predictive approach. It attempts to predict the efficiency of different speculative lengths before drafting begins.
+
+AdaSpec uses draft-model confidence scores to estimate acceptance rates and combines those estimates with a performance model that accounts for factors such as batch size and context length. It then selects a speculative configuration that maximizes performance while maintaining service-level objectives (SLOs), such as TPOT targets.
+
+The authors report that AdaSpec consistently achieves high SLO attainment and delivers up to 66% speedup compared to prior speculative serving systems on real-world serving traces.
+
+#### AdaSD
+
+[AdaSD](https://arxiv.org/abs/2512.11280) is a research decoding algorithm designed primarily for off-the-shelf draft and target model pairs. Unlike most adaptive approaches, AdaSD adapts both speculative length and the acceptance criterion. It introduces two dynamically adjusted thresholds derived from runtime statistics:
+
+- **Draft-token entropy** determines when the draft model should stop generating additional speculative tokens.
+- **Jensen–Shannon (JS) distance** between the draft and target distributions determines whether a draft token is sufficiently close to the target distribution to be accepted.
+
+Because AdaSD can accept tokens that do not strictly satisfy the original speculative decoding acceptance rule, it is a lossy approach. The authors report up to 1.46× speedup over vanilla speculative decoding while limiting accuracy degradation to less than 1.8% on their benchmarks.
+
+AdaSD requires the draft and target models to share the same vocabulary. This is because entropy and JS-distance calculations operate directly on the token probability distributions produced by the two models. If the vocabularies differ, these distributions cannot be compared consistently.
+
+### When is adaptive speculative decoding worth it?
+
+Adaptive speculative decoding is most useful when serving conditions vary significantly over time. Examples include bursty traffic patterns, rapidly changing batch sizes, mixed workloads, or applications where acceptance rates swing widely.
+
+In those cases, dynamically adapting to current conditions often outperforms any single fixed speculative length. On the other hand, if your workload is stable and you have already tuned a static γ for your model and hardware, adaptive mechanisms may provide only marginal benefits.
+
+As with speculative decoding in general, the only reliable way to know is to benchmark under your own model, hardware, and workload before applying it in production.
+
 <LinkList>
   ## Additional resources
   * [Get 3× Faster LLM Inference with Speculative Decoding Using the Right Draft Model](https://www.bentoml.com/blog/3x-faster-llm-inference-with-speculative-decoding)
   * [Looking back at speculative decoding](https://research.google/blog/looking-back-at-speculative-decoding/)
+  * [Adaptive Speculative Decoding in SGLang](https://docs.sglang.io/docs/advanced_features/adaptive_speculative_decoding)
+  * [AdaSpec: Adaptive Speculative Decoding for Fast, SLO-Aware Large Language Model Serving](https://arxiv.org/abs/2503.05096)
+  * [AdaSD: Adaptive Speculative Decoding for Efficient Language Model Inference](https://arxiv.org/abs/2512.11280)
   * [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](https://arxiv.org/pdf/2401.15077)
   * [Fast Inference from Transformers via Speculative Decoding](https://arxiv.org/abs/2211.17192)
   * [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318)
-  * [Blockwise Parallel Decoding for Deep Autoregressive Models](https://arxiv.org/abs/1811.03115)
 </LinkList>
