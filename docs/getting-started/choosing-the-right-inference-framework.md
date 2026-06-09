@@ -77,6 +77,89 @@ Several of these frameworks have also evolved beyond text generation to serve di
 - [vLLM-Omni](https://docs.vllm.ai/projects/vllm-omni/en/latest/) extends vLLM to Diffusion Transformers (DiT) and other parallel, non-autoregressive generation models across text, image, video, and audio.
 - [MAX](https://www.modular.com/solutions/image-generation?utm_source=bentoml_llm) serves diffusion models like FLUX up to 4x faster than native PyTorch.
 
+## Library mode vs. server mode
+
+Many model inference frameworks, such as vLLM and SGLang, support two deployment patterns. You can embed the framework as a library inside your application for better control over execution, or run it as a standalone server that external clients call through an HTTP API.
+
+### Embed the framework as a library
+
+Library mode loads the inference engine in the same process as your application. This works well for offline batch jobs, evaluation pipelines, and custom services that need direct access to engine outputs without an extra network hop.
+
+For example, the [vLLM offline inference API](https://docs.vllm.ai/en/latest/serving/offline_inference.html) exposes an `LLM` class:
+
+```python
+from vllm import LLM, SamplingParams
+
+model = "Qwen/Qwen2.5-0.5B-Instruct"
+llm = LLM(model=model)
+
+outputs = llm.generate(
+    ["Explain continuous batching in two sentences."],
+    SamplingParams(temperature=0.2, max_tokens=64),
+)
+```
+
+[SGLang's offline engine](https://docs.sglang.io/docs/basic_usage/offline_engine_api) provides a similar interface:
+
+```python
+import sglang as sgl
+
+model = "Qwen/Qwen2.5-0.5B-Instruct"
+llm = sgl.Engine(model_path=model)
+
+outputs = llm.generate(
+    ["Explain continuous batching in two sentences."],
+    {"temperature": 0.2, "max_new_tokens": 64},
+)
+```
+
+The application now owns the engine lifecycle. A crash, dependency conflict, or GPU out-of-memory error can affect the entire process, so this pattern requires careful resource and concurrency management.
+
+### Run the framework as a standalone server
+
+Server mode runs the inference engine in a separate process and exposes a REST or streaming API. This is usually a better boundary when multiple applications share a model, clients use different programming languages, or the serving layer needs to scale and deploy independently.
+
+Start an OpenAI-compatible vLLM server:
+
+```bash
+vllm serve Qwen/Qwen2.5-0.5B-Instruct \
+  --host 0.0.0.0 \
+  --port 8000
+```
+
+Or start an SGLang server:
+
+```bash
+python -m sglang.launch_server \
+  --model-path Qwen/Qwen2.5-0.5B-Instruct \
+  --host 0.0.0.0 \
+  --port 30000
+```
+
+Because both servers expose an [OpenAI-compatible API](../model-interaction/openai-compatible-api), the application code can use the same client interface like this:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:8000/v1",
+    api_key="EMPTY",
+)
+
+response = client.chat.completions.create(
+    model="Qwen/Qwen2.5-0.5B-Instruct",
+    messages=[
+        {"role": "user", "content": "Explain continuous batching in two sentences."}
+    ],
+    temperature=0.2,
+    max_tokens=64,
+)
+
+print(response.choices[0].message.content)
+```
+
+The server boundary adds network and serialization overhead, but it isolates the inference runtime from application code. This makes routing, authentication, observability, and independent scaling easier to add. In either mode, the framework still handles model execution, batching, and KV cache management. The specific choice depends on your use case and how your application integrates with that engine.
+
 ## Why do you need multiple inference runtimes?
 
 In real-world deployments, no single runtime is perfect for every scenario. Here’s why AI teams often end up using more than one:
