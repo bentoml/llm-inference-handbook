@@ -13,7 +13,7 @@ import Button from '@site/src/components/Button';
 
 # Serverless vs. self-hosted LLM inference
 
-When building applications with LLMs, you typically have two main infrastructure choices: **serverless** (managed APIs) and **self-hosted** solutions. Each offers distinct advantages and trade-offs in terms of ease of use, customization, scalability, and compliance.
+When building applications with LLMs, you typically have two main infrastructure choices: **serverless** (managed APIs) and **self-hosted** solutions. These are useful endpoints for comparison, but production deployments can sit anywhere between them. Each offers distinct trade-offs in ease of use, customization, scalability, and compliance.
 
 ## Serverless LLM inference
 
