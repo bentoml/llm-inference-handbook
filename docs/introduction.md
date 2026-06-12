@@ -53,6 +53,7 @@ This handbook provides various interactive tools to help you learn by trying the
 - [LLM Inference Visualizer](/llm-inference-basics/what-is-llm-inference): Walk through the request lifecycle and see how tokens flow through prefill and decode.
 - [LLM Lifecycle Visualizer](/llm-inference-basics/training-inference-differences): See where training and inference sit in the model lifecycle, and how inference runs on every request.
 - [Token-by-Token Decode Loop](/llm-inference-basics/how-does-llm-inference-work#decode): Step through autoregressive decoding and watch each new token extend the sequence and KV cache.
+- [Latency Timeline Visualizer](/llm-inference-basics/how-does-llm-inference-work#decode): See how every decode step is followed by detokenization, and which stages TTFT, ITL, and E2EL span.
 - [Context Window Simulator](/llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference): See how the full conversation is re-sent each turn and fills the context window.
 - [Latency Metrics Playground](/llm-inference-basics/llm-inference-metrics#latency): Explore TTFT, E2EL, TPOT, and SLO-based goodput.
 - [Top-p vs Top-k Filter](/model-interaction/inference-parameters#top-p-and-top-k-sampling): Compare how each filter handles peaky, mixed, and flat distributions.
