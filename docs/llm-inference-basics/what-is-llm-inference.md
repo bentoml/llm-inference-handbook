@@ -83,7 +83,7 @@ But here’s the thing: **the further you go, the more inference matters.**
 
 As your application grows, you'll eventually run into limits (e.g., cost, latency, customization, or compliance) that serverless APIs can’t fully address. That’s when teams start exploring hybrid or self-hosted solutions.
 
-Understanding LLM inference early gives you a clear edge. It helps you make smarter choices, avoid surprises, and build more scalable systems.
+Understanding LLM inference (e.g., [batching](../inference-optimization/static-dynamic-continuous-batching), [caching](../inference-optimization/prefix-caching), [quantization](../model-preparation/llm-quantization) and [routing](../inference-optimization/inference-routing)) early gives you a clear edge. It helps you evaluate the features of different model service providers and [inference frameworks](../getting-started/choosing-the-right-inference-framework), so you can make smarter choices, avoid surprises, and build more scalable systems.
 
 - **If you're a developer or engineer**: Inference is becoming as fundamental as databases or APIs in modern AI application development. Knowing how it works helps you design faster, cheaper, and more reliable systems. Poor inference implementation can lead to slow response time, high compute costs, and a poor user experience.
 - **If you're a technical leader**: Inference efficiency directly affects your bottom line. A poorly optimized setup can cost 10× more in GPU hours while delivering worse performance. Understanding inference helps you evaluate vendors, make build-vs-buy decisions, and set realistic performance goals for your team.

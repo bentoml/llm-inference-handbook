@@ -109,7 +109,7 @@ There are two common ways to measure throughput:
 
     :::
     
-    RPS gives a general sense of how well the LLM handles concurrent requests. However, this metric alone doesn’t capture the complexity or size of each request. For example, generating a short greeting like `“Hi there!”` is far less demanding than writing a long essay.
+    RPS gives a general sense of how well an LLM handles concurrent requests, but it does not capture the amount of work required by each request. For example, generating a short greeting like `“Hi there!”` is far less demanding than writing a long essay. As a result, directly comparing RPS across workloads with different input and output lengths or traffic patterns can be misleading.
     
     Factors that impact RPS:
     
@@ -135,6 +135,11 @@ There are two common ways to measure throughput:
     - KV cache efficiency and memory usage
     - Prompt length and generation length
     - GPU memory bandwidth and compute utilization
+
+    These factors also mean TPS can be easy to misread since it can be gamed. For example:
+    
+    - A shorter prompt lowers TTFT, which cuts the amount of work each request requires. With less work per request, TPS looks higher than it really is. 
+    - Larger batches and higher concurrency can improve aggregate TPS by keeping the GPU busy, but may increase queueing time, TTFT, or per-user TPOT.
     
     As the number of concurrent requests increases, the total TPS also grows, until the LLM hits the saturation point of available compute resources. Beyond this point, performance might decrease because the LLM is over capacity.
 
@@ -170,7 +175,17 @@ When hosting and optimizing LLM inference, there’s always a balance between tw
 | Minimize latency (TPS per user) | Focus on giving each user a fast response (low TTFT). This often involves small batches and isolated compute resources, but it means you’ll use GPUs less efficiently. |
 | Balance of both | Some systems aim for a dynamic balance. They tune resource usage in real time based on workload, user priority, and app requirements. This is ideal for serving diverse applications with different SLOs. |
 
-To reach the best trade-off for your use case, you’ll need to adjust several important system-level “knobs”, such as Data Parallelism (DP), Tensor Parallelism (TP), Expert Parallelism (EP), batch size, precision (e.g., FP8, FP4), and disaggregation (separating prefill and decode). These tuning options directly impact how well you can optimize for either low latency or high throughput, or find the right middle ground. More details will be covered in the next section.
+The right balance depends on the workload. Different applications experience latency differently, so the metric you prioritize should reflect how users or downstream systems consume the response. Here are some suggestions:
+
+| Use case | Primary metric | Why it matters |
+| --- | --- | --- |
+| Interactive chat | TTFT, followed by ITL or TPOT | Users care about when the response starts and whether it streams smoothly |
+| Long-form streaming | ITL or TPOT and E2EL | Generation speed dominates after the first token |
+| Agentic or multi-step workflow | E2EL | Downstream steps usually can't continue until the full response is available |
+| High-volume offline processing | TPS and cost per token | Aggregate efficiency matters more than individual request latency |
+| Latency-constrained online service | Goodput | Completed requests only count when they meet the latency SLO |
+
+Once you know which metrics matter most, you can tune the system toward the appropriate balance. Important system-level “knobs” include Data Parallelism (DP), Tensor Parallelism (TP), Expert Parallelism (EP), batch size, precision (e.g., FP8, FP4), and disaggregation (separating prefill and decode). Each can improve one part of performance but may add costs elsewhere. The best configuration is the one that meets the SLO of your workload rather than simply delivering the highest throughput or the lowest latency.
 
 Using a serverless API can abstract away these optimizations, leaving you with less control over fine-tuning. On the other hand, building your own programmable and low-level stack lets you navigate these tradeoffs and align your system performance with your app’s specific SLO.
 
