@@ -11,6 +11,7 @@ keywords:
 import LinkList from '@site/src/components/LinkList';
 import ContextWindowSimulator from '@site/src/components/ContextWindowSimulator';
 import AutoregressiveDecodeStepper from '@site/src/components/AutoregressiveDecodeStepper';
+import LatencyTimelineVisualizer from '@site/src/components/LatencyTimelineVisualizer';
 
 # How does LLM inference work?
 
@@ -80,7 +81,7 @@ This KV caching mechanism significantly speeds up inference by avoiding redundan
 
 A key metric to monitor for decode is Inter-Token Latency (ITL), the time between the generation of consecutive tokens in a sequence.
 
-![llm-inference-itl.png](./img/llm-inference-itl.png)
+<LatencyTimelineVisualizer />
 
 ### Collocating prefill and decode
 
