@@ -309,6 +309,17 @@
   font-variant-numeric: tabular-nums;
 }
 
+.kvLink {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.kvLink:hover {
+  color: #1d4ed8;
+}
+
 .useCaseRow {
   display: grid;
   grid-template-columns: 6.5rem minmax(0, 1fr);

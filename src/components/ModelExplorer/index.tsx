@@ -13,6 +13,7 @@ interface Model {
   architecture: Architecture
   released: string  // YYYY-MM
   license: string
+  licenseUrl?: string  // link to the license text
   huggingface: string  // org/repo path on huggingface.co
   totalParams: string
   activeParams?: string
@@ -278,12 +279,32 @@ const MODELS: Model[] = [
 
   // ── MiniMax ──
   {
+    name: 'MiniMax-M3',
+    family: 'MiniMax',
+    company: 'MiniMax',
+    architecture: 'MoE',
+    released: '2026-06',
+    license: 'MiniMax Community License',
+    licenseUrl: 'https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/main/LICENSE',
+    huggingface: 'MiniMaxAI/MiniMax-M3',
+    totalParams: '428B',
+    activeParams: '23B',
+    contextLength: '1M',
+    modality: 'Multimodal',
+    modalityNote: 'Text, Image, Video',
+    precisions: ['BF16', 'MXFP8'],
+    deployment: ['8× H200', '4× B200', '8× MI300X'],
+    vllmDocs: 'https://recipes.vllm.ai/MiniMaxAI/MiniMax-M3',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/MiniMax/MiniMax-M3',
+  },
+  {
     name: 'MiniMax-M2.7',
     family: 'MiniMax',
     company: 'MiniMax',
     architecture: 'MoE',
     released: '2026-03',
-    license: 'MIT',
+    license: 'Custom (Non-commercial)',
+    licenseUrl: 'https://github.com/MiniMax-AI/MiniMax-M2.7/blob/main/LICENSE',
     huggingface: 'MiniMaxAI/MiniMax-M2.7',
     totalParams: '230B',
     activeParams: '10B',
@@ -610,7 +631,18 @@ function ModelExplorer() {
 
             <div className={styles.kvRow}>
               <span className={styles.kvLabel}>License</span>
-              <span className={styles.kvValue}>{current.license}</span>
+              {current.licenseUrl ? (
+                <a
+                  className={`${styles.kvValue} ${styles.kvLink}`}
+                  href={current.licenseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {current.license}
+                </a>
+              ) : (
+                <span className={styles.kvValue}>{current.license}</span>
+              )}
             </div>
 
             {current.useCase && (
