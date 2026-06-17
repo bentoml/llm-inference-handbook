@@ -118,6 +118,23 @@ const MODELS: Model[] = [
 
   // ── GLM ──
   {
+    name: 'GLM-5.2',
+    family: 'GLM',
+    company: 'Zhipu AI',
+    architecture: 'MoE',
+    released: '2026-06',
+    license: 'MIT',
+    huggingface: 'zai-org/GLM-5.2',
+    totalParams: '753B',
+    activeParams: '40B',
+    contextLength: '1M',
+    modality: 'Text',
+    useCase: 'Long-horizon agent workflows, reasoning, and coding',
+    precisions: ['BF16', 'FP8'],
+    deployment: ['8× H200', '8× B200', '8× MI355X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/GLM/GLM-5.2',
+  },
+  {
     name: 'GLM-5',
     family: 'GLM',
     company: 'Zhipu AI',
