@@ -41,7 +41,7 @@ export default function Banner({ onVisibilityChange }: BannerProps) {
       🎉 BentoML is now part of Modular.{' '}
       <a
         className={styles.bannerLink}
-        href="https://www.modular.com/blog/bentoml-joins-modular"
+        href="https://www.modular.com/blog/bentoml-joins-modular?utm_source=bentoml_llm"
         target="_blank"
         rel="noopener noreferrer"
       >
