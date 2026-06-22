@@ -83,6 +83,15 @@ Memory bandwidth determines how quickly tokens can be processed. You can prevent
 
 Floating point operations per second (FLOPS) are commonly used to compare cards, but in practice what matters more is tokens per second. It becomes extremely important in high-concurrency scenarios, where latency directly affects user experience. To further improve throughput, you can apply techniques like [speculative decoding](../inference-optimization/speculative-decoding).
 
+### GPU interconnect
+
+GPU interconnect determines how quickly you can exchange data (e.g., KV cache) when your workload spans more than one GPU, both within a single node and across multiple nodes. This is especially important for large models that use [tensor parallelism, pipeline parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism), or other [distributed inference techniques](../infrastructure-and-operations/distributed-inference). If the interconnect is slow, adding more GPUs may increase memory capacity but fail to deliver the expected throughput or latency improvements.
+
+- **Intra-node interconnect**. This refers to communication between GPUs inside the same server. High-bandwidth fabrics such as NVIDIA NVLink/NVSwitch or AMD Infinity Fabric are often much faster than PCIe-only setups for tightly coupled multi-GPU inference. On an H100, for example, NVLink delivers 900 GB/s of bidirectional GPU-to-GPU bandwidth, [about 7 times faster](https://www.nvidia.com/en-us/data-center/h100/) than the bidirectional bandwidth of a single PCIe 5.0 link at 128 GB/s.
+- **Inter-node interconnect**. This refers to networking between different GPU servers. A single node typically contains 4 to 8 GPUs, although larger or specialized systems exist. Once a model or workload exceeds what a single node can support due to limits like power, cooling, or form factor, communication must go over the network. A practical solution is InfiniBand (with GPUDirect RDMA) or highly tuned RoCEv2 Ethernet.
+
+As a rule of thumb, keep the most communication-intensive parallelism within a single node when possible. If you need to scale across nodes, evaluate the full cluster topology, not just the GPU type.
+
 ### Cost and availability
 
 Consumer and workstation GPUs are accessible and cheaper but often limited in VRAM. Data center GPUs provide the scale and reliability for enterprise AI deployments, though **at a premium**. This is especially true for high-performance GPUs like NVIDIA H100 and H200.
