@@ -42,7 +42,7 @@ The idea of PD disaggregation is simple: separate these two very different tasks
 - **Parallel execution**: Prefill and decode phases don’t interfere with each other anymore. You can run them more efficiently in parallel, which means better concurrency and throughput.
 - **Independent tuning**: You can implement different optimization techniques (like tensor or pipeline parallelism) for prefill and decode to better meet your goals for TTFT and ITL.
 
-Several open-source frameworks and projects are actively exploring PD disaggregation, including [SGLang](https://github.com/sgl-project/sglang/issues/4655), [vLLM](https://docs.vllm.ai/en/latest/features/disagg_prefill.html), [Dynamo](https://docs.nvidia.com/dynamo/latest/architecture/disagg_serving.html), and [llm-d](https://docs.google.com/document/d/1FNN5snmipaTxEA1FGEeSH7Z_kEqskouKD1XYhVyTHr8/edit?pli=1&tab=t.0).
+Several open-source frameworks and projects have already added support for PD disaggregation, including [SGLang](https://docs.sglang.io/docs/advanced_features/pd_disaggregation), [vLLM](https://docs.vllm.ai/en/latest/features/disagg_prefill.html), [Dynamo](https://docs.nvidia.com/dynamo/dev/user-guides/disaggregated-serving), and [llm-d](https://llm-d.ai/docs/architecture/advanced/disaggregation).
 
 ## Disaggregation isn’t always a silver bullet
 
