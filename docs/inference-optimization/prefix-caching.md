@@ -91,5 +91,5 @@ Optimizing LLM prefix caching requires flexible customization in your LLM servin
   * [Prompt Cache: Modular Attention Reuse for Low-Latency Inference](https://arxiv.org/abs/2311.04934)
   * [Prompt Caching in Claude](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
   * [Design Around the KV-Cache](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
-  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache)
+  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=bentoml_llm)
 </LinkList>
