@@ -71,17 +71,35 @@ When selecting GPUs, remember that raw benchmark numbers don’t tell the whole 
 
 ### GPU memory (VRAM)
 
-[VRAM](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference) sets the ceiling on model size and context length because everything the GPU touches during inference must live in the memory: the model weights, the activations, and the KV cache. Weights determine the baseline footprint, so the model has to fit before you can serve it at all. The KV cache then consumes whatever VRAM is left, which limits how long a context you can support. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized.
+[VRAM](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference) sets the ceiling on model size and context length because everything the GPU touches during inference must live in the memory: the model weights, the activations, and the KV cache. Weights determine the baseline footprint, so the model has to fit before you can serve it at all. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized. The KV cache then consumes whatever VRAM is left, which limits how long a context you can support.
 
 In production, the major challenge is often the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](../infrastructure-and-operations/distributed-inference) techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
 ### Memory bandwidth
 
-Memory bandwidth determines how quickly tokens can be processed. You can prevent slowdowns by using higher-bandwidth cards like the NVIDIA H100 or AMD MI300X. However, you should fully test your model and inference runtime before deploying them into production.
+Memory bandwidth is how fast the GPU can move data between its [HBM](../kernel-optimization/gpu-architecture-fundamentals/#hbm-high-bandwidth-memory) and the compute cores, measured in GB/s or TB/s. For LLM inference, it is one of the most important specifications, because the **decode phase is memory-bound**. To generate each new token, the GPU must repeatedly stream most or all model weights (plus the growing KV cache) from HBM, while doing relatively little computation per byte of data read.
+
+As a result, the theoretical upper bound for single-stream decode speed is approximately:
+
+```bash
+maximum decode tokens/sec ≈ memory bandwidth / bytes read per token
+```
+
+For example, a 70B-parameter model in FP16 contains about 140 GB of weights. On an H100 SXM with roughly 3.35 TB/s of HBM bandwidth, this means a theoretical ceiling of about 24 tokens/s per sequence before accounting for any other overhead (e.g., KV cache).
+
+This is why the prefill phase (which processes the prompt in parallel) behaves very differently from decode. It also explains why [batching](../inference-optimization/static-dynamic-continuous-batching) improves throughput so effectively: the same weight reads can be reused across many sequences, allowing the GPU to trade memory-bandwidth pressure for additional compute work.
 
 ### Compute throughput
 
-Floating point operations per second (FLOPS) are commonly used to compare cards, but in practice what matters more is tokens per second. It becomes extremely important in high-concurrency scenarios, where latency directly affects user experience. To further improve throughput, you can apply techniques like [speculative decoding](../inference-optimization/speculative-decoding).
+Compute throughput is how many math operations the GPU can perform per second, measured in FLOPS (floating-point operations per second), and it is what limits the **compute-bound prefill phase**: encoding a long prompt, processing large batches, and any workload with high arithmetic intensity. Modern data center GPUs reach these numbers through dedicated matrix units (NVIDIA Tensor Cores, AMD Matrix Cores), and lower precisions roughly double the rate (e.g., FP16 → FP8 → FP4).
+
+When reading specification sheets, keep a few caveats in mind:
+
+- **Watch the asterisks**. Vendors often quote peak FLOPS with sparsity or at the lowest supported precision. Compare cards at the same precision and the same dense/sparse assumption.
+- **FLOPS isn't the user-facing metric**. What you ultimately care about is [tokens per second and latency](../llm-inference-basics/llm-inference-metrics) (TTFT and ITL). A GPU can have huge FLOPS yet be bottlenecked by [memory bandwidth](#memory-bandwidth) during decode, so the two numbers need to be read together.
+- **Precision support is a hard gate**. Native FP8 needs NVIDIA H-series or newer. Older cards fall back to higher precision, losing the throughput advantage.
+
+To push effective throughput further, apply techniques like [speculative decoding](../inference-optimization/speculative-decoding), [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation), and [continuous batching](../inference-optimization/static-dynamic-continuous-batching).
 
 ### GPU interconnect
 
@@ -140,6 +158,26 @@ If you're evaluating GPU options for self-hosting LLMs, we support running both 
 </div>
 
 ## FAQs
+
+### When and how are weights loaded into GPU memory?
+
+Weight loading happens at service startup. Here is the specific pipeline:
+
+1. Model files are read from disk (SSD / network storage)
+    - Model checkpoint (e.g., `.safetensors`, `.bin`)
+    - Read via CPU
+    - Very slow compared to GPU memory
+    - Bandwidth: SSD at ~1–10 GB/s
+2. CPU RAM staging
+    - Weights are temporarily placed in system memory
+    - Often deserialized or memory-mapped
+    - CPU RAM bandwidth: ~50–200 GB/s for typical configurations
+3. Transferred to [GPU HBM](../kernel-optimization/gpu-architecture-fundamentals/#hbm-high-bandwidth-memory)
+4. Cached there for the lifetime of the serving process
+
+Once copied, weights are stored in HBM and are ready for repeated reads during every forward pass. For decoding, weights are NOT reloaded from disk or CPU; they are reused directly from HBM.
+
+If you are using [tensor parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism), each GPU holds a slice of every layer's weight matrices.
 
 ### What is the best GPU comparison tool for AI workloads?
 
