@@ -13,6 +13,7 @@ keywords:
 
 import LinkList from '@site/src/components/LinkList';
 import BatchingSimulator from '@site/src/components/BatchingSimulator';
+import ChunkedPrefillVisualizer from '@site/src/components/ChunkedPrefillVisualizer';
 
 # Static, dynamic and continuous batching
 
@@ -62,33 +63,9 @@ Major [inference frameworks](../getting-started/choosing-the-right-inference-fra
 
 Continuous batching introduces a scheduling conflict when a new request arrives while other requests are decoding. Processing the entire prompt of a new request in one prefill iteration minimizes the Time to First Token (TTFT), but a long prefill can delay the next token for every active decode request. In a streaming application, users may see the output pause while another user's prompt is processed.
 
-For example, suppose three users are using the same model:
-
-- **Request A** is already decoding with the following and is waiting for the next token.
-    
-    ```bash
-    The weather today is ...
-    ```
-    
-- **Request B** is also decoding.
-- **Request C** just arrives with a **20,000-token prompt**.
-
-Without chunking, the scheduler may do this:
-
-```bash
-Iteration 1:
-Process all 20,000 prompt tokens for C (prefill)
-
-Only after that finishes...
-
-Iteration 2:
-Generate the next decode token for A
-Generate the next decode token for B
-```
-
-During Iteration 1, A and B cannot make progress, so their users see the streamed output stall. The length of the pause scales with the prompt length and the hardware, and for very long prompts it can last several seconds.
-
 **Chunked prefill** splits a prompt into smaller token ranges and schedules them across multiple iterations. Each chunk extends the KV cache of the request, and later chunks attend to the prompt tokens processed earlier. Because the attention computation is unchanged (every token still attends to all earlier tokens through the KV cache), the chunked prefill is mathematically equivalent to processing the prompt in one pass, and the first token is emitted only after the final chunk.
+
+<ChunkedPrefillVisualizer />
 
 The scheduler can combine one prefill chunk with decode tokens from active requests in the same batch. [SARATHI](https://arxiv.org/abs/2308.16369) calls this **decode-maximal batching**: the prefill chunk supplies enough parallel work to saturate the compute capacity of the GPU, while decode tokens piggyback on the same model execution at little extra cost. This prevents a long prompt from monopolizing one iteration and can also reduce pipeline bubbles under [pipeline parallelism](./data-tensor-pipeline-expert-hybrid-parallelism#pipeline-parallelism).
 
