@@ -1,0 +1,56 @@
+:root {
+  --admonition-inline-code-bg: var(--Elements-Twilight-5-70);
+}
+
+[data-theme='dark'] {
+  --admonition-inline-code-bg: var(--Elements-Twilight-70-5);
+}
+
+.admonitionAlertContent {
+  padding-right: 1rem;
+  p,
+  ul,
+  ol,
+  li {
+    font-family: 'Inter', sans-serif;
+    text-transform: none;
+    color: var(--Black);
+    font-size: 0.875rem;
+    margin: 0.4rem 0;
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+  p,
+  li {
+    line-height: 1.75em;
+  }
+  ol,
+  ul {
+    padding-left: 20px;
+  }
+  li[role='tab'] {
+    margin-bottom: -2px;
+  }
+  > div:has(pre > code):not(:last-of-type) {
+    margin-bottom: 0.4rem;
+  }
+  > *:last-child,
+  div:has(pre > code) {
+    margin-bottom: 0;
+  }
+  a {
+    color: var(--Black);
+    font-weight: 500;
+    text-decoration-color: unset;
+  }
+}
+
+.admonitionAlertRoot {
+  margin: 1em 0;
+
+  strong {
+    font-weight: 500;
+  }
+  overflow-x: auto;
+}

@@ -3,7 +3,7 @@ sidebar_position: 10
 description: Run predictions at scale with offline batch inference for efficient, non-real-time processing.
 keywords:
     - Offline batch inference, batch inference, batch LLM inference, batch requests, batch processing, LLM inference batching
-    - LLM inference optimization, LLM inference optimization techniques
+    - LLM inference optimization, LLM inference optimization techniques​
     - Speed up LLM inference
 ---
 
@@ -11,7 +11,7 @@ keywords:
 
 Offline batch inference is the process of running models on large, static datasets to generate predictions in batches, rather than one at a time in real-time (online inference). It’s called "offline" because it doesn’t happen interactively; instead, it’s done as a bulk processing job.
 
-By contrast, online inference means the model generates predictions on demand (e.g., when a client sends a request).
+By contrast, online inference means that the model only makes predictions on demand, for example, when a client requests a prediction.
 
 Key benefits of offline batch inference:
 

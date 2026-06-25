@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 978 208" width="978" height="208">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <text x="489.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="22" fill="#637bff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Qwen3.5  -  35B  -  A3B  -  GPTQ  -  Int4</text>
+  <rect x="28.0" y="110.0" width="170.0" height="70.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <rect x="28.0" y="110.0" width="170.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="113.0" y="125.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Model Series</text>
+  <text x="113.0" y="160.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Qwen3.5</text>
+  <line x1="113.0" y1="46.0" x2="113.0" y2="105.0" stroke="#637bff" stroke-width="1.5"/><polygon points="113.0,110.0 108.0,102.5 118.0,102.5" fill="#637bff"/>
+  <rect x="216.0" y="110.0" width="170.0" height="70.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <rect x="216.0" y="110.0" width="170.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="301.0" y="125.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Model Size</text>
+  <text x="301.0" y="160.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">35 Billion</text>
+  <line x1="301.0" y1="46.0" x2="301.0" y2="105.0" stroke="#637bff" stroke-width="1.5"/><polygon points="301.0,110.0 296.0,102.5 306.0,102.5" fill="#637bff"/>
+  <rect x="404.0" y="110.0" width="170.0" height="70.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <rect x="404.0" y="110.0" width="170.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="489.0" y="125.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Activation</text>
+  <text x="489.0" y="160.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">3B Activated</text>
+  <line x1="489.0" y1="46.0" x2="489.0" y2="105.0" stroke="#637bff" stroke-width="1.5"/><polygon points="489.0,110.0 484.0,102.5 494.0,102.5" fill="#637bff"/>
+  <rect x="592.0" y="110.0" width="170.0" height="70.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <rect x="592.0" y="110.0" width="170.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="677.0" y="125.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Quantization</text>
+  <text x="677.0" y="160.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPTQ Method</text>
+  <line x1="677.0" y1="46.0" x2="677.0" y2="105.0" stroke="#637bff" stroke-width="1.5"/><polygon points="677.0,110.0 672.0,102.5 682.0,102.5" fill="#637bff"/>
+  <rect x="780.0" y="110.0" width="170.0" height="70.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <rect x="780.0" y="110.0" width="170.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="865.0" y="125.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Precision</text>
+  <text x="865.0" y="160.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">4-bit (Int4)</text>
+  <line x1="865.0" y1="46.0" x2="865.0" y2="105.0" stroke="#637bff" stroke-width="1.5"/><polygon points="865.0,110.0 860.0,102.5 870.0,102.5" fill="#637bff"/>
+</svg>

@@ -1,54 +1,41 @@
-import { type ReactNode } from 'react'
-import clsx from 'clsx'
-import { useWindowSize } from '@docusaurus/theme-common'
-import { useDoc } from '@docusaurus/plugin-content-docs/client'
-import DocItemPaginator from '@theme/DocItem/Paginator'
-import DocVersionBanner from '@theme/DocVersionBanner'
-import DocVersionBadge from '@theme/DocVersionBadge'
-import DocItemFooter from '@theme/DocItem/Footer'
-import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile'
-import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop'
-import DocItemContent from '@theme/DocItem/Content'
-import ContentVisibility from '@theme/ContentVisibility'
-import type { Props } from '@theme/DocItem/Layout'
+import React, { type ReactNode } from 'react';
+import clsx from 'clsx';
+import { useWindowSize } from '@docusaurus/theme-common';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
+import DocItemPaginator from '@theme/DocItem/Paginator';
+import DocItemFooter from '@theme/DocItem/Footer';
+import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile';
+import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
+import DocItemContent from '@theme/DocItem/Content';
+import DocBreadcrumbs from '@theme/DocBreadcrumbs';
+import type { Props } from '@theme/DocItem/Layout';
+import styles from './styles.module.scss';
 
-import styles from './styles.module.css'
-
-/**
- * Decide if the toc should be rendered, on mobile or desktop viewports
- */
 function useDocTOC() {
-  const { frontMatter, toc } = useDoc()
-  const windowSize = useWindowSize()
-
-  const hidden = frontMatter.hide_table_of_contents
-  const canRender = !hidden && toc.length > 0
-
-  const mobile = canRender ? <DocItemTOCMobile /> : undefined
-
-  const desktop =
-    canRender && (windowSize === 'desktop' || windowSize === 'ssr') ? (
-      <DocItemTOCDesktop />
-    ) : undefined
-
+  const { frontMatter, toc } = useDoc();
+  const windowSize = useWindowSize();
+  const hidden = frontMatter.hide_table_of_contents;
+  const canRender = !hidden && toc.length > 0;
   return {
     hidden,
-    mobile,
-    desktop
-  }
+    mobile: canRender ? <DocItemTOCMobile /> : undefined,
+    desktop:
+      canRender && (windowSize === 'desktop' || windowSize === 'ssr') ? (
+        <DocItemTOCDesktop />
+      ) : undefined,
+  };
 }
 
 export default function DocItemLayout({ children }: Props): ReactNode {
-  const docTOC = useDocTOC()
-  const { metadata } = useDoc()
+  const docTOC = useDocTOC();
+  const showRightRail = !docTOC.hidden;
+
   return (
     <div className="row">
-      <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
-        <ContentVisibility metadata={metadata} />
-        <DocVersionBanner />
+      <div className={clsx('col', showRightRail && styles.docItemCol)}>
         <div className={styles.docItemContainer}>
           <article>
-            <DocVersionBadge />
+            <DocBreadcrumbs />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
             <DocItemFooter />
@@ -56,9 +43,15 @@ export default function DocItemLayout({ children }: Props): ReactNode {
           <DocItemPaginator />
         </div>
       </div>
-      {docTOC.desktop && (
-        <div className={clsx('col col--3', styles.toc)}>{docTOC.desktop}</div>
+      {showRightRail && (
+        <div className="col col--3 !mx-0">
+          <div className={clsx(styles.rightRail, 'thin-scrollbar')}>
+            {/* injection target for docusaurus-markdown-source-plugin */}
+            <div className="doc-actions" />
+            {docTOC.desktop}
+          </div>
+        </div>
       )}
     </div>
-  )
+  );
 }

@@ -78,10 +78,6 @@ With llm-optimizer, you can:
 - Estimate performance theoretically without running full benchmarks.
 - View and compare benchmark results on a unified graphic dashboard.
 
-You can view LLM benchmark results on the [LLM Performance Explorer](https://www.bentoml.com/llm-perf/), which is powered by llm-optimizer.
-
-![llm-perf-explorer.png](./img/llm-perf-explorer.png)
-
 ## What metrics should you benchmark
 
 When running performance benchmarks for LLM inference, it’s not enough to report a single number. Real-world performance depends on multiple LLM performance metrics, each with different trade-offs. The most important include:

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 824 360" width="824" height="360">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <text x="412.0" y="24.0" font-family="Roboto Mono, Courier, monospace" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Expert Parallelism</text>
+  <rect x="337.0" y="44.0" width="150.0" height="48.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <text x="412.0" y="68.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Requests</text>
+  <rect x="337.0" y="138.0" width="150.0" height="48.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="412.0" y="162.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Router</text>
+  <line x1="412.0" y1="92.0" x2="412.0" y2="132.0" stroke="#637bff" stroke-width="2"/><polygon points="412.0,138.0 406.0,129.0 418.0,129.0" fill="#637bff"/>
+  <rect x="28.0" y="242.0" width="352.0" height="90.0" rx="4" fill="#1b2025" stroke="#353d42" stroke-width="2"/>
+  <text x="204.0" y="258.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 0</text>
+  <rect x="40.0" y="278.0" width="104.0" height="36.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="92.0" y="296.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Expert 1</text>
+  <rect x="152.0" y="278.0" width="104.0" height="36.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="204.0" y="296.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Expert 2</text>
+  <rect x="264.0" y="278.0" width="104.0" height="36.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="316.0" y="296.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Expert 3</text>
+  <path d="M 412.0 186.0 L 412.0 214.0 L 204.0 214.0 L 204.0 236.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="204.0,242.0 198.0,233.0 210.0,233.0" fill="#637bff"/>
+  <rect x="444.0" y="242.0" width="352.0" height="90.0" rx="4" fill="#1b2025" stroke="#353d42" stroke-width="2"/>
+  <text x="620.0" y="258.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 1</text>
+  <rect x="456.0" y="278.0" width="104.0" height="36.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="508.0" y="296.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Expert 4</text>
+  <rect x="568.0" y="278.0" width="104.0" height="36.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="620.0" y="296.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Expert 5</text>
+  <rect x="680.0" y="278.0" width="104.0" height="36.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="732.0" y="296.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Expert 6</text>
+  <path d="M 412.0 186.0 L 412.0 214.0 L 620.0 214.0 L 620.0 236.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="620.0,242.0 614.0,233.0 626.0,233.0" fill="#637bff"/>
+</svg>

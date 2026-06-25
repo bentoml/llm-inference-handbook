@@ -1,0 +1,30 @@
+.docItemContainer a {
+  --ifm-link-decoration: underline;
+  text-underline-offset: 4px;
+
+  &:hover {
+    color: var(--color-link-active);
+  }
+}
+
+.docItemContainer nav a {
+  --ifm-link-decoration: none;
+}
+
+.rightRail {
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 68px));
+  overflow-y: auto;
+  position: sticky;
+  top: 96px;
+  padding-right: 20px;
+  @media (max-width: 1280px) {
+    top: 150px !important;
+    max-height: calc(100vh - (var(--ifm-navbar-height) + 124px));
+  }
+}
+
+@media (min-width: 997px) {
+  .docItemCol {
+    max-width: calc(75% - 60px) !important;
+  }
+}

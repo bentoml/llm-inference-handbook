@@ -210,5 +210,5 @@ CUDA cores are general-purpose execution units for standard floating-point and i
   ## Additional resources
   * [CUDA C++ Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/)
   * [NVIDIA H100 Tensor Core GPU Architecture Whitepaper](https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c)
-  * [What exactly is "CUDA"?](https://www.modular.com/blog/democratizing-compute-part-2-what-exactly-is-cuda?utm_source=bentoml_llm)
+  * [What exactly is "CUDA"?](https://www.modular.com/blog/democratizing-compute-part-2-what-exactly-is-cuda)
 </LinkList>

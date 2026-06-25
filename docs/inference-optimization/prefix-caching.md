@@ -7,12 +7,11 @@ keywords:
     - Distributed inference, distributed LLM inference
     - Inference optimization
     - Dynamo, SGLang, vLLM, llm-d
-    - LLM inference optimization, LLM inference optimization techniques
+    - LLM inference optimization, LLM inference optimization techniques​
     - Speed up LLM inference
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # Prefix caching
 
@@ -55,7 +54,7 @@ Prefix caching only helps when prompts are consistent. Here are some best practi
 - **Front-load static content**: Place any constant or rarely changing information at the beginning of your prompt. This could include system messages, context, or instructions that remain the same across multiple queries. Move dynamic or user-specific content to the end of your prompt.
 - **Batch similar requests**: Group together queries (especially when serving multiple users or agents) that share the same prefix so that cached results can be reused efficiently.
 - **Avoid dynamic elements in the prefix**: Don’t insert timestamps, request IDs, or any other per-request variables early in the prompt. These lower your cache hit rate.
-- **Use deterministic serialization**: Make sure your context or memory serialization (e.g., JSON) is stable in key ordering and structure. Non-deterministic serialization leads to cache misses even if the content is logically the same.
+- **Use deterministic serialization**: Make sure your context or memory serialization (e.g. JSON) is stable in key ordering and structure. Non-deterministic serialization leads to cache misses even if the content is logically the same.
 - **Monitor and analyze cache hit rates**: Regularly review your cache performance to identify opportunities for optimization.
 
 ## Adoption and performance gains
@@ -83,7 +82,7 @@ For these models, a shared text prefix does not always mean every cached state c
 Optimizing LLM prefix caching requires flexible customization in your LLM serving and infrastructure stack. We work to provide the infrastructure for dedicated and customizable LLM deployments with fast auto-scaling and scaling-to-zero capabilities to ensure resource efficiency.
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
 </div>
 
 <LinkList>
@@ -91,5 +90,5 @@ Optimizing LLM prefix caching requires flexible customization in your LLM servin
   * [Prompt Cache: Modular Attention Reuse for Low-Latency Inference](https://arxiv.org/abs/2311.04934)
   * [Prompt Caching in Claude](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
   * [Design Around the KV-Cache](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
-  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=bentoml_llm)
+  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache)
 </LinkList>

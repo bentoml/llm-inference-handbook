@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 703 284" width="703" height="284">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <rect x="28.0" y="122.0" width="118.0" height="56.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <text x="87.0" y="150.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">User Query</text>
+  <rect x="186.0" y="122.0" width="90.0" height="56.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="231.0" y="150.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">LLM</text>
+  <rect x="316.0" y="122.0" width="144.0" height="56.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <text x="388.0" y="150.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Function Call</text>
+  <line x1="152.0" y1="150.0" x2="180.0" y2="150.0" stroke="#637bff" stroke-width="2"/><polygon points="0,0 -9.0,-6.0 -9.0,6.0" fill="#637bff" transform="translate(186.0,150.0) rotate(0.00)"/><polygon points="0,0 -9.0,-6.0 -9.0,6.0" fill="#637bff" transform="translate(146.0,150.0) rotate(180.00)"/>
+  <line x1="282.0" y1="150.0" x2="310.0" y2="150.0" stroke="#637bff" stroke-width="2"/><polygon points="0,0 -9.0,-6.0 -9.0,6.0" fill="#637bff" transform="translate(316.0,150.0) rotate(0.00)"/><polygon points="0,0 -9.0,-6.0 -9.0,6.0" fill="#637bff" transform="translate(276.0,150.0) rotate(180.00)"/>
+  <rect x="548.0" y="44.0" width="127.0" height="56.0" rx="4" fill="#1a3a5c" stroke="#637bff" stroke-width="2"/>
+  <text x="611.5" y="72.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Weather API</text>
+  <rect x="548.0" y="122.0" width="127.0" height="56.0" rx="4" fill="#1a3a5c" stroke="#637bff" stroke-width="2"/>
+  <text x="611.5" y="150.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Stock API</text>
+  <rect x="548.0" y="200.0" width="127.0" height="56.0" rx="4" fill="#1a3a5c" stroke="#637bff" stroke-width="2"/>
+  <text x="611.5" y="228.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Flight API</text>
+  <line x1="460.0" y1="150.0" x2="497.0" y2="150.0" stroke="#637bff" stroke-width="2"/>
+  <polygon points="460.0,150.0 469.0,144.0 469.0,156.0" fill="#637bff"/>
+  <line x1="497.0" y1="72.0" x2="497.0" y2="228.0" stroke="#637bff" stroke-width="2"/>
+  <line x1="497.0" y1="72.0" x2="539.0" y2="72.0" stroke="#637bff" stroke-width="2"/>
+  <polygon points="548.0,72.0 539.0,66.0 539.0,78.0" fill="#637bff"/>
+  <line x1="497.0" y1="150.0" x2="539.0" y2="150.0" stroke="#637bff" stroke-width="2"/>
+  <polygon points="548.0,150.0 539.0,144.0 539.0,156.0" fill="#637bff"/>
+  <line x1="497.0" y1="228.0" x2="539.0" y2="228.0" stroke="#637bff" stroke-width="2"/>
+  <polygon points="548.0,228.0 539.0,222.0 539.0,234.0" fill="#637bff"/>
+</svg>

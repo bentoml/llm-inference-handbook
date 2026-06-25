@@ -7,7 +7,6 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # Bring Your Own Cloud (BYOC)
 
@@ -47,7 +46,7 @@ Here’s how it typically works:
 2. **Data plane (customer-managed)**: This is where inference happens. Your models, GPUs, compute instances, and data all live inside your own VPC, ensuring compliance, privacy, and full isolation.
 3. **Networking and IAM boundaries**: BYOC relies on strict permission scoping. The vendor can manage deployments programmatically (for example, through IAM roles or cross-account access), but is unable to view or exfiltrate data. Logs (the vendor may have access to them for debugging purposes), metrics, and model outputs stay within your environment.
 
-![bring-your-own-cloud-byoc-diagram.png](./img/bring-your-own-cloud-byoc-diagram.png)
+<Diagram name="bring-your-own-cloud-byoc-diagram" alt="Bring-your-own-cloud: vendor-managed control plane and customer-VPC data plane" />
 
 This hybrid design offers the best of both worlds:
 
@@ -124,10 +123,10 @@ With our BYOC deployment, you can:
 - Run models inside your own VPC across providers like AWS, GCP, or Azure and leverage your existing credits and commits
 - Keep your data and workloads fully within your environment
 - Run and scale inference across NVIDIA, AMD, CPUs, and more in the same BYOC deployment
-- Apply the latest distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) in your private cloud
+- Apply the latest distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) in your private cloud
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Schedule a Demo</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Schedule a Demo</a>
 </div>
 
 ---

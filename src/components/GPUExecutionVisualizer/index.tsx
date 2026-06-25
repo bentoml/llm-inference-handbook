@@ -1,25 +1,25 @@
-import { useState } from 'react'
-import styles from './styles.module.css'
+import { useState } from 'react';
+import styles from './styles.module.css';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
-type HoverLevel = 'thread' | 'warp' | 'block' | 'sm' | 'l2' | 'hbm' | null
+type HoverLevel = 'thread' | 'warp' | 'block' | 'sm' | 'l2' | 'hbm' | null;
 
 // 32 threads per warp — show all of them
-const WARP_THREADS = Array.from({ length: 32 }, (_, i) => i)
+const WARP_THREADS = Array.from({ length: 32 }, (_, i) => i);
 
 // ── Component ───────────────────────────────────────────────────────────────
 
 export default function GPUExecutionVisualizer() {
-  const [hover, setHover] = useState<HoverLevel>(null)
+  const [hover, setHover] = useState<HoverLevel>(null);
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.headerTitle}>GPU Execution and Memory Map</div>
         <div className={styles.headerDesc}>
-          Understand how work is organized and where data lives, from individual threads
-          up to global memory. Hover over any section to highlight it.
+          Understand how work is organized and where data lives, from individual
+          threads up to global memory. Hover over any section to highlight it.
         </div>
       </div>
 
@@ -32,7 +32,10 @@ export default function GPUExecutionVisualizer() {
             onMouseEnter={() => setHover('thread')}
             onMouseLeave={() => setHover(null)}
           >
-            <span className={styles.legendDot} style={{ background: '#16a34a' }} />
+            <span
+              className={styles.legendDot}
+              style={{ background: '#a5b4fc' }}
+            />
             Thread
           </button>
           <span className={styles.legendArrow}>&rarr;</span>
@@ -42,7 +45,10 @@ export default function GPUExecutionVisualizer() {
             onMouseEnter={() => setHover('warp')}
             onMouseLeave={() => setHover(null)}
           >
-            <span className={styles.legendDot} style={{ background: '#059669' }} />
+            <span
+              className={styles.legendDot}
+              style={{ background: 'var(--Elements-Neb-Ultra)' }}
+            />
             Warp (32 threads)
           </button>
           <span className={styles.legendArrow}>&rarr;</span>
@@ -52,7 +58,10 @@ export default function GPUExecutionVisualizer() {
             onMouseEnter={() => setHover('block')}
             onMouseLeave={() => setHover(null)}
           >
-            <span className={styles.legendDot} style={{ background: '#2563eb' }} />
+            <span
+              className={styles.legendDot}
+              style={{ background: '#2563eb' }}
+            />
             Block
           </button>
           <span className={styles.legendArrow}>&rarr;</span>
@@ -62,7 +71,10 @@ export default function GPUExecutionVisualizer() {
             onMouseEnter={() => setHover('sm')}
             onMouseLeave={() => setHover(null)}
           >
-            <span className={styles.legendDot} style={{ background: '#6d28d9' }} />
+            <span
+              className={styles.legendDot}
+              style={{ background: '#6d28d9' }}
+            />
             SM
           </button>
         </div>
@@ -105,7 +117,9 @@ export default function GPUExecutionVisualizer() {
                   >
                     <div className={styles.warpHeader}>
                       <span className={styles.warpTitle}>Warp 0</span>
-                      <span className={styles.warpMeta}>32 threads, lockstep</span>
+                      <span className={styles.warpMeta}>
+                        32 threads, lockstep
+                      </span>
                     </div>
                     <div className={styles.threadGrid}>
                       {WARP_THREADS.map((t) => (
@@ -122,7 +136,9 @@ export default function GPUExecutionVisualizer() {
                   </div>
 
                   {/* Warp 1 — collapsed */}
-                  <div className={`${styles.warpCollapsed} ${hover === 'warp' ? styles.warpHighlight : ''}`}>
+                  <div
+                    className={`${styles.warpCollapsed} ${hover === 'warp' ? styles.warpHighlight : ''}`}
+                  >
                     <span className={styles.warpTitle}>Warp 1</span>
                     <span className={styles.warpMeta}>32 threads</span>
                   </div>
@@ -134,28 +150,42 @@ export default function GPUExecutionVisualizer() {
                 </div>
 
                 {/* Block 1 — collapsed */}
-                <div className={`${styles.blockCollapsed} ${hover === 'block' ? styles.blockHighlight : ''}`}>
-                  <span className={styles.blockCollapsedTitle}>Thread Block 1</span>
-                  <span className={styles.blockCollapsedNote}>Runs on the same SM</span>
+                <div
+                  className={`${styles.blockCollapsed} ${hover === 'block' ? styles.blockHighlight : ''}`}
+                >
+                  <span className={styles.blockCollapsedTitle}>
+                    Thread Block 1
+                  </span>
+                  <span className={styles.blockCollapsedNote}>
+                    Runs on the same SM
+                  </span>
                 </div>
 
                 {/* SM resources */}
                 <div className={styles.smResources}>
                   <div className={styles.resourceCard}>
                     <div className={styles.resourceTitle}>Register file</div>
-                    <div className={styles.resourceMeta}>256 KB &middot; private per thread</div>
+                    <div className={styles.resourceMeta}>
+                      256 KB &middot; private per thread
+                    </div>
                   </div>
                   <div className={styles.resourceCard}>
                     <div className={styles.resourceTitle}>Shared memory</div>
-                    <div className={styles.resourceMeta}>per block &middot; programmer-managed</div>
+                    <div className={styles.resourceMeta}>
+                      per block &middot; programmer-managed
+                    </div>
                   </div>
                   <div className={styles.resourceCard}>
                     <div className={styles.resourceTitle}>L1 cache</div>
-                    <div className={styles.resourceMeta}>per SM &middot; hardware-managed</div>
+                    <div className={styles.resourceMeta}>
+                      per SM &middot; hardware-managed
+                    </div>
                   </div>
                   <div className={styles.resourceCard}>
                     <div className={styles.resourceTitle}>Warp schedulers</div>
-                    <div className={styles.resourceMeta}>issue ready warps each cycle</div>
+                    <div className={styles.resourceMeta}>
+                      issue ready warps each cycle
+                    </div>
                   </div>
                 </div>
               </div>
@@ -174,12 +204,21 @@ export default function GPUExecutionVisualizer() {
                     <div className={styles.smHeader}>
                       <span className={styles.smTitle}>SM {sm.id}</span>
                     </div>
-                    <div className={`${styles.blockCollapsed} ${hover === 'block' ? styles.blockHighlight : ''}`}>
-                      <span className={styles.blockCollapsedTitle}>Thread Block {sm.block}</span>
-                      {sm.note && <span className={styles.blockCollapsedNote}>{sm.note}</span>}
+                    <div
+                      className={`${styles.blockCollapsed} ${hover === 'block' ? styles.blockHighlight : ''}`}
+                    >
+                      <span className={styles.blockCollapsedTitle}>
+                        Thread Block {sm.block}
+                      </span>
+                      {sm.note && (
+                        <span className={styles.blockCollapsedNote}>
+                          {sm.note}
+                        </span>
+                      )}
                     </div>
                     <div className={styles.smResourcesCompact}>
-                      Registers &middot; Shared mem &middot; L1 &middot; Schedulers
+                      Registers &middot; Shared mem &middot; L1 &middot;
+                      Schedulers
                     </div>
                   </div>
                 ))}
@@ -193,7 +232,9 @@ export default function GPUExecutionVisualizer() {
                   <span />
                 </div>
                 <div className={styles.moreSMsLabel}>
-                  up to 132 SMs<br />(H100 SXM)
+                  up to 132 SMs
+                  <br />
+                  (H100 SXM)
                 </div>
               </div>
             </div>
@@ -205,7 +246,9 @@ export default function GPUExecutionVisualizer() {
               onMouseLeave={() => setHover(null)}
             >
               <span className={styles.l2Title}>L2 Cache</span>
-              <span className={styles.l2Meta}>50 MB &middot; shared across all SMs &middot; hardware-managed</span>
+              <span className={styles.l2Meta}>
+                50 MB &middot; shared across all SMs &middot; hardware-managed
+              </span>
             </div>
           </div>
 
@@ -227,10 +270,19 @@ export default function GPUExecutionVisualizer() {
           >
             <div className={styles.hbmHeader}>
               <div>
-                <span className={styles.dieLabelChip} style={{ background: '#fed7aa', color: '#9a3412' }}>Off-chip</span>
-                <span className={styles.hbmTitle}>HBM (Global Memory / VRAM)</span>
+                <span
+                  className={styles.dieLabelChip}
+                  style={{ background: '#fed7aa', color: '#9a3412' }}
+                >
+                  Off-chip
+                </span>
+                <span className={styles.hbmTitle}>
+                  HBM (Global Memory / VRAM)
+                </span>
               </div>
-              <span className={styles.hbmSpec}>80 GB &middot; 3.35 TB/s (H100 SXM)</span>
+              <span className={styles.hbmSpec}>
+                80 GB &middot; 3.35 TB/s (H100 SXM)
+              </span>
             </div>
             <div className={styles.hbmItems}>
               <div className={styles.hbmItem}>Model weights</div>
@@ -239,12 +291,12 @@ export default function GPUExecutionVisualizer() {
               <div className={styles.hbmItem}>Intermediate buffers</div>
             </div>
             <div className={styles.hbmNote}>
-              Largest but slowest. ~400+ cycle access latency. Kernel optimization
-              focuses on minimizing round-trips here.
+              Largest but slowest. ~400+ cycle access latency. Kernel
+              optimization focuses on minimizing round-trips here.
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

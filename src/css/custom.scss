@@ -1,0 +1,1008 @@
+// Load legacy tailwind.config.js (theme.extend.colors, etc.) for Tailwind v4 — see https://tailwindcss.com/docs/functions-and-directives#config-directive
+@config "../../tailwind.config.js";
+
+// Tailwind directives
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.theme-logo-dark {
+  display: none;
+}
+
+[data-theme='dark'] {
+  .theme-logo-light {
+    display: none;
+  }
+
+  .theme-logo-dark {
+    display: block;
+  }
+}
+
+@layer components {
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2px;
+    font-family: var(--ifm-font-family-base);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #fff !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+    background: var(--gradient-ember);
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.9;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+
+    .mantine-Button-section[data-position='right'] {
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .mantine-Button-section[data-position='right'] svg {
+      display: block;
+    }
+  }
+
+  .btn-outline,
+  .btn-outline-gray {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--Elements-Twilight-40-60) !important;
+    border-radius: 2px;
+    font-family: var(--ifm-font-family-base);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--Elements-Twilight-100-0) !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+    background: transparent;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.8;
+      color: var(--Elements-Twilight-100-0) !important;
+      text-decoration: none !important;
+    }
+  }
+
+  // Mantine Button can inject transparent borders on root/hover states.
+  // Force borders for our custom outline-style button variants.
+  .btn-outline,
+  .btn-outline-ember,
+  .btn-outline-gray,
+  .btn-ember-wash {
+    border-style: solid !important;
+    border-width: 1px !important;
+  }
+
+  .btn-outline.btn-outline-ember {
+    border-color: var(--Elements-Ember-Ultra) !important;
+    color: var(--Elements-Ember-Ultra) !important;
+    background: transparent !important;
+    background-image: none !important;
+
+    &:hover {
+      color: var(--Elements-Ember-Ultra) !important;
+      background: transparent !important;
+      background-image: none !important;
+    }
+  }
+
+  .btn-outline.btn-outline-gray,
+  .btn-outline-gray {
+    border: 1px solid var(--Elements-Twilight-60-50) !important;
+    color: var(--Elements-Twilight-60-50) !important;
+    background: transparent !important;
+    background-image: none !important;
+
+    .mantine-Button-section[data-position='right'] {
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .mantine-Button-section[data-position='right'] svg {
+      display: block;
+    }
+
+    &:hover {
+      color: var(--Elements-Twilight-60-50) !important;
+      background: transparent !important;
+      background-image: none !important;
+    }
+
+    &:focus-visible {
+      background: transparent !important;
+      background-image: none !important;
+    }
+  }
+
+  .btn-ember-wash {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--Elements-Ember-Ultra) !important;
+    border-radius: 2px;
+    font-family: var(--ifm-font-family-base);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--Elements-Ember-Ultra) !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+    // Mantine writes `background` shorthand in shared button state classes,
+    // which clears `background-image`; set shorthand here to keep the wash.
+    background: var(--gradient-ember-wash) !important;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.9;
+      border-color: var(--Elements-Ember-Ultra) !important;
+      color: var(--Elements-Ember-Ultra) !important;
+      text-decoration: none !important;
+      background: var(--gradient-ember-wash) !important;
+    }
+
+    &:focus-visible,
+    &:active {
+      border-color: var(--Elements-Ember-Ultra) !important;
+      background: var(--gradient-ember-wash) !important;
+    }
+  }
+}
+
+// Local DLS imports
+@import '../../dls/handbookTheme.scss';
+@import './mantine-overrides.scss';
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+$font-family-monospace:
+  'Roboto Mono', 'PT Mono', 'Courier New', Courier, monospace;
+
+// ============================================================
+// Light mode: shared lightMode + Infima overrides for cloud-docsite
+// ============================================================
+@mixin lightModeCloud {
+  @include lightMode;
+
+  // Page chrome
+  --ifm-background-color: var(--Elements-Twilight-0-90) !important;
+  --mantine-color-body: var(--Elements-Twilight-0-90);
+  --ifm-font-color-base: var(--Elements-Twilight-100);
+  --ifm-heading-color: var(--Elements-Twilight-100);
+
+  // Nebula as primary (Cloud brand)
+  --ifm-color-primary: var(--Elements-Neb-Ultra);
+  --ifm-color-primary-dark: var(--Elements-Neb-100);
+  --ifm-color-primary-darker: var(--Elements-Neb-90);
+  --ifm-color-primary-darkest: var(--Elements-Neb-60-30);
+  --ifm-color-primary-light: var(--Elements-Neb-Ultra);
+  --ifm-color-primary-lighter: var(--Elements-Neb-Ultra);
+  --ifm-color-primary-lightest: var(--Elements-Neb-Ultra);
+
+  // Links
+  --ifm-link-color: var(--Elements-Neb-Ultra);
+
+  // Sidebar menu
+  --ifm-menu-color: #{$TwilightNeutral70};
+  --ifm-menu-color-active: var(--Elements-Twilight-100);
+  --ifm-menu-color-background-hover: var(--Elements-Neb-40);
+  --ifm-menu-color-background-active: #{$TwilightNeutral5};
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="%239a9a9a" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
+  --ifm-menu-link-sublist-icon-filter: none;
+  --menu-color-border: var(--Elements-Neb-Ultra);
+
+  // Navbar
+  --ifm-navbar-background-color: var(--Elements-Twilight-0-100);
+  --ifm-navbar-shadow: none;
+
+  // Code blocks
+  --docusaurus-highlighted-code-line-bg: var(--Elements-Neb-20);
+  --color-code: var(--Elements-Twilight-90);
+  --color-code-bg: var(--Elements-Twilight-0-100);
+  --color-code-block-bg: var(--Elements-Twilight-0-100);
+  --color-code-border: var(--Elements-Twilight-20-70);
+  --color-code-title-bg: var(--Elements-Twilight-5-90);
+  --color-code-highlight-bg: var(--Elements-Neb-20);
+
+  // API docs
+  --color-api-box-background: var(--Elements-Neb-60-Alpha);
+
+  // Cards
+  --color-card-bg: var(--Color-White);
+  --color-card-border: var(--Elements-Twilight-30-70);
+
+  // Breadcrumbs
+  --ifm-breadcrumb-color: #{$TwilightNeutral60};
+  --ifm-breadcrumb-color-active: #{$TwilightNeutral60};
+
+  // TOC
+  --ifm-toc-border-color: var(--Elements-Twilight-20-70);
+  --ifm-toc-link-color: var(--Elements-Twilight-60-40);
+
+  // Alert
+  --color-alert-bg-note: #deedfb33;
+  --color-alert-bg-caution: #ed810c11;
+  --color-alert-bg-warning: #ffe2e244;
+  --color-alert-color-note: var(--Elements-Blue-120-100);
+  --color-alert-border-color-note: var(--Elements-Blue-120-100);
+  --color-collapsible-chevron: var(--Elements-Blue-120-100);
+}
+
+// ============================================================
+// Dark mode: shared darkMode + Infima overrides for cloud-docsite
+// ============================================================
+@mixin darkModeCloud {
+  @include darkMode;
+  @include darkModeNeutral;
+
+  // Page chrome
+  --ifm-background-color: var(--Elements-Twilight-0-90) !important;
+  --mantine-color-body: var(--Elements-Twilight-0-90);
+  --ifm-font-color-base: var(--Color-White);
+  --ifm-heading-color: var(--Color-White);
+
+  // Nebula primary (inverted scale for dark backgrounds)
+  --ifm-color-primary: var(--Elements-Neb-Ultra);
+  --ifm-color-primary-dark: var(--Elements-Neb-Ultra);
+  --ifm-color-primary-darker: var(--Elements-Neb-90);
+  --ifm-color-primary-darkest: var(--Elements-Neb-60-30);
+  --ifm-color-primary-light: var(--Elements-Neb-Ultra);
+  --ifm-color-primary-lighter: var(--Elements-Neb-Ultra);
+  --ifm-color-primary-lightest: var(--Elements-Neb-Ultra);
+
+  // Links
+  --ifm-link-color: var(--Elements-Neb-Ultra);
+
+  // Sidebar menu — near-white text for readability
+  --ifm-menu-color: #{$TwilightNeutral20};
+  --ifm-menu-color-active: var(--Color-White);
+  --ifm-menu-color-background-hover: #{$TwilightNeutral80};
+  --ifm-menu-color-background-active: #{$TwilightNeutral80};
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="%239a9a9a" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
+  --ifm-menu-link-sublist-icon-filter: none;
+  --menu-color-border: #637bff3c;
+
+  // Navbar — darker than body per Figma (Twilight-0-100 = #020c13 in dark)
+  --ifm-navbar-background-color: var(--Elements-Twilight-0-100);
+
+  // Code blocks
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --color-code: var(--Elements-Twilight-100-0);
+  --color-code-bg: var(--Elements-Twilight-80);
+  --color-code-block-bg: var(--Elements-Twilight-80);
+  --color-code-border: var(--Elements-Twilight-70);
+  --color-code-title-bg: var(--Elements-Twilight-70);
+  --color-code-highlight-bg: var(--Elements-Twilight-70);
+
+  // API docs
+  --color-api-box-background: var(--Elements-Neb-60-Alpha);
+
+  // Cards
+  --color-card-bg: var(--Elements-Twilight-80);
+  --color-card-border: var(--Elements-Twilight-70);
+
+  // Breadcrumbs
+  --ifm-breadcrumb-color: #{$TwilightNeutral40};
+  --ifm-breadcrumb-color-active: #{$TwilightNeutral40};
+
+  // TOC
+  --ifm-toc-border-color: var(--Elements-Twilight-20-70);
+
+  // Alert
+  --color-alert-bg-note: var(--Elements-Blue-20-Alpha);
+  --color-alert-bg-caution: none;
+  --color-alert-bg-warning: none;
+  --color-alert-color-note: var(--Elements-Blue-120-100);
+  --color-alert-border-color-note: none !important;
+  --color-collapsible-chevron: var(--Elements-Twilight-20);
+}
+
+@mixin colorModeDarkBlock {
+  html[data-theme='dark'] {
+    @content;
+  }
+}
+
+@mixin colorModeDark {
+  html[data-theme='dark'] & {
+    @content;
+  }
+}
+
+// ============================================================
+// Apply
+// ============================================================
+:root {
+  // Ember gradients — general-purpose brand gradients
+  --gradient-ember: linear-gradient(105deg, #fd2b01 5%, #ed810c 100%);
+  --gradient-ember-wash: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--Elements-Ember-20-DarkAlpha) 100%
+  );
+  // Nebula gradient wash (used for footer background)
+  --gradient-nebula-wash: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--Elements-Neb-20-Alpha) 100%
+  );
+
+  --inter: 'Inter';
+  --roboto: 'Roboto Mono';
+  --ifm-heading-font-family: 'Inter';
+  --ifm-heading-font-weight: 500;
+  --ifm-font-family-base: 'Inter';
+  --ifm-line-height-base: 24px;
+  --doc-sidebar-width: 260px !important;
+  --ifm-navbar-height: 64px;
+  --ifm-navbar-shadow: none;
+  --ifm-alert-shadow: none;
+  --ifm-spacing-horizontal: 24px !important;
+  --ifm-menu-link-padding-horizontal: 8px;
+  letter-spacing: -0.32px;
+  font-feature-settings: 'salt' off;
+
+  @include lightModeCloud;
+}
+
+@include colorModeDarkBlock {
+  @include darkModeCloud;
+}
+
+body {
+  // Prevent Mantine default styles from clobbering our background/color.
+  background-color: unset;
+  color: unset;
+}
+
+// Keep color-mode plumbing available in code, but hide user-facing controls
+// while the Handbook is intentionally forced to light mode.
+[class*='colorModeToggle'] {
+  display: none !important;
+}
+
+// ============================================================
+// Core layout styles
+// ============================================================
+
+.main-wrapper {
+  .container {
+    // Eliminate giant gutters on mobile
+    @media (width <= 576px) {
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+}
+
+// ============================================================
+// Basic element styles
+// ============================================================
+
+@mixin code-font {
+  font-family: $font-family-monospace;
+  color: var(--color-code);
+  background-color: var(--color-code-block-bg);
+  --prism-color: var(--color-code);
+  --prism-background-color: var(--color-code-block-bg);
+  font-size: 0.875em;
+}
+
+@mixin inline-code-font {
+  @include code-font();
+  background-color: var(--color-code-bg);
+  border: 1px solid var(--color-code-border);
+  border-radius: 2px;
+  padding: 0.05em 0.2em 0.1em;
+  vertical-align: baseline;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+
+  @media (max-width: 996px) {
+    font-size: 2.25rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  opacity: 0.85;
+  margin: 40px 0;
+
+  @media (max-width: 479px) {
+    font-size: 1.75rem;
+    margin: 30px 0 20px;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  margin: 40px 0 16px;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  margin: 24px 0 16px;
+}
+
+h5 {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  margin: 16px 0 16px;
+}
+
+p {
+  margin: 1em 0;
+}
+
+.theme-doc-markdown p {
+  line-height: 27.5px;
+
+  @media (max-width: 576px) {
+    line-height: 24px;
+  }
+}
+
+:not(pre) > code {
+  @include inline-code-font();
+}
+
+a > code {
+  color: inherit;
+}
+
+pre {
+  @include code-font();
+  letter-spacing: 0px;
+  border-radius: 0px;
+}
+
+pre .theme-code-block-highlighted-line {
+  background-color: var(--color-code-highlight-bg);
+}
+
+.theme-code-block {
+  --ifm-global-shadow-lw: none;
+  --ifm-code-border-radius: 4px;
+
+  [class*='codeBlockTitle'] {
+    margin-bottom: 0;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    padding-left: var(--ifm-pre-padding);
+    font-family: $font-family-monospace;
+    font-style: italic;
+    background-color: var(--color-code-title-bg);
+    border-bottom: 1px solid var(--Elements-Twilight-30-70);
+  }
+}
+
+figure {
+  margin: 0 0 1rem;
+  img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+  }
+  p {
+    margin: 0;
+  }
+
+  figcaption {
+    opacity: 0.8;
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+  }
+}
+
+[data-theme='light'] img[src$='#dark'],
+[data-theme='dark'] img[src$='#light'],
+[data-theme='light'] img.dark,
+[data-theme='dark'] img.light {
+  display: none;
+}
+
+table {
+  display: table;
+  th {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+    vertical-align: top;
+  }
+  tr,
+  tr:nth-child(2n) {
+    background-color: transparent;
+  }
+  td {
+    vertical-align: top;
+    font-size: 14px;
+    p {
+      margin: 1em 0 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+// On narrow screens, let any markdown table scroll horizontally
+// instead of overflowing the viewport.
+@media (max-width: 768px) {
+  .markdown table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+// ============================================================
+// Docusaurus widgets
+// ============================================================
+
+.tabs {
+  font-weight: normal;
+  border-bottom: 1px solid var(--Elements-Twilight-30-60);
+}
+
+.tabs__item {
+  color: var(--Elements-Twilight-60-50);
+
+  &:hover {
+    background-color: transparent;
+    color: var(--Elements-Twilight-100-0);
+  }
+}
+
+.tabs__item--active {
+  color: var(--Elements-Twilight-100-0);
+  border-bottom-color: var(--Elements-Twilight-100-0);
+}
+
+// ============================================================
+// Sidebar
+// ============================================================
+
+// Sidebar panel: match page background, add right separator
+.theme-doc-sidebar-container {
+  background-color: var(--ifm-background-color);
+  border-right: 1px solid var(--Elements-Twilight-20-70);
+
+  > div {
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+nav.menu {
+  padding: 16px 0 80px 16px;
+
+  > ul > li:first-child {
+    margin-top: 0 !important;
+  }
+
+  .menu__link {
+    font-family: var(--inter);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 0px 2px 2px 0px;
+    // Transparent left border avoids 1px layout shift when active border appears
+    border-left: 1px solid transparent;
+    padding: 4px 0;
+  }
+
+  .menu__list-item-collapsible .menu__link--sublist {
+    flex: 1 1 auto;
+    padding-left: 8px;
+
+    span {
+      padding-right: 24px;
+    }
+
+    + button.menu__caret {
+      height: auto;
+      margin-left: auto;
+      min-width: 24px;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 6px;
+
+      // Match mojosite chevron sizing (category-that-is-also-a-link carets)
+      &::before {
+        background-size: 18px !important;
+      }
+    }
+  }
+
+  a.menu__link:not(
+      .theme-doc-sidebar-item-category-level-1
+        > .menu__list-item-collapsible
+        > .menu__link
+    ) {
+    padding-left: 8px;
+  }
+
+  // Bold top-level category labels
+  .sidebar-top-level-link > .menu__link,
+  .theme-doc-sidebar-item-category-level-1
+    > .menu__list-item-collapsible
+    > .menu__link {
+    font-weight: 600;
+  }
+
+  // Active items share the same subtle left accent across links and categories.
+  .theme-doc-sidebar-item-link > .menu__link--active,
+  .theme-doc-sidebar-item-category-level-1
+    > .menu__list-item-collapsible
+    > .menu__link--active[aria-current='page'] {
+    border-left: 1px solid var(--menu-color-border);
+    background-color: var(--ifm-menu-color-background-hover);
+  }
+
+  .menu__link--sublist-caret:after {
+    background-size: 18px !important;
+    min-width: 24px;
+  }
+
+  .menu__list-item:not(.sidebar-heading) .menu__list-item-collapsible {
+    border-radius: 0px 2px 2px 0px;
+
+    + .menu__list {
+      margin-left: -1px;
+      padding-left: 0;
+
+      .menu__link {
+        padding-left: calc(var(--ifm-menu-link-padding-horizontal) * 2);
+
+        &:hover:not(.menu__link--active) {
+          border-left: 1px solid var(--ifm-toc-border-color);
+        }
+      }
+
+      .menu__list .menu__link {
+        padding-left: calc(var(--ifm-menu-link-padding-horizontal) * 3);
+      }
+
+      .menu__list .menu__list .menu__link {
+        padding-left: calc(var(--ifm-menu-link-padding-horizontal) * 4);
+      }
+    }
+  }
+
+  .sidebar-heading {
+    position: relative;
+    margin-top: 24px !important;
+
+    &:before {
+      content: '';
+      position: absolute;
+      margin-left: -16px;
+      width: 150%;
+    }
+
+    .menu__list {
+      padding-left: 0;
+    }
+
+    > .menu__list-item-collapsible {
+      &:hover {
+        background-color: transparent;
+      }
+
+      > a {
+        font-weight: 600;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// ============================================================
+// Breadcrumbs — monospace, lightweight, slash separators
+// ============================================================
+.theme-doc-breadcrumbs {
+  margin-bottom: 2.25rem !important;
+
+  @media (max-width: 576px) {
+    margin-bottom: 1.5rem !important;
+  }
+}
+.breadcrumbs {
+  li {
+    --ifm-breadcrumb-size-multiplier: 1;
+    --ifm-breadcrumb-separator: none;
+    --ifm-breadcrumb-separator-size: 0;
+    --ifm-breadcrumb-spacing: 0;
+  }
+}
+
+.breadcrumbs__item:not(:last-child):after {
+  content: '/';
+  display: inline-block;
+  color: var(--ifm-breadcrumb-color);
+  opacity: 0.5;
+  margin: 0 4px;
+  font-family: var(--roboto);
+  font-size: 12px;
+}
+
+.breadcrumbs__link {
+  font-size: 12px;
+  font-family: var(--roboto);
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--ifm-breadcrumb-color);
+  padding: 0 4px;
+
+  img,
+  svg {
+    height: 14px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+}
+
+// No chip/pill styling on any breadcrumb
+.breadcrumbs__item--active .breadcrumbs__link {
+  background-color: transparent;
+}
+
+// No hover state for non-linked breadcrumb items
+.breadcrumbs__item .breadcrumbs__link:not(a) {
+  cursor: default;
+
+  &:hover {
+    background: none;
+    color: var(--ifm-breadcrumb-color);
+  }
+}
+
+// ============================================================
+// Right rail buttons and TOC
+// ============================================================
+
+.theme-doc-footer-edit-meta-row {
+  display: none;
+}
+
+/* Sticky wrapper so action links + TOC stick together */
+.doc-toc-sticky-wrapper {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+  margin-top: 2rem !important;
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem));
+  overflow-y: auto;
+
+  .theme-doc-toc-desktop {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+.theme-doc-toc-mobile {
+  button {
+    color: var(--Elements-Twilight-60-50);
+    font-size: 0.9rem;
+  }
+}
+
+@mixin doc-actions-link-style {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ifm-toc-link-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--ifm-link-color);
+    text-decoration: none;
+  }
+}
+
+.doc-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.875rem;
+
+  a.theme-edit-this-page,
+  a.view-source-link {
+    @include doc-actions-link-style;
+  }
+
+  .markdown-copy-button {
+    @include doc-actions-link-style;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    text-align: left;
+    letter-spacing: inherit;
+    white-space: unset;
+    cursor: pointer;
+
+    svg path {
+      fill: currentColor;
+    }
+  }
+}
+
+// Mantine Alert overrides (admonitions) — Light mode only
+html[data-theme='light'] .mantine-Alert-root {
+  --alert-bd: 0.5px solid var(--alert-color) !important;
+
+  &[data-admonition-type='note'],
+  &[data-admonition-type='info'],
+  &[data-admonition-type='tip'] {
+    --alert-bg: var(--color-alert-bg-note) !important;
+  }
+
+  &[data-admonition-type='caution'],
+  &[data-admonition-type='experiment'] {
+    --alert-bg: var(--color-alert-bg-caution) !important;
+  }
+
+  &[data-admonition-type='warning'] {
+    --alert-bg: var(--color-alert-bg-warning) !important;
+  }
+}
+
+// Collapsible <details>
+.alert.alert--info {
+  --ifm-alert-background-color: var(--color-alert-bg-note);
+  --ifm-alert-border-color: var(--color-alert-border-color-note) !important;
+  --ifm-alert-border-radius: 2px;
+  --docusaurus-details-decoration-color: var(--color-collapsible-chevron);
+}
+
+// ============================================================
+// Tighter max-width when no sidebar and no TOC
+[class*='docMainContainerEnhanced'] .col {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+// ============================================================
+// Redocusaurus / API reference styles
+// ============================================================
+
+/**
+ * Prevent redocusaurus from displaying html before its styles are fully
+ * loaded. This prevents large icons from being displayed before they
+ * are properly styled.
+ */
+html[data-has-hydrated='false'] .max-serve-api-wrapper {
+  display: none;
+}
+
+html[data-has-hydrated='true'] .max-serve-api-wrapper {
+  display: block;
+}
+
+// ============================================================
+// CookiebotDialog overrides
+// ============================================================
+#CybotCookiebotDialog {
+  border: 1px solid var(--Elements-Twilight-50) !important;
+  background-color: var(--Elements-Twilight-0-90) !important;
+  * {
+    color: var(--Black) !important;
+  }
+  #CybotCookiebotDialogHeader {
+    border-bottom: 1px solid var(--Elements-Twilight-20-70) !important;
+    background-color: var(--Elements-Twilight-0-90) !important;
+    svg {
+      fill: var(--Elements-Neb-Ultra) !important;
+    }
+  }
+  .CybotCookiebotDialogBody {
+    background-color: var(--Elements-Twilight-0-90) !important;
+  }
+  .CybotCookiebotDialogBodyBottomWrapper {
+    background-color: var(--Elements-Twilight-0-90) !important;
+  }
+  #CybotCookiebotDialogNav {
+    background-color: transparent !important;
+    .CybotCookiebotDialogNavItemLink {
+      border-bottom: 1px solid var(--Elements-Twilight-20-70) !important;
+    }
+    .CybotCookiebotDialogNavItemLink:hover {
+      border-bottom: 1px solid var(--Elements-Neb-Ultra) !important;
+    }
+    .CybotCookiebotDialogActive {
+      border-bottom: 1px solid var(--Elements-Neb-Ultra) !important;
+    }
+  }
+  .CybotCookiebotDialogDetailBodyContentCookieContainerButton:before {
+    border-color: var(--Black) !important;
+  }
+  .CybotCookiebotDialogDetailBodyContentCookieInfo,
+  .CookiebotWidget-body {
+    background-color: var(--Elements-Twilight-0-90) !important;
+  }
+  .CybotCookiebotFader {
+    display: none !important;
+  }
+  #CybotCookiebotDialogBodyButtonsWrapper {
+    background-color: var(--Elements-Twilight-0-90) !important;
+    button {
+      border: 2px solid var(--Elements-Neb-Ultra) !important;
+      background-color: transparent !important;
+    }
+  }
+  .CybotCookiebotDialogNavItemLink,
+  .CookieCard {
+    border-bottom: 1px solid var(--Elements-Twilight-20-70) !important;
+    background-color: var(--Elements-Twilight-0-90) !important;
+  }
+  .CybotCookiebotScrollContainer {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--Elements-Twilight-20-70) !important;
+  }
+  .CookieCard input {
+    background-color: var(--Elements-Neb-Ultra) !important;
+  }
+  .CybotCookiebotDialogBodyLevelButtonSliderWrapper {
+    input[type='checkbox'] {
+      opacity: 0 !important;
+    }
+  }
+  a:after {
+    border-color: var(--Black) !important;
+  }
+  .CybotCookiebotDialogDetailBulkConsentCount {
+    background-color: var(--Elements-Twilight-50) !important;
+  }
+  input[type='checkbox']:checked + .CybotCookiebotDialogBodyLevelButtonSlider {
+    background-color: var(--Elements-Neb-Ultra) !important;
+  }
+}
+
+/* Prev/Next pagination: match the Twilight border + radius used on cards */
+.pagination-nav__link {
+  border-color: var(--Elements-Twilight-20-70);
+  border-radius: 4px;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--Elements-Twilight-30-60);
+}

@@ -7,8 +7,8 @@
   align-items: center;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 600;
-  color: #374151;
+  font-weight: 400;
+  color: var(--Elements-Twilight-70-20);
   margin-bottom: 0.25rem;
 }
 
@@ -21,10 +21,10 @@
   -webkit-appearance: none; /* Remove the default UI in iOS Safari */
   appearance: none;
   padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  border: 1px solid var(--Elements-Twilight-30-60);
   width: 100%;
-  color: #000;
+  color: var(--Elements-Twilight-100-0);
   background: transparent;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -36,7 +36,7 @@
   font-size: 0.75rem;
   line-height: 1rem;
   margin-top: 0.25rem;
-  color: #6b7280;
+  color: var(--Elements-Twilight-60-40);
   font-weight: 500;
 }
 
@@ -62,11 +62,7 @@
 :global(.rc-tooltip-inner) {
   font-size: 0.75rem;
   line-height: 1rem;
-  font-weight: 600;
-  box-shadow:
-    0 0 #0000,
-    0 0 #0000,
-    0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  font-weight: 400;
+  box-shadow: none;
   border: none !important;
 }

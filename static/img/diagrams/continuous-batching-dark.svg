@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 544 310" width="544" height="310">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <text x="96.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">T1</text>
+  <text x="152.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">T2</text>
+  <text x="208.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">T3</text>
+  <text x="264.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">T4</text>
+  <text x="320.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">T5</text>
+  <text x="376.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">T6</text>
+  <text x="432.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">T7</text>
+  <text x="488.0" y="30.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">T8</text>
+  <text x="28.0" y="78.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="start" font-weight="500" dominant-baseline="middle">S1</text>
+  <rect x="71.0" y="53.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="127.0" y="53.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="183.0" y="53.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="239.0" y="53.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="295.0" y="53.0" width="50.0" height="50.0" rx="4" fill="rgba(248,113,113,0.22)" stroke="#f87171" stroke-width="2"/>
+  <text x="320.0" y="78.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#f87171" text-anchor="middle" font-weight="600" dominant-baseline="middle">END</text>
+  <rect x="351.0" y="53.0" width="50.0" height="50.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <rect x="407.0" y="53.0" width="50.0" height="50.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <rect x="463.0" y="53.0" width="50.0" height="50.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <text x="28.0" y="134.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="start" font-weight="500" dominant-baseline="middle">S2</text>
+  <rect x="71.0" y="109.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="127.0" y="109.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="183.0" y="109.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="239.0" y="109.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="295.0" y="109.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="351.0" y="109.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="407.0" y="109.0" width="50.0" height="50.0" rx="4" fill="rgba(248,113,113,0.22)" stroke="#f87171" stroke-width="2"/>
+  <text x="432.0" y="134.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#f87171" text-anchor="middle" font-weight="600" dominant-baseline="middle">END</text>
+  <rect x="463.0" y="109.0" width="50.0" height="50.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <text x="28.0" y="190.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="start" font-weight="500" dominant-baseline="middle">S3</text>
+  <rect x="71.0" y="165.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="127.0" y="165.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="183.0" y="165.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="239.0" y="165.0" width="50.0" height="50.0" rx="4" fill="rgba(248,113,113,0.22)" stroke="#f87171" stroke-width="2"/>
+  <text x="264.0" y="190.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#f87171" text-anchor="middle" font-weight="600" dominant-baseline="middle">END</text>
+  <rect x="295.0" y="165.0" width="50.0" height="50.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
+  <rect x="351.0" y="165.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="407.0" y="165.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="463.0" y="165.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="28.0" y="246.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="start" font-weight="500" dominant-baseline="middle">S4</text>
+  <rect x="71.0" y="221.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="127.0" y="221.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="183.0" y="221.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="239.0" y="221.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="295.0" y="221.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="351.0" y="221.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="407.0" y="221.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <rect x="463.0" y="221.0" width="50.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="272.0" y="290.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#9a9eaa" text-anchor="middle" font-weight="400" dominant-baseline="middle">Freed slots are filled immediately by new sequences.</text>
+</svg>

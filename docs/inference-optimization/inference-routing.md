@@ -27,11 +27,8 @@ A routing decision affects things like:
 - Whether it gets stuck behind long-running generations
 - Whether the target worker has enough memory headroom
 - Whether prefill or decode work is already saturating the worker
-- Whether the overall GPU pool stays busy across uneven traffic patterns
 
 Therefore, inference routing is closely tied to concepts like [prefix caching](./prefix-caching), [KV cache offloading](./kv-cache-offloading), and [prefill-decode disaggregation](./prefill-decode-disaggregation).
-
-At platform scale, routing is also an economic tool. Better placement keeps GPUs useful across heterogeneous tenants and bursty workloads, not just faster for one request.
 
 :::note
 On this page, a worker refers to a routable unit that can independently run inference and own some runtime state, especially KV cache. Depending on the deployment, it can map to different things:
@@ -42,7 +39,7 @@ On this page, a worker refers to a routable unit that can independently run infe
 - **GPU group**. A worker may use one GPU, multiple GPUs with tensor parallelism, or an entire multi-GPU replica.
 :::
 
-## Why routing is different for inference
+# Why routing is different for inference
 
 Traditional load balancers treat backends as identical black boxes. A request comes in, any backend can serve it, and the response leaves little useful state behind. This pattern works well when requests are short, stateless, and similar in cost.
 
@@ -106,19 +103,19 @@ This matters because long-context workloads can run into memory pressure even wh
 
 A KV cache utilization-aware router can steer new requests toward workers with enough memory headroom.
 
-![kv-cache-util-lb.png](./img/kv-cache-util-lb.png)
+<Diagram name="kv-cache-util-lb" alt="KV-cache utilization-aware load balancer routing to workers by load" />
 
 The key point is that a good router does not choose a worker only because it has the right prefix. A cache hit on a saturated worker can still be slower than a smaller cache hit on a worker with enough headroom.
 
-The open-source community is already working on solutions. The [Gateway API Inference Extension](https://github.com/kubernetes-sigs/gateway-api-inference-extension) project uses an endpoint picker (EPP) to collect information on KV cache utilization, queue length, and LoRA adapters on each worker, and routes requests to the optimal replica.
+The open-source community is already working on solutions. The [Gateway API Inference Extension](https://github.com/kubernetes-sigs/gateway-api-inference-extension) project uses an endpoint picker (EPP) to collect information on KV cache utilization, queue length, and LoRA adapters on each worker, and routes requests to the optimal replica.
 
 ### Prefix-aware routing
 
 Prefix-aware routing tries to send a request to a worker that already has the matching prefix cached.
 
-This is relevant because prefix caching only helps if the request reaches a worker that can reuse the cached state. In a single model server, the cache is local and easy to find. In a distributed deployment, each worker has its own cache, so the router needs some way to preserve cache locality across requests.
+This is relevant because prefix caching only helps if the request reaches a worker that can reuse the cached state. In a single model server, the cache is local and easy to find. In a distributed deployment, each worker has its own cache, so the router needs some way to preserve cache locality across requests.
 
-![prefix-caching-aware-routing.png](./img/prefix-caching-aware-routing.png)
+<Diagram name="prefix-caching-aware-routing" alt="Prefix-cache-aware router sending requests to workers that already cache the prefix" />
 
 Different systems use different approaches to estimating or tracking cache locality:
 
@@ -158,9 +155,9 @@ Several open-source projects already follow this direction:
 
 - [The SGLang router](https://github.com/sgl-project/sglang/blob/4d2a88bdffe91168dfc73ef7e3bc9100ba96686b/sgl-router/src/router.rs#L61) uses a cache-aware routing heuristic with load-balancing fallback. It tracks approximate prefix locality using radix trees and queue counts, then switches between cache-aware routing and shortest-queue routing depending on system imbalance.
 - [Dynamo](https://docs.nvidia.com/dynamo/components/router/router-guide) routes requests by estimating both prefill and decode costs across workers. It considers KV cache overlap, active decode blocks, and workload placement to reduce redundant computation and improve serving efficiency.
-- [llm-d](https://llm-d.ai/docs/architecture/core/router) builds inference scheduling on top of the [Gateway API Inference Extension](https://github.com/kubernetes-sigs/gateway-api-inference-extension) project. It combines cache locality, worker load, and other runtime signals to provide intelligent request routing and scheduling on Kubernetes.
+- [llm-d](https://llm-d.ai/docs/architecture/core/router) builds inference scheduling on top of the [Gateway API Inference Extension](https://github.com/kubernetes-sigs/gateway-api-inference-extension) project. It combines cache locality, worker load, and other runtime signals to provide intelligent request routing and scheduling on Kubernetes.
 
-## FAQs
+# FAQs
 
 ### Is inference routing the same as load balancing?
 
