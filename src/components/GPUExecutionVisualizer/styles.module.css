@@ -1,29 +1,29 @@
 /* ── Container ── */
 
 .container {
-  border: 1px solid #bbf7d0;
-  border-radius: 0.5rem;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  border-radius: 4px;
   margin: 1.5rem 0;
   overflow: hidden;
 }
 
 .header {
   padding: 1.5rem;
-  background: linear-gradient(to right, #eef2ff, #eff6ff);
+  background: var(--Elements-Twilight-5-90);
 }
 
 .headerTitle {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.025em;
-  color: #111827;
+  color: var(--Elements-Twilight-100-0);
 }
 
 .headerDesc {
   margin-top: 0.375rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #4b5563;
+  color: var(--Elements-Twilight-70-20);
 }
 
 .body {
@@ -45,12 +45,12 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 9999px;
-  background: #fff;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  border-radius: 4px;
+  background: var(--Elements-Twilight-0-100);
   font-size: 0.75rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--Elements-Twilight-70-20);
   cursor: pointer;
   transition: all 150ms ease;
   font-family: inherit;
@@ -58,9 +58,9 @@
 
 .legendItem:hover,
 .legendActive {
-  border-color: #1e40af;
-  background: #eff6ff;
-  color: #1e40af;
+  border-color: var(--Elements-Neb-Ultra);
+  background: var(--Elements-Neb-20-Alpha);
+  color: var(--Elements-Neb-Ultra);
 }
 
 .legendDot {
@@ -72,7 +72,7 @@
 
 .legendArrow {
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: var(--Elements-Twilight-60-50);
 }
 
 /* ── Diagram ── */
@@ -87,7 +87,7 @@
 
 .die {
   border: 2px dashed #a8a29e;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   padding: 1rem;
   background: linear-gradient(180deg, #fafaf9 0%, #f5f5f4 100%);
 }
@@ -97,7 +97,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #78716c;
@@ -106,9 +106,9 @@
 .dieLabelChip {
   display: inline-block;
   padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
+  border-radius: 4px;
   font-size: 0.625rem;
-  font-weight: 700;
+  font-weight: 400;
   background: #e7e5e4;
   color: #57534e;
   text-transform: uppercase;
@@ -141,15 +141,17 @@
 
 .sm {
   border: 1.5px solid #8b5cf6;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   padding: 0.75rem;
   background: #faf5ff;
-  transition: box-shadow 200ms ease, border-color 200ms ease;
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease;
 }
 
 .smHighlight {
   border-color: #6d28d9;
-  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12);
+  box-shadow: none;
 }
 
 .smCompact {
@@ -165,7 +167,7 @@
 
 .smTitle {
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #5b21b6;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -179,23 +181,25 @@
 /* ── Block ── */
 
 .block {
-  border: 1.5px solid #60a5fa;
-  border-radius: 0.625rem;
+  border: 1.5px solid var(--Elements-Neb-Ultra-Super);
+  border-radius: 4px;
   padding: 0.625rem;
-  background: #eff6ff;
+  background: var(--Elements-Neb-20-Alpha);
   margin-bottom: 0.5rem;
-  transition: box-shadow 200ms ease, border-color 200ms ease;
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease;
 }
 
 .blockHighlight {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--Elements-Neb-Ultra);
+  box-shadow: none;
 }
 
 .blockHeader {
   font-size: 0.8125rem;
-  font-weight: 700;
-  color: #1e40af;
+  font-weight: 400;
+  color: var(--Elements-Neb-Ultra);
   margin-bottom: 0.375rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -204,8 +208,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1.5px dashed #93c5fd;
-  border-radius: 0.625rem;
+  border: 1.5px dashed var(--Elements-Neb-Ultra-Super);
+  border-radius: 4px;
   padding: 0.5rem 0.625rem;
   background: #f8faff;
   margin-bottom: 0.5rem;
@@ -214,30 +218,32 @@
 
 .blockCollapsedTitle {
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #1e40af;
+  font-weight: 400;
+  color: var(--Elements-Neb-Ultra);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .blockCollapsedNote {
   font-size: 0.6875rem;
-  color: #6b7280;
+  color: var(--Elements-Twilight-60-40);
 }
 
 /* ── Warp ── */
 
 .warp {
-  border: 1.5px solid #86efac;
-  border-radius: 0.5rem;
+  border: 1.5px solid var(--Elements-Neb-Ultra);
+  border-radius: 4px;
   padding: 0.5rem;
-  background: #f0fdf4;
+  background: var(--Elements-Neb-20-Alpha);
   margin-bottom: 0.375rem;
-  transition: box-shadow 200ms ease, border-color 200ms ease;
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease;
 }
 
 .warpHighlight {
-  border-color: #16a34a;
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+  border-color: var(--Elements-Neb-Ultra);
+  box-shadow: none;
 }
 
 .warpHeader {
@@ -249,24 +255,24 @@
 
 .warpTitle {
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #166534;
+  font-weight: 400;
+  color: var(--Elements-Neb-Ultra);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .warpMeta {
   font-size: 0.625rem;
-  color: #6b7280;
+  color: var(--Elements-Twilight-60-40);
 }
 
 .warpCollapsed {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1.5px dashed #86efac;
-  border-radius: 0.5rem;
+  border: 1.5px dashed var(--Elements-Neb-Ultra);
+  border-radius: 4px;
   padding: 0.375rem 0.5rem;
-  background: #f8fdf9;
+  background: var(--Elements-Neb-20-Alpha);
   margin-bottom: 0.375rem;
   transition: border-color 200ms ease;
 }
@@ -290,21 +296,21 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  border-radius: 3px;
-  background: #dcfce7;
-  border: 1px solid #bbf7d0;
-  color: #166534;
+  border-radius: 2px;
+  background: var(--Elements-Neb-30-Alpha);
+  border: 1px solid var(--Elements-Neb-Ultra);
+  color: var(--Elements-Neb-Ultra);
   font-size: 0.5rem;
-  font-weight: 700;
+  font-weight: 400;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   transition: all 200ms ease;
   min-width: 0;
 }
 
 .threadHighlight {
-  background: #86efac;
-  border-color: #16a34a;
-  color: #052e16;
+  background: var(--Elements-Neb-Ultra);
+  border-color: var(--Elements-Neb-Ultra);
+  color: var(--Elements-Twilight-0-100);
 }
 
 /* ── More indicator ── */
@@ -312,7 +318,7 @@
 .moreIndicator {
   text-align: center;
   font-size: 0.6875rem;
-  color: #9ca3af;
+  color: var(--Elements-Twilight-60-50);
   padding: 0.25rem 0;
   letter-spacing: 0.01em;
 }
@@ -334,14 +340,14 @@
 
 .resourceCard {
   border: 1px solid #ddd6fe;
-  border-radius: 0.375rem;
+  border-radius: 4px;
   padding: 0.375rem 0.5rem;
   background: #faf5ff;
 }
 
 .resourceTitle {
   font-size: 0.6875rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #5b21b6;
 }
 
@@ -356,7 +362,7 @@
   color: #7c3aed;
   padding: 0.375rem 0.5rem;
   border: 1px solid #ddd6fe;
-  border-radius: 0.375rem;
+  border-radius: 4px;
   background: #faf5ff;
   text-align: center;
   margin-top: 0.375rem;
@@ -402,21 +408,23 @@
   gap: 0.75rem;
   margin-top: 0.75rem;
   border: 1.5px solid #fbbf24;
-  border-radius: 0.625rem;
+  border-radius: 4px;
   padding: 0.625rem 0.875rem;
   background: #fefce8;
-  transition: box-shadow 200ms ease, border-color 200ms ease;
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease;
 }
 
 .l2Highlight {
   border-color: #d97706;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+  box-shadow: none;
 }
 
 .l2Title {
   font-size: 0.8125rem;
-  font-weight: 700;
-  color: #92400e;
+  font-weight: 400;
+  color: var(--Elements-Twilight-70-20);
   white-space: nowrap;
 }
 
@@ -451,7 +459,7 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #78716c;
   white-space: nowrap;
 }
@@ -464,15 +472,17 @@
 
 .hbm {
   border: 1.5px solid #fb923c;
-  border-radius: 0.75rem;
+  border-radius: 4px;
   padding: 0.875rem;
   background: #fff7ed;
-  transition: box-shadow 200ms ease, border-color 200ms ease;
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease;
 }
 
 .hbmHighlight {
   border-color: #ea580c;
-  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+  box-shadow: none;
 }
 
 .hbmHeader {
@@ -486,14 +496,14 @@
 
 .hbmTitle {
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #9a3412;
   margin-left: 0.375rem;
 }
 
 .hbmSpec {
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #c2410c;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -507,11 +517,11 @@
 
 .hbmItem {
   padding: 0.25rem 0.625rem;
-  border-radius: 9999px;
+  border-radius: 4px;
   background: #fed7aa;
   color: #9a3412;
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .hbmNote {
@@ -519,4 +529,106 @@
   color: #9a3412;
   line-height: 1.5;
   opacity: 0.8;
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────────────────
+   Light mode keeps the original tinted "circuit board" palette. In dark mode
+   the light fills are swapped for translucent tints of the same hue and the
+   dark hierarchy text is lightened so each level (gray die / purple SM /
+   nebula block / green warp / amber L2 / orange HBM) stays legible. */
+
+:global(html[data-theme='dark']) .die {
+  border-color: #57534e;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+}
+:global(html[data-theme='dark']) .dieLabel {
+  color: #a8a29e;
+}
+:global(html[data-theme='dark']) .dieLabelChip {
+  background: #44403c;
+  color: #d6d3d1;
+}
+
+:global(html[data-theme='dark']) .sm {
+  background: rgba(139, 92, 246, 0.12);
+}
+:global(html[data-theme='dark']) .smTitle {
+  color: #c4b5fd;
+}
+:global(html[data-theme='dark']) .smBadge {
+  color: #a78bfa;
+}
+
+:global(html[data-theme='dark']) .blockCollapsed {
+  background: var(--Elements-Neb-20-Alpha);
+}
+
+:global(html[data-theme='dark']) .warp {
+  background: rgba(99, 123, 255, 0.12);
+}
+:global(html[data-theme='dark']) .warpTitle {
+  color: #a5b4fc;
+}
+:global(html[data-theme='dark']) .warpCollapsed {
+  background: rgba(99, 123, 255, 0.08);
+}
+:global(html[data-theme='dark']) .threadCell {
+  background: rgba(99, 123, 255, 0.15);
+  color: #a5b4fc;
+}
+
+:global(html[data-theme='dark']) .resourceCard,
+:global(html[data-theme='dark']) .smResourcesCompact {
+  border-color: rgba(139, 92, 246, 0.35);
+  background: rgba(139, 92, 246, 0.1);
+}
+:global(html[data-theme='dark']) .resourceTitle {
+  color: #c4b5fd;
+}
+:global(html[data-theme='dark']) .resourceMeta,
+:global(html[data-theme='dark']) .smResourcesCompact {
+  color: #a78bfa;
+}
+
+:global(html[data-theme='dark']) .moreSMsDots span {
+  background: #78716c;
+}
+:global(html[data-theme='dark']) .moreSMsLabel,
+:global(html[data-theme='dark']) .busTag {
+  color: #a8a29e;
+}
+:global(html[data-theme='dark']) .busLine {
+  background: repeating-linear-gradient(
+    90deg,
+    #57534e 0px,
+    #57534e 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+:global(html[data-theme='dark']) .l2 {
+  background: rgba(251, 191, 36, 0.1);
+}
+:global(html[data-theme='dark']) .l2Meta {
+  color: #fcd34d;
+}
+
+:global(html[data-theme='dark']) .hbm {
+  background: rgba(251, 146, 60, 0.12);
+}
+:global(html[data-theme='dark']) .hbmTitle,
+:global(html[data-theme='dark']) .hbmNote {
+  color: #fdba74;
+}
+:global(html[data-theme='dark']) .hbmSpec {
+  color: #fb923c;
+}
+:global(html[data-theme='dark']) .hbmItem {
+  background: rgba(251, 146, 60, 0.2);
+  color: #fed7aa;
 }

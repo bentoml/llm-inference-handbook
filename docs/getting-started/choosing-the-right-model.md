@@ -222,7 +222,7 @@ Base models are pretrained on raw text and learn language patterns. Instruct mod
 
 Some LLMs have long, confusing names, but they usually encode useful information about the model’s architecture, size, and capabilities. Once you know how to read them, it becomes much easier to compare models and choose the right one.
 
-![llm-naming.png](./img/llm-naming.png)
+<Diagram name="llm-naming" alt="Anatomy of an LLM name: series, size, activation, quantization, and precision" />
 
 - The number usually indicates the number of parameters in the model. The letter B stands for billion parameters.
 - “Instruct” means the model has been instruction-tuned. “Chat” models are optimized for multi-turn conversations.

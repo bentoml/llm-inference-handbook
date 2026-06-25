@@ -7,13 +7,12 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # Multi-cloud and cross-region inference
 
 When teams scale LLM inference, they rarely keep everything in one place. Instead, they spread workloads across multiple clouds or different regions within the same cloud. This way, the system can serve requests from the most suitable location.
 
-For example, you can run inference in AWS and GCP at the same time, or distribute it to three regions of Azure to cover North America, Europe, and Asia. The setup gives you flexibility: workloads can shift to wherever GPUs are available and cost-effective, where performance is highest, or where compliance rules require data to stay.
+For example, you can run inference in AWS and GCP at the same time, or distribute it to three regions of Azure to cover North America, Europe, and Asia. The setup means flexibility. Workloads can shift to wherever GPUs are available and cost-effective, where performance is highest, or where compliance rules demand data stays.
 
 The result is better resilience, faster responses for global users, and less dependence on a single vendor.
 
@@ -35,7 +34,7 @@ LLM inference has unique requirements that a single cloud or region often can’
 
 ### Unpredictable demand
 
-Unlike training, LLM inference is driven by real-time usage, often bursty and hard to predict. A product launch, a viral feature, or seasonal traffic can all cause sudden spikes in requests. Demand can swing from idle to saturation within minutes and your compute capacity can run out at the worst possible moment. This increases operational strain, potential failures, and service interruptions.
+Different from training, LLM inference is driven by real-time usage, often bursty and hard to predict. A product launch, a viral feature, or seasonal traffic can all cause sudden spikes in requests. Demand can swing from idle to saturation within minutes and your compute capacity can run out at the worst possible moment. This increases operational strain, potential failures, and service interruptions.
 
 Multi-cloud and cross-region deployments provide headroom to absorb these bursts. If one region runs out of compute capacity, traffic can shift to elsewhere. If a cloud provider experiences shortages, workloads can overflow to another.
 

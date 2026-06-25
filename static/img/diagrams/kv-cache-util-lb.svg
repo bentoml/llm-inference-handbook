@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 772 404" width="772" height="404">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <rect x="311.0" y="36.0" width="150.0" height="46.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="386.0" y="59.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">User Prompt</text>
+  <rect x="206.0" y="126.0" width="360.0" height="54.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="386.0" y="153.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">KV Cache Utilization Aware Load Balancer</text>
+  <line x1="386.0" y1="82.0" x2="386.0" y2="120.0" stroke="#637bff" stroke-width="2"/><polygon points="386.0,126.0 380.0,117.0 392.0,117.0" fill="#637bff"/>
+  <rect x="28.0" y="236.0" width="220.0" height="140.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="138.0" y="254.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Worker 1</text>
+  <rect x="40.0" y="270.0" width="196.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="138.0" y="285.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">KV cache: 95%</text>
+  <rect x="40.0" y="308.0" width="196.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="138.0" y="323.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Queue: 8 requests</text>
+  <text x="138.0" y="360.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#dc2626" text-anchor="middle" font-weight="600" dominant-baseline="middle">Overloaded ✗</text>
+  <path d="M 386.0 180.0 L 386.0 208.0 L 138.0 208.0 L 138.0 230.0" fill="none" stroke="#637bff" stroke-width="2" stroke-dasharray="6,4"/><polygon points="138.0,236.0 132.0,227.0 144.0,227.0" fill="#637bff"/>
+  <rect x="276.0" y="236.0" width="220.0" height="140.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="386.0" y="254.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Worker 2</text>
+  <rect x="288.0" y="270.0" width="196.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="386.0" y="285.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">KV cache: 60%</text>
+  <rect x="288.0" y="308.0" width="196.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="386.0" y="323.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Queue: 3 requests</text>
+  <text x="386.0" y="360.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#d97706" text-anchor="middle" font-weight="600" dominant-baseline="middle">Moderate load</text>
+  <path d="M 386.0 180.0 L 386.0 208.0 L 386.0 208.0 L 386.0 230.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="386.0,236.0 380.0,227.0 392.0,227.0" fill="#637bff"/>
+  <rect x="524.0" y="236.0" width="220.0" height="140.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="634.0" y="254.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Worker 3</text>
+  <rect x="536.0" y="270.0" width="196.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="634.0" y="285.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">KV cache: 25%</text>
+  <rect x="536.0" y="308.0" width="196.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="634.0" y="323.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Queue: 0 requests</text>
+  <text x="634.0" y="360.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#16a34a" text-anchor="middle" font-weight="600" dominant-baseline="middle">Idle ✓</text>
+  <path d="M 386.0 180.0 L 386.0 208.0 L 634.0 208.0 L 634.0 230.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="634.0,236.0 628.0,227.0 640.0,227.0" fill="#637bff"/>
+</svg>

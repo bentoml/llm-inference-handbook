@@ -5,7 +5,7 @@ keywords:
     - KV cache offloading, KV cache, KV caching, LMCache
     - Distributed inference, distributed LLM inference
     - Inference optimization
-    - LLM inference optimization, LLM inference optimization techniques
+    - LLM inference optimization, LLM inference optimization techniques​
     - Speed up LLM inference
 ---
 
@@ -16,7 +16,7 @@ import KVCacheCalculator from '@site/src/components/Calculator/KVCache';
 
 KV cache offloading is the process of moving attention key/value data from GPU memory to lower-cost storage like CPU memory or disk. It frees up GPU resources while preserving the ability to resume inference without recomputation. This helps scale LLM workloads efficiently by balancing performance and memory usage.
 
-## Why does KV cache become a bottleneck in LLM inference?
+## Why KV cache becomes a bottleneck in LLM inference?
 
 LLMs rely heavily on the KV cache to speed up inference. The cache stores attention keys and values for every token in the input sequence, allowing the model to reuse them in future steps instead of recalculating them. Although this saves a significant amount of compute resources and delivers faster inference, it comes with a steep memory cost.
 
@@ -39,7 +39,7 @@ To estimate how much memory the KV cache consumes, use the following calculator:
 <KVCacheCalculator />
 
 :::info 
-You can often find the architecture details of an LLM in the `config.json` file of its Hugging Face repository, including the model architecture (e.g., a Transformer decoder), the number of layers, hidden size, number of attention heads, vocabulary size, and other architectural hyperparameters. If you already know the model’s dimension, you can simplify the formula by replacing `H × D` with it (Simplified Calculation above).
+If you already know the model’s dimension, you can simplify the formula by replacing `H × D` with it (Simplified Calculation above).
 :::
 
 ## When should you offload the KV cache for LLMs?
@@ -72,7 +72,7 @@ There is also a quality trade-off when the system uses selective KV offloading. 
 
 ## Offloading the KV cache with LMCache
 
-[LMCache](https://github.com/LMCache/LMCache) is an LLM serving engine extension designed to optimize LLM inference by reducing TTFT and increasing throughput, especially for long-context workloads. It supports the reuse of KV caches for repeated input content (not just prefixes) across different engine instances.
+[LMCache](https://github.com/LMCache/LMCache) is an LLM serving engine extension designed to optimize LLM inference by reducing TTFT and increasing throughput, especially for long-context workloads. It supports the reuse of KV caches for repeated input content (not just prefixes) across different engine instances.
 
 By storing KV caches in multiple tiers of memory, including GPU, CPU DRAM, and local disk, LMCache significantly reduces redundant computation. This improves response time and saves GPU cycles, making it ideal for workloads like multi-turn QA, RAG, and document-level reasoning.
 
@@ -82,7 +82,7 @@ Several open-source projects have already integrated LMCache to support efficien
 
 - [llm-d](https://www.redhat.com/en/about/press-releases/red-hat-launches-llm-d-community-powering-distributed-gen-ai-inference-scale) offloads KV cache data with LMCache from GPU memory to more cost-effective and abundant storage such as CPU memory and network disks.
 - [KServe](https://kserve.github.io/website/docs/next/model-serving/generative-inference/kvcache-offloading) integrates LMCache to reduce inference costs and ensure SLOs for both latency and throughput at scale.
-- [vLLM](https://docs.vllm.ai/en/latest/examples/disaggregated/lmcache/) uses LMCache for CPU offloading, cache sharing between requests, and disaggregated prefilling. This enables better memory management and improves resource efficiency.
+- [vLLM](https://docs.vllm.ai/en/latest/examples/others/lmcache.html) uses LMCache for CPU offloading, cache sharing between requests, and disaggregated prefilling. This enables better memory management and improves resource efficiency.
 
 LMCache currently supports offloading KV cache data to a variety of storage backends, ranging from local options like CPU memory and the file system, to distributed systems such as Mooncake and ValKey.
 

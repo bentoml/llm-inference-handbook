@@ -14,10 +14,10 @@ MCP uses a client-server architecture with the following components:
 
 - **MCP host**: This is where the AI assistant lives. It could be a chat application like Claude Desktop, an IDE code assistant, or any other AI-powered application. The host can contain one or multiple MCP clients.
 - **MCP clients**: A client is the low-level implementation inside the host that maintains one-to-one links with MCP servers.
-- **MCP servers**: The connectors that expose different capabilities and data sources. Each server can connect to various backends like databases, third-party APIs, GitHub repositories, local files, or any other data source. Multiple servers can run simultaneously on your local machine or connect to remote services.
+- **MCP servers**: The connectors that expose different capabilities and data sources. Each server can connect to various backends like databases, third-party APIs, GitHub repositories, local files, or any other data source. Multiple servers can be running simultaneously on your local machine or connected to remotes services.
 - **MCP protocol**: This is the transport layer that enables communication between the host and servers, regardless of how many servers are connected.
 
-![mcp-architecture.png](./img/mcp-architecture.png)
+<Diagram name="mcp-architecture" alt="Model Context Protocol architecture connecting MCP clients, servers, and resources" />
 
 When your AI assistant needs to access external data or tools, here's what happens at a high level:
 

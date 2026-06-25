@@ -9,11 +9,10 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # Serverless vs. self-hosted LLM inference
 
-When building applications with LLMs, you typically have two main infrastructure choices: **serverless** (managed APIs) and **self-hosted** solutions. These are useful endpoints for comparison, but production deployments can sit anywhere between them. Each offers distinct trade-offs in ease of use, customization, scalability, and compliance.
+When building applications with LLMs, you typically have two main infrastructure choices: **serverless** (managed APIs) and **self-hosted** solutions. Each offers distinct advantages and trade-offs in terms of ease of use, customization, scalability, and compliance.
 
 ## Serverless LLM inference
 
@@ -48,11 +47,11 @@ Choosing between serverless and self-hosted LLM inference depends on your specif
 
 | Item | Serverless APIs | Self-hosted inference |
 | --- | --- | --- |
-| **Ease of Use** | ✅ High (simple API calls) | ⚠️ Lower (requires LLM deployment and maintenance) |
-| **Data Privacy & Compliance** | ⚠️ Limited | ✅ Full control |
-| **Customization** | ⚠️ Limited | ✅ Full flexibility |
-| **Cost at Scale** | ⚠️ Higher (usage-based, may rise significantly) | ✅ Potentially lower (predictable, optimized infrastructure) |
-| **Hardware Management** | ✅ Abstracted away | ⚠️ Requires GPU setup & maintenance |
+| **Ease of Use** | High (simple API calls) | Lower (requires LLM deployment and maintenance) |
+| **Data Privacy & Compliance** | Limited | Full control |
+| **Customization** | Limited | Full flexibility |
+| **Cost at Scale** | Higher (usage-based, may rise significantly) | Potentially lower (predictable, optimized infrastructure) |
+| **Hardware Management** | Abstracted away | Requires GPU setup & maintenance |
 
 ## How to think about costs
 
@@ -67,23 +66,25 @@ It's also worth noting that both serverless and self-hosted options are getting 
 - Ongoing API price cuts due to increased competition. This trend is evident from providers like OpenAI, which have significantly reduced token prices over time as shown in the image below.
 
   <figure>
-    ![gpt-cost-drop.png](./img/gpt-cost-drop.png)
-    <figcaption>[Image source: davidtsong](https://x.com/eladgil/status/1827521805755806107)</figcaption>
+    <img src={require('./img/gpt-cost-drop.png').default} alt="OpenAI API cost drop over time" />
+    <figcaption>
+      Image source: <a href="https://x.com/eladgil/status/1827521805755806107">davidtsong</a>
+    </figcaption>
   </figure>
     
 - GPU hardware is becoming more efficient and affordable.
-- Projects like vLLM and SGLang improve model inference efficiency.
+- Projects like vLLM and SGLang are enhancing the efficiency of model inferencing.
 - Better-performing open-source models that require fewer resources with different optimization techniques.
 
-For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
+For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
 
 ## When to start serverless and when to take control
 
 If you're just getting started with LLMs, serverless APIs are a great way to move fast. They make prototyping easy, lower the barrier to entry, and let you validate use cases without dealing with infrastructure.
 
-But that simplicity comes with trade-offs. Serverless APIs still leave you with serving decisions: which endpoint type to use, how to connect the service to your application and data systems, how to manage privacy boundaries, and how to reason about latency and spend as traffic grows.
+But that simplicity comes with trade-offs. As your AI use cases grow, along with your need for performance, privacy, and differentiation, the limitations of serverless become hard to ignore.
 
-As your AI use cases grow, along with your need for performance, privacy, and differentiation, the limitations of serverless become hard to ignore. Every company building serious AI products needs more than just a good model. **The inference layer is what brings that model to life**. Relying solely on third-party APIs might get your app off the ground, but it won’t give you the long-term control or competitive edge you need. Compared with self-hosted inference, serverless model APIs make it hard to get fine-grained control over performance tuning and cost optimization. You are just calling the same API as everyone else. And that lack of customization hamstrings your ability to build lasting advantage:
+Why? Every company building serious AI products needs more than just a good model. **The inference layer is what brings that model to life**. Relying solely on third-party APIs might get your app off the ground, but it won’t give you the long-term control or competitive edge you need. Compared with self-hosted inference, serverless model APIs make it hard to get fine-grained control over performance tuning and cost optimization. You are just calling the same API as everyone else. And that lack of customization hamstrings your ability to build lasting advantage:
 
 1. **Compound AI systems** are how top teams win. [They chain multiple models and tools into rich, flexible workflows](https://www.bentoml.com/blog/a-guide-to-compound-ai-systems).
 2. **Tailored inference stacks** let you architect for precise SLAs and cost targets across different workloads.
@@ -93,7 +94,7 @@ At the end of the day, **inference quality is product quality**. If your AI is m
 
 That’s when it’s time to go beyond APIs and start owning your inference.
 
-## What do I need to solve if I choose self-hosting?
+## What I have to solve if choosing self-hosting?
 
 Self-hosting LLMs gives you full control and flexibility, but also comes with operational responsibilities beyond just spinning up GPU servers, such as:
 
@@ -110,7 +111,7 @@ That said, you don’t have to build everything from scratch. An inference platf
 We work to help enterprises self-host any open and custom LLMs with flexible distributed architecture and tailored inference optimization. With our Inference Platform, you can achieve up to 6x lower cost than serverless APIs.
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
 </div>
 
 ## FAQs

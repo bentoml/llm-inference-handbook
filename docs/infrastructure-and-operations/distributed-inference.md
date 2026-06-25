@@ -6,7 +6,6 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # What is distributed inference?
 
@@ -201,13 +200,13 @@ Our Inference Platform provides a production-ready foundation for distributed in
 
 - Intelligent request routing and scheduling
 - Advanced inference optimization techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation)
-- Multi-GPU, cross-region, and multi-cloud deployment
+- Multi-GPU, cross-region and multi-cloud deployment
 - Autoscaling, fault tolerance, and unified observability
 
 Rather than stitching together everything yourself, a platform-based approach allows teams to focus on models and applications, while the distributed inference system is managed as a cohesive layer.
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
 </div>
 
 <LinkList>

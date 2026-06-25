@@ -1,39 +1,41 @@
-import { useState } from 'react'
-import useBaseUrl from '@docusaurus/useBaseUrl'
-import styles from './styles.module.css'
+import { useState } from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import styles from './styles.module.css';
 
-type Architecture = 'Dense' | 'MoE'
-type Modality = 'Text' | 'Multimodal'
-type BackendName = 'vLLM' | 'SGLang'
+type Architecture = 'Dense' | 'MoE';
+type Modality = 'Text' | 'Multimodal';
+type BackendName = 'vLLM' | 'SGLang';
 
 interface Model {
-  name: string
-  family: string
-  company: string
-  architecture: Architecture
-  released: string  // YYYY-MM
-  license: string
-  licenseUrl?: string  // link to the license text
-  huggingface: string  // org/repo path on huggingface.co
-  totalParams: string
-  activeParams?: string
-  contextLength: string
-  modality: Modality
-  modalityNote?: string
-  useCase?: string
-  precisions: string[]
-  deployment: string[]
-  vllmDocs?: string
-  sglangDocs: string
+  name: string;
+  family: string;
+  company: string;
+  architecture: Architecture;
+  released: string; // YYYY-MM
+  license: string;
+  huggingface: string; // org/repo path on huggingface.co
+  totalParams: string;
+  activeParams?: string;
+  contextLength: string;
+  modality: Modality;
+  modalityNote?: string;
+  useCase?: string;
+  precisions: string[];
+  deployment: string[];
+  vllmDocs?: string;
+  sglangDocs: string;
 }
 
 interface Backend {
-  name: BackendName
-  href: string
-  logoSrc: string
+  name: BackendName;
+  href: string;
+  logoSrc: string;
 }
 
-function getBackends(model: Model, logos: Record<BackendName, string>): Backend[] {
+function getBackends(
+  model: Model,
+  logos: Record<BackendName, string>
+): Backend[] {
   return [
     {
       name: 'vLLM',
@@ -45,7 +47,7 @@ function getBackends(model: Model, logos: Record<BackendName, string>): Backend[
       href: model.sglangDocs,
       logoSrc: logos.SGLang,
     },
-  ]
+  ];
 }
 
 const MODELS: Model[] = [
@@ -64,7 +66,8 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H200', '8× B200', '8× MI300X'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V3_2',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V3_2',
   },
   {
     name: 'DeepSeek-R1-0528',
@@ -80,7 +83,8 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H200', '8× B200', '8× MI300X'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-R1',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-R1',
   },
   {
     name: 'DeepSeek-V4-Pro',
@@ -97,7 +101,8 @@ const MODELS: Model[] = [
     useCase: 'Advanced reasoning, coding, and long-horizon agent workflows',
     precisions: ['FP4 + FP8 Mixed'],
     deployment: ['8× H200', '8× B200'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4',
   },
   {
     name: 'DeepSeek-V4-Flash',
@@ -113,27 +118,11 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['FP4 + FP8 Mixed'],
     deployment: ['4× H100', '4× B200'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4',
   },
 
   // ── GLM ──
-  {
-    name: 'GLM-5.2',
-    family: 'GLM',
-    company: 'Zhipu AI',
-    architecture: 'MoE',
-    released: '2026-06',
-    license: 'MIT',
-    huggingface: 'zai-org/GLM-5.2',
-    totalParams: '753B',
-    activeParams: '40B',
-    contextLength: '1M',
-    modality: 'Text',
-    useCase: 'Long-horizon agent workflows, reasoning, and coding',
-    precisions: ['BF16', 'FP8'],
-    deployment: ['8× H200', '8× B200', '8× MI355X'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/GLM/GLM-5.2',
-  },
   {
     name: 'GLM-5',
     family: 'GLM',
@@ -184,7 +173,8 @@ const MODELS: Model[] = [
     useCase: 'Long-context reasoning and agent workloads',
     precisions: ['FP8'],
     deployment: ['2-node 8× H200'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Xiaomi/MiMo-V2.5',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/Xiaomi/MiMo-V2.5',
   },
   {
     name: 'MiMo-V2.5',
@@ -201,7 +191,8 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image, Video, Audio',
     precisions: ['FP8'],
     deployment: ['8× H100', '4× B200'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Xiaomi/MiMo-V2.5',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/Xiaomi/MiMo-V2.5',
   },
 
   // ── Kimi ──
@@ -221,7 +212,8 @@ const MODELS: Model[] = [
     useCase: 'Multimodal long-context agents and visual reasoning',
     precisions: ['INT4'],
     deployment: ['8× H200', '8× B300', '4× MI350X'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2.6',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2.6',
   },
   {
     name: 'Kimi-K2.5',
@@ -238,7 +230,8 @@ const MODELS: Model[] = [
     modalityNote: 'Text, Image, Video',
     precisions: ['INT4'],
     deployment: ['8× H200', '8× B300', '4× MI350X'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2.5',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2.5',
   },
   {
     name: 'Kimi-K2-Thinking',
@@ -255,7 +248,8 @@ const MODELS: Model[] = [
     precisions: ['INT4'],
     deployment: ['8× H200', '8× B200', '8× MI300X'],
     vllmDocs: 'https://recipes.vllm.ai/moonshotai/Kimi-K2-Thinking',
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/Moonshotai/Kimi-K2',
   },
 
   // ── Ling ──
@@ -274,7 +268,8 @@ const MODELS: Model[] = [
     precisions: ['FP8'],
     deployment: ['2-node 8× H200'],
     vllmDocs: 'https://recipes.vllm.ai/inclusionAI/Ling-2.6-1T',
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/InclusionAI/Ling-2.6',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/InclusionAI/Ling-2.6',
   },
   {
     name: 'Ling-2.6-flash',
@@ -291,37 +286,18 @@ const MODELS: Model[] = [
     precisions: ['BF16'],
     deployment: ['4× H100', '4× H200'],
     vllmDocs: 'https://recipes.vllm.ai/inclusionAI/Ling-2.6-flash',
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/InclusionAI/Ling-2.6',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/InclusionAI/Ling-2.6',
   },
 
   // ── MiniMax ──
-  {
-    name: 'MiniMax-M3',
-    family: 'MiniMax',
-    company: 'MiniMax',
-    architecture: 'MoE',
-    released: '2026-06',
-    license: 'MiniMax Community License',
-    licenseUrl: 'https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/main/LICENSE',
-    huggingface: 'MiniMaxAI/MiniMax-M3',
-    totalParams: '428B',
-    activeParams: '23B',
-    contextLength: '1M',
-    modality: 'Multimodal',
-    modalityNote: 'Text, Image, Video',
-    precisions: ['BF16', 'MXFP8'],
-    deployment: ['8× H200', '4× B200', '8× MI300X'],
-    vllmDocs: 'https://recipes.vllm.ai/MiniMaxAI/MiniMax-M3',
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/MiniMax/MiniMax-M3',
-  },
   {
     name: 'MiniMax-M2.7',
     family: 'MiniMax',
     company: 'MiniMax',
     architecture: 'MoE',
     released: '2026-03',
-    license: 'Custom (Non-commercial)',
-    licenseUrl: 'https://github.com/MiniMax-AI/MiniMax-M2.7/blob/main/LICENSE',
+    license: 'MIT',
     huggingface: 'MiniMaxAI/MiniMax-M2.7',
     totalParams: '230B',
     activeParams: '10B',
@@ -329,7 +305,8 @@ const MODELS: Model[] = [
     modality: 'Text',
     precisions: ['FP8'],
     deployment: ['4× H100', '4× H200', '4× MI325X'],
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/MiniMax/MiniMax-M2.7',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/MiniMax/MiniMax-M2.7',
   },
 
   // ── Mistral ──
@@ -348,27 +325,11 @@ const MODELS: Model[] = [
     precisions: ['FP8'],
     deployment: ['4× H100', '4× H200', '2× B200'],
     vllmDocs: 'https://recipes.vllm.ai/mistralai/Mistral-Medium-3.5-128B',
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Mistral/Mistral-Medium-3.5',
+    sglangDocs:
+      'https://docs.sglang.io/cookbook/autoregressive/Mistral/Mistral-Medium-3.5',
   },
 
   // ── Gemma ──
-  {
-    name: 'gemma-4-12B-it',
-    family: 'Gemma',
-    company: 'Google',
-    architecture: 'Dense',
-    released: '2026-06',
-    license: 'Apache 2.0',
-    huggingface: 'google/gemma-4-12B-it',
-    totalParams: '11.95B',
-    contextLength: '256K',
-    modality: 'Multimodal',
-    modalityNote: 'Text, Image, Audio',
-    precisions: ['BF16'],
-    deployment: ['1× H100', '1× H200'],
-    vllmDocs: 'https://recipes.vllm.ai/Google/gemma-4-12B-it',
-    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Google/Gemma4',
-  },
   {
     name: 'gemma-4-31B-it',
     family: 'Gemma',
@@ -489,34 +450,48 @@ const MODELS: Model[] = [
     precisions: ['BF16', 'FP8'],
     deployment: ['8× H100', '8× H200', '8× MI300X'],
     sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Qwen/Qwen3.5',
-  }
-]
+  },
+];
 
-const FAMILIES = ['All', 'DeepSeek', 'Gemma', 'GLM', 'gpt-oss', 'Kimi', 'Ling', 'MiMo', 'MiniMax', 'Mistral', 'Qwen'] as const
-type Family = typeof FAMILIES[number]
+const FAMILIES = [
+  'All',
+  'DeepSeek',
+  'Gemma',
+  'GLM',
+  'gpt-oss',
+  'Kimi',
+  'Ling',
+  'MiMo',
+  'MiniMax',
+  'Mistral',
+  'Qwen',
+] as const;
+type Family = (typeof FAMILIES)[number];
 
 function ModelExplorer() {
-  const [family, setFamily] = useState<Family>('All')
-  const [selected, setSelected] = useState<string>('DeepSeek-V4-Pro')
+  const [family, setFamily] = useState<Family>('All');
+  const [selected, setSelected] = useState<string>('DeepSeek-V4-Pro');
 
   function sortModels(models: Model[]) {
     return models.slice().sort((a, b) => {
-      const fam = a.family.localeCompare(b.family, 'en', { sensitivity: 'base' })
-      if (fam !== 0) return fam
-      return b.released.localeCompare(a.released)
-    })
+      const fam = a.family.localeCompare(b.family, 'en', {
+        sensitivity: 'base',
+      });
+      if (fam !== 0) return fam;
+      return b.released.localeCompare(a.released);
+    });
   }
 
-  const visibleModels = sortModels(family === 'All'
-    ? MODELS
-    : MODELS.filter(m => m.family === family)
-  )
+  const visibleModels = sortModels(
+    family === 'All' ? MODELS : MODELS.filter((m) => m.family === family)
+  );
 
-  const current = MODELS.find(m => m.name === selected) ?? visibleModels[0] ?? MODELS[0]
+  const current =
+    MODELS.find((m) => m.name === selected) ?? visibleModels[0] ?? MODELS[0];
   const logos: Record<BackendName, string> = {
     vLLM: useBaseUrl('/img/vllm-logo.svg'),
     SGLang: useBaseUrl('/img/sglang-logo.png'),
-  }
+  };
   const familyLogos: Partial<Record<Family, string>> = {
     DeepSeek: useBaseUrl('/img/model-logos/deepseek.webp'),
     Gemma: useBaseUrl('/img/model-logos/gemma.webp'),
@@ -528,14 +503,14 @@ function ModelExplorer() {
     MiniMax: useBaseUrl('/img/model-logos/minimax.webp'),
     Mistral: useBaseUrl('/img/model-logos/mistral.webp'),
     Qwen: useBaseUrl('/img/model-logos/qwen.webp'),
-  }
-  const backends = getBackends(current, logos)
+  };
+  const backends = getBackends(current, logos);
 
   function pickFamily(f: Family) {
-    setFamily(f)
+    setFamily(f);
     if (f !== 'All') {
-      const first = sortModels(MODELS.filter(m => m.family === f))[0]
-      if (first) setSelected(first.name)
+      const first = sortModels(MODELS.filter((m) => m.family === f))[0];
+      if (first) setSelected(first.name);
     }
   }
 
@@ -544,12 +519,13 @@ function ModelExplorer() {
       <div className={styles.header}>
         <div className={styles.headerTitle}>Model Explorer</div>
         <div className={styles.headerDesc}>
-          Browse popular open-source LLMs and their architecture, scale, context, and typical GPU deployment.
+          Browse popular open-source LLMs and their architecture, scale,
+          context, and typical GPU deployment.
         </div>
       </div>
       <div className={styles.body}>
         <div className={styles.familyRow}>
-          {FAMILIES.map(f => (
+          {FAMILIES.map((f) => (
             <button
               key={f}
               type="button"
@@ -572,7 +548,7 @@ function ModelExplorer() {
 
         <div className={styles.split}>
           <div className={styles.list}>
-            {visibleModels.map(m => (
+            {visibleModels.map((m) => (
               <button
                 key={m.name}
                 type="button"
@@ -580,7 +556,9 @@ function ModelExplorer() {
                 onClick={() => setSelected(m.name)}
               >
                 <span className={styles.listItemName}>{m.name}</span>
-                <span className={`${styles.archTag} ${m.architecture === 'MoE' ? styles.archMoE : styles.archDense}`}>
+                <span
+                  className={`${styles.archTag} ${m.architecture === 'MoE' ? styles.archMoE : styles.archDense}`}
+                >
                   {m.architecture}
                 </span>
               </button>
@@ -605,7 +583,9 @@ function ModelExplorer() {
               <div className={styles.detailMeta}>
                 <span className={styles.companyTag}>{current.company}</span>
                 <span className={styles.releasedTag}>{current.released}</span>
-                <span className={`${styles.archBadge} ${current.architecture === 'MoE' ? styles.archMoE : styles.archDense}`}>
+                <span
+                  className={`${styles.archBadge} ${current.architecture === 'MoE' ? styles.archMoE : styles.archDense}`}
+                >
                   {current.architecture}
                 </span>
               </div>
@@ -619,7 +599,9 @@ function ModelExplorer() {
               <div className={styles.stat}>
                 <div className={styles.statLabel}>Active params</div>
                 <div className={styles.statValue}>
-                  {current.activeParams ?? <span className={styles.statMuted}>—</span>}
+                  {current.activeParams ?? (
+                    <span className={styles.statMuted}>—</span>
+                  )}
                 </div>
               </div>
               <div className={styles.stat}>
@@ -631,7 +613,9 @@ function ModelExplorer() {
                 <div className={styles.statValue}>
                   {current.modality}
                   {current.modalityNote && (
-                    <span className={styles.statSub}>{current.modalityNote}</span>
+                    <span className={styles.statSub}>
+                      {current.modalityNote}
+                    </span>
                   )}
                 </div>
               </div>
@@ -640,39 +624,32 @@ function ModelExplorer() {
             <div className={styles.kvRow}>
               <span className={styles.kvLabel}>Precision</span>
               <div className={styles.chips}>
-                {current.precisions.map(p => (
-                  <span key={p} className={styles.precisionChip}>{p}</span>
+                {current.precisions.map((p) => (
+                  <span key={p} className={styles.precisionChip}>
+                    {p}
+                  </span>
                 ))}
               </div>
             </div>
 
             <div className={styles.kvRow}>
               <span className={styles.kvLabel}>License</span>
-              {current.licenseUrl ? (
-                <a
-                  className={`${styles.kvValue} ${styles.kvLink}`}
-                  href={current.licenseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {current.license}
-                </a>
-              ) : (
-                <span className={styles.kvValue}>{current.license}</span>
-              )}
+              <span className={styles.kvValue}>{current.license}</span>
             </div>
 
             {current.useCase && (
               <div className={`${styles.kvRow} ${styles.useCaseRow}`}>
                 <span className={styles.kvLabel}>Use Case</span>
-                <span className={`${styles.kvValue} ${styles.useCaseValue}`}>{current.useCase}</span>
+                <span className={`${styles.kvValue} ${styles.useCaseValue}`}>
+                  {current.useCase}
+                </span>
               </div>
             )}
 
             <div className={styles.kvRow}>
               <span className={styles.kvLabel}>Backend</span>
               <div className={styles.backendLinks}>
-                {backends.map(backend => (
+                {backends.map((backend) => (
                   <a
                     key={backend.name}
                     className={styles.backendLink}
@@ -696,8 +673,10 @@ function ModelExplorer() {
             <div className={styles.kvRow}>
               <span className={styles.kvLabel}>Hardware</span>
               <div className={styles.chips}>
-                {current.deployment.map(d => (
-                  <span key={d} className={styles.deployChip}>{d}</span>
+                {current.deployment.map((d) => (
+                  <span key={d} className={styles.deployChip}>
+                    {d}
+                  </span>
                 ))}
               </div>
             </div>
@@ -705,7 +684,7 @@ function ModelExplorer() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default ModelExplorer
+export default ModelExplorer;

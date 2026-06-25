@@ -7,7 +7,6 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # On-prem LLM deployments
 
@@ -83,10 +82,10 @@ We work to provide a unified compute fabric — a layer of orchestration and abs
 
 If your on-prem cluster runs out of capacity, we allow you to seamlessly overflow traffic to cloud GPUs. This ensures you always have enough compute power as you scale.
 
-![overflow-to-cloud-gpus.png](./img/overflow-to-cloud-gpus.png)
+<Diagram name="overflow-to-cloud-gpus" alt="On-prem base capacity with dynamic overflow to cloud GPUs over time" />
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
 </div>
 
 <LinkList>

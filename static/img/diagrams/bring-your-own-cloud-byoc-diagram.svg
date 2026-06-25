@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 918 344" width="918" height="344">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <rect x="28.0" y="28.0" width="862.0" height="116.0" rx="6" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="459.0" y="48.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Control Plane (Vendor Managed)</text>
+  <rect x="56.0" y="72.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="131.0" y="97.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Console</text>
+  <rect x="220.0" y="72.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="295.0" y="97.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">CLI</text>
+  <rect x="384.0" y="72.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="459.0" y="97.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">API</text>
+  <rect x="548.0" y="72.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="623.0" y="97.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Scheduling</text>
+  <rect x="712.0" y="72.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="787.0" y="97.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Coordination</text>
+  <rect x="28.0" y="200.0" width="862.0" height="116.0" rx="6" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="459.0" y="220.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Data Plane (Customer VPC)</text>
+  <rect x="56.0" y="244.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="131.0" y="269.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Models</text>
+  <rect x="220.0" y="244.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="295.0" y="269.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Deployments</text>
+  <rect x="384.0" y="244.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="459.0" y="269.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Metrics</text>
+  <rect x="548.0" y="244.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="623.0" y="269.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPUs</text>
+  <rect x="712.0" y="244.0" width="150.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="787.0" y="269.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Storage</text>
+  <line x1="459.0" y1="158.0" x2="459.0" y2="186.0" stroke="#637bff" stroke-width="2"/><polygon points="0,0 -9.0,-6.0 -9.0,6.0" fill="#637bff" transform="translate(459.0,192.0) rotate(90.00)"/><polygon points="0,0 -9.0,-6.0 -9.0,6.0" fill="#637bff" transform="translate(459.0,152.0) rotate(270.00)"/>
+  <text x="477.0" y="172.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="start" font-weight="500" dominant-baseline="middle">IAM Access and Secure APIs</text>
+</svg>

@@ -7,7 +7,6 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
@@ -16,27 +15,42 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "3.8.1",
-    "@docusaurus/plugin-client-redirects": "3.8.1",
-    "@docusaurus/plugin-content-docs": "^3.8.1",
-    "@docusaurus/preset-classic": "3.8.1",
-    "@docusaurus/theme-common": "^3.8.1",
+    "@docusaurus/core": "^3.9.0",
+    "@docusaurus/faster": "^3.9.0",
+    "@docusaurus/plugin-content-docs": "^3.9.0",
+    "@docusaurus/preset-classic": "^3.9.0",
+    "@docusaurus/theme-classic": "^3.9.0",
+    "@docusaurus/theme-common": "^3.9.0",
+    "@mantine/core": "8.3.13",
+    "@mantine/hooks": "8.3.13",
+    "@mantine/notifications": "8.3.13",
     "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
-    "internal": "link:@docusaurus/theme-common/internal",
-    "prism-react-renderer": "^2.3.0",
+    "@tailwindcss/postcss": "^4.2.2",
+    "autoprefixer": "^10.4.19",
+    "clsx": "^2.1.0",
+    "docusaurus-markdown-source-plugin": "github:modular/markdown_docusaurus_plugin#8cf117040a70deb931d500d289ccc6975187ad78",
+    "docusaurus-plugin-sass": "^0.2.6",
+    "postcss": "^8.4.39",
+    "postcss-import": "^16.1.0",
+    "prism-react-renderer": "^2.1.0",
     "rc-tooltip": "^6.4.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "rehype-katex": "^7.0.1",
-    "remark-math": "^6.0.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "rehype-katex": "^7.0.0",
+    "remark-math": "^6.0.0",
+    "sass": "1.62.1",
+    "tailwindcss": "^3.4.4"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.8.1",
-    "@docusaurus/tsconfig": "3.8.1",
-    "@docusaurus/types": "3.8.1",
+    "@docusaurus/module-type-aliases": "^3.9.0",
+    "@docusaurus/tsconfig": "^3.9.0",
+    "@docusaurus/types": "^3.9.0",
+    "@types/node": "22.10.10",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "prettier": "^3.6.2",
-    "typescript": "~5.6.2"
+    "prettier-plugin-tailwindcss": "0.4.1",
+    "typescript": "^5.1.1"
   },
   "browserslist": {
     "production": [
@@ -51,6 +65,6 @@
     ]
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=18.0 <=25"
   }
 }

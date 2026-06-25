@@ -1,8 +1,8 @@
-import { PropsWithChildren } from 'react'
-import styles from './styles.module.css'
+import { PropsWithChildren } from 'react';
+import styles from './styles.module.css';
 
 function Features({ children }: PropsWithChildren) {
-  return <div className={styles.features}>{children}</div>
+  return <div className={styles.features}>{children}</div>;
 }
 
-export default Features
+export default Features;

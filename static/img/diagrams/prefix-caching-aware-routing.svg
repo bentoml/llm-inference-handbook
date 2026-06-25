@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 824 404" width="824" height="404">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <rect x="28.0" y="32.0" width="240.0" height="56.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="148.0" y="52.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Request A</text>
+  <text x="148.0" y="70.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#676d71" text-anchor="middle" font-weight="400" dominant-baseline="middle">“AI writer… write an email”</text>
+  <rect x="292.0" y="32.0" width="240.0" height="56.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="412.0" y="52.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Request B</text>
+  <text x="412.0" y="70.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#676d71" text-anchor="middle" font-weight="400" dominant-baseline="middle">“AI writer… report outline”</text>
+  <rect x="556.0" y="32.0" width="240.0" height="56.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="676.0" y="52.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Request C</text>
+  <text x="676.0" y="70.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#676d71" text-anchor="middle" font-weight="400" dominant-baseline="middle">“coding assistant… debug”</text>
+  <rect x="272.0" y="136.0" width="280.0" height="48.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="412.0" y="160.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Prefix Cache Aware Router</text>
+  <path d="M 148.0 88.0 L 148.0 112.0 L 372.4 112.0 L 372.4 130.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="372.4,136.0 366.4,127.0 378.4,127.0" fill="#637bff"/>
+  <path d="M 412.0 88.0 L 412.0 112.0 L 412.0 112.0 L 412.0 130.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="412.0,136.0 406.0,127.0 418.0,127.0" fill="#637bff"/>
+  <path d="M 676.0 88.0 L 676.0 112.0 L 451.6 112.0 L 451.6 130.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="451.6,136.0 445.6,127.0 457.6,127.0" fill="#637bff"/>
+  <rect x="28.0" y="236.0" width="240.0" height="140.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="148.0" y="254.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Worker 1</text>
+  <rect x="40.0" y="270.0" width="216.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="148.0" y="285.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Cached: AI writer</text>
+  <rect x="40.0" y="308.0" width="216.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="148.0" y="323.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">KV cache: 70%</text>
+  <text x="148.0" y="360.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#16a34a" text-anchor="middle" font-weight="600" dominant-baseline="middle">Can reuse “AI writer” ✓</text>
+  <path d="M 372.4 184.0 L 372.4 210.0 L 148.0 210.0 L 148.0 230.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="148.0,236.0 142.0,227.0 154.0,227.0" fill="#637bff"/>
+  <rect x="292.0" y="236.0" width="240.0" height="140.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="412.0" y="254.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Worker 2</text>
+  <rect x="304.0" y="270.0" width="216.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="412.0" y="285.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Cached: data analyst</text>
+  <rect x="304.0" y="308.0" width="216.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="412.0" y="323.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">KV cache: 40%</text>
+  <text x="412.0" y="360.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#16a34a" text-anchor="middle" font-weight="600" dominant-baseline="middle">Can reuse “AI writer” ✓</text>
+  <path d="M 412.0 184.0 L 412.0 210.0 L 412.0 210.0 L 412.0 230.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="412.0,236.0 406.0,227.0 418.0,227.0" fill="#637bff"/>
+  <rect x="556.0" y="236.0" width="240.0" height="140.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="676.0" y="254.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Worker 3</text>
+  <rect x="568.0" y="270.0" width="216.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="676.0" y="285.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Cached: coding asst.</text>
+  <rect x="568.0" y="308.0" width="216.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="676.0" y="323.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">KV cache: 30%</text>
+  <text x="676.0" y="360.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#16a34a" text-anchor="middle" font-weight="600" dominant-baseline="middle">Can reuse “coding” ✓</text>
+  <path d="M 451.6 184.0 L 451.6 210.0 L 676.0 210.0 L 676.0 230.0" fill="none" stroke="#637bff" stroke-width="2"/><polygon points="676.0,236.0 670.0,227.0 682.0,227.0" fill="#637bff"/>
+</svg>

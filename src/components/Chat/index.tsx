@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react'
-import Button from '@site/src/components/Button'
-import styles from './styles.module.css'
+import { useState, useEffect } from 'react';
+import Button from '@site/src/components/Button';
+import styles from './styles.module.css';
 
 function Chat() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (window?.innerWidth > 768) {
-      setIsOpen(true)
+      setIsOpen(true);
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -38,11 +38,12 @@ function Chat() {
           </button>
           <h4>Need Help with LLM Inference?</h4>
           <p>
-             We help top AI teams build high-performance LLM inference systems - fast, portable, no hardware lock-in.
+            We help top AI teams build high-performance LLM inference systems -
+            fast, portable, no hardware lock-in.
           </p>
           <div>
             <a
-              href="https://www.modular.com/request-demo?utm_source=bentoml_llm"
+              href="https://www.modular.com/request-demo?utm_source=llm_handbook"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.chatLink}
@@ -55,7 +56,7 @@ function Chat() {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default Chat
+export default Chat;

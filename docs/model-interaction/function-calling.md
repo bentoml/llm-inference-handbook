@@ -10,9 +10,9 @@ import LinkList from '@site/src/components/LinkList';
 
 # Function calling
 
-Function calling lets an LLM request specific tools when a task needs external data or an action outside the model itself. When you ask the model to do something that requires one of these tools, it can call that tool and use the result in its response.
+Function calling is like giving an LLM a toolbox with specific tools it can use to help you. When you ask the model to do something that requires one of these tools, it can "call" or use that tool to get the job done.
 
-![function-calling-diagram.png](./img/function-calling-diagram.png)
+<Diagram name="function-calling-diagram" alt="Function calling: the LLM emits a function call routed to external APIs" />
 
 Here is a specific example:
 

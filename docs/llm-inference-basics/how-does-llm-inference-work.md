@@ -11,7 +11,6 @@ keywords:
 import LinkList from '@site/src/components/LinkList';
 import ContextWindowSimulator from '@site/src/components/ContextWindowSimulator';
 import AutoregressiveDecodeStepper from '@site/src/components/AutoregressiveDecodeStepper';
-import LatencyTimelineVisualizer from '@site/src/components/LatencyTimelineVisualizer';
 
 # How does LLM inference work?
 
@@ -25,19 +24,19 @@ Before text can be processed by the model, it must first go through tokenization
 
 Each LLM has a vocabulary: a fixed set of tokens the model can represent. Each token in the vocabulary maps to a token ID. During tokenization, tokens are converted into token IDs before being passed into the model during inference.
 
-Here is a tokenization example for the sentence `The quick brown fox jumps over the lazy dog.` using [GPT-5's tokenizer](https://platform.openai.com/tokenizer):
+Here is a tokenization example for the sentence `BentoML supports custom LLM inference.` using [GPT-4o’s tokenizer](https://platform.openai.com/tokenizer):
 
 ```bash
-Tokens: "The", " quick", " brown", " fox", " jumps", " over", " the", " lazy", " dog", "."
+Tokens: "B", "ento", "ML", " supports", " custom", " L", "LM", " inference", "."
 
-Token IDs: [976, 4853, 19705, 68347, 65613, 1072, 290, 29082, 6446, 13]
+Token IDs: [33, 13969, 4123, 17203, 2602, 451, 19641, 91643, 13]
 ```
 
 For output, LLMs generate new tokens autoregressively. Starting with an initial sequence of tokens, the model predicts the next token based on everything it has seen so far. This repeats until a stopping criterion is met.
 
 ## The two phases of LLM inference
 
-For decoder-only Transformer models like GPT-4, the entire inference process breaks down into two phases: **prefill and decode**.
+For transformer-based models like GPT-4, the entire inference process breaks down into two phases: **prefill and decode**.
 
 ### Prefill
 
@@ -53,7 +52,7 @@ As a result, the prefill stage is compute-bound and often saturates GPU utilizat
 
 A key metric to monitor for prefill is the Time to First Token (TTFT), which measures the latency from prompt submission to first token generation. More details will be covered in the [inference optimization](/inference-optimization) chapter.
 
-![llm-inference-prefill.png](./img/llm-inference-prefill.png)
+<Diagram name="llm-inference-prefill" alt="LLM inference prefill pipeline showing tokenization, prefill, decode, and detokenization stages within Time to First Token (TTFT)" />
 
 ### Decode
 
@@ -75,13 +74,13 @@ Each newly generated token is appended to the growing sequence. This autoregress
 
 Finally, the sequence of generated tokens is decoded back into human-readable text.
 
-Compared with prefill, decode is more memory-bound because it requires the model weights and the growing KV cache to be frequently read from memory. KV caching stores these key and value matrices in memory so that, during subsequent token generation, the LLM only needs to compute the keys and values for the new tokens rather than recomputing everything from scratch.
+Compared with prefill, decode is more memory-bound because it frequently reads from the growing KV cache. KV caching stores these key and value matrices in memory so that, during subsequent token generation, the LLM only needs to compute the keys and values for the new tokens rather than recomputing everything from scratch.
 
 This KV caching mechanism significantly speeds up inference by avoiding redundant computation. However, it comes at the cost of increased memory consumption, since the cache grows with the length of the generated sequence. KV cache memory can become a serving bottleneck even when the model weights already fit on the GPU. Some inference systems reduce this pressure by compressing or quantizing the KV cache, while others move inactive cache blocks to cheaper memory through [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
 A key metric to monitor for decode is Inter-Token Latency (ITL), the time between the generation of consecutive tokens in a sequence.
 
-<LatencyTimelineVisualizer />
+<Diagram name="llm-inference-itl" alt="LLM inference pipeline showing inter-token latency across decode steps within end-to-end latency" />
 
 ### Collocating prefill and decode
 
@@ -99,7 +98,7 @@ The context window is the number of tokens an LLM can process in a single infere
 
 Technically, LLMs don’t have real memory. To keep context, every new request must resend all previous messages so the model can “see” the full conversation again (it happens under the hood and users don’t see it). In other words, continuity is maintained by reconstructing the context through the input prompt each time.
 
-![context-window.png](./img/context-window.png)
+<Diagram name="context-window" alt="How the conversation context grows across turns, increasing tokens processed" />
 
 This running text history is called the context window, which has a maximum length (e.g., 8K, 32K, or 128K tokens).
 
@@ -128,22 +127,6 @@ For now, autoregressive LLMs remain the mainstream architecture. However, dLLMs 
 
 ## FAQs
 
-### Are all LLMs decoder-only Transformer models?
-
-No. LLMs can be built using different Transformer architectures, including encoder-only, encoder-decoder, and decoder-only models.
-
-However, when people talk about LLMs today, they are usually referring to decoder-only Transformer models. They dominate modern generative AI applications such as chatbots and coding assistants. Most inference techniques discussed today, including KV caching, continuous batching, speculative decoding, and prefill-decode disaggregation, are designed around this architecture.
-
-| Architecture    | Examples                           | Prefill and decode phases                                                                             | Note                                                   |
-| --------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Encoder-only    | BERT, RoBERTa                      | No. The input is processed in a single forward pass with no autoregressive generation.                | Mostly used for classification, embeddings, and search |
-| Encoder-decoder | T5, FLAN-T5, BART                  | Partially. The encoder processes the input once, while the decoder generates tokens autoregressively. | Less common for frontier LLMs                          |
-| Decoder-only    | GPT, Llama, Qwen, DeepSeek, Claude | Yes. Inference consists of a prefill phase followed by a token-by-token decode phase.                 | The dominant architecture for modern LLMs              |
-
-:::note
-Unless stated otherwise, "LLM" in this handbook refers to decoder-only Transformer models.
-:::
-
 ### How are tokens selected via sampling?
 
 At each decode step, the model does not directly output a word. Instead, it produces a probability distribution over all possible tokens.
@@ -155,9 +138,14 @@ Before sampling, temperature is applied to the logits (the raw pre-softmax score
 - **Lower temperature**: the distribution becomes more peaked (a few tokens dominate)
 - **Higher temperature**: the distribution becomes flatter (probability spreads across more tokens)
 
-After applying temperature and converting logits into probabilities, a sampling strategy determines which token gets picked. Common ones include greedy decoding, top-k, and top-p.
+You can think of temperature as reshaping the preferences of the model. A higher temperature reduces the gap between likely and unlikely tokens, making rare tokens more likely to be selected.
 
-Learn more about [LLM inference parameters](../model-interaction/inference-parameters).
+After applying temperature and converting logits into probabilities, a sampling strategy determines which token gets picked. Common ones include:
+
+- **Greedy decoding**: Always select the highest probability token. It is deterministic, but prone to repetition.
+- **Top-k sampling:** Restrict candidates to the k most probable tokens, then samples from them. This avoids very unlikely tokens.
+- **Top-p (nucleus) sampling**: Select the smallest set of tokens whose cumulative probability ≥ *p*, then sample from them.
+- **Top-k + top-p combined**: Often used together in practice. Top-k removes extreme outliers first, then top-p refines the candidate set further.
 
 ### What happens step by step during LLM inference?
 
