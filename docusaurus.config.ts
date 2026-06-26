@@ -12,7 +12,7 @@ const config: Config = {
     'A practical handbook for engineers building, optimizing, scaling, and operating LLM inference systems in production.',
   favicon: 'images/modular-logo-docs.svg',
 
-  url: process.env.SITE_URL ?? 'https://handbook.modular.com',
+  url: 'https://handbook.modular.com',
   baseUrl: '/',
   trailingSlash: true,
 
