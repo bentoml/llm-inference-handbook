@@ -1,0 +1,53 @@
+agents:
+  pool: cpu
+  resource_class: medium
+
+steps:
+  - label: ':amazon-s3: Publish LLM Handbook PR preview'
+    if: build.pull_request.id != null
+    concurrency: 1
+    concurrency_group: llm-handbook-pr-${BUILDKITE_PULL_REQUEST}
+    plugins:
+      - https://github.com/modularml/infra/.buildkite/plugins/fast-checkout#main:
+          history: true
+      - https://github.com/modularml/infra/.buildkite/plugins/s3-publish#580b2ae30915dd38ad17ff4e1b2e7885fc1a5cfe:
+          domain: pr-${BUILDKITE_PULL_REQUEST}-llm-handbook.static.modular-staging.com
+          build_command: |
+            export SITE_URL="https://pr-${BUILDKITE_PULL_REQUEST}-llm-handbook.static.modular-staging.com"
+            corepack enable
+            pnpm install --frozen-lockfile
+            pnpm run build
+          content_dir: build
+          pr_status_context: llm-handbook/preview
+
+  - label: ':amazon-s3: Publish LLM Handbook to QA'
+    branches: qa
+    concurrency: 1
+    concurrency_group: llm-handbook-qa
+    plugins:
+      - https://github.com/modularml/infra/.buildkite/plugins/fast-checkout#main:
+          history: true
+      - https://github.com/modularml/infra/.buildkite/plugins/s3-publish#580b2ae30915dd38ad17ff4e1b2e7885fc1a5cfe:
+          domain: llm-handbook.static.modular-qa.com
+          build_command: |
+            export SITE_URL="https://llm-handbook.static.modular-qa.com"
+            corepack enable
+            pnpm install --frozen-lockfile
+            pnpm run build
+          content_dir: build
+
+  - label: ':amazon-s3: Publish LLM Handbook to prod'
+    branches: prod
+    concurrency: 1
+    concurrency_group: llm-handbook-prod
+    plugins:
+      - https://github.com/modularml/infra/.buildkite/plugins/fast-checkout#main:
+          history: true
+      - https://github.com/modularml/infra/.buildkite/plugins/s3-publish#580b2ae30915dd38ad17ff4e1b2e7885fc1a5cfe:
+          domain: llm-handbook.static.modular.com
+          build_command: |
+            export SITE_URL="https://handbook.modular.com"
+            corepack enable
+            pnpm install --frozen-lockfile
+            pnpm run build
+          content_dir: build
