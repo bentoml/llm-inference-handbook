@@ -5,8 +5,10 @@ keywords:
     - Prefill-decode disaggregation
     - Disaggregating prefill and decode
     - Prefill, decode
+    - Cross-cluster prefill, cross-datacenter prefill
     - Distributed LLM inference
-    - LLM inference optimization, LLM inference optimization techniques​
+    - KV cache transfer
+    - LLM inference optimization, LLM inference optimization techniques
     - Speed up LLM inference
 ---
 
@@ -16,8 +18,8 @@ import LinkList from '@site/src/components/LinkList';
 
 To understand prefill-decode (PD) disaggregation, let’s briefly review how [LLM inference works](../llm-inference-basics/how-does-llm-inference-work) in two steps:
 
-- **Prefill**: Processes the entire sequence in parallel and store key and value vectors from the attention layers in a KV cache. Because it’s handling all the tokens at once, prefill is compute-bound, but not too demanding on GPU memory.
-- **Decode**: Generates the output tokens, one at a time, by reusing the KV cache built earlier. Different from prefill, decode requires fast memory access but lower compute.
+- **Prefill**: Processes the entire sequence in parallel and store key and value vectors from the attention layers in a KV cache. Because it’s handling all the tokens at once with large matrix operations, prefill is compute-bound, but not too demanding on GPU memory.
+- **Decode**: Generates the output tokens, one at a time, by reusing the KV cache built earlier. Each generated token requires repeatedly loading model weights and accessing an ever-growing KV cache. Therefore, decode requires fast memory access but lower compute.
 
 <Diagram name="llm-inference-flow" alt="End-to-end LLM inference flow from tokenization through decode to output" />
 
@@ -42,7 +44,7 @@ The idea of PD disaggregation is simple: separate these two very different tasks
 - **Parallel execution**: Prefill and decode phases don’t interfere with each other anymore. You can run them more efficiently in parallel, which means better concurrency and throughput.
 - **Independent tuning**: You can implement different optimization techniques (like tensor or pipeline parallelism) for prefill and decode to better meet your goals for TTFT and ITL.
 
-Several open-source frameworks and projects are actively exploring PD disaggregation, including [SGLang](https://github.com/sgl-project/sglang/issues/4655), [vLLM](https://docs.vllm.ai/en/latest/features/disagg_prefill.html), [Dynamo](https://docs.nvidia.com/dynamo/latest/architecture/disagg_serving.html), and [llm-d](https://docs.google.com/document/d/1FNN5snmipaTxEA1FGEeSH7Z_kEqskouKD1XYhVyTHr8/edit?pli=1&tab=t.0).
+Several open-source frameworks and projects have already added support for PD disaggregation, including [SGLang](https://docs.sglang.io/docs/advanced_features/pd_disaggregation), [vLLM](https://docs.vllm.ai/en/latest/features/disagg_prefill.html), [Dynamo](https://docs.nvidia.com/dynamo/dev/user-guides/disaggregated-serving), and [llm-d](https://llm-d.ai/docs/architecture/advanced/disaggregation).
 
 ## Disaggregation isn’t always a silver bullet
 
@@ -62,9 +64,64 @@ As promising as PD disaggregation sounds, it’s not a one-size-fits-all fix.
 
 - **Cache compatibility matters**: The prefill worker and decode worker must agree on KV layout, page size, dtype, attention variant, and any extra cache metadata. Heterogeneous KV types (e.g., quantized KV caches, VLM encoder states, and speculative decoding caches) can make this handoff more complex than moving one standard full-attention KV tensor.
 
+## Cross-cluster prefill-decode disaggregation
+
+In many disaggregated systems, prefill and decode machines are neighbors in the same cluster, wired together by a high-speed, low-latency interconnect.
+
+Cross-cluster (or cross-datacenter) PD disaggregation means you split the workflow so that the prefill and decode phases run in entirely separate clusters, sometimes in different datacenters or regions.
+
+### Why split prefill and decode across clusters?
+
+Two main drivers are pushing infrastructure toward this distributed model:
+
+- **The right chip for the right job**. Prefill is compute-heavy, while decode is memory-bandwidth-heavy. Silicon design is diverging to match these distinct needs:
+    - NVIDIA Rubin CPX is built to maximize prefill throughput.
+    - Groq LPU is engineered for rapid decode bandwidth.
+    
+    The problem is these chips don’t always live in the same place. They are often deployed in separate clusters, grouped by hardware type. If you force prefill and decode to stay together, you can’t fully use the best hardware for each phase. Splitting them lets you run long prefills on compute-optimized machines and keep decode on bandwidth-optimized ones.
+    
+- **Flexibility**. In production, prefill and decode don’t scale evenly. Traffic and prompt lengths change. Prefix cache hit rates change. Sometimes prefill becomes the bottleneck; sometimes decode does.
+    
+    If both stages are locked into one cluster, you’re stuck with a fixed ratio of resources. This can lead to overprovisioning on one side and bottlenecks on the other. Splitting the phases across clusters lets you grow each side on its own.
+    
+### The core problem: KV cache movement
+
+After prefill finishes, the KV cache must be sent to the decode cluster. Inside one cluster, this is cheap. Across clusters, it can be expensive. Two things make this tricky:
+
+- **KV cache can be large**. Sending it over the network can erase any gain from faster prefill.
+- **Not all requests benefit**. Short prompts or cached prompts don’t gain much from remote prefill, but you still pay the network cost.
+
+So if you naively send everything to a remote prefill cluster, performance can actually get worse.
+
+### Prefill-as-a-Service
+
+[This paper](https://arxiv.org/abs/2604.15039) introduces Prefill-as-a-Service (PrfaaS) as a practical way to make this setup work. The idea is simple: don’t send everything across clusters. Be selective.
+
+- Keep short or cached requests local
+- Send only long, uncached prefills to remote compute clusters
+
+This turns cross-cluster PD into a routing problem. The scheduler decides where each request should go based on prompt length (especially uncached tokens), prefix cache locality, prefill queue pressure, decode capacity, and available network bandwidth.
+
+The paper reports strong gains with this selective approach over the standard PD baseline:
+
+- 54% higher throughput
+- 64% lower P90 TTFT
+
+These gains come from better resource utilization, not just faster hardware.
+
+### When should you use cross-cluster PD disaggregation?
+
+This deployment option works best when:
+
+- Your workload has many long, uncached prompts
+- You have a scheduler that understands cache locality, queueing, and bandwidth
+
+If most of your requests are short or cache-heavy, it usually simpler and faster to just keep everything in one cluster.
+
 <LinkList>
   ## Additional resources
   * [DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving](https://arxiv.org/abs/2401.09670)
   * [SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills](https://arxiv.org/pdf/2308.16369)
-  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache)
+  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=bentoml_llm)
+  * [Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter](https://arxiv.org/abs/2604.15039)
 </LinkList>

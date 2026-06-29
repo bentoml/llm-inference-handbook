@@ -61,7 +61,7 @@ High-level libraries help you quickly get started, but they only cover the opera
 
 AI compilers are a layer of software that sit between your high-level model code (written in something like PyTorch or TensorFlow) and the actual hardware that runs it. Their job is to automatically transform and optimize the computation so it runs faster, without you having to rewrite anything by hand.
 
-A simple example is `matmul + bias + activation`. A naive implementation may run these as separate kernels, writing intermediate results to global memory each time. A compiler can often fuse that sequence, keep more intermediate data on chip, reduce extra HBM traffic, thus improving efficiency.
+A simple example is `matmul + bias + activation`. A naive implementation may run these as separate kernels, writing intermediate results to global memory each time. A compiler can often fuse that sequence, keep more intermediate data on chip, reduce extra HBM traffic, thus improving efficiency.
 
 ### Why do we need AI compilers?
 
@@ -91,7 +91,7 @@ Here are several well-known AI compilers.
 
 #### Apache TVM
 
-[Apache TVM](https://tvm.apache.org/) is one of the best-known open compiler stacks in this space. You write your model in frameworks like PyTorch or TensorFlow, TVM converts it to its own graph IR (Intermediate Representation), then generates optimized kernels for the target hardware.
+[Apache TVM](https://tvm.apache.org/) is one of the best-known open compiler stacks in this space. You write your model in frameworks like PyTorch or TensorFlow, TVM converts it to its own graph IR (Intermediate Representation), then generates optimized kernels for the target hardware.
 
 One of TVM’s key innovations is **auto-tuning**. TVM tries thousands of different ways to tile and schedule a computation, benchmarking each one, and picking the fastest. It's like brute-force searching for the best algorithm rather than hand-coding it.
 
@@ -104,7 +104,7 @@ However, TVM faces several important challenges.
 
 #### XLA and OpenXLA
 
-[XLA](https://openxla.org/xla) came out of Google’s ecosystem and is tightly integrated with frameworks like TensorFlow and JAX, as well as TPU execution. It is strong at graph-level rewrites, layout optimization, and backend-specific lowering inside that stack.
+[XLA](https://openxla.org/xla) came out of Google’s ecosystem and is tightly integrated with frameworks like TensorFlow and JAX, as well as TPU execution. It is strong at graph-level rewrites, layout optimization, and backend-specific lowering inside that stack.
 
 For users already working in JAX or TensorFlow, this tight integration is a major advantage. When the compiler can see the full computation graph, XLA can aggressively fuse and reorder operations to achieve strong performance.
 
@@ -122,8 +122,8 @@ Like TVM, XLA faces several practical limitations:
 
 Learn more about AI compilers in Chris Lattner’s blog posts:
 
-- [What about TVM, XLA, and AI compilers](https://www.modular.com/blog/democratizing-ai-compute-part-6-what-about-ai-compilers)
-- [What about the MLIR compiler infrastructure](https://www.modular.com/blog/democratizing-ai-compute-part-8-what-about-the-mlir-compiler-infrastructure)
+- [What about TVM, XLA, and AI compilers](https://www.modular.com/blog/democratizing-ai-compute-part-6-what-about-ai-compilers?utm_source=bentoml_llm)
+- [What about the MLIR compiler infrastructure](https://www.modular.com/blog/democratizing-ai-compute-part-8-what-about-the-mlir-compiler-infrastructure?utm_source=bentoml_llm)
 
 ---
 
@@ -172,7 +172,7 @@ The important thing to notice is not the syntax. It is the programming model:
 
 - You work with blocks or tiles of data (`tl.arange`, `tl.load`)
 - You explicitly load and store data
-- You do not directly manage `threadIdx`, `blockIdx`, or most warp-level details
+- You do not directly manage `threadIdx`, `blockIdx`, or most warp-level details
 
 That makes Triton a good fit for modern AI kernel work. It is often used for custom attention kernels, fused pointwise operations, and research-driven kernels that sit outside the standard library catalog.
 
@@ -190,7 +190,7 @@ This is why many see Triton as a middle layer. It helps those who can write kern
 
 Sometimes the right move is simple: Drop the abstractions and write a custom kernel for the exact bottleneck.
 
-This is where breakthroughs like FlashAttention come from.
+This is where breakthroughs like FlashAttention come from.
 
 This is an important pattern in LLM inference. New model architectures often bring new attention variants, tensor layouts, or fusion opportunities. Libraries may lag behind. Compilers don’t optimize them well. At that point, custom kernels become the frontier path.
 
@@ -310,7 +310,7 @@ TVM and XLA work at a higher graph or compiler level. They try to automate more 
 
 <LinkList>
   ## Additional resources
-  * [What about TVM, XLA, and AI compilers?](https://www.modular.com/blog/democratizing-ai-compute-part-6-what-about-ai-compilers)
-  * [What about Triton and Python eDSLs?](https://www.modular.com/blog/democratizing-ai-compute-part-7-what-about-triton-and-python-edsls)
-  * [What about the MLIR compiler infrastructure?](https://www.modular.com/blog/democratizing-ai-compute-part-8-what-about-the-mlir-compiler-infrastructure)
+  * [What about TVM, XLA, and AI compilers?](https://www.modular.com/blog/democratizing-ai-compute-part-6-what-about-ai-compilers?utm_source=bentoml_llm)
+  * [What about Triton and Python eDSLs?](https://www.modular.com/blog/democratizing-ai-compute-part-7-what-about-triton-and-python-edsls?utm_source=bentoml_llm)
+  * [What about the MLIR compiler infrastructure?](https://www.modular.com/blog/democratizing-ai-compute-part-8-what-about-the-mlir-compiler-infrastructure?utm_source=bentoml_llm)
 </LinkList>

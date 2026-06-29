@@ -5,7 +5,7 @@ keywords:
     - vLLM, Hugging Face TGI, TensorRT-LLM
     - PagedAttention
     - KV cache, KV cache optimization, KV caching
-    - LLM inference optimization, LLM inference optimization techniques​
+    - LLM inference optimization, LLM inference optimization techniques
     - Speed up LLM inference
 ---
 
@@ -29,9 +29,9 @@ That allocation happens per active request, before accounting for batch size and
 
 The result is lower effective batch size, more memory fragmentation, and fewer concurrent requests. 
 
-## How does PagedAttention work
+## How does PagedAttention work?
 
-PagedAttention breaks this big chunk into smaller blocks, kind of like pages in a book. In other words, the KV cache is stored in non-contiguous blocks. It then uses a lookup table to keep track of these blocks. The LLM only loads the blocks it needs, instead of loading everything at once.
+PagedAttention breaks this big chunk into smaller blocks, kind of like pages in a book. In other words, the KV cache is stored in non-contiguous blocks. It then uses a lookup table to keep track of these blocks. The LLM only loads the blocks it needs, instead of loading everything at once.
 
 This saves memory and makes the whole process more efficient. It even allows the same blocks to be shared across different outputs if needed.
 

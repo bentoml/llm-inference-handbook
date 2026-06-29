@@ -2,7 +2,7 @@
 sidebar_position: 9
 description: Understand the differences between data, tensor, pipeline, expert and hybrid parallelisms.
 keywords:
-    - LLM inference optimization, LLM inference optimization techniques​
+    - LLM inference optimization, LLM inference optimization techniques
     - Data parallelism, tensor parallelism, pipeline parallelism, expert parallelism and hybrid parallelism
     - Speed up LLM inference
 ---
@@ -11,7 +11,7 @@ import LinkList from '@site/src/components/LinkList';
 
 # Data, tensor, pipeline, expert and hybrid parallelisms
 
-Parallelism strategies are essential for achieving high-performance computing in modern AI systems. They allow workloads to be distributed across multiple devices, maximizing cost efficiency and improving throughput. Many new parallelization strategies continue to emerge as models grow larger and more complex.
+Parallelism strategies distribute inference work across multiple devices to improve throughput, fit larger models, and use hardware more efficiently. New parallelization strategies continue to emerge as models grow larger and more complex.
 
 ## Data parallelism
 

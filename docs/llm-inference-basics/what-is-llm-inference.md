@@ -43,6 +43,19 @@ In the LLM space, people often use **inference server** or **inference framework
 
 Popular [inference frameworks](../getting-started/choosing-the-right-inference-framework) include vLLM, SGLang, MAX, and TensorRT-LLM. They’re designed to maximize GPU efficiency while making LLMs easier to deploy at scale.
 
+## What's the difference between serving and inference?
+
+Inference is the computation. Serving is the production process that makes that computation available to users and applications.
+
+In everyday conversations, people often use the terms interchangeably because modern frameworks handle both. Tools like vLLM, SGLang, and TensorRT-LLM not only run inference efficiently but also manage requests and expose APIs. As a result, "inference framework" and "serving framework" often refer to the same systems.
+
+Strictly speaking, however, they're not the same thing, and the distinction matters the moment you start designing infrastructure.
+
+- Inference is the forward pass: tokens in, next-token distribution out, repeated through prefill and the decode loop. This is a computational operation. You can run inference in a Jupyter notebook or a Python script with no server in sight. That's still inference, but you are not serving anything.
+- Serving is everything required to turn that capability into a reliable production service: an API surface (HTTP/gRPC), request queuing and scheduling, batching across concurrent requests, load balancing across replicas, autoscaling, model loading and version management, health checks, observability, and resource allocation.
+
+So when someone uses them interchangeably, they're usually being loose about the fact that their inference engine happens to also be their server, which is perfectly common.
+
 ## What is inference optimization?
 
 **Inference optimization** is a set of techniques to make LLM inference faster, cheaper, and more efficient. It’s about reducing latency, improving throughput, and lowering hardware costs without hurting model quality.
@@ -70,7 +83,7 @@ But here’s the thing: **the further you go, the more inference matters.**
 
 As your application grows, you'll eventually run into limits (e.g., cost, latency, customization, or compliance) that serverless APIs can’t fully address. That’s when teams start exploring hybrid or self-hosted solutions.
 
-Understanding LLM inference early gives you a clear edge. It helps you make smarter choices, avoid surprises, and build more scalable systems.
+Understanding LLM inference (e.g., [batching](../inference-optimization/static-dynamic-continuous-batching), [caching](../inference-optimization/prefix-caching), [quantization](../model-preparation/llm-quantization) and [routing](../inference-optimization/inference-routing)) early gives you a clear edge. It helps you evaluate the features of different model service providers and [inference frameworks](../getting-started/choosing-the-right-inference-framework), so you can make smarter choices, avoid surprises, and build more scalable systems.
 
 - **If you're a developer or engineer**: Inference is becoming as fundamental as databases or APIs in modern AI application development. Knowing how it works helps you design faster, cheaper, and more reliable systems. Poor inference implementation can lead to slow response time, high compute costs, and a poor user experience.
 - **If you're a technical leader**: Inference efficiency directly affects your bottom line. A poorly optimized setup can cost 10× more in GPU hours while delivering worse performance. Understanding inference helps you evaluate vendors, make build-vs-buy decisions, and set realistic performance goals for your team.
