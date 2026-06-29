@@ -99,6 +99,10 @@ Quantization may not be a good choice if:
 - Your model is already small (quantization offers limited benefit here).
 - Your deployment hardware doesn't support quantized formats.
 
+:::tip
+The quantized variants of many popular foundation models are already available on Hugging Face, so you don't need to quantize the models yourself. You can often find them in the model tree section.
+:::
+
 ## Quantization methods
 
 Several advanced quantization techniques have been developed to make LLMs more efficient without significant loss in performance.
