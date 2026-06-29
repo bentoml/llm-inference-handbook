@@ -6,7 +6,6 @@ keywords:
     - GPU inference
 ---
 
-import LinkList from '@site/src/components/LinkList';
 import GPUTable from '@site/src/components/GPUTable';
 
 # Choosing the right GPU
@@ -70,7 +69,7 @@ When selecting GPUs, remember that raw benchmark numbers don’t tell the whole 
 
 ### GPU memory (VRAM)
 
-[VRAM](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference) sets the ceiling on model size and context length because everything the GPU touches during inference must live in the memory: the model weights, the activations, and the KV cache. Weights determine the baseline footprint, so the model has to fit before you can serve it at all. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized. The KV cache then consumes whatever VRAM is left, which limits how long a context you can support.
+[VRAM](../kernel-optimization/gpu-architecture-fundamentals) sets the ceiling on model size and context length because everything the GPU touches during inference must live in the memory: the model weights, the activations, and the KV cache. Weights determine the baseline footprint, so the model has to fit before you can serve it at all. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized. The KV cache then consumes whatever VRAM is left, which limits how long a context you can support.
 
 In production, the major challenge is often the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](../infrastructure-and-operations/distributed-inference) techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
 
@@ -121,16 +120,9 @@ For enterprise AI teams, a bigger challenge is the **GPU CAP Theorem**: a GPU in
 | On-demand **Availability** | Medium | High | Low | Low |
 | **Price** | High | Medium | Low | Medium |
 
-For more information, see [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference).
-
 ### Ecosystem and framework support
 
 A GPU is only as effective as the software that supports it. NVIDIA benefits from a mature CUDA Toolkit and TensorRT-LLM ecosystem. AMD’s ROCm stack is improving steadily, with growing support across PyTorch, vLLM, and SGLang.
-
-Read the blog posts about the data center GPUs from NVIDIA and AMD for details:
-
-- [NVIDIA Data Center GPUs Explained: From A100 to B200 and Beyond](https://www.bentoml.com/blog/nvidia-data-center-gpus-explained-a100-h200-b200-and-beyond)
-- [AMD Data Center GPUs Explained: MI250X, MI300X, MI350X and Beyond](https://www.bentoml.com/blog/amd-data-center-gpus-mi250x-mi300x-mi350x-and-beyond)
 
 ## Matching GPUs to open-source LLMs
 
@@ -186,8 +178,6 @@ You can start by checking open-source leaderboards from frameworks such as vLLM,
 
 However, these frameworks usually require manual configuration and tuning, which can be time-consuming.
 
-A faster option is [llm-optimizer](https://www.bentoml.com/blog/announcing-llm-optimizer), an open-source tool for benchmarking and optimizing LLM inference. It works across multiple inference frameworks and supports any open-source LLM. It lets you define constraints such as *“TTFT under 200ms”* or *“P99 ITL below 10ms.”* This helps you quickly find the optimal configurations that meet your performance goals.
-
 ### Where can I buy or rent GPU servers?
 
 You can either buy on-premises GPU servers or rent cloud GPUs depending on your scale, control needs, and budget.
@@ -197,8 +187,6 @@ Cloud providers such as AWS, Google Cloud, and Azure let you rent H100, H200, or
 NeoClouds like CoreWeave and Nebius provide lower-cost access and flexible billing. However, they typically offer less control and fewer compliance guarantees for regulated or enterprise environments.
 
 If you prefer full ownership, you can purchase GPU servers outright from original equipment (OE) partners like Dell, GIGABYTE, or HPE, which work directly with NVIDIA and AMD. This route gives you maximum control, but also means higher upfront costs and longer procurement cycles.
-
-For details, read the [2026 GPU Procurement Guide](https://www.bentoml.com/blog/where-to-buy-or-rent-gpus-for-llm-inference).
 
 ### How can I check what GPU I have?
 
@@ -246,11 +234,3 @@ nvidia-smi
 This means your driver supports up to CUDA 12.2 runtime. Your framework can be built with CUDA 12.2, 12.1, 11.8, etc., but not 12.3 or newer.
 
 To upgrade, download the official [CUDA toolkit](https://developer.nvidia.com/cuda-downloads) and [driver](https://www.nvidia.com/en-us/drivers/) packages.
-
-<LinkList>
-  ## Additional resources
-  * [NVIDIA Data Center GPUs Explained: From A100 to B200 and Beyond](https://www.bentoml.com/blog/nvidia-data-center-gpus-explained-a100-h200-b200-and-beyond)
-  * [AMD Data Center GPUs Explained: MI250X, MI300X, MI350X and Beyond](https://www.bentoml.com/blog/amd-data-center-gpus-mi250x-mi300x-mi350x-and-beyond)
-  * [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference)
-  * [What is GPU Memory and Why it Matters for LLM Inference](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference)
-</LinkList>

@@ -6,8 +6,6 @@ keywords:
     - LLM infrastructure
 ---
 
-import LinkList from '@site/src/components/LinkList';
-
 # On-prem LLM deployments
 
 On-prem LLM deployment is a popular choice for teams that need tighter control over data, infrastructure, and cost. Unlike serverless inference APIs, you own the full stack, from GPUs and networking to scaling and monitoring. Enterprises typically adopt this pattern in private data centers or air-gapped environments, often with open-source models.
@@ -71,7 +69,7 @@ In a hybrid setup, your on-prem cluster serves as the baseline for secure, predi
 - **Availability**: Use cloud GPUs to handle spikes in usage without overbuilding on-prem hardware.
 - **Cost**: Rely on lower-cost reserved GPUs for steady demand in your on-prem environment, and only pay for overflowed cloud GPUs during peaks.
 
-Hybrid deployments give you flexibility without forcing you to compromise entirely on control, availability, or price. Many enterprises benefit from this pattern: security and compliance on-prem, elasticity in the cloud. See the blog post [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference) to learn more.
+Hybrid deployments give you flexibility without forcing you to compromise entirely on control, availability, or price. Many enterprises benefit from this pattern: security and compliance on-prem, elasticity in the cloud.
 
 ---
 
@@ -87,10 +85,3 @@ If your on-prem cluster runs out of capacity, we allow you to seamlessly overflo
 <div style={{ margin: '3rem 0' }}>
 <a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
 </div>
-
-<LinkList>
-  ## Additional resources
-  * [Inference Platform: The Missing Layer in On-Prem LLM Deployments](https://www.bentoml.com/blog/inference-platform-the-missing-layer-in-on-prem-llm-deployments)
-  * [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference)
-  * [Should You Build or Buy Your Inference Platform?](https://www.bentoml.com/blog/should-you-build-or-buy-your-inference-platform)
-</LinkList>

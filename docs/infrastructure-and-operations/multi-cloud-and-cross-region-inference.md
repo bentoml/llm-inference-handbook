@@ -6,8 +6,6 @@ keywords:
     - Hybrid inference
 ---
 
-import LinkList from '@site/src/components/LinkList';
-
 # Multi-cloud and cross-region inference
 
 When teams scale LLM inference, they rarely keep everything in one place. Instead, they spread workloads across multiple clouds or different regions within the same cloud. This way, the system can serve requests from the most suitable location.
@@ -112,10 +110,3 @@ This path reduces time-to-market and operational overhead, but you should carefu
 - **Extra latency**: How much latency is introduced during cross-region rerouting.
 - **Region and provider flexibility**: The ability to select the regions or providers that best match your requirements.
 - **Failover cost**: The additional costs tied to cross-region failover, such as management, data transfer, and network usage.
-
-<LinkList>
-  ## Additional resources
-  * [Inference Platform: The Missing Layer in On-Prem LLM Deployments](https://www.bentoml.com/blog/inference-platform-the-missing-layer-in-on-prem-llm-deployments)
-  * [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference)
-  * [Should You Build or Buy Your Inference Platform?](https://www.bentoml.com/blog/should-you-build-or-buy-your-inference-platform)
-</LinkList>

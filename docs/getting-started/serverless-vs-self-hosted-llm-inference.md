@@ -8,8 +8,6 @@ keywords:
     - LLM inference cost
 ---
 
-import LinkList from '@site/src/components/LinkList';
-
 # Serverless vs. self-hosted LLM inference
 
 When building applications with LLMs, you typically have two main infrastructure choices: **serverless** (managed APIs) and **self-hosted** solutions. These are useful endpoints for comparison, but production deployments can sit anywhere between them. Each offers distinct trade-offs in ease of use, customization, scalability, and compliance.
@@ -76,8 +74,6 @@ It's also worth noting that both serverless and self-hosted options are getting 
 - Projects like vLLM and SGLang improve model inference efficiency.
 - Better-performing open-source models that require fewer resources with different optimization techniques.
 
-For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
-
 ## When to start serverless and when to take control
 
 If you're just getting started with LLMs, serverless APIs are a great way to move fast. They make prototyping easy, lower the barrier to entry, and let you validate use cases without dealing with infrastructure.
@@ -86,7 +82,7 @@ But that simplicity comes with trade-offs. Serverless APIs still leave you with 
 
 As your AI use cases grow, along with your need for performance, privacy, and differentiation, the limitations of serverless become hard to ignore. Every company building serious AI products needs more than just a good model. **The inference layer is what brings that model to life**. Relying solely on third-party APIs might get your app off the ground, but it won’t give you the long-term control or competitive edge you need. Compared with self-hosted inference, serverless model APIs make it hard to get fine-grained control over performance tuning and cost optimization. You are just calling the same API as everyone else. And that lack of customization hamstrings your ability to build lasting advantage:
 
-1. **Compound AI systems** are how top teams win. [They chain multiple models and tools into rich, flexible workflows](https://www.bentoml.com/blog/a-guide-to-compound-ai-systems).
+1. **Compound AI systems** are how top teams win. They chain multiple models and tools into rich, flexible workflows.
 2. **Tailored inference stacks** let you architect for precise SLAs and cost targets across different workloads.
 3. **Fine-tuned and custom models** give you domain-specific accuracy and IP protection that generic APIs can’t match.
 
@@ -136,11 +132,3 @@ Proprietary models often lead in general-purpose reasoning, coding, and conversa
 Open-source models, such as Llama, Qwen, and DeepSeek, offer far more control, transparency, and flexibility. You can fine-tune them, deploy them anywhere, and optimize for latency and cost. The gap between open and proprietary models has narrowed quickly, especially for domain-specific workloads.
 
 For example, when you fine-tune an open-source LLM with proprietary data in legal, medical or financial contexts, it can outperform proprietary models in that specific domain. This is exactly the kind of specialization many industries need today.
-
-<LinkList>
-  ## Additional resources
-  * [Secure and Private DeepSeek Deployment with BentoML](https://www.bentoml.com/blog/secure-and-private-deepseek-deployment-with-bentoml)
-  * [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments)
-  * [Building RAG Systems with Open-Source and Custom AI Models](https://www.bentoml.com/blog/building-rag-with-open-source-and-custom-ai-models)
-  * [ChatGPT Usage Limits: What They Are and How to Get Rid of Them](https://www.bentoml.com/blog/chatgpt-usage-limits-explained-and-how-to-remove-them)
-</LinkList>

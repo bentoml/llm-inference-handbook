@@ -208,8 +208,6 @@ Both chain multiple model calls, but a multi-model pipeline is a mostly fixed gr
 
 <LinkList>
   ## Additional resources
-  * [A Guide to Model Composition](https://medium.com/bentoml/a-guide-to-model-composition-09fbff8e62a5)
-  * [BentoML Model Composition Documentation](https://docs.bentoml.com/en/latest/get-started/model-composition.html)
   * [Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/abs/2312.10997)
   * [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](https://arxiv.org/abs/2301.12597)
 </LinkList>
