@@ -12,7 +12,7 @@ import LinkList from '@site/src/components/LinkList';
 
 # Serverless vs. self-hosted LLM inference
 
-When building applications with LLMs, you typically have two main infrastructure choices: **serverless** (managed APIs) and **self-hosted** solutions. Each offers distinct advantages and trade-offs in terms of ease of use, customization, scalability, and compliance.
+When building applications with LLMs, you typically have two main infrastructure choices: **serverless** (managed APIs) and **self-hosted** solutions. These are useful endpoints for comparison, but production deployments can sit anywhere between them. Each offers distinct trade-offs in ease of use, customization, scalability, and compliance.
 
 ## Serverless LLM inference
 
@@ -73,18 +73,18 @@ It's also worth noting that both serverless and self-hosted options are getting 
   </figure>
     
 - GPU hardware is becoming more efficient and affordable.
-- Projects like vLLM and SGLang are enhancing the efficiency of model inferencing.
+- Projects like vLLM and SGLang improve model inference efficiency.
 - Better-performing open-source models that require fewer resources with different optimization techniques.
 
-For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
+For more information, see the blog post [Serverless vs. Dedicated LLM Deployments: A Cost-Benefit Analysis](https://www.bentoml.com/blog/serverless-vs-dedicated-llm-deployments).
 
 ## When to start serverless and when to take control
 
 If you're just getting started with LLMs, serverless APIs are a great way to move fast. They make prototyping easy, lower the barrier to entry, and let you validate use cases without dealing with infrastructure.
 
-But that simplicity comes with trade-offs. As your AI use cases grow, along with your need for performance, privacy, and differentiation, the limitations of serverless become hard to ignore.
+But that simplicity comes with trade-offs. Serverless APIs still leave you with serving decisions: which endpoint type to use, how to connect the service to your application and data systems, how to manage privacy boundaries, and how to reason about latency and spend as traffic grows.
 
-Why? Every company building serious AI products needs more than just a good model. **The inference layer is what brings that model to life**. Relying solely on third-party APIs might get your app off the ground, but it won’t give you the long-term control or competitive edge you need. Compared with self-hosted inference, serverless model APIs make it hard to get fine-grained control over performance tuning and cost optimization. You are just calling the same API as everyone else. And that lack of customization hamstrings your ability to build lasting advantage:
+As your AI use cases grow, along with your need for performance, privacy, and differentiation, the limitations of serverless become hard to ignore. Every company building serious AI products needs more than just a good model. **The inference layer is what brings that model to life**. Relying solely on third-party APIs might get your app off the ground, but it won’t give you the long-term control or competitive edge you need. Compared with self-hosted inference, serverless model APIs make it hard to get fine-grained control over performance tuning and cost optimization. You are just calling the same API as everyone else. And that lack of customization hamstrings your ability to build lasting advantage:
 
 1. **Compound AI systems** are how top teams win. [They chain multiple models and tools into rich, flexible workflows](https://www.bentoml.com/blog/a-guide-to-compound-ai-systems).
 2. **Tailored inference stacks** let you architect for precise SLAs and cost targets across different workloads.
@@ -94,7 +94,7 @@ At the end of the day, **inference quality is product quality**. If your AI is m
 
 That’s when it’s time to go beyond APIs and start owning your inference.
 
-## What I have to solve if choosing self-hosting?
+## What do I need to solve if I choose self-hosting?
 
 Self-hosting LLMs gives you full control and flexibility, but also comes with operational responsibilities beyond just spinning up GPU servers, such as:
 

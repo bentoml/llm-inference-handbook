@@ -24,7 +24,7 @@ Some operations map to a single kernel, while others are composed of multiple ke
 
 Think of kernels as the inner loops of LLM inference. They handle the core numerical work behind each token generation step and are where most of the compute time is actually spent.
 
-Kernel optimization is the practice of making these functions run faster and more efficiently by: 
+Kernel optimization is the practice of making these functions run faster and more efficiently by: 
 
 - Reducing latency per operation
 - Increasing hardware utilization (compute units, memory bandwidth, etc.)
@@ -164,5 +164,5 @@ With fusion:
 <LinkList>
   ## Additional resources
   * [CUDA C++ Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/)
-  * [What exactly is “CUDA”?](https://www.modular.com/blog/democratizing-compute-part-2-what-exactly-is-cuda)
+  * [What exactly is “CUDA”?](https://www.modular.com/blog/democratizing-compute-part-2-what-exactly-is-cuda?utm_source=bentoml_llm)
 </LinkList>

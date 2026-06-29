@@ -13,6 +13,7 @@ interface Model {
   architecture: Architecture;
   released: string; // YYYY-MM
   license: string;
+  licenseUrl?: string; // link to the license text
   huggingface: string; // org/repo path on huggingface.co
   totalParams: string;
   activeParams?: string;
@@ -123,6 +124,23 @@ const MODELS: Model[] = [
   },
 
   // ── GLM ──
+  {
+    name: 'GLM-5.2',
+    family: 'GLM',
+    company: 'Zhipu AI',
+    architecture: 'MoE',
+    released: '2026-06',
+    license: 'MIT',
+    huggingface: 'zai-org/GLM-5.2',
+    totalParams: '753B',
+    activeParams: '40B',
+    contextLength: '1M',
+    modality: 'Text',
+    useCase: 'Long-horizon agent workflows, reasoning, and coding',
+    precisions: ['BF16', 'FP8'],
+    deployment: ['8× H200', '8× B200', '8× MI355X'],
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/GLM/GLM-5.2',
+  },
   {
     name: 'GLM-5',
     family: 'GLM',
@@ -292,12 +310,32 @@ const MODELS: Model[] = [
 
   // ── MiniMax ──
   {
+    name: 'MiniMax-M3',
+    family: 'MiniMax',
+    company: 'MiniMax',
+    architecture: 'MoE',
+    released: '2026-06',
+    license: 'MiniMax Community License',
+    licenseUrl: 'https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/main/LICENSE',
+    huggingface: 'MiniMaxAI/MiniMax-M3',
+    totalParams: '428B',
+    activeParams: '23B',
+    contextLength: '1M',
+    modality: 'Multimodal',
+    modalityNote: 'Text, Image, Video',
+    precisions: ['BF16', 'MXFP8'],
+    deployment: ['8× H200', '4× B200', '8× MI300X'],
+    vllmDocs: 'https://recipes.vllm.ai/MiniMaxAI/MiniMax-M3',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/MiniMax/MiniMax-M3',
+  },
+  {
     name: 'MiniMax-M2.7',
     family: 'MiniMax',
     company: 'MiniMax',
     architecture: 'MoE',
     released: '2026-03',
-    license: 'MIT',
+    license: 'Custom (Non-commercial)',
+    licenseUrl: 'https://github.com/MiniMax-AI/MiniMax-M2.7/blob/main/LICENSE',
     huggingface: 'MiniMaxAI/MiniMax-M2.7',
     totalParams: '230B',
     activeParams: '10B',
@@ -330,6 +368,23 @@ const MODELS: Model[] = [
   },
 
   // ── Gemma ──
+  {
+    name: 'gemma-4-12B-it',
+    family: 'Gemma',
+    company: 'Google',
+    architecture: 'Dense',
+    released: '2026-06',
+    license: 'Apache 2.0',
+    huggingface: 'google/gemma-4-12B-it',
+    totalParams: '11.95B',
+    contextLength: '256K',
+    modality: 'Multimodal',
+    modalityNote: 'Text, Image, Audio',
+    precisions: ['BF16'],
+    deployment: ['1× H100', '1× H200'],
+    vllmDocs: 'https://recipes.vllm.ai/Google/gemma-4-12B-it',
+    sglangDocs: 'https://docs.sglang.io/cookbook/autoregressive/Google/Gemma4',
+  },
   {
     name: 'gemma-4-31B-it',
     family: 'Gemma',
@@ -634,7 +689,18 @@ function ModelExplorer() {
 
             <div className={styles.kvRow}>
               <span className={styles.kvLabel}>License</span>
-              <span className={styles.kvValue}>{current.license}</span>
+              {current.licenseUrl ? (
+                <a
+                  className={`${styles.kvValue} ${styles.kvLink}`}
+                  href={current.licenseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {current.license}
+                </a>
+              ) : (
+                <span className={styles.kvValue}>{current.license}</span>
+              )}
             </div>
 
             {current.useCase && (

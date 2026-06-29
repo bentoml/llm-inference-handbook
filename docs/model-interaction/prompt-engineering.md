@@ -92,6 +92,8 @@ In many AI deployments, prompt engineering becomes the first layer of control ov
 
 Because prompts are part of the request payload, they can be updated quickly without retraining models or changing the serving infrastructure. This makes prompts a flexible way to steer model behavior in production.
 
+Prompt engineering is often tuned together with [inference parameters](./inference-parameters). The prompt defines the task and constraints, while parameters such as `temperature`, `top_p`, and `max_tokens` control how the model samples and bounds the response.
+
 ## Prompt roles
 
 Most modern LLM APIs separate prompts into different roles. The most common types are:

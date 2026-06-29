@@ -7,7 +7,7 @@ keywords:
     - Batch size, batch window
     - Chunked prefill, decode-maximal batching
     - Padding tokens, pad tokens, ragged tensors
-    - LLM inference optimization, LLM inference optimization techniques​, LLM batch API
+    - LLM inference optimization, LLM inference optimization techniques, LLM batch API
     - Speed up LLM inference
 ---
 
