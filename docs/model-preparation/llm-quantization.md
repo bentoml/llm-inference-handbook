@@ -25,11 +25,13 @@ These figures only account for model weights. Runtime elements, such as attentio
 
 ## Why use quantization
 
-Quantization is widely used because it:
+Quantization can help LLM inference in three main ways:
 
-- **Reduces memory usage**, which not only allows large models to fit on smaller GPUs, but also reduces the KV cache size per token. This leads to higher throughput since you can fit more tokens into the same GPU memory.
-- **Speeds up inference**, particularly on edge devices or during batch processing.
-- **Lowers compute requirements**, which helps reduce cost and energy usage.
+- **Smaller model footprint**. The number of bits per parameter directly affects how much memory the model weights require. For example, a 7B model needs about 14 GB for FP16 weights but about 7 GB for INT8 weights. This can make the difference between fitting the model on one GPU or distributing it across multiple GPUs or nodes.
+- **Less data movement**. LLM decoding is often limited by GPU memory bandwidth because the runtime repeatedly reads model weights while generating tokens. Lower-precision weights mean fewer bytes to be moved from [GPU memory to the compute units](../kernel-optimization/gpu-architecture-fundamentals), which can reduce per-token latency.
+- **Faster computation**. GPUs and other accelerators can process supported low-precision formats at higher throughput than FP32 or FP16. [On the H100 SXM](https://www.nvidia.com/en-us/data-center/h100/), for example, the BF16/FP16 tensor cores hit 1,979 TFLOPS, while FP8 and INT8 double that to 3,958 TFLOPS/TOPS, a clean 2x from halving the bit width. The actual speedup depends on whether the hardware and inference runtime provide optimized kernels for the chosen format.
+
+A smaller weight footprint also leaves more GPU memory available for the [KV cache](../llm-inference-basics/how-does-llm-inference-work#the-two-phases-of-llm-inference), larger batches, and more concurrent requests. Weight quantization does not reduce the KV cache size per token by itself. It requires quantizing the KV cache separately.
 
 This tradeoff between precision and size comes with **some drop in accuracy**. For many applications, however, the impact is minimal, especially with carefully tuned quantization methods.
 
