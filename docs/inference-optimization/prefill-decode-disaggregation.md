@@ -122,6 +122,6 @@ If most of your requests are short or cache-heavy, it usually simpler and faster
   ## Additional resources
   * [DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving](https://arxiv.org/abs/2401.09670)
   * [SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills](https://arxiv.org/pdf/2308.16369)
-  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=bentoml_llm)
+  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=llm_handbook)
   * [Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter](https://arxiv.org/abs/2604.15039)
 </LinkList>

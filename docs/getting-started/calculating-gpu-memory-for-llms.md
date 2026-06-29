@@ -45,5 +45,5 @@ Not all GPUs support all precision formats natively. A100 and other Ampere GPUs 
 
 <LinkList>
   ## Additional resources
-  * [What is GPU Memory and Why it Matters for LLM Inference](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference)
+  * [GPU architecture fundamentals](../kernel-optimization/gpu-architecture-fundamentals)
 </LinkList>

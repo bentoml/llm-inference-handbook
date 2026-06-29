@@ -122,8 +122,8 @@ Like TVM, XLA faces several practical limitations:
 
 Learn more about AI compilers in Chris Lattner’s blog posts:
 
-- [What about TVM, XLA, and AI compilers](https://www.modular.com/blog/democratizing-ai-compute-part-6-what-about-ai-compilers?utm_source=bentoml_llm)
-- [What about the MLIR compiler infrastructure](https://www.modular.com/blog/democratizing-ai-compute-part-8-what-about-the-mlir-compiler-infrastructure?utm_source=bentoml_llm)
+- [What about TVM, XLA, and AI compilers](https://www.modular.com/blog/democratizing-ai-compute-part-6-what-about-ai-compilers?utm_source=llm_handbook)
+- [What about the MLIR compiler infrastructure](https://www.modular.com/blog/democratizing-ai-compute-part-8-what-about-the-mlir-compiler-infrastructure?utm_source=llm_handbook)
 
 ---
 
@@ -310,7 +310,7 @@ TVM and XLA work at a higher graph or compiler level. They try to automate more 
 
 <LinkList>
   ## Additional resources
-  * [What about TVM, XLA, and AI compilers?](https://www.modular.com/blog/democratizing-ai-compute-part-6-what-about-ai-compilers?utm_source=bentoml_llm)
-  * [What about Triton and Python eDSLs?](https://www.modular.com/blog/democratizing-ai-compute-part-7-what-about-triton-and-python-edsls?utm_source=bentoml_llm)
-  * [What about the MLIR compiler infrastructure?](https://www.modular.com/blog/democratizing-ai-compute-part-8-what-about-the-mlir-compiler-infrastructure?utm_source=bentoml_llm)
+  * [What about TVM, XLA, and AI compilers?](https://www.modular.com/blog/democratizing-ai-compute-part-6-what-about-ai-compilers?utm_source=llm_handbook)
+  * [What about Triton and Python eDSLs?](https://www.modular.com/blog/democratizing-ai-compute-part-7-what-about-triton-and-python-edsls?utm_source=llm_handbook)
+  * [What about the MLIR compiler infrastructure?](https://www.modular.com/blog/democratizing-ai-compute-part-8-what-about-the-mlir-compiler-infrastructure?utm_source=llm_handbook)
 </LinkList>

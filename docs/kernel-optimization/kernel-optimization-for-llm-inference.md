@@ -164,5 +164,5 @@ With fusion:
 <LinkList>
   ## Additional resources
   * [CUDA C++ Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/)
-  * [What exactly is “CUDA”?](https://www.modular.com/blog/democratizing-compute-part-2-what-exactly-is-cuda?utm_source=bentoml_llm)
+  * [What exactly is “CUDA”?](https://www.modular.com/blog/democratizing-compute-part-2-what-exactly-is-cuda?utm_source=llm_handbook)
 </LinkList>

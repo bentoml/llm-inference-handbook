@@ -10,7 +10,6 @@ keywords:
     - Open source LLMs
 ---
 
-import LinkList from '@site/src/components/LinkList';
 import ModelExplorer from '@site/src/components/ModelExplorer';
 
 # Choosing the right model
@@ -57,7 +56,7 @@ Instruct model examples: Meta-Llama-3-8B-Instruct, Qwen3-4B-Instruct-2507, Kimi-
 
 Most traditional LLMs are dense models. This means every parameter in the network is used for every token during inference.
 
-Mixture of Experts (MoE) models, such as [DeepSeek-V3](https://www.bentoml.com/blog/the-complete-guide-to-deepseek-models-from-v3-to-r1-and-beyond), take a different approach from traditional dense models. Instead of using all model parameters for every input, they contain multiple specialized sub-networks called **experts**, each focus on different types of data or tasks.
+Mixture of Experts (MoE) models, such as [DeepSeek-V4 Pro](https://www.modular.com/models/deepseek-v4-pro), take a different approach from traditional dense models. Instead of using all model parameters for every input, they contain multiple specialized sub-networks called **experts**, each focus on different types of data or tasks.
 
 During inference, only a subset of these experts is activated based on the characteristics of the input. This selection mechanism enables the model to route computation more selectively, engaging different experts depending on the content or context. As a result, MoE models achieve greater scalability and efficiency by distributing workload across a large network while keeping per-inference compute costs manageable.
 
@@ -231,14 +230,3 @@ Some LLMs have long, confusing names, but they usually encode useful information
 - MoE models sometimes include two numbers in their names to describe how the expert system works, such as Qwen3.5-35B-A3B. These numbers usually indicate:
   - The total number of experts
   - How many experts are activated during inference
-
-<LinkList>
-  ## Additional resources
-  * [Model composition](https://docs.bentoml.com/en/latest/get-started/model-composition.html)
-  * [The Complete Guide to DeepSeek Models: From V3 to R1 and Beyond](https://www.bentoml.com/blog/the-complete-guide-to-deepseek-models-from-v3-to-r1-and-beyond)
-  * [The Best Open-Source Small Language Models (SLMs) in 2026](https://www.bentoml.com/blog/the-best-open-source-small-language-models)
-  * [A Guide to Open-Source Image Generation Models](https://www.bentoml.com/blog/a-guide-to-open-source-image-generation-models)
-  * [A Guide to Open-Source Embedding Models](https://www.bentoml.com/blog/a-guide-to-open-source-embedding-models)
-  * [Multimodal AI: A Guide to Open-Source Vision Language Models](https://www.bentoml.com/blog/multimodal-ai-a-guide-to-open-source-vision-language-models)
-  * [Exploring the World of Open-Source Text-to-Speech Models](https://www.bentoml.com/blog/exploring-the-world-of-open-source-text-to-speech-models)
-</LinkList>

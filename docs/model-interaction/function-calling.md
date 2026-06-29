@@ -6,8 +6,6 @@ keywords:
     - LLM tool use, LLM tool integration
 ---
 
-import LinkList from '@site/src/components/LinkList';
-
 # Function calling
 
 Function calling lets an LLM request specific tools when a task needs external data or an action outside the model itself. When you ask the model to do something that requires one of these tools, it can call that tool and use the result in its response.
@@ -46,8 +44,3 @@ Not all, but many modern models do. Open-source models like Llama, Qwen, and Dee
 ### Is function calling the same as tools or agents?
 
 Tools are the actions. Function calling is how the model requests those actions. Agents are systems that can use function calling in a loop with reasoning; they can plan, call multiple tools in sequence, evaluate results, and adjust their approach based on what they learn.
-
-<LinkList>
-  ## Additional resources
-  * [Function Calling with Open-Source LLMs](https://bentoml.com/blog/function-calling-with-open-source-llms)
-</LinkList>
