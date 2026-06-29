@@ -24,3 +24,7 @@ yarn-error.log*
 # Testing
 nginx/
 testing/
+
+# Scratch (annotate-ui / playwright-cli)
+.playwright-cli/
+.agents/ui-review/
