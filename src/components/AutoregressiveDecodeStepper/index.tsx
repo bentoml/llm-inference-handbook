@@ -11,7 +11,7 @@ interface DecodeStep {
   candidates: Candidate[];
 }
 
-const PREFILL_TOKENS = ['BentoML', ' is', ' a', ' unified', ' inference'];
+const PREFILL_TOKENS = ['Modular', ' is', ' a', ' unified', ' inference'];
 
 const DECODE_STEPS: DecodeStep[] = [
   {
