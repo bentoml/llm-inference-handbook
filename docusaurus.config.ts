@@ -66,6 +66,14 @@ const config: Config = {
           {
             from: '/inference-optimization/flashattention',
             to: '/kernel-optimization/flashattention'
+          },
+          {
+            from: '/kernel-optimization/frameworks-and-tools',
+            to: '/kernel-optimization/kernel-optimization-tools'
+          },
+          {
+            from: '/inference-optimization/llm-inference-metrics',
+            to: '/llm-inference-basics/llm-inference-metrics'
           }
         ]
       }
