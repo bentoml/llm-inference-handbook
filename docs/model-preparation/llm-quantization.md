@@ -35,7 +35,7 @@ A smaller weight footprint also leaves more GPU memory available for the [KV cac
 
 This tradeoff between precision and size comes with **some drop in accuracy**. For many applications, the above benefits matter only if the generated output remains reliable enough for production use. For example, a faster model that produces noticeably worse responses is rarely a worthwhile trade-off.
 
-The good news is that modern quantization methods have made this trade-off much less severe. Techniques such as GPTQ W4A16, AWQ, and FP8 quantization for both weights and activations often [preserve nearly the same accuracy](developers.redhat.com/articles/2024/10/17/we-ran-over-half-million-evaluations-quantized-llms) as the original model, with meaningful improvements in inference efficiency. As a result, many production deployments can adopt quantization with little or no noticeable impact on model quality.
+The good news is that modern quantization methods have made this trade-off much less severe. Techniques such as GPTQ W4A16, AWQ, and FP8 quantization for both weights and activations often [preserve nearly the same accuracy](https://developers.redhat.com/articles/2024/10/17/we-ran-over-half-million-evaluations-quantized-llms) as the original model, with meaningful improvements in inference efficiency. As a result, many production deployments can adopt quantization with little or no noticeable impact on model quality.
 
 ## Quantization formats
 
@@ -150,7 +150,9 @@ GPTQ is widely used in open-source model serving pipelines, especially with Auto
 
 ---
 
-Instead of quantizing a model yourself, you can often start with an already quantized model from [Hugging Face](../getting-started/choosing-the-right-model/#hugging-face). It hosts many pre-quantized variants, such as 8-bit and 4-bit models, that are ready for inference and optimized for lower memory usage and faster deployment. At the same time, it also provides full-precision base models if you want to apply your own quantization strategy.
+Many [modern inference frameworks](../getting-started/choosing-the-right-inference-framework) not only serve quantized models efficiently but also provide built-in APIs or tooling to quantize models. In other cases, models are quantized offline using specialized tools and then loaded directly by the serving framework. As a result, most users no longer need to implement quantization algorithms themselves.
+
+You can often start with an already quantized model from [Hugging Face](../getting-started/choosing-the-right-model/#hugging-face). It hosts many pre-quantized variants, such as 8-bit and 4-bit models, that are ready for inference and optimized for lower memory usage and faster deployment. At the same time, it also provides full-precision base models if you want to apply your own quantization strategy.
 
 <LinkList>
   ## Additional resources
