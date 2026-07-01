@@ -14,10 +14,10 @@ const config: Config = {
 
   url: 'https://handbook.modular.com',
   baseUrl: '/',
-  trailingSlash: true,
+  trailingSlash: false,
 
-  onBrokenLinks: 'ignore',
-  onBrokenAnchors: 'ignore',
+  onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
 
   i18n: {
     defaultLocale: 'en',
