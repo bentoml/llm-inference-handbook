@@ -24,21 +24,62 @@ Prefix caching is different from simple semantic caching, where the full input a
 
 ## How does prefix caching work?
 
-1. During prefill, the model performs a forward pass over the entire input and builds up a key-value (KV) cache for attention computation.
+Prefix caching reuses attention states that the model has already computed.
+
+1. During prefill, the model performs a forward pass over the input tokens and builds up a key-value (KV) cache.
 2. During decode, the model generates output tokens one by one, using the cached states from the prefill stage. The attention mechanism computes a matrix of token interactions. The resulting KV pairs for each token are stored in GPU memory.
-3. For a new request with a matching prefix, you can skip the forward pass for the cached part and directly resume from the last token of the prefix.
+3. When a new request arrives, the model finds the longest cached token sequence that matches the request from the beginning. It loads those KV states and runs prefill only for the remaining tokens.
 
-:::important
-This works only when the prefix is exactly identical, including whitespace and formatting. Even a single character difference breaks the cache.
-:::
+This works only when the prefix is exactly identical, including whitespace and formatting. Even a single character difference breaks the cache. Consider these three prompts:
 
-For example, consider a chatbot with this system prompt:
+```bash
+Prompt 1: Summarize this incident report in one paragraph.
+Prompt 2: Summarize this incident report in three bullet points.
+Prompt 3: Write a one-paragraph summary of this incident report.
+```
+
+Prompt 2 can reuse the KV states for the shared beginning `Summarize this incident report in`. The model only needs to process the suffix where the two prompts diverge. Prompt 3 asks for a similar result and contains many of the same words as Prompt 1, but it doesn't start with the same token sequence. Therefore, it cannot reuse the cache of Prompt 1 from the beginning.
+
+This is why prefix caching is different from semantic caching. Two prompts can have the same meaning and still miss the prefix cache, while two requests with different final questions can share most of their cached computation.
+
+Here are two common use cases of prefix caching:
+
+### Reusing a static system prompt
+
+A common cacheable prefix is a system prompt shared by many requests:
 
 ```bash
 You are a helpful AI writer. Please write in a professional manner.
 ```
 
-This prompt doesn’t change from one conversation to the next. Instead of recalculating it every time, you store its KV cache once. Then, when new messages come in, you reuse this stored prefix cache, only processing the new part of the prompt.
+If this prompt and the serialization remain unchanged, the model can compute the KV states once and reuse them across conversations. Each request then runs prefill only for the user-specific content that follows it.
+
+### Reusing a growing chat history
+
+Multi-turn chat is where the benefit becomes more noticeable. Suppose the first turn is:
+
+```bash
+User: Why did the checkout API slow down after deployment?
+Assistant: Trace data shows that repeated inventory database lookups added most of the latency.
+```
+
+The user then asks:
+
+```bash
+User: Which lookup should we optimize first?
+```
+
+The model isn't given only the latest question. The application resends the previous messages as part of the [context window](../llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference), so the model knows which lookups the user means. The serialized second request therefore looks roughly like this:
+
+```bash
+User: Why did the checkout API slow down after deployment?
+Assistant: Trace data shows that repeated inventory database lookups added most of the latency.
+User: Which lookup should we optimize first?
+```
+
+The first two messages are an exact prefix that the model has already processed. If their KV states are still available, the model can reuse them and prefill only the new user message. Without prefix caching, it must process the entire conversation again.
+
+As the conversation grows, the reusable prefix grows with it. Avoiding repeated prefill reduces GPU compute and keeps TTFT from rising as quickly across turns. Note that a cache hit still depends on the serving engine retaining the entry, [routing the request to a worker that can access the cache](inference-routing), and serializing the previous messages identically.
 
 ## What is the difference between KV caching and prefix caching?
 
