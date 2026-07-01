@@ -17,16 +17,16 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://bentoml.com/',
+  url: 'https://handbook.modular.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/llm/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'bentoml', // Usually your GitHub org/user name.
   projectName: 'llm-inference-handbook', // Usually your repo name.
-  trailingSlash: false,
+  trailingSlash: true,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
