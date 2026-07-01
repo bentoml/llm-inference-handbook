@@ -3,22 +3,26 @@
   display: block;
   width: 48px;
   height: 48px;
-  background-image: linear-gradient(to right, #16a34a, #15803d);
+  background-image: linear-gradient(
+    to right,
+    var(--Elements-Neb-Ultra),
+    var(--Elements-Neb-100)
+  );
   position: fixed;
   width: 3rem;
   height: 3rem;
   right: 1.3rem;
   bottom: 1.3rem;
   border-radius: 50%;
-  box-shadow:
-    0 0 #0000,
-    0 0 #0000,
-    0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow: none;
 }
 
 .chat:hover {
-  background-image: linear-gradient(to right, #15803d, #166534);
+  background-image: linear-gradient(
+    to right,
+    var(--Elements-Neb-100),
+    var(--Elements-Neb-90)
+  );
 }
 
 .chatIcon {
@@ -37,29 +41,25 @@
   right: 1.3rem;
   bottom: 1.3rem;
   width: 18rem;
-  background-color: #fff;
-  border-radius: 1rem;
+  background-color: var(--Elements-Twilight-0-100);
+  border-radius: 4px;
   padding: 1.5rem;
-  border: 1px solid #e5e7eb;
-  box-shadow:
-    #000000 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    #0000001a 0px 20px 25px -5px,
-    #0000001a 0px 8px 10px -6px;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  box-shadow: none;
 }
 
 .chatContent h4 {
   font-size: 1.125rem;
   line-height: 1.75rem;
-  font-weight: 700;
-  color: #111827;
+  font-weight: 400;
+  color: var(--Elements-Twilight-100-0);
   margin-bottom: 0.75rem;
 }
 
 .chatContent p {
   font-size: 0.875rem;
   line-height: 1.5rem;
-  color: #4b5563;
+  color: var(--Elements-Twilight-70-20);
   margin: 0 0 1rem;
 }
 
@@ -81,10 +81,10 @@
   width: 1.25rem;
   height: 1.25rem;
   cursor: pointer;
-  color: #9ca3af;
+  color: var(--Elements-Twilight-60-50);
   transition: color 0.2s ease-in-out;
 }
 
 .chatClose:hover {
-  color: #4b5563;
+  color: var(--Elements-Twilight-70-20);
 }

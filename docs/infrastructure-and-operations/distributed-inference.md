@@ -5,9 +5,6 @@ keywords:
     - Distributed inference
 ---
 
-import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
-
 # What is distributed inference?
 
 Distributed inference improves how AI systems handle production workloads by spreading inference computation across multiple connected machines. Rather than pushing all requests through a single server, the system coordinates many workers so no single device becomes a bottleneck.
@@ -207,11 +204,5 @@ Our Inference Platform provides a production-ready foundation for distributed in
 Rather than stitching together everything yourself, a platform-based approach allows teams to focus on models and applications, while the distributed inference system is managed as a cohesive layer.
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
 </div>
-
-<LinkList>
-  ## Additional resources
-  * [The Shift to Distributed LLM Inference](https://www.bentoml.com/blog/the-shift-to-distributed-llm-inference)
-  * [3 Levels from Laptop to Cluster-Scale Distributed Inference](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference)
-</LinkList>

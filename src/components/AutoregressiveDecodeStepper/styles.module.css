@@ -1,35 +1,35 @@
 /* ── Container ── */
 
 .container {
-  border: 1px solid #bbf7d0;
-  border-radius: 0.5rem;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  border-radius: 4px;
   margin-bottom: 1.5rem;
   overflow: hidden;
 }
 
 .header {
   padding: 1.25rem 1.5rem;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  background: linear-gradient(to right, #eef2ff, #eff6ff);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: var(--Elements-Twilight-5-90);
 }
 
 .headerTitle {
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.025em;
-  color: #111827;
+  color: var(--Elements-Twilight-100-0);
 }
 
 .headerDesc {
   font-size: 0.8125rem;
-  color: #4b5563;
+  color: var(--Elements-Twilight-70-20);
   margin-top: 0.25rem;
 }
 
 .body {
   padding: 1.25rem 1.5rem 1.5rem;
-  background: #fff;
+  background: var(--Elements-Twilight-0-100);
 }
 
 /* ── Controls row ── */
@@ -50,25 +50,28 @@
 
 .primaryButton,
 .secondaryButton {
-  border-radius: 0.45rem;
+  border-radius: 4px;
   padding: 0.5rem 0.9rem;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 400;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease;
   font-family: inherit;
 }
 
 .primaryButton {
-  background: #1e40af;
-  color: #fff;
+  background: var(--Elements-Neb-Ultra);
+  color: var(--Elements-Twilight-0-100);
 }
 
 .secondaryButton {
-  background: #fff;
-  color: #374151;
-  border-color: #e5e7eb;
+  background: var(--Elements-Twilight-0-100);
+  color: var(--Elements-Twilight-70-20);
+  border-color: var(--Elements-Twilight-20-70);
 }
 
 .primaryButton:hover:not(:disabled),
@@ -90,21 +93,21 @@
 
 .progressLabel {
   font-size: 0.75rem;
-  font-weight: 600;
-  color: #6b7280;
+  font-weight: 400;
+  color: var(--Elements-Twilight-60-40);
   margin-bottom: 0.35rem;
 }
 
 .progressTrack {
   height: 0.4rem;
   border-radius: 999px;
-  background: #e5e7eb;
+  background: var(--Elements-Twilight-20-70);
   overflow: hidden;
 }
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  background: var(--Elements-Neb-Ultra);
   transition: width 220ms ease;
 }
 
@@ -112,18 +115,18 @@
 
 .sequenceBlock {
   padding: 0.9rem 1rem 0.95rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  background: #f9fafb;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  border-radius: 4px;
+  background: var(--Elements-Twilight-1-90);
   margin-bottom: 1rem;
 }
 
 .sectionLabel {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #6b7280;
+  color: var(--Elements-Twilight-60-40);
   margin-bottom: 0.55rem;
 }
 
@@ -138,7 +141,7 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.55rem;
-  border-radius: 0.4rem;
+  border-radius: 4px;
   border: 1px solid;
   font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', monospace;
   font-size: 0.8rem;
@@ -146,15 +149,15 @@
 }
 
 .prefillToken {
-  background: #fff;
-  border-color: #e5e7eb;
-  color: #4b5563;
+  background: var(--Elements-Twilight-0-100);
+  border-color: var(--Elements-Twilight-20-70);
+  color: var(--Elements-Twilight-70-20);
 }
 
 .generatedToken {
-  background: #f0fdf4;
-  border-color: #86efac;
-  color: #166534;
+  background: var(--Elements-Neb-20-Alpha);
+  border-color: var(--Elements-Neb-Ultra);
+  color: var(--Elements-Neb-Ultra);
 }
 
 .pendingToken {
@@ -166,12 +169,12 @@
 
 .tokenIndex {
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 400;
   opacity: 0.7;
 }
 
 .tokenValue {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* ── Legend ── */
@@ -182,7 +185,7 @@
   flex-wrap: wrap;
   margin-top: 0.7rem;
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--Elements-Twilight-60-40);
 }
 
 .legendItem {
@@ -194,19 +197,19 @@
 .legendSwatch {
   width: 0.7rem;
   height: 0.7rem;
-  border-radius: 0.2rem;
+  border-radius: 2px;
   border: 1px solid;
   display: inline-block;
 }
 
 .legendPrefill {
-  background: #fff;
-  border-color: #e5e7eb;
+  background: var(--Elements-Twilight-0-100);
+  border-color: var(--Elements-Twilight-20-70);
 }
 
 .legendGenerated {
-  background: #bbf7d0;
-  border-color: #86efac;
+  background: var(--Elements-Neb-Ultra);
+  border-color: var(--Elements-Neb-Ultra);
 }
 
 .legendPending {
@@ -225,9 +228,9 @@
 }
 
 .panel {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  background: #fff;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  border-radius: 4px;
+  background: var(--Elements-Twilight-0-100);
   padding: 0.95rem 1rem;
   display: flex;
   flex-direction: column;
@@ -242,15 +245,15 @@
 }
 
 .candidateRow {
-  border-radius: 0.4rem;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
+  border-radius: 4px;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  background: var(--Elements-Twilight-1-90);
   padding: 0.5rem 0.65rem;
 }
 
 .candidateChosen {
-  border-color: #60a5fa;
-  background: #eff6ff;
+  border-color: var(--Elements-Neb-Ultra-Super);
+  background: var(--Elements-Neb-20-Alpha);
 }
 
 .candidateHead {
@@ -259,30 +262,30 @@
   justify-content: space-between;
   gap: 0.75rem;
   font-size: 0.8rem;
-  font-weight: 600;
-  color: #374151;
+  font-weight: 400;
+  color: var(--Elements-Twilight-70-20);
   margin-bottom: 0.35rem;
 }
 
 .candidateChosen .candidateHead {
-  color: #1e40af;
+  color: var(--Elements-Neb-Ultra);
 }
 
 .candidateTrack {
   height: 0.35rem;
   border-radius: 999px;
-  background: #e5e7eb;
+  background: var(--Elements-Twilight-20-70);
   overflow: hidden;
 }
 
 .candidateFill {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  background: var(--Elements-Neb-Ultra);
 }
 
 .candidateChosen .candidateFill {
-  background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+  background: var(--Elements-Neb-Ultra-Super);
 }
 
 /* ── KV cache panel ── */
@@ -297,18 +300,18 @@
 .cacheBlock {
   width: 18px;
   height: 18px;
-  border-radius: 0.3rem;
+  border-radius: 2px;
   border: 1px solid;
 }
 
 .cachePrefill {
-  background: #fff;
+  background: var(--Elements-Twilight-0-100);
   border-color: #cbd5e1;
 }
 
 .cacheGenerated {
-  background: #bbf7d0;
-  border-color: #86efac;
+  background: var(--Elements-Neb-Ultra);
+  border-color: var(--Elements-Neb-Ultra);
 }
 
 .cachePending {
@@ -320,29 +323,29 @@
 .cacheCaption {
   font-size: 0.8125rem;
   line-height: 1.5;
-  color: #4b5563;
+  color: var(--Elements-Twilight-70-20);
   margin-top: auto;
 }
 
 .cacheCaption strong {
-  color: #111827;
-  font-weight: 600;
+  color: var(--Elements-Twilight-100-0);
+  font-weight: 400;
 }
 
 /* ── Done / stop state ── */
 
 .doneBox {
   padding: 0.75rem 0.9rem;
-  border-radius: 0.4rem;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #1e40af;
+  border-radius: 4px;
+  background: var(--Elements-Neb-20-Alpha);
+  border: 1px solid var(--Elements-Neb-40);
+  color: var(--Elements-Neb-Ultra);
   font-size: 0.8125rem;
   line-height: 1.5;
 }
 
 .doneTitle {
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 0.15rem;
 }
 
@@ -369,4 +372,27 @@
   .progressWrap {
     min-width: 100%;
   }
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────────────────
+   prefill = neutral / generated = green / pending = amber coding is preserved;
+   light fills and dark text are swapped for dark-legible tints. */
+
+:global(html[data-theme='dark']) .generatedToken {
+  background: rgba(99, 123, 255, 0.12);
+  color: #a5b4fc;
+}
+:global(html[data-theme='dark']) .pendingToken {
+  background: rgba(251, 146, 60, 0.12);
+  color: #fdba74;
+}
+:global(html[data-theme='dark']) .legendPending,
+:global(html[data-theme='dark']) .cachePending {
+  background: rgba(251, 146, 60, 0.12);
+}
+:global(html[data-theme='dark']) .cachePrefill {
+  border-color: var(--Elements-Twilight-30-60);
+}
+:global(html[data-theme='dark']) .doneBody {
+  color: #a5b4fc;
 }

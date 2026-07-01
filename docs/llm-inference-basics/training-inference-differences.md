@@ -67,7 +67,7 @@ Even though training an LLM is expensive, it usually happens once. Inference, on
 
 ### Should I train my own LLM?
 
-In most cases, no. Training a new LLM from scratch requires massive datasets, specialized hardware, and a dedicated research team. Most companies get better results by starting with an existing [open-source LLM](https://www.bentoml.com/blog/navigating-the-world-of-open-source-large-language-models) and then fine-tuning or customizing it for their domain. Full training only makes sense if you’re solving a problem that existing models can’t handle or you have strict control requirements that fine-tuning can’t meet.
+In most cases, no. Training a new LLM from scratch requires massive datasets, specialized hardware, and a dedicated research team. Most companies get better results by starting with an existing [open-source LLM](../getting-started/choosing-the-right-model) and then fine-tuning or customizing it for their domain. Full training only makes sense if you’re solving a problem that existing models can’t handle or you have strict control requirements that fine-tuning can’t meet.
 
 ### Is fine-tuning considered training or inference?
 

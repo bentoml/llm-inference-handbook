@@ -12,7 +12,6 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
 
 # Prefix caching
 
@@ -83,7 +82,7 @@ For these models, a shared text prefix does not always mean every cached state c
 Optimizing LLM prefix caching requires flexible customization in your LLM serving and infrastructure stack. We work to provide the infrastructure for dedicated and customizable LLM deployments with fast auto-scaling and scaling-to-zero capabilities to ensure resource efficiency.
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
 </div>
 
 <LinkList>
@@ -91,5 +90,5 @@ Optimizing LLM prefix caching requires flexible customization in your LLM servin
   * [Prompt Cache: Modular Attention Reuse for Low-Latency Inference](https://arxiv.org/abs/2311.04934)
   * [Prompt Caching in Claude](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
   * [Design Around the KV-Cache](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
-  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=bentoml_llm)
+  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=llm_handbook)
 </LinkList>

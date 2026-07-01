@@ -1,28 +1,28 @@
 .calculator {
-  border: 1px solid #bbf7d0;
-  border-radius: 0.5rem;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  border-radius: 4px;
   margin-bottom: 1.5rem;
 }
 
 .header {
   padding: 1.5rem;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  background: linear-gradient(to right, #eef2ff, #eff6ff);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: var(--Elements-Twilight-5-90);
 }
 
 .headerTitle {
   font-size: 1.25rem;
   line-height: 1.75rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.025em;
-  color: #111827;
+  color: var(--Elements-Twilight-100-0);
 }
 
 .headerDescription {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #4b5563;
+  color: var(--Elements-Twilight-70-20);
   margin-top: 0.375rem;
 }
 
@@ -34,13 +34,13 @@
   display: flex;
   background: #f1f5f9;
   padding: 0.25rem;
-  border-radius: 0.375rem;
+  border-radius: 4px;
 }
 
 .modeSelector button {
   flex: 1;
   padding: 0.375rem 0.75rem;
-  border-radius: 0.25rem;
+  border-radius: 2px;
   border: none;
   background: transparent;
   font-size: 0.875rem;
@@ -51,11 +51,11 @@
   transition-duration: 150ms;
   cursor: pointer;
   font-family: inherit;
-  color: #64748b;
+  color: var(--Elements-Twilight-60-40);
 }
 
 .modeSelector button.active {
-  background: #fff;
+  background: var(--Elements-Twilight-0-100);
   color: #020817;
 }
 
@@ -72,33 +72,33 @@
 
 .input .title,
 .output .result {
-  color: #111827;
+  color: var(--Elements-Twilight-100-0);
   font-size: 1.125rem;
   line-height: 1.75rem;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
 .output .result span {
-  color: #2563eb;
+  color: var(--Elements-Neb-Ultra);
 }
 
 .output .description {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #4b5563;
+  color: var(--Elements-Twilight-70-20);
 }
 
 .note {
-  border: 1px solid #fde68a;
+  border: 1px solid var(--Elements-Twilight-30-60);
   background: #fffbeb;
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
 .formula {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: var(--Elements-Neb-20-Alpha);
+  border: 1px solid var(--Elements-Neb-40);
 }
 
 .code {
@@ -114,8 +114,8 @@
 .formula {
   margin-top: 1.5rem;
   padding: 1rem;
-  border-radius: 0.5rem;
-  color: #374151;
+  border-radius: 4px;
+  color: var(--Elements-Twilight-70-20);
 }
 
 .note > .label,
@@ -124,7 +124,7 @@
   line-height: 1.25rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #111827;
+  color: var(--Elements-Twilight-100-0);
 }
 
 @media (max-width: 768px) {
@@ -135,4 +135,17 @@
   .output {
     margin-top: 1.5rem;
   }
+}
+
+/* ── Dark mode ── */
+
+:global(html[data-theme='dark']) .modeSelector {
+  background: rgba(255, 255, 255, 0.06);
+}
+:global(html[data-theme='dark']) .modeSelector button.active {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--Color-White);
+}
+:global(html[data-theme='dark']) .note {
+  background: rgba(245, 158, 11, 0.1);
 }

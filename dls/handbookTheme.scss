@@ -1,0 +1,583 @@
+@use 'sass:math';
+
+// Local DLS subset for the LLM Handbook. These tokens were copied from the
+// shared Modular DLS and trimmed to the pieces this site consumes.
+
+$White: #ffffff;
+$Black: #000000;
+$DarkOverlay: rgba(0, 0, 0, 0.5);
+$LightOverlay: rgba(255, 255, 255, 0.5);
+
+$Twilight100: #020c13;
+$Twilight90: #181c1f;
+$Twilight80: #262c30;
+$Twilight70: #353d42;
+$Twilight60: #676d71;
+$Twilight50: #9a9eaa;
+$Twilight40: #b3b8c2;
+$Twilight30: #d4dae4;
+$Twilight20: #e5e9ef;
+$Twilight10: #eef0f4;
+$Twilight5: #f2f3f3;
+$Twilight1: #f8f8f8;
+$TwilightAlpha: #9a9eaa33;
+
+$Nebula100: #b5c0f6;
+$Nebula90: #bcc6f7;
+$Nebula80: #c4cdf8;
+$Nebula70: #cbd3f9;
+$Nebula60: #d3d9fa;
+$Nebula50: #dadffb;
+$Nebula40: #e1e6fb;
+$Nebula30: #e9ecfc;
+$Nebula20: #f0f2fd;
+$NebulaUltra: #637bff;
+$NebulaSuper: #8799ff;
+$NebulaAlpha: #637bff66;
+$NebulaDarkAlpha: #637bff26;
+$NebulaCompliant: #4e57f3;
+
+$Red110: #df0101;
+$Red100: #ff0000;
+$Red60: #ff6666;
+$Red20: #ffe2e2;
+$RedDarkAlpha: #ff000026;
+
+$Orange120: #ed810c;
+$Orange100: #ffc700;
+$Orange60: #ffdd66;
+$Orange20: #fff4cc;
+
+$Green140: #407d1c;
+$Green120: #5c9c07;
+$Green100: #95e72c;
+$Green60: #bff080;
+$Green20: #eafad5;
+$GreenAlpha30: #95e72c4d;
+$GreenDarkAlpha: #95e72c26;
+
+$Blue120: #1a6dcc;
+$Blue100: #2b7de9;
+$Blue60: #6eaaf0;
+$Blue20: #deedfb;
+$BlueDarkAlpha: #2b7de926;
+
+$YellowDarkAlpha: #ffc70026;
+
+$TwilightNeutral100: #111111;
+$TwilightNeutral90: #1a1a1a;
+$TwilightNeutral80: #2a2a2a;
+$TwilightNeutral70: #3a3a3a;
+$TwilightNeutral60: #6a6a6a;
+$TwilightNeutral50: #9a9a9a;
+$TwilightNeutral40: #b5b5b5;
+$TwilightNeutral30: #d5d5d5;
+$TwilightNeutral20: #e6e6e6;
+$TwilightNeutral10: #efefef;
+$TwilightNeutral5: #f3f3f3;
+$TwilightNeutral1: #f8f8f8;
+
+$Ember100: #7a2a0e;
+$Ember90: #9c3511;
+$Ember80: #be4014;
+$Ember70: #c53713;
+$Ember60: #ed810c;
+$Ember50: #ff8500;
+$Ember40: #ff790b;
+$Ember30: #ff6d15;
+$Ember20: #ffefdc;
+$Ember10: #fff7ee;
+$EmberUltra: #ff552a;
+$EmberSuper: #f09b3d;
+$EmberAlpha: #ff552a66;
+$EmberDarkAlpha: #ff552a26;
+
+@function rem($value) {
+  @return #{math.div(math.div($value, $value * 0 + 1), 16)}rem;
+}
+
+@mixin light {
+  [data-mantine-color-scheme='light'] & {
+    @content;
+  }
+}
+
+@mixin dark {
+  [data-mantine-color-scheme='dark'] & {
+    @content;
+  }
+}
+
+@mixin lightMode {
+  --Black: #{$Black};
+  --White: #{$White};
+  --Red: #{$Red100};
+  --Color-Black: #{$Black};
+  --Color-White: #{$White};
+  --Overlay: #{$LightOverlay};
+
+  --Code-Caret: #{$NebulaUltra};
+  --Code-Const: #676d86;
+  --Code-Number: #ae92ff;
+  --Code-String: #f44771;
+
+  --Elements-Green-140-100: #{$Green140};
+  --Elements-Green-120: #{$Green120};
+  --Elements-Green-100: #{$Green100};
+  --Elements-Green-100-140: #{$Green100};
+  --Elements-Green-60-Alpha: #{$Green60};
+  --Elements-Green-Alpha-30: #{$GreenAlpha30};
+  --Elements-Green-20-60: #{$Green20};
+  --Elements-Green-20-Alpha: #{$Green20};
+
+  --Elements-Neb-Compl-100: #{$NebulaCompliant};
+  --Elements-Neb-Ultra-100: #{$NebulaUltra};
+  --Elements-Neb-Ultra: #{$NebulaUltra};
+  --Elements-Neb-Ultra-Super: #{$NebulaUltra};
+  --Elements-Neb-100: #{$Nebula100};
+  --Elements-Neb-100-Twilight-60: #{$Nebula100};
+  --Elements-Neb-90: #{$Nebula90};
+  --Elements-Neb-90-Ultra: #{$Nebula90};
+  --Elements-Neb-90-Alpha: #{$Nebula90};
+  --Elements-Neb-60-30: #{$Nebula60};
+  --Elements-Neb-60-Alpha: #d3d9fa;
+  --Elements-Neb-40: #{$Nebula40};
+  --Elements-Neb-40-Alpha: #{$Nebula40};
+  --Elements-Neb-30-Alpha: #{$Nebula30};
+  --Elements-Neb-20-Alpha: #{$Nebula20};
+
+  --Elements-Red-110: #{$Red110};
+  --Elements-Red-110-60: #{$Red110};
+  --Elements-Red-100: #{$Red100};
+  --Elements-Red-60: #{$Red60};
+  --Elements-Red-20-60: #{$Red20};
+  --Elements-Red-20-Alpha: #{$Red20};
+  --Elements-Red-Dark-Alpha: #{$RedDarkAlpha};
+
+  --Elements-Twilight-100: #{$Twilight100};
+  --Elements-Twilight-100-0: #{$Twilight100};
+  --Elements-Twilight-100-40: #{$Twilight100};
+  --Elements-Twilight-100-70: #{$Twilight100};
+  --Elements-Twilight-90-0: #{$Twilight90};
+  --Elements-Twilight-90-60: #{$Twilight90};
+  --Elements-Twilight-80: #{$Twilight80};
+  --Elements-Twilight-80-20: #{$Twilight80};
+  --Elements-Twilight-70: #{$Twilight70};
+  --Elements-Twilight-70-5: #{$Twilight70};
+  --Elements-Twilight-70-20: #{$Twilight70};
+  --Elements-Twilight-70-50: #{$Twilight70};
+  --Elements-Twilight-60: #{$Twilight60};
+  --Elements-Twilight-60-40: #{$Twilight60};
+  --Elements-Twilight-60-50: #{$Twilight60};
+  --Elements-Twilight-50-80: #{$Twilight50};
+  --Elements-Twilight-50: #{$Twilight50};
+  --Elements-Twilight-40: #{$Twilight40};
+  --Elements-Twilight-40-60: #{$Twilight40};
+  --Elements-Twilight-30: #{$Twilight30};
+  --Elements-Twilight-20: #{$Twilight20};
+  --Elements-Twilight-Alpha: #{$TwilightAlpha};
+  --Elements-Twilight-0-100: #{$White};
+  --Elements-Twilight-0-70: #{$White};
+  --Elements-Twilight-0-80: #{$White};
+  --Elements-Twilight-0-90: #{$White};
+  --Elements-Twilight-10-90: #{$Twilight10};
+  --Elements-Twilight-20-70: #{$Twilight20};
+  --Elements-Twilight-30-60: #{$Twilight30};
+  --Elements-Twilight-30-70: #{$Twilight30};
+  --Elements-Twilight-30-80: #{$Twilight30};
+  --Elements-Twilight-5-100: #{$Twilight5};
+  --Elements-Twilight-5-70: #{$Twilight5};
+  --Elements-Twilight-5-80: #{$Twilight5};
+  --Elements-Twilight-5-90: #{$Twilight5};
+  --Elements-Twilight-1-90: #{$Twilight1};
+
+  --Elements-Orange-120-100: #{$Orange120};
+  --Elements-Orange-100: #{$Orange100};
+  --Elements-Orange-20-60: #{$Orange20};
+  --Elements-Orange-20-Alpha: #{$Orange20};
+
+  --Elements-Blue-120-100: #{$Blue120};
+  --Elements-Blue-100: #{$Blue100};
+  --Elements-Blue-20-Alpha: #{$Blue20};
+  --Elements-Blue-Dark-Alpha: #{$BlueDarkAlpha};
+
+  --Elements-Ember-Ultra: #{$EmberUltra};
+  --Elements-Ember-Super: #{$EmberSuper};
+  --Elements-Ember-100: #{$Ember100};
+  --Elements-Ember-90: #{$Ember90};
+  --Elements-Ember-80: #{$Ember80};
+  --Elements-Ember-70: #{$Ember70};
+  --Elements-Ember-60: #{$Ember60};
+  --Elements-Ember-50: #{$Ember50};
+  --Elements-Ember-40: #{$Ember40};
+  --Elements-Ember-30: #{$Ember30};
+  --Elements-Ember-20: #{$Ember20};
+  --Elements-Ember-10: #{$Ember10};
+  --Elements-Ember-Alpha: #{$EmberAlpha};
+  --Elements-Ember-Dark-Alpha: #{$EmberDarkAlpha};
+  --Elements-Ember-Ultra-Super: #{$EmberUltra};
+  --Elements-Ember-Super-Ultra: #{$EmberSuper};
+  --Elements-Ember-100-40: #{$Ember100};
+  --Elements-Ember-90-50: #{$Ember90};
+  --Elements-Ember-80-60: #{$Ember80};
+  --Elements-Ember-70-60: #{$Ember70};
+  --Elements-Ember-60-80: #{$Ember60};
+  --Elements-Ember-50-90: #{$Ember50};
+  --Elements-Ember-40-100: #{$Ember40};
+  --Elements-Ember-20-DarkAlpha: #{$Ember20};
+  --Elements-Ember-10-DarkAlpha: #{$Ember10};
+  --Elements-Mojo-100-90: #{$EmberUltra};
+
+  @include codeLightMode;
+  @include boxShadowLight;
+}
+
+@mixin darkMode {
+  --Black: #{$White};
+  --White: #{$Black};
+  --Color-Black: #{$Black};
+  --Color-White: #{$White};
+  --Overlay: #{$DarkOverlay};
+
+  --Code-Caret: #{$NebulaSuper};
+  --Code-Const: #93dbc1;
+  --Code-Number: #ae92ff;
+  --Code-String: #f44771;
+
+  --Elements-Green-100-140: #{$Green140};
+  --Elements-Green-140-100: #{$Green100};
+  --Elements-Green-20-60: #{$Green60};
+  --Elements-Green-20-Alpha: #{$GreenDarkAlpha};
+  --Elements-Green-Alpha-30: #{$GreenAlpha30};
+  --Elements-Green-60-Alpha: #{$GreenAlpha30};
+
+  --Elements-Neb-Compl-100: #{$Nebula100};
+  --Elements-Neb-Ultra: #{$NebulaUltra};
+  --Elements-Neb-Ultra-100: #{$Nebula100};
+  --Elements-Neb-100-Twilight-60: #{$Twilight60};
+  --Elements-Neb-90: #{$Nebula90};
+  --Elements-Neb-90-Alpha: #{$NebulaDarkAlpha};
+  --Elements-Neb-Ultra-Super: #{$NebulaSuper};
+  --Elements-Neb-90-Ultra: #{$NebulaUltra};
+  --Elements-Neb-60-30: #637bff29;
+  --Elements-Neb-60-Alpha: rgba(99, 123, 255, 0.16);
+  --Elements-Neb-40: #{$Nebula40};
+  --Elements-Neb-40-Alpha: #{$NebulaAlpha};
+  --Elements-Neb-30-Alpha: #{$NebulaDarkAlpha};
+  --Elements-Neb-20-Alpha: #{$NebulaDarkAlpha};
+
+  --Elements-Red-110-60: #{$Red60};
+  --Elements-Red-20-60: #{$Red60};
+  --Elements-Red-20-Alpha: #{$RedDarkAlpha};
+
+  --Elements-Twilight-0-100: #{$Twilight100};
+  --Elements-Twilight-5-100: #{$Twilight100};
+  --Elements-Twilight-10-90: #{$Twilight90};
+  --Elements-Twilight-0-90: #{$Twilight90};
+  --Elements-Twilight-1-90: #{$Twilight90};
+  --Elements-Twilight-5-90: #{$Twilight90};
+  --Elements-Twilight-0-80: #{$Twilight80};
+  --Elements-Twilight-50-80: #{$Twilight80};
+  --Elements-Twilight-30-80: #{$Twilight80};
+  --Elements-Twilight-5-80: #{$Twilight80};
+  --Elements-Twilight-0-70: #{$Twilight70};
+  --Elements-Twilight-100-70: #{$Twilight70};
+  --Elements-Twilight-20-70: #{$Twilight70};
+  --Elements-Twilight-30-70: #{$Twilight70};
+  --Elements-Twilight-5-70: #{$Twilight70};
+  --Elements-Twilight-30-60: #{$Twilight60};
+  --Elements-Twilight-40-60: #{$Twilight60};
+  --Elements-Twilight-90-60: #{$Twilight60};
+  --Elements-Twilight-60-50: #{$Twilight50};
+  --Elements-Twilight-70-50: #{$Twilight50};
+  --Elements-Twilight-100-40: #{$Twilight40};
+  --Elements-Twilight-60-40: #{$Twilight40};
+  --Elements-Twilight-70-20: #{$Twilight20};
+  --Elements-Twilight-80-20: #{$Twilight20};
+  --Elements-Twilight-70-5: #{$Twilight5};
+  --Elements-Twilight-100-0: #{$White};
+  --Elements-Twilight-90-0: #{$White};
+
+  --Elements-Orange-120-100: #{$Orange100};
+  --Elements-Orange-20-60: #{$Orange60};
+  --Elements-Orange-20-Alpha: #{$YellowDarkAlpha};
+
+  --Elements-Blue-120-100: #{$Blue60};
+  --Elements-Blue-100: #{$Blue60};
+  --Elements-Blue-20-Alpha: #{$BlueDarkAlpha};
+  --Elements-Blue-Dark-Alpha: #{$BlueDarkAlpha};
+
+  --Elements-Ember-Ultra-Super: #{$EmberSuper};
+  --Elements-Ember-Super-Ultra: #{$EmberUltra};
+  --Elements-Ember-100-40: #{$Ember40};
+  --Elements-Ember-90-50: #{$Ember50};
+  --Elements-Ember-80-60: #{$Ember60};
+  --Elements-Ember-70-60: #{$Ember60};
+  --Elements-Ember-60-80: #{$Ember80};
+  --Elements-Ember-50-90: #{$Ember90};
+  --Elements-Ember-40-100: #{$Ember100};
+  --Elements-Ember-20-DarkAlpha: #{$EmberDarkAlpha};
+  --Elements-Ember-10-DarkAlpha: #{$EmberDarkAlpha};
+  --Elements-Mojo-100-90: #{$Ember90};
+
+  @include codeDarkMode;
+  @include boxShadowDark;
+}
+
+@mixin darkModeNeutral {
+  --Elements-Twilight-0-100: #{$TwilightNeutral100};
+  --Elements-Twilight-5-100: #{$TwilightNeutral100};
+  --Elements-Twilight-10-90: #{$TwilightNeutral90};
+  --Elements-Twilight-0-90: #{$TwilightNeutral90};
+  --Elements-Twilight-1-90: #{$TwilightNeutral90};
+  --Elements-Twilight-5-90: #{$TwilightNeutral90};
+  --Elements-Twilight-0-80: #{$TwilightNeutral80};
+  --Elements-Twilight-50-80: #{$TwilightNeutral80};
+  --Elements-Twilight-30-80: #{$TwilightNeutral80};
+  --Elements-Twilight-5-80: #{$TwilightNeutral80};
+  --Elements-Twilight-0-70: #{$TwilightNeutral70};
+  --Elements-Twilight-100-70: #{$TwilightNeutral70};
+  --Elements-Twilight-20-70: #{$TwilightNeutral70};
+  --Elements-Twilight-30-70: #{$TwilightNeutral70};
+  --Elements-Twilight-5-70: #{$TwilightNeutral70};
+  --Elements-Twilight-30-60: #{$TwilightNeutral60};
+  --Elements-Twilight-40-60: #{$TwilightNeutral60};
+  --Elements-Twilight-90-60: #{$TwilightNeutral60};
+  --Elements-Twilight-60-50: #{$TwilightNeutral50};
+  --Elements-Twilight-70-50: #{$TwilightNeutral50};
+  --Elements-Twilight-100-40: #{$TwilightNeutral40};
+  --Elements-Twilight-60-40: #{$TwilightNeutral40};
+  --Elements-Twilight-70-20: #{$TwilightNeutral20};
+  --Elements-Twilight-80-20: #{$TwilightNeutral20};
+  --Elements-Twilight-70-5: #{$TwilightNeutral5};
+  --Elements-Twilight-100: #{$TwilightNeutral100};
+  --Elements-Twilight-80: #{$TwilightNeutral80};
+  --Elements-Twilight-70: #{$TwilightNeutral70};
+  --Elements-Twilight-60: #{$TwilightNeutral60};
+  --Elements-Twilight-50: #{$TwilightNeutral50};
+  --Elements-Twilight-40: #{$TwilightNeutral40};
+  --Elements-Twilight-30: #{$TwilightNeutral30};
+  --Elements-Twilight-20: #{$TwilightNeutral20};
+  --Elements-Twilight-90-0: #{$White};
+  --Elements-Twilight-100-0: #{$White};
+}
+
+@mixin codeLightMode {
+  --variable: #{$NebulaUltra};
+  --operator: #{$NebulaUltra};
+  --number: #9570ff;
+  --function: #f44771;
+  --constant: #676d86;
+  --comment: #9a9eaf;
+  --specialvar: var(--constant);
+
+  code {
+    .token.comment,
+    .token.prolog,
+    .token.builtin {
+      color: var(--constant);
+    }
+
+    .token.function,
+    .token.inserted {
+      color: var(--string);
+    }
+
+    .token.punctuation,
+    .token.operator {
+      color: var(--operator);
+    }
+
+    .token.symbol {
+      color: var(--plain);
+    }
+
+    .token.string,
+    .token.char,
+    .token.tag,
+    .token.selector {
+      color: var(--number);
+    }
+
+    .token.attr-name {
+      color: var(--number);
+    }
+
+    .token.keyword,
+    .token.variable {
+      color: var(--variable);
+    }
+
+    .token.special-vars {
+      color: var(--specialvar);
+    }
+
+    .token.comment {
+      color: var(--comment);
+    }
+  }
+}
+
+@mixin codeDarkMode {
+  --variable: #b5c0f6;
+  --string: #f44771;
+  --number: #ae92ff;
+  --constant: #93dbc1;
+  --operator: #b5c0f6;
+  --comment: #9a9ea1;
+  --specialvar: #9a9eaf;
+
+  code {
+    .token.function,
+    .token.inserted {
+      color: var(--constant);
+    }
+
+    .token.string,
+    .token.char,
+    .token.tag,
+    .token.selector {
+      color: var(--string);
+    }
+  }
+}
+
+@mixin boxShadowLight {
+  --Shadow-1: 0px 2px 6px 0px rgba(0, 0, 0, 0.13);
+  --Shadow-2: 0px 5px 12px 0px rgba(0, 0, 0, 0.1);
+  --Shadow-3: 0px 4px 12px 0px rgba(13, 10, 44, 0.06);
+  --Shadow-4: 0px 10px 15px 0px rgba(5, 13, 29, 0.18);
+  --Shadow-5:
+    0px 34px 26px 0px rgba(13, 10, 44, 0.05),
+    0px -6px 34px 0px rgba(13, 10, 44, 0.08);
+  --Shadow-6: 0px 20px 20px 0px rgba(5, 13, 29, 0.2);
+}
+
+@mixin boxShadowDark {
+  --Shadow-1: 0px 2px 6px 0px transparent;
+  --Shadow-2: 0px 2px 6px 0px transparent;
+  --Shadow-3: 0px 2px 6px 0px transparent;
+  --Shadow-4: 0px 2px 6px 0px transparent;
+  --Shadow-5: 0px 2px 6px 0px transparent;
+  --Shadow-6: 0px 2px 6px 0px transparent;
+}
+
+@mixin body-24 {
+  font-size: rem(24);
+  font-weight: 500;
+  line-height: rem(32);
+  letter-spacing: rem(-0.6);
+}
+
+@mixin body-20 {
+  font-size: rem(20);
+  font-weight: 500;
+  line-height: rem(26);
+  letter-spacing: rem(-0.5);
+}
+
+@mixin body-18 {
+  font-size: rem(18);
+  font-weight: 500;
+  line-height: rem(24);
+  letter-spacing: rem(-0.72);
+}
+
+@mixin body-16 {
+  font-size: rem(16);
+  font-weight: 500;
+  line-height: rem(24);
+  letter-spacing: rem(-0.32);
+}
+
+@mixin body-14 {
+  font-size: rem(14);
+  font-weight: 500;
+  line-height: rem(20);
+  letter-spacing: rem(-0.35);
+}
+
+@mixin body-12 {
+  font-size: rem(12);
+  font-weight: 500;
+  line-height: rem(20);
+  letter-spacing: rem(-0.3);
+}
+
+@layer utilities {
+  .body-24 {
+    @include body-24;
+  }
+
+  .body-24-light {
+    @include body-24;
+    font-weight: 400;
+  }
+
+  .body-20 {
+    @include body-20;
+  }
+
+  .body-20-light {
+    @include body-20;
+    font-weight: 400;
+  }
+
+  .body-18 {
+    @include body-18;
+  }
+
+  .body-18-light {
+    @include body-18;
+    font-weight: 400;
+  }
+
+  .body-16 {
+    @include body-16;
+  }
+
+  .body-16-light {
+    @include body-16;
+    font-weight: 400;
+  }
+
+  .body-14 {
+    @include body-14;
+  }
+
+  .body-14-light {
+    @include body-14;
+    font-weight: 400;
+  }
+
+  .body-12 {
+    @include body-12;
+  }
+
+  .body-12-light {
+    @include body-12;
+    font-weight: 400;
+  }
+}
+
+.dls-button-on-hover:hover {
+  border-color: var(--button-bd-hover, transparent);
+  text-decoration: none;
+}
+
+.dls-button-on-active.dls-button-on-active:active {
+  background-color: var(--button-bg);
+  border: var(--button-bd);
+  color: var(--button-color);
+  transform: translateY(0);
+}
+
+.dls-button-section * {
+  transition:
+    transform 0.15s ease,
+    opacity 0.1s ease;
+}
+
+.dls-button-section-dark * {
+  color: var(--White);
+}

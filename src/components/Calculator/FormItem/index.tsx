@@ -1,19 +1,19 @@
-import { PropsWithChildren } from 'react'
-import Tooltip from 'rc-tooltip'
-import styles from './styles.module.css'
-import 'rc-tooltip/assets/bootstrap_white.css'
+import { PropsWithChildren } from 'react';
+import Tooltip from 'rc-tooltip';
+import styles from './styles.module.css';
+import 'rc-tooltip/assets/bootstrap_white.css';
 
 interface IFormItemProps {
-  title: string
-  description?: string
-  note?: string
+  title: string;
+  description?: string;
+  note?: string;
 }
 
 function FormItem({
   title,
   description,
   note,
-  children
+  children,
 }: PropsWithChildren<IFormItemProps>) {
   return (
     <div className={styles.formItem}>
@@ -28,7 +28,7 @@ function FormItem({
       <div>{children}</div>
       {note && <div className={styles.formItemNote}>{note}</div>}
     </div>
-  )
+  );
 }
 
-export default FormItem
+export default FormItem;

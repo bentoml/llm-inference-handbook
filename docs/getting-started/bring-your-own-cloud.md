@@ -6,9 +6,6 @@ keywords:
     - LLM infrastructure
 ---
 
-import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
-
 # Bring Your Own Cloud (BYOC)
 
 Enterprise AI teams face a challenge: how to quickly scale LLM workloads without losing control of data, infrastructure, or costs.
@@ -47,7 +44,7 @@ Here’s how it typically works:
 2. **Data plane (customer-managed)**: This is where inference happens. Your models, GPUs, compute instances, and data all live inside your own VPC, ensuring compliance, privacy, and full isolation.
 3. **Networking and IAM boundaries**: BYOC relies on strict permission scoping. The vendor can manage deployments programmatically (for example, through IAM roles or cross-account access), but is unable to view or exfiltrate data. Logs (the vendor may have access to them for debugging purposes), metrics, and model outputs stay within your environment.
 
-![bring-your-own-cloud-byoc-diagram.png](./img/bring-your-own-cloud-byoc-diagram.png)
+<Diagram name="bring-your-own-cloud-byoc-diagram" alt="Bring-your-own-cloud: vendor-managed control plane and customer-VPC data plane" />
 
 This hybrid design offers the best of both worlds:
 
@@ -58,7 +55,7 @@ This hybrid design offers the best of both worlds:
 There may be nuances in how BYOC is implemented, depending on an organization’s requirements. For example, in industries like defense or healthcare, teams may require complete control over both the control plane and data plane. This ensures maximum security and compliance assurance, often within fully isolated or air-gapped environments.
 :::
 
-Modern inference systems, like those built on vLLM, SGLang, or BentoML, fit naturally into this model. They run on your existing cloud infrastructure while connecting seamlessly to a centralized control plane.
+Modern inference systems, like those built on vLLM, SGLang, or MAX, fit naturally into this model. They run on your existing cloud infrastructure while connecting seamlessly to a centralized control plane.
 
 ## Benefits of BYOC for LLM workloads
 
@@ -94,7 +91,7 @@ It also helps you make the most of existing cloud investments:
 - Apply committed use discounts, savings plans, or spot pricing to inference workloads.
 - Aggregate spend across workloads to unlock enterprise-level discounts from your provider.
 
-For example, [BentoCloud’s BYOC mode](https://www.bentoml.com/blog/byoc-to-bentocloud-privacy-flexibility-and-cost-efficiency-in-one-package) provisions compute directly in your account, so you can deploy models using the same credits, discounts, and billing relationships you already have.
+For example, Modular Cloud BYOC provisions compute directly in your account, so you can deploy models using the same credits, discounts, and billing relationships you already have.
 
 ### No vendor lock-in
 
@@ -113,7 +110,7 @@ Here’s a quick comparison:
 | [On-prem](../getting-started/on-prem-llms) | Customer’s private data center | Customer |  Full: data and compute remain entirely on customer infrastructure | Air-gapped or highly regulated industries (e.g., defense, healthcare) |
 | [Hybrid (On-prem + BYOC)](../getting-started/on-prem-llms#overflowing-to-the-cloud-a-hybrid-approach) | Split between customer data center and cloud account | Shared between customer and vendor | Full: on-prem for sensitive workloads, cloud for burst capacity | Organizations needing more flexibility while maintaining strict data boundaries |
 
-For most enterprise LLM workloads, BYOC provides the best middle ground. It’s fast to deploy, secure by design, and cost-efficient at scale. However, hybrid architectures are becoming the bridge between full control and global agility. In a hybrid setup, you can deploy models on-prem for maximum control, data security, and compliance, while overflowing to cloud GPUs during traffic spikes. Learn more in the [GPU CAP Theorem blog post](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference).
+For most enterprise LLM workloads, BYOC provides the best middle ground. It’s fast to deploy, secure by design, and cost-efficient at scale. However, hybrid architectures are becoming the bridge between full control and global agility. In a hybrid setup, you can deploy models on-prem for maximum control, data security, and compliance, while overflowing to cloud GPUs during traffic spikes.
 
 ---
 
@@ -127,7 +124,7 @@ With our BYOC deployment, you can:
 - Apply the latest distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) in your private cloud
 
 <div style={{ margin: '3rem 0' }}>
-[<Button>Schedule a Demo</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Schedule a Demo</a>
 </div>
 
 ---
@@ -145,9 +142,3 @@ In SaaS, the vendor hosts and manages everything in their own environment. In BY
 ### What are the trade-offs of BYOC?
 
 You gain more sovereignty and flexibility but take on part of the operational burden, namely managing your own cloud environment, IAM roles, and monitoring. Many teams offset this by using managed BYOC solutions.
-
-<LinkList>
-  ## Additional resources
-  * [BYOC to BentoCloud: Privacy, Flexibility, and Cost Efficiency in One Package](https://www.bentoml.com/blog/byoc-to-bentocloud-privacy-flexibility-and-cost-efficiency-in-one-package)
-  * [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference)
-</LinkList>

@@ -7,8 +7,6 @@ keywords:
     - LLM inference hardware
 ---
 
-import LinkList from '@site/src/components/LinkList';
-
 # Where is LLM inference run?
 
 When deploying LLMs into production, choosing the right hardware is crucial. Different hardware types offer varied levels of performance and cost-efficiency. The three primary options are CPUs, GPUs, and TPUs. Understanding their strengths and weaknesses helps you optimize your inference workloads effectively.
@@ -63,11 +61,3 @@ The deployment pattern shapes everything from latency and scalability to privacy
 - **Bring Your Own Cloud (BYOC)**: [BYOC deployments](../getting-started/bring-your-own-cloud) let you run vendor software, such as an LLM inference platform, directly inside your own cloud account. This model combines managed orchestration with full data, network, and cost control. It's ideal for enterprises that need compliance, cost-efficiency, and scalability without full self-hosting.
 - **On-prem**: [On-premises deployments](../getting-started/on-prem-llms) mean running LLM inference on your own infrastructure, typically within a private data center. This pattern offers full control over data, performance, and compliance, but requires more operational overhead.
 - **Edge**: In edge deployments, the model runs directly on user devices or local edge nodes, closer to where data is generated. This reduces network latency and increases data privacy, especially for time-sensitive or offline use cases. Edge inference usually uses smaller, optimized models due to limited compute resources.
-
-<LinkList>
-  ## Additional resources
-  * [NVIDIA Data Center GPUs Explained: From A100 to B200 and Beyond](https://www.bentoml.com/blog/nvidia-data-center-gpus-explained-a100-h200-b200-and-beyond)
-  * [How to Beat the GPU CAP Theorem in AI Inference](https://www.bentoml.com/blog/how-to-beat-the-gpu-cap-theorem-in-ai-inference)
-  * [State of AI Inference Infrastructure Survey Highlights](https://www.bentoml.com/blog/2024-ai-infra-survey-highlights)
-  * [3 Levels from Laptop to Cluster-Scale Distributed Inference](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference)
-</LinkList>

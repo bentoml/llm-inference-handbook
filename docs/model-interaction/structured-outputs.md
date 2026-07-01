@@ -16,8 +16,8 @@ Here is an example:
 ```json
 {
   "name": "LLM Inference Handbook",
-  "author": "The Bento Team",
-  "website": "www.bentoml.com/llm",
+  "author": "Modular",
+  "website": "handbook.modular.com",
   "summary": "A practical handbook for engineers building, optimizing, scaling, and operating LLM inference systems in production."
 }
 ```
@@ -153,6 +153,5 @@ The main advantages are speed, precision, and reliability. The Outlines team eve
   ## Additional resources
   * [Efficient Guided Generation for Large Language Models](https://arxiv.org/pdf/2307.09702)
   * [Fast JSON Decoding for Local LLMs with Compressed Finite State Machine](https://lmsys.org/blog/2024-02-05-compressed-fsm/)
-  * [Structured Decoding in vLLM: A Gentle Introduction](https://www.bentoml.com/blog/structured-decoding-in-vllm-a-gentle-introduction)
   * [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](https://arxiv.org/abs/2411.15100)
 </LinkList>

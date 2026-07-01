@@ -1,21 +1,21 @@
-import { useState } from 'react'
-import useBaseUrl from '@docusaurus/useBaseUrl'
-import styles from './styles.module.css'
+import { useState } from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import styles from './styles.module.css';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
-type ProfileId = 'explorer' | 'api' | 'builder' | 'scaler' | 'leader'
+type ProfileId = 'explorer' | 'api' | 'builder' | 'scaler' | 'leader';
 
 interface Question {
-  text: string
-  options: { label: string; scores: Partial<Record<ProfileId, number>> }[]
+  text: string;
+  options: { label: string; scores: Partial<Record<ProfileId, number>> }[];
 }
 
 interface Profile {
-  subtitle: string
-  title: string
-  description: string
-  chapters: { title: string; description: string; href: string }[]
+  subtitle: string;
+  title: string;
+  description: string;
+  chapters: { title: string; description: string; href: string }[];
 }
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -24,32 +24,59 @@ const QUESTIONS: Question[] = [
   {
     text: 'How are you currently running LLMs?',
     options: [
-      { label: 'Via a managed API (OpenAI, Anthropic, etc.)', scores: { api: 2, leader: 1 } },
-      { label: 'Self-hosted on my own infrastructure',        scores: { builder: 2, scaler: 1 } },
-      { label: 'Still evaluating options',                    scores: { explorer: 2 } },
+      {
+        label: 'Via a managed API (OpenAI, Anthropic, etc.)',
+        scores: { api: 2, leader: 1 },
+      },
+      {
+        label: 'Self-hosted on my own infrastructure',
+        scores: { builder: 2, scaler: 1 },
+      },
+      { label: 'Still evaluating options', scores: { explorer: 2 } },
     ],
   },
   {
     text: "What's your biggest concern right now?",
     options: [
-      { label: 'Understanding how LLMs work under the hood', scores: { explorer: 2 } },
-      { label: 'Reducing inference cost',                    scores: { scaler: 2, api: 1 } },
-      { label: 'Lowering latency for my application',        scores: { builder: 2, api: 1 } },
-      { label: 'Scaling to handle more traffic',             scores: { scaler: 2, builder: 1 } },
+      {
+        label: 'Understanding how LLMs work under the hood',
+        scores: { explorer: 2 },
+      },
+      { label: 'Reducing inference cost', scores: { scaler: 2, api: 1 } },
+      {
+        label: 'Lowering latency for my application',
+        scores: { builder: 2, api: 1 },
+      },
+      {
+        label: 'Scaling to handle more traffic',
+        scores: { scaler: 2, builder: 1 },
+      },
     ],
   },
   {
     text: 'What best describes your role?',
     options: [
-      { label: 'Developer building an AI application',  scores: { builder: 2, api: 1 } },
-      { label: 'Infrastructure or platform engineer',   scores: { scaler: 2, builder: 1 } },
+      {
+        label: 'Developer building an AI application',
+        scores: { builder: 2, api: 1 },
+      },
+      {
+        label: 'Infrastructure or platform engineer',
+        scores: { scaler: 2, builder: 1 },
+      },
       { label: 'Technical lead or engineering manager', scores: { leader: 3 } },
-      { label: 'Researcher or learner',                 scores: { explorer: 2 } },
+      { label: 'Researcher or learner', scores: { explorer: 2 } },
     ],
   },
-]
+];
 
-const PROFILE_IDS: ProfileId[] = ['explorer', 'api', 'builder', 'scaler', 'leader']
+const PROFILE_IDS: ProfileId[] = [
+  'explorer',
+  'api',
+  'builder',
+  'scaler',
+  'leader',
+];
 
 const PROFILES: Record<ProfileId, Profile> = {
   explorer: {
@@ -80,7 +107,8 @@ const PROFILES: Record<ProfileId, Profile> = {
       },
       {
         title: 'GPU architecture fundamentals',
-        description: 'Threads, warps, SMs, and memory — the hardware LLMs run on',
+        description:
+          'Threads, warps, SMs, and memory — the hardware LLMs run on',
         href: '/kernel-optimization/gpu-architecture-fundamentals',
       },
       {
@@ -103,7 +131,8 @@ const PROFILES: Record<ProfileId, Profile> = {
       },
       {
         title: 'Key inference metrics',
-        description: 'Metrics that matter to your SLO: TTFT, TPOT, goodput, etc.',
+        description:
+          'Metrics that matter to your SLO: TTFT, TPOT, goodput, etc.',
         href: '/llm-inference-basics/llm-inference-metrics',
       },
       {
@@ -146,12 +175,14 @@ const PROFILES: Record<ProfileId, Profile> = {
       },
       {
         title: 'FlashAttention',
-        description: 'Faster, memory-efficient attention, a classic kernel-level win',
+        description:
+          'Faster, memory-efficient attention, a classic kernel-level win',
         href: '/kernel-optimization/flashattention',
       },
       {
         title: 'Kernel optimization tools',
-        description: 'CUDA, Triton, TVM, Mojo, MAX — learn which layer to reach for first',
+        description:
+          'CUDA, Triton, TVM, Mojo, MAX — learn which layer to reach for first',
         href: '/kernel-optimization/kernel-optimization-tools',
       },
     ],
@@ -169,27 +200,32 @@ const PROFILES: Record<ProfileId, Profile> = {
       },
       {
         title: 'Prefix caching',
-        description: 'Eliminate redundant computation on shared prompt prefixes',
+        description:
+          'Eliminate redundant computation on shared prompt prefixes',
         href: '/inference-optimization/prefix-caching',
       },
       {
         title: 'Prefill-decode disaggregation',
-        description: 'Separate the two phases to eliminate scheduling conflicts',
+        description:
+          'Separate the two phases to eliminate scheduling conflicts',
         href: '/inference-optimization/prefill-decode-disaggregation',
       },
       {
         title: 'Inference routing',
-        description: 'Route requests based on cache locality, load, memory pressure, and more',
+        description:
+          'Route requests based on cache locality, load, memory pressure, and more',
         href: '/inference-optimization/inference-routing',
       },
       {
         title: 'FlashAttention',
-        description: 'Cut attention memory pressure to fit more concurrent requests',
+        description:
+          'Cut attention memory pressure to fit more concurrent requests',
         href: '/kernel-optimization/flashattention',
       },
       {
         title: 'Kernel optimization tools',
-        description: 'Pick the right layer of the stack for kernel optimization',
+        description:
+          'Pick the right layer of the stack for kernel optimization',
         href: '/kernel-optimization/kernel-optimization-tools',
       },
     ],
@@ -217,7 +253,8 @@ const PROFILES: Record<ProfileId, Profile> = {
       },
       {
         title: 'Choosing an inference framework',
-        description: 'How the major frameworks compare on features and maturity',
+        description:
+          'How the major frameworks compare on features and maturity',
         href: '/getting-started/choosing-the-right-inference-framework',
       },
       {
@@ -227,45 +264,53 @@ const PROFILES: Record<ProfileId, Profile> = {
       },
       {
         title: 'GPU architecture fundamentals',
-        description: 'The hardware model behind every capacity and cost decision',
+        description:
+          'The hardware model behind every capacity and cost decision',
         href: '/kernel-optimization/gpu-architecture-fundamentals',
       },
     ],
   },
-}
+};
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function StackQuiz() {
-  const [step,    setStep]    = useState(0)
-  const [answers, setAnswers] = useState<number[]>([])
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState<number[]>([]);
 
-  const isDone   = step >= QUESTIONS.length
-  const question = !isDone ? QUESTIONS[step] : null
+  const isDone = step >= QUESTIONS.length;
+  const question = !isDone ? QUESTIONS[step] : null;
 
   function selectAnswer(optionIdx: number) {
-    const next = [...answers.slice(0, step), optionIdx]
-    setAnswers(next)
-    setStep(step + 1)
+    const next = [...answers.slice(0, step), optionIdx];
+    setAnswers(next);
+    setStep(step + 1);
   }
 
   function computeProfile(): ProfileId {
-    const scores = Object.fromEntries(PROFILE_IDS.map(id => [id, 0])) as Record<ProfileId, number>
+    const scores = Object.fromEntries(
+      PROFILE_IDS.map((id) => [id, 0])
+    ) as Record<ProfileId, number>;
     answers.forEach((optIdx, qIdx) => {
-      for (const [id, pts] of Object.entries(QUESTIONS[qIdx].options[optIdx].scores)) {
-        scores[id as ProfileId] += pts!
+      for (const [id, pts] of Object.entries(
+        QUESTIONS[qIdx].options[optIdx].scores
+      )) {
+        scores[id as ProfileId] += pts!;
       }
-    })
-    return PROFILE_IDS.reduce((best, id) => scores[id] > scores[best] ? id : best, PROFILE_IDS[0])
+    });
+    return PROFILE_IDS.reduce(
+      (best, id) => (scores[id] > scores[best] ? id : best),
+      PROFILE_IDS[0]
+    );
   }
 
   function reset() {
-    setStep(0)
-    setAnswers([])
+    setStep(0);
+    setAnswers([]);
   }
 
-  const profile = isDone ? PROFILES[computeProfile()] : null
-  const base    = useBaseUrl('/').replace(/\/$/, '') // e.g. '/llm'
+  const profile = isDone ? PROFILES[computeProfile()] : null;
+  const base = useBaseUrl('/').replace(/\/$/, ''); // e.g. '/llm'
 
   return (
     <div className={styles.container}>
@@ -277,27 +322,36 @@ export default function StackQuiz() {
       </div>
 
       <div className={styles.body}>
-
         {/* ── Step indicator ── */}
         <div className={styles.stepper}>
           {QUESTIONS.map((_, i) => (
             <div key={i} className={styles.stepItem}>
-              <div className={`${styles.stepDot}
-                ${i < step || isDone  ? styles.stepDone   : ''}
+              <div
+                className={`${styles.stepDot}
+                ${i < step || isDone ? styles.stepDone : ''}
                 ${i === step && !isDone ? styles.stepActive : ''}
-              `}>
+              `}
+              >
                 {i < step || isDone ? '✓' : i + 1}
               </div>
-              <div className={`${styles.stepLine} ${i < step || isDone ? styles.stepLineDone : ''}`} />
+              <div
+                className={`${styles.stepLine} ${i < step || isDone ? styles.stepLineDone : ''}`}
+              />
             </div>
           ))}
-          <div className={`${styles.stepDot} ${isDone ? styles.stepResultDot : ''}`}>✦</div>
+          <div
+            className={`${styles.stepDot} ${isDone ? styles.stepResultDot : ''}`}
+          >
+            Result
+          </div>
         </div>
 
         {/* ── Question ── */}
         {question && (
           <div className={styles.questionWrap}>
-            <div className={styles.questionMeta}>Question {step + 1} of {QUESTIONS.length}</div>
+            <div className={styles.questionMeta}>
+              Question {step + 1} of {QUESTIONS.length}
+            </div>
             <div className={styles.questionText}>{question.text}</div>
             <div className={styles.options}>
               {question.options.map((opt, i) => (
@@ -313,7 +367,11 @@ export default function StackQuiz() {
               ))}
             </div>
             {step > 0 && (
-              <button type="button" className={styles.backBtn} onClick={() => setStep(step - 1)}>
+              <button
+                type="button"
+                className={styles.backBtn}
+                onClick={() => setStep(step - 1)}
+              >
                 ← Back
               </button>
             )}
@@ -330,7 +388,11 @@ export default function StackQuiz() {
             </div>
             <div className={styles.chapterGrid}>
               {profile.chapters.map((ch) => (
-                <a key={ch.href} href={base + ch.href} className={styles.chapterCard}>
+                <a
+                  key={ch.href}
+                  href={base + ch.href}
+                  className={styles.chapterCard}
+                >
                   <div className={styles.chapterTitle}>{ch.title}</div>
                   <div className={styles.chapterDesc}>{ch.description}</div>
                   <div className={styles.chapterArrow}>→</div>
@@ -342,8 +404,7 @@ export default function StackQuiz() {
             </button>
           </div>
         )}
-
       </div>
     </div>
-  )
+  );
 }
