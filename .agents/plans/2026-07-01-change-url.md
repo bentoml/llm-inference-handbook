@@ -30,9 +30,16 @@ Manually apply just the URL-related config keys to `docusaurus.config.ts`, plus 
 ## Resolved operational details
 - `docusaurus.config.ts` line ~20: `url: 'https://bentoml.com/'` → `url: 'https://handbook.modular.com'`
 - `docusaurus.config.ts` line ~23: `baseUrl: '/llm/'` → `baseUrl: '/'`
-- `docusaurus.config.ts` line ~29: `trailingSlash: false` → `trailingSlash: true`
+- `docusaurus.config.ts` line ~29: `trailingSlash` left at `false` (see "Post-commit correction" below; not changed to `true`)
 - New file `static/CNAME` with exact contents: `handbook.modular.com`
 - Boilerplate comments above `url`/`baseUrl` in the current file are left untouched (not part of the value change).
+
+## Post-commit correction: trailingSlash reverted
+During `/git-commit` verification (`pnpm run build`), setting `trailingSlash: true` broke the production build with "Docusaurus found broken links" across nearly every doc page. Root cause: this repo's docs use relative `../` links between pages, and flipping `trailingSlash` changes how those directory- vs file-style relative URLs resolve, producing doubled path segments (e.g. `/getting-started/getting-started/on-prem-llms/`).
+
+Investigated whether `modular-branding` avoids this by fixing the links: it does not. Temporarily setting `onBrokenLinks: 'throw'` in `modular-branding`'s own config reproduced the identical broken-link list. That branch only suppresses the check via `onBrokenLinks: 'ignore'` / `onBrokenAnchors: 'ignore'`, meaning the same links are genuinely broken (404s) there too — not a deliberate, working design choice tied to `trailingSlash`.
+
+Decision: reverted `trailingSlash` to `false` in this branch rather than porting `onBrokenLinks: 'ignore'`, since the latter would silently inherit a real bug rather than avoid it. `url`, `baseUrl`, and `static/CNAME` are unaffected by this and remain as planned. Verified `pnpm run build` succeeds with this combination.
 
 ## User-provided prerequisites / needed from you before implementation
 - Nothing blocking implementation of the code change itself.
