@@ -25,13 +25,17 @@ These figures only account for model weights. Runtime elements, such as attentio
 
 ## Why use quantization
 
-Quantization is widely used because it:
+Quantization can help LLM inference in three main ways:
 
-- **Reduces memory usage**, which not only allows large models to fit on smaller GPUs, but also reduces the KV cache size per token. This leads to higher throughput since you can fit more tokens into the same GPU memory.
-- **Speeds up inference**, particularly on edge devices or during batch processing.
-- **Lowers compute requirements**, which helps reduce cost and energy usage.
+- **Smaller model footprint**. The number of bits per parameter directly affects how much memory the model weights require. For example, a 7B model needs about 14 GB for FP16 weights but about 7 GB for INT8 weights. This can make the difference between fitting the model on one GPU or distributing it across multiple GPUs or nodes.
+- **Less data movement**. LLM decoding is often limited by GPU memory bandwidth because the runtime repeatedly reads model weights while generating tokens. Lower-precision weights mean fewer bytes to be moved from [GPU memory to the compute units](../kernel-optimization/gpu-architecture-fundamentals), which can reduce per-token latency.
+- **Faster computation**. GPUs and other accelerators can process supported low-precision formats at higher throughput than FP32 or FP16. [On the H100 SXM](https://www.nvidia.com/en-us/data-center/h100/), for example, the BF16/FP16 tensor cores hit 1,979 TFLOPS, while FP8 and INT8 double that to 3,958 TFLOPS/TOPS, a clean 2x from halving the bit width. The actual speedup depends on whether the hardware and inference runtime provide optimized kernels for the chosen format.
 
-This tradeoff between precision and size comes with **some drop in accuracy**. For many applications, however, the impact is minimal, especially with carefully tuned quantization methods.
+A smaller weight footprint also leaves more GPU memory available for the [KV cache](../llm-inference-basics/how-does-llm-inference-work#the-two-phases-of-llm-inference), larger batches, and more concurrent requests. Weight quantization does not reduce the KV cache size per token by itself. It requires quantizing the KV cache separately.
+
+This tradeoff between precision and size comes with **some drop in accuracy**. For many applications, the above benefits matter only if the generated output remains reliable enough for production use. For example, a faster model that produces noticeably worse responses is rarely a worthwhile trade-off.
+
+The good news is that modern quantization methods have made this trade-off much less severe. Techniques such as GPTQ W4A16, AWQ, and FP8 quantization for both weights and activations often [preserve nearly the same accuracy](https://developers.redhat.com/articles/2024/10/17/we-ran-over-half-million-evaluations-quantized-llms) as the original model, with meaningful improvements in inference efficiency. As a result, many production deployments can adopt quantization with little or no noticeable impact on model quality.
 
 ## Quantization formats
 
@@ -97,6 +101,10 @@ Quantization may not be a good choice if:
 - Your model is already small (quantization offers limited benefit here).
 - Your deployment hardware doesn't support quantized formats.
 
+:::tip
+The quantized variants of many popular foundation models are already available on Hugging Face, so you don't need to quantize the models yourself. You can often find them in the model tree section.
+:::
+
 ## Quantization methods
 
 Several advanced quantization techniques have been developed to make LLMs more efficient without significant loss in performance.
@@ -142,7 +150,9 @@ GPTQ is widely used in open-source model serving pipelines, especially with Auto
 
 ---
 
-Instead of quantizing a model yourself, you can often start with an already quantized model from [Hugging Face](../getting-started/choosing-the-right-model/#hugging-face). It hosts many pre-quantized variants, such as 8-bit and 4-bit models, that are ready for inference and optimized for lower memory usage and faster deployment. At the same time, it also provides full-precision base models if you want to apply your own quantization strategy.
+Many [modern inference frameworks](../getting-started/choosing-the-right-inference-framework) not only serve quantized models efficiently but also provide built-in APIs or tooling to quantize models. In other cases, models are quantized offline using specialized tools and then loaded directly by the serving framework. As a result, most users no longer need to implement quantization algorithms themselves.
+
+You can often start with an already quantized model from [Hugging Face](../getting-started/choosing-the-right-model/#hugging-face). It hosts many pre-quantized variants, such as 8-bit and 4-bit models, that are ready for inference and optimized for lower memory usage and faster deployment. At the same time, it also provides full-precision base models if you want to apply your own quantization strategy.
 
 <LinkList>
   ## Additional resources
