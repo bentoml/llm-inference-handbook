@@ -19,7 +19,7 @@ import LinkList from '@site/src/components/LinkList';
 
 When an LLM is generating a response, it needs to [remember past information (i.e. the KV cache) for every token it generates](../llm-inference-basics/how-does-llm-inference-work#the-two-phases-of-llm-inference). Normally, the KV cache takes up a big chunk of memory because it’s stored as one giant continuous block. This can lead to memory fragmentation or wasted space because you need to reserve a big block even if you don’t fill it fully.
 
-Specifically, early serving engines often allocated KV cache as a contiguous tensor sized for the worst case. A simplified shape is:
+Specifically, early serving engines often allocated KV cache as a contiguous tensor sized for the worst case. [A simplified shape](./kv-cache-offloading#how-to-calculate-the-kv-cache-size) is:
 
 ```bash
 2 × num_layers × num_heads × head_dim × max_seq_len
@@ -34,6 +34,8 @@ The result is lower effective batch size, more memory fragmentation, and fewer c
 PagedAttention breaks this big chunk into smaller blocks, kind of like pages in a book. In other words, the KV cache is stored in non-contiguous blocks. It then uses a lookup table to keep track of these blocks. The LLM only loads the blocks it needs, instead of loading everything at once.
 
 This saves memory and makes the whole process more efficient. It even allows the same blocks to be shared across different outputs if needed.
+
+The original PagedAttention paper reports that, without PagedAttention, only 20.4%-38.2% of allocated KV cache memory is used to store actual token states, with the remainder wasted due to fragmentation. By contrast, PagedAttention reduces KV cache memory waste to nearly zero.
 
 This is why PagedAttention matters beyond a single attention kernel. It gives the serving engine a better memory allocator for KV cache, which then makes techniques like [continuous batching](./static-dynamic-continuous-batching), [prefix caching](./prefix-caching), and [KV cache offloading](./kv-cache-offloading) easier to combine.
 
