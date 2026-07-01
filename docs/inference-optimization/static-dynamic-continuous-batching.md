@@ -5,6 +5,7 @@ keywords:
     - Static batching, dynamic batching and continuous batching
     - Batch LLM inference, batch requests, batch processing, LLM inference batching, LLM batching
     - Batch size, batch window
+    - Chunked prefill, decode-maximal batching
     - Padding tokens, pad tokens, ragged tensors
     - LLM inference optimization, LLM inference optimization techniques, LLM batch API
     - Speed up LLM inference
@@ -12,6 +13,7 @@ keywords:
 
 import LinkList from '@site/src/components/LinkList';
 import BatchingSimulator from '@site/src/components/BatchingSimulator';
+import ChunkedPrefillVisualizer from '@site/src/components/ChunkedPrefillVisualizer';
 
 # Static, dynamic and continuous batching
 
@@ -57,6 +59,28 @@ This technique uses iteration-level scheduling, meaning the batch composition ch
 
 Major [inference frameworks](../getting-started/choosing-the-right-inference-framework) such as vLLM, SGLang, TensorRT-LLM (in-flight batching) and LMDeploy (persistent batching) all support continuous batching or similar mechanisms. For memory management in long or mixed-length batches, see [PagedAttention](./pagedattention).
 
+## Chunked prefill
+
+Continuous batching introduces a scheduling conflict when a new request arrives while other requests are decoding. Processing the entire prompt of a new request in one prefill iteration minimizes the Time to First Token (TTFT), but a long prefill can delay the next token for every active decode request. In a streaming application, users may see the output pause while another user's prompt is processed.
+
+**Chunked prefill** splits a prompt into smaller token ranges and schedules them across multiple iterations. Each chunk extends the KV cache of the request, and later chunks attend to the prompt tokens processed earlier. Because the attention computation is unchanged (every token still attends to all earlier tokens through the KV cache), the chunked prefill is mathematically equivalent to processing the prompt in one pass, and the first token is emitted only after the final chunk.
+
+<ChunkedPrefillVisualizer />
+
+The scheduler can combine one prefill chunk with decode tokens from active requests in the same batch. [SARATHI](https://arxiv.org/abs/2308.16369) calls this **decode-maximal batching**: the prefill chunk supplies enough parallel work to saturate the compute capacity of the GPU, while decode tokens piggyback on the same model execution at little extra cost. This prevents a long prompt from monopolizing one iteration and can also reduce pipeline bubbles under [pipeline parallelism](./data-tensor-pipeline-expert-hybrid-parallelism#pipeline-parallelism).
+
+The benefit of chunked prefill is that even when a request has a long prompt, the prefill computation is divided into smaller chunks. Instead of waiting for one long prefill iteration to finish, active decode requests can continue generating tokens between prefill chunks. This reduces Inter-Token Latency (ITL) and makes streamed responses smoother.
+
+The trade-off is that chunking introduces additional scheduling and attention overhead because the prompt is processed through multiple smaller prefill steps instead of one large step. As a result, TTFT may increase, especially when smaller chunk sizes are used.
+
+Most inference frameworks let you tune the chunk size. Note that:
+
+- **Smaller chunks** give the scheduler more opportunities to run decodes, reducing ITL spikes for active requests.
+- **Larger chunks** process the new prompt more efficiently and usually improve the TTFT, but active decodes may wait longer between tokens.
+- **Chunks that are too small** can lower GPU utilization and add attention overhead because later chunks must reread KV cache entries created by earlier chunks.
+
+There is no universal best value. The right size depends on the model, GPU, prompt-length distribution, concurrency, and latency targets. It should be treated as a workload-specific scheduling parameter rather than a universal constant.
+
 ## FAQs
 
 ### What are padding tokens in LLM batching?
@@ -85,5 +109,6 @@ Ragged tensors represent variable-length sequences without padding them all to o
 <LinkList>
   ## Additional resources
   * [How continuous batching enables 23x throughput in LLM inference while reducing p50 latency](https://www.anyscale.com/blog/continuous-batching-llm-inference)
+  * [SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills](https://arxiv.org/abs/2308.16369)
   * [Mastering LLM Techniques: Inference Optimization](https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/)
 </LinkList>

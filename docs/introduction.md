@@ -62,6 +62,7 @@ This handbook provides various interactive tools to help you learn by trying the
 - [GPU Memory Calculator](/getting-started/calculating-gpu-memory-for-llms#): Estimate VRAM requirements for serving an LLM.
 - [Quantization Memory Impact Visualizer](/model-preparation/llm-quantization#quantization-formats): Compare weight memory across quantization formats.
 - [Batching Strategy Simulator](/inference-optimization/static-dynamic-continuous-batching): Compare static, dynamic, and continuous batching behavior.
+- [Chunked Prefill Scheduler](/inference-optimization/static-dynamic-continuous-batching#chunked-prefill): See how a whole prefill stalls active decodes, and how chunking lets them continue.
 - [KV Cache Memory Calculator](/inference-optimization/kv-cache-offloading#how-to-calculate-the-kv-cache-size): Estimate how much memory the KV cache consumes.
 - [GPU Execution and Memory Map](/kernel-optimization/gpu-architecture-fundamentals): Visualize how threads, warps, SMs, and the GPU memory hierarchy fit together.
 
