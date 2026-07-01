@@ -33,7 +33,9 @@ Quantization can help LLM inference in three main ways:
 
 A smaller weight footprint also leaves more GPU memory available for the [KV cache](../llm-inference-basics/how-does-llm-inference-work#the-two-phases-of-llm-inference), larger batches, and more concurrent requests. Weight quantization does not reduce the KV cache size per token by itself. It requires quantizing the KV cache separately.
 
-This tradeoff between precision and size comes with **some drop in accuracy**. For many applications, however, the impact is minimal, especially with carefully tuned quantization methods.
+This tradeoff between precision and size comes with **some drop in accuracy**. For many applications, the above benefits matter only if the generated output remains reliable enough for production use. For example, a faster model that produces noticeably worse responses is rarely a worthwhile trade-off.
+
+The good news is that modern quantization methods have made this trade-off much less severe. Techniques such as GPTQ W4A16, AWQ, and FP8 quantization for both weights and activations often [preserve nearly the same accuracy](developers.redhat.com/articles/2024/10/17/we-ran-over-half-million-evaluations-quantized-llms) as the original model, with meaningful improvements in inference efficiency. As a result, many production deployments can adopt quantization with little or no noticeable impact on model quality.
 
 ## Quantization formats
 
