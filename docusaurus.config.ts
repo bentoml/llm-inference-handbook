@@ -17,10 +17,10 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://bentoml.com/',
+  url: 'https://handbook.modular.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/llm/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -66,6 +66,14 @@ const config: Config = {
           {
             from: '/inference-optimization/flashattention',
             to: '/kernel-optimization/flashattention'
+          },
+          {
+            from: '/kernel-optimization/frameworks-and-tools',
+            to: '/kernel-optimization/kernel-optimization-tools'
+          },
+          {
+            from: '/inference-optimization/llm-inference-metrics',
+            to: '/llm-inference-basics/llm-inference-metrics'
           }
         ]
       }

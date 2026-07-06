@@ -1,0 +1,10 @@
+[
+  { "source": "/inference-optimization/flashattention", "dest": "/kernel-optimization/flashattention", "status": 301 },
+  { "source": "/inference-optimization/flashattention/", "dest": "/kernel-optimization/flashattention/", "status": 301 },
+
+  { "source": "/kernel-optimization/frameworks-and-tools", "dest": "/kernel-optimization/kernel-optimization-tools", "status": 301 },
+  { "source": "/kernel-optimization/frameworks-and-tools/", "dest": "/kernel-optimization/kernel-optimization-tools/", "status": 301 },
+
+  { "source": "/inference-optimization/llm-inference-metrics", "dest": "/llm-inference-basics/llm-inference-metrics", "status": 301 },
+  { "source": "/inference-optimization/llm-inference-metrics/", "dest": "/llm-inference-basics/llm-inference-metrics/", "status": 301 }
+]
