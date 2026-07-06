@@ -389,10 +389,13 @@ ul {
 }
 
 .mh-mobile-menu {
+  -webkit-overflow-scrolling: touch;
   background: #fff;
   border-top: 1px solid rgba(2, 12, 19, 0.08);
   box-shadow: 0 18px 50px rgba(2, 12, 19, 0.08);
   left: 0;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
   padding: 20px 24px 28px;
   position: absolute;
   right: 0;
