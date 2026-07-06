@@ -7,7 +7,7 @@ keywords:
     - LLM inference, AI inference, inference layer
 ---
 
-import Newsletter from '@site/src/components/Newsletter';
+import ContactSection from '@site/src/components/ContactSection';
 import RequestLifecycle from '@site/src/components/RequestLifecycle';
 
 # What is LLM inference?
@@ -91,4 +91,4 @@ Understanding LLM inference (e.g., [batching](../inference-optimization/static-d
 
 For more information, see [serverless vs. self-hosted LLM inference](../getting-started/serverless-vs-self-hosted-llm-inference).
 
-<Newsletter />
+<ContactSection />

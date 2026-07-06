@@ -53,7 +53,7 @@ As a result, the prefill stage is compute-bound and often saturates GPU utilizat
 
 A key metric to monitor for prefill is the Time to First Token (TTFT), which measures the latency from prompt submission to first token generation. More details will be covered in the [inference optimization](/inference-optimization) chapter.
 
-![llm-inference-prefill.png](./img/llm-inference-prefill.png)
+<Diagram name="llm-inference-prefill" alt="LLM inference prefill pipeline showing tokenization, prefill, decode, and detokenization stages within Time to First Token (TTFT)" />
 
 ### Decode
 
@@ -99,7 +99,7 @@ The context window is the number of tokens an LLM can process in a single infere
 
 Technically, LLMs don’t have real memory. To keep context, every new request must resend all previous messages so the model can “see” the full conversation again (it happens under the hood and users don’t see it). In other words, continuity is maintained by reconstructing the context through the input prompt each time.
 
-![context-window.png](./img/context-window.png)
+<Diagram name="context-window" alt="How the conversation context grows across turns, increasing tokens processed" />
 
 This running text history is called the context window, which has a maximum length (e.g., 8K, 32K, or 128K tokens).
 

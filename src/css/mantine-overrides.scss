@@ -1,0 +1,24 @@
+// Mantine overrides are kept separate from Docusaurus component styles.
+// Opt-in CTA styling: callers add `className="btn-cta"` to a Mantine Button
+// to get the ember-gradient treatment. Other variants (outline, subtle, etc.)
+// keep their variant-driven styles from shared/themeButton.ts.
+.mantine-Button-root.btn-cta {
+  --button-bg: var(--gradient-ember) !important;
+  --button-hover: var(--gradient-ember) !important;
+  --button-color: #fff !important;
+  border: none !important;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  background: var(--button-bg) !important;
+  color: #fff !important;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.mantine-Button-label p {
+  margin: 0;
+}

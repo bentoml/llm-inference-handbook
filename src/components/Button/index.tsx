@@ -1,7 +1,7 @@
-import { PropsWithChildren } from 'react'
-import clsx from 'clsx'
-import ArrowSquare from './ArrowSquare'
-import styles from './styles.module.css'
+import { PropsWithChildren } from 'react';
+import clsx from 'clsx';
+import ArrowSquare from './ArrowSquare';
+import styles from './styles.module.css';
 
 interface LinkButtonProps {
   type?:
@@ -11,22 +11,24 @@ interface LinkButtonProps {
     | 'light-green'
     | 'pink'
     | 'light-purple'
-    | 'yellow'
-  buttonType?: 'button' | 'submit' | 'reset'
-  disabled?: boolean
-  className?: string
-  arrow?: boolean
+    | 'yellow';
+  buttonType?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  className?: string;
+  arrow?: boolean;
 }
 
-const colors: { [key in LinkButtonProps['type']]: string } = {
+type ButtonColor = NonNullable<LinkButtonProps['type']>;
+
+const colors: Record<ButtonColor, string> = {
   blue: styles.buttonBlue,
   'light-blue': styles.buttonLightBlue,
   green: styles.buttonGreen,
   'light-green': styles.buttonLightGreen,
   pink: styles.buttonPink,
   'light-purple': styles.buttonLightPurple,
-  yellow: styles.buttonYellow
-}
+  yellow: styles.buttonYellow,
+};
 
 function Button({
   children,
@@ -34,12 +36,12 @@ function Button({
   buttonType = 'button',
   className,
   arrow = true,
-  disabled
+  disabled,
 }: PropsWithChildren<LinkButtonProps>) {
   return (
     <button
       type={buttonType}
-      className={clsx(styles.button, colors[type], className)}
+      className={clsx(styles.button, type ? colors[type] : undefined, className)}
       disabled={disabled}
     >
       <span className={styles.buttonInner}>
@@ -47,7 +49,7 @@ function Button({
         {arrow && <ArrowSquare className={styles.buttonIcon} />}
       </span>
     </button>
-  )
+  );
 }
 
-export default Button
+export default Button;

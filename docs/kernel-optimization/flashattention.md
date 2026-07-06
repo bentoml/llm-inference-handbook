@@ -64,8 +64,10 @@ FlashAttention speeds up attention by reducing memory traffic. The core idea is 
     - All operations happen in fast SRAM
 
 <figure>
-![flashattention-diagram.png](./img/flashattention-diagram.png)
-<figcaption>FlashAttention uses tiling to prevent materialization of the large N×N attention matrix on HBM. [Image Source](https://arxiv.org/abs/2205.14135)</figcaption>
+  <img src={require('./img/flashattention-diagram.png').default} alt="FlashAttention tiling diagram" />
+  <figcaption>
+    FlashAttention uses tiling to prevent materialization of the large N×N attention matrix on HBM. <a href="https://arxiv.org/abs/2205.14135">Image source</a>
+  </figcaption>
 </figure>
 
 Simply put, FlashAttention makes the attention computation more efficient. It reorganizes the work so the GPU spends less time waiting on memory and more time doing actual computation.

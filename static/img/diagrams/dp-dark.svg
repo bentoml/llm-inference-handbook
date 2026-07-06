@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 188" width="460" height="188">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <text x="230.0" y="24.0" font-family="Roboto Mono, Courier, monospace" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Data Parallelism</text>
+  <rect x="28.0" y="50.0" width="124.0" height="110.0" rx="4" fill="#1b2025" stroke="#353d42" stroke-width="2"/>
+  <text x="90.0" y="66.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 0</text>
+  <rect x="42.0" y="84.0" width="96.0" height="58.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="90.0" y="113.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Model</text>
+  <rect x="168.0" y="50.0" width="124.0" height="110.0" rx="4" fill="#1b2025" stroke="#353d42" stroke-width="2"/>
+  <text x="230.0" y="66.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 1</text>
+  <rect x="182.0" y="84.0" width="96.0" height="58.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="230.0" y="113.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Model</text>
+  <rect x="308.0" y="50.0" width="124.0" height="110.0" rx="4" fill="#1b2025" stroke="#353d42" stroke-width="2"/>
+  <text x="370.0" y="66.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 2</text>
+  <rect x="322.0" y="84.0" width="96.0" height="58.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="370.0" y="113.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Model</text>
+</svg>

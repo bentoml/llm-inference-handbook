@@ -1,28 +1,41 @@
-# 📖 LLM Inference Handbook
+# LLM Inference Handbook
 
-This repository contains the source content for [LLM Inference Handbook](https://bentoml.com/llm/), a practical guide for understanding, optimizing, scaling, and operating LLM inference.
+This repository contains the source for the
+[LLM Inference Handbook](https://handbook.modular.com), a practical guide for
+understanding, optimizing, scaling, and operating LLM inference systems.
 
-[![X](https://badgen.net/badge/icon/@bentomlai/1DA1F2?label=Follow)](https://x.com/bentomlai)
-[![Forum](https://badgen.net/badge/Join/Forum)](https://forum.modular.com/c/bento/31)
+The handbook is a standalone Docusaurus site styled with the Modular design
+language system. Its future canonical source home is
+[`modular/llm-inference-handbook`](https://github.com/modular/llm-inference-handbook).
 
-## 🔧 Local preview
+## Local preview
 
-To preview the site locally:
+Install dependencies and start the local development server:
 
 ```bash
 pnpm install
 pnpm start
 ```
 
-It will be running at [http://localhost:3000/llm/](http://localhost:3000/llm/).
+The site runs at [http://localhost:3000/](http://localhost:3000/).
 
-## 🤝 Contributing
+To build or serve the production output locally:
 
-Contributions are welcome! Feel free to open issues, suggest improvements, or submit pull requests.
+```bash
+pnpm build
+pnpm serve
+```
 
-## 📄 Licenses
+## Contributing
 
-This repository is dual-licensed:
+Contributions are welcome! Feel free to open issues, suggest improvements, or
+submit pull requests.
 
-- All files in the `docs/` folder are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0) License](https://creativecommons.org/licenses/by/4.0/).
-- All other files are licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+## Licenses
+
+This handbook follows the upstream dual-license posture:
+
+- All files in the `docs/` folder are licensed under the
+  [Creative Commons Attribution 4.0 International (CC BY 4.0) License](https://creativecommons.org/licenses/by/4.0/).
+- All other files are licensed under the
+  [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

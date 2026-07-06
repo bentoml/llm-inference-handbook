@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 342" width="600" height="342">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <text x="300.0" y="24.0" font-family="Roboto Mono, Courier, monospace" font-size="16" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Pipeline Parallelism</text>
+  <rect x="28.0" y="50.0" width="124.0" height="264.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="90.0" y="63.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 0</text>
+  <rect x="168.0" y="50.0" width="124.0" height="264.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="230.0" y="63.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 1</text>
+  <rect x="308.0" y="50.0" width="124.0" height="264.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="370.0" y="63.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 2</text>
+  <rect x="448.0" y="50.0" width="124.0" height="264.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="510.0" y="63.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">GPU 3</text>
+  <rect x="36.0" y="80.0" width="528.0" height="222.0" rx="6" fill="none" stroke="#d4dae4" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="300.0" y="93.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">Model</text>
+  <rect x="40.0" y="108.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="90.0" y="123.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 0</text>
+  <rect x="40.0" y="146.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="90.0" y="161.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 1</text>
+  <rect x="40.0" y="184.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="90.0" y="199.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 2</text>
+  <rect x="40.0" y="222.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="90.0" y="237.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 3</text>
+  <rect x="40.0" y="260.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="90.0" y="275.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 4</text>
+  <rect x="180.0" y="108.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="230.0" y="123.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 5</text>
+  <rect x="180.0" y="146.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="230.0" y="161.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 6</text>
+  <rect x="180.0" y="184.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="230.0" y="199.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 7</text>
+  <rect x="180.0" y="222.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="230.0" y="237.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 8</text>
+  <rect x="180.0" y="260.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="230.0" y="275.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 9</text>
+  <rect x="320.0" y="108.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="370.0" y="123.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 10</text>
+  <rect x="320.0" y="146.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="370.0" y="161.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 11</text>
+  <rect x="320.0" y="184.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="370.0" y="199.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 12</text>
+  <rect x="320.0" y="222.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="370.0" y="237.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 13</text>
+  <rect x="320.0" y="260.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="370.0" y="275.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 14</text>
+  <rect x="460.0" y="108.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="510.0" y="123.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 15</text>
+  <rect x="460.0" y="146.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="510.0" y="161.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 16</text>
+  <rect x="460.0" y="184.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="510.0" y="199.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 17</text>
+  <rect x="460.0" y="222.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="510.0" y="237.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 18</text>
+  <rect x="460.0" y="260.0" width="100.0" height="30.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="510.0" y="275.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Layer 19</text>
+  <line x1="152.0" y1="199.0" x2="162.0" y2="199.0" stroke="#637bff" stroke-width="2"/><polygon points="168.0,199.0 159.0,193.0 159.0,205.0" fill="#637bff"/>
+  <line x1="292.0" y1="199.0" x2="302.0" y2="199.0" stroke="#637bff" stroke-width="2"/><polygon points="308.0,199.0 299.0,193.0 299.0,205.0" fill="#637bff"/>
+  <line x1="432.0" y1="199.0" x2="442.0" y2="199.0" stroke="#637bff" stroke-width="2"/><polygon points="448.0,199.0 439.0,193.0 439.0,205.0" fill="#637bff"/>
+</svg>

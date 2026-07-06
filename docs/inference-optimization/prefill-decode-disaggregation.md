@@ -21,7 +21,7 @@ To understand prefill-decode (PD) disaggregation, let’s briefly review how [LL
 - **Prefill**: Processes the entire sequence in parallel and store key and value vectors from the attention layers in a KV cache. Because it’s handling all the tokens at once with large matrix operations, prefill is compute-bound, but not too demanding on GPU memory.
 - **Decode**: Generates the output tokens, one at a time, by reusing the KV cache built earlier. Each generated token requires repeatedly loading model weights and accessing an ever-growing KV cache. Therefore, decode requires fast memory access but lower compute.
 
-![llm-inference-flow.png](./img/llm-inference-flow.png)
+<Diagram name="llm-inference-flow" alt="End-to-end LLM inference flow from tokenization through decode to output" />
 
 For a long time, the standard way of doing inference was to run these two steps together. On the surface, this might seem straightforward.
 
@@ -30,8 +30,10 @@ In practice, you’ll often have multiple requests arriving at once. Each one ha
 Since prefill primarily determines the TTFT and decode impacts ITL, collocating them makes it difficult to optimize both metrics simultaneously.
 
 <figure>
-![pd-disaggregation-results.png](./img/pd-disaggregation-results.png)
-<figcaption>Latency increase by co-locating prefill and decode. [Image Source](https://arxiv.org/pdf/2401.09670)</figcaption>
+  <img src={require('./img/pd-disaggregation-results.png').default} alt="Latency increase from co-locating prefill and decode" />
+  <figcaption>
+    Latency increase by co-locating prefill and decode. <a href="https://arxiv.org/pdf/2401.09670">Image source</a>
+  </figcaption>
 </figure>
 
 ## Why disaggregation makes sense
@@ -120,6 +122,6 @@ If most of your requests are short or cache-heavy, it usually simpler and faster
   ## Additional resources
   * [DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving](https://arxiv.org/abs/2401.09670)
   * [SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills](https://arxiv.org/pdf/2308.16369)
-  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=bentoml_llm)
+  * [The Five Eras of KVCache](https://www.modular.com/blog/the-five-eras-of-kvcache?utm_source=llm_handbook)
   * [Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter](https://arxiv.org/abs/2604.15039)
 </LinkList>

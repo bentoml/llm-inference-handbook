@@ -75,7 +75,7 @@ If you're working with limited hardware or targeting desktop/edge devices, these
 Several of these frameworks have also evolved beyond text generation to serve diffusion models. 
 - [SGLang Diffusion](https://docs.sglang.io/docs/sglang-diffusion) supports image and video models like FLUX, Wan, and Qwen-Image. 
 - [vLLM-Omni](https://docs.vllm.ai/projects/vllm-omni/en/latest/) extends vLLM to Diffusion Transformers (DiT) and other parallel, non-autoregressive generation models across text, image, video, and audio.
-- [MAX](https://www.modular.com/solutions/image-generation?utm_source=bentoml_llm) serves diffusion models like FLUX up to 4x faster than native PyTorch.
+- [MAX](https://www.modular.com/solutions/image-generation?utm_source=llm_handbook) serves diffusion models like FLUX up to 4x faster than native PyTorch.
 
 ## Library mode vs. server mode
 
@@ -189,8 +189,6 @@ From there, teams move to high-performance server runtimes like vLLM. These fram
 
 When teams need to run and scale inference across multiple GPU clusters, regions, or clouds, they typically adopt [distributed inference](../infrastructure-and-operations/distributed-inference) platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
 
-Read this [blog post](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference) to explore this progression in more detail.
-
 ## FAQs
 
 ### Are all inference frameworks compatible with every LLM?
@@ -207,6 +205,5 @@ A good path is to begin small and level up as you go. Many people start with Oll
 
 <LinkList>
   ## Additional resources
-  * [Benchmarking LLM Inference Backends: vLLM, LMDeploy, MLC-LLM, TensorRT-LLM, and TGI](https://www.bentoml.com/blog/benchmarking-llm-inference-backends)
-  * [3 Levels from Laptop to Cluster-Scale Distributed Inference](https://www.bentoml.com/blog/running-local-llms-with-ollama-3-levels-from-local-to-distributed-inference)
+  * [LLM performance benchmarks](../inference-optimization/llm-performance-benchmarks)
 </LinkList>

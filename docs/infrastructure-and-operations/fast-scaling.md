@@ -44,7 +44,7 @@ This issue presents itself in three different stages:
    - **Sequential data flow**: Model files are transferred through multiple hops: **remote storage → local disk → memory → GPU**. There is little or no parallelization between these steps. Each step adds latency, particularly for large files that are difficult to cache or stream.
    - **Lack of on-demand streaming**: Model files must be fully downloaded and written to disk before inference can begin. This introduces additional I/O operations and delays startup.
 
-Each phase of the cold start issue demands specific strategies to minimize delays. For more information, see how BentoML solves the cold start problem: [25x Faster Cold Starts for LLMs on Kubernetes](https://www.bentoml.com/blog/25x-faster-cold-starts-for-llms-on-kubernetes).
+Each phase of the cold start issue demands specific strategies to minimize delays.
 
 ## Scaling metrics
 
@@ -53,4 +53,4 @@ Scaling infrastructure for LLM inference requires more than simply reacting to s
 - **CPU utilization**. It’s simple and comes with clear thresholds, but it doesn’t reflect real load for Python-based workloads. The Global Interpreter Lock (GIL) limits CPU parallelism, especially on multi-core machines, making this metric misleading for scaling decisions.
 - **GPU utilization**. A more relevant metric in theory, but inaccurate in practice. Tools like `nvml` report GPUs as “utilized” if any kernel runs during a sample window—even briefly. This doesn’t account for batching or actual throughput, leading to premature scale-up or false confidence in capacity.
 - **QPS (queries per second)**. Widely used in traditional web services, but less useful for LLM inference. Generative requests vary greatly in size and compute cost, depending on input length and tokens generated. As a result, QPS lacks consistency and is hard to tune for auto-scaling.
-- **Concurrency**. This metric, which represents the number of active requests either queued or being processed, is an ideal measure for reflecting system load. Concurrency is easy to configure based on batch size and provides a direct correlation with actual system demands, allowing for precise scaling. However, for concurrency to work, you need support from a service framework to [automatically instrument concurrency as a metric and serve it as a scaling signal](https://www.bentoml.com/blog/scaling-ai-model-deployment) for the deployment platform.
+- **Concurrency**. This metric, which represents the number of active requests either queued or being processed, is an ideal measure for reflecting system load. Concurrency is easy to configure based on batch size and provides a direct correlation with actual system demands, allowing for precise scaling. However, for concurrency to work, you need support from a service framework to automatically instrument concurrency as a metric and serve it as a scaling signal for the deployment platform.

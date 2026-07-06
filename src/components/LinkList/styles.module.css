@@ -1,12 +1,20 @@
 .section {
-  border: 1px solid #bfdbfe;
-  border-radius: 0.75rem;
-  padding: 1.85rem 2rem 2rem;
+  border: 1px solid var(--Elements-Twilight-20-70);
+  border-radius: 4px;
+  padding: 1.25rem 2rem 1.5rem;
   margin-bottom: 2rem;
 }
 
+.section h2 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
 .section a {
-  color: #2563eb;
+  color: var(--Elements-Neb-Ultra);
+  text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
 
@@ -40,9 +48,10 @@
 }
 
 .section ul li a:hover {
-  color: #1e40af;
+  color: var(--Elements-Neb-Ultra);
+  text-decoration: underline;
 }
 
 .section ul li a:hover::before {
-  background-color: #1e40af;
+  background-color: var(--Elements-Neb-Ultra);
 }

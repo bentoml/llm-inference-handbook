@@ -15,7 +15,7 @@ function ArrowSquare({ className }: { className?: string }) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
-export default ArrowSquare
+export default ArrowSquare;

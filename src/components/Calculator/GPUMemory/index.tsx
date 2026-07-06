@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react'
-import FormItem from '../FormItem'
-import styles from './styles.module.css'
+import { useState, useMemo } from 'react';
+import FormItem from '../FormItem';
+import styles from './styles.module.css';
 
 const MODEL_PRESETS = [
   { label: 'Custom', params: null as number | null },
@@ -9,8 +9,8 @@ const MODEL_PRESETS = [
   { label: 'Qwen2.5 32B', params: 32 },
   { label: 'Llama 3.3 70B', params: 70 },
   { label: 'Llama 3.1 405B', params: 405 },
-  { label: 'DeepSeek V3 671B', params: 671 }
-]
+  { label: 'DeepSeek V3 671B', params: 671 },
+];
 
 // Representative GPU configs with unique VRAM tiers
 const GPU_CONFIGS = [
@@ -19,48 +19,48 @@ const GPU_CONFIGS = [
   { name: 'NVIDIA L40S', vram: 48 },
   { name: 'NVIDIA A100 / H100 (80GB)', vram: 80 },
   { name: 'NVIDIA H200 SXM', vram: 141 },
-  { name: 'NVIDIA B200', vram: 192 }
-]
+  { name: 'NVIDIA B200', vram: 192 },
+];
 
-const GPU_COUNTS = [1, 2, 4, 8] as const
+const GPU_COUNTS = [1, 2, 4, 8] as const;
 
 function GPUMemoryCalculator() {
-  const [preset, setPreset] = useState('Llama 3.1 8B')
-  const [params, setParams] = useState(8)
-  const [precision, setPrecision] = useState(16)
-  const [overhead, setOverhead] = useState(20)
+  const [preset, setPreset] = useState('Llama 3.1 8B');
+  const [params, setParams] = useState(8);
+  const [precision, setPrecision] = useState(16);
+  const [overhead, setOverhead] = useState(20);
 
   const requiredMemory = useMemo(() => {
-    return params * (precision / 8) * (1 + overhead / 100)
-  }, [params, precision, overhead])
+    return params * (precision / 8) * (1 + overhead / 100);
+  }, [params, precision, overhead]);
 
   // For each GPU count tier, find the most frugal GPU (smallest VRAM) that fits
   const gpuRecommendations = useMemo(() => {
-    const result: { count: number; name: string; vram: number }[] = []
+    const result: { count: number; name: string; vram: number }[] = [];
     for (const count of GPU_COUNTS) {
       const fitting = GPU_CONFIGS.filter(
         (gpu) => gpu.vram * count >= requiredMemory
-      )
-      if (fitting.length === 0) continue
-      const best = fitting.reduce((a, b) => (a.vram <= b.vram ? a : b))
+      );
+      if (fitting.length === 0) continue;
+      const best = fitting.reduce((a, b) => (a.vram <= b.vram ? a : b));
       // Skip if a lower count already achieves the same VRAM total or better
-      const prev = result[result.length - 1]
-      if (prev && prev.vram * prev.count <= best.vram * count) continue
-      result.push({ count, ...best })
+      const prev = result[result.length - 1];
+      if (prev && prev.vram * prev.count <= best.vram * count) continue;
+      result.push({ count, ...best });
     }
-    return result
-  }, [requiredMemory])
+    return result;
+  }, [requiredMemory]);
 
   function handlePresetChange(label: string) {
-    const found = MODEL_PRESETS.find((p) => p.label === label)
-    if (!found) return
-    setPreset(label)
-    if (found.params !== null) setParams(found.params)
+    const found = MODEL_PRESETS.find((p) => p.label === label);
+    if (!found) return;
+    setPreset(label);
+    if (found.params !== null) setParams(found.params);
   }
 
   function handleParamsChange(val: number) {
-    setParams(val)
-    setPreset('Custom')
+    setParams(val);
+    setPreset('Custom');
   }
 
   return (
@@ -82,9 +82,7 @@ function GPUMemoryCalculator() {
               <button
                 key={p.label}
                 type="button"
-                className={
-                  preset === p.label ? styles.presetActive : undefined
-                }
+                className={preset === p.label ? styles.presetActive : undefined}
                 onClick={() => handlePresetChange(p.label)}
               >
                 {p.label}
@@ -206,7 +204,7 @@ function GPUMemoryCalculator() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default GPUMemoryCalculator
+export default GPUMemoryCalculator;

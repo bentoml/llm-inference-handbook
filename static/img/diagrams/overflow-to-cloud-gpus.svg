@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 976 418" width="976" height="418">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <rect x="28.0" y="44.0" width="920.0" height="56.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="488.0" y="58.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">API Endpoints</text>
+  <rect x="56.3" y="70.0" width="150.0" height="24.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="131.3" y="82.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">/generate</text>
+  <rect x="234.7" y="70.0" width="150.0" height="24.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="309.7" y="82.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">/chat</text>
+  <rect x="413.0" y="70.0" width="150.0" height="24.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="488.0" y="82.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">/batch</text>
+  <rect x="591.3" y="70.0" width="150.0" height="24.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="666.3" y="82.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">/metrics</text>
+  <rect x="769.7" y="70.0" width="150.0" height="24.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="844.7" y="82.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">/model</text>
+  <rect x="28.0" y="118.0" width="920.0" height="40.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="488.0" y="138.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Unified Compute Fabric</text>
+  <line x1="488.0" y1="118.0" x2="488.0" y2="94.0" stroke="#637bff" stroke-width="2"/><polygon points="488.0,100.0 482.0,91.0 494.0,91.0" fill="#637bff"/>
+  <text x="133.0" y="198.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Initial</text>
+  <rect x="28.0" y="214.0" width="210.0" height="44.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="133.0" y="236.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">On-prem GPU ×100</text>
+  <line x1="238.0" y1="236.0" x2="259.7" y2="236.0" stroke="#676d71" stroke-width="1.5"/><polygon points="264.7,236.0 257.2,231.0 257.2,241.0" fill="#676d71"/>
+  <text x="369.7" y="198.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Month 3</text>
+  <rect x="264.7" y="214.0" width="210.0" height="44.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="369.7" y="236.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">On-prem GPU ×100</text>
+  <rect x="294.7" y="270.0" width="150.0" height="32.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="369.7" y="286.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">AWS ×25 (overflow)</text>
+  <line x1="474.7" y1="236.0" x2="496.3" y2="236.0" stroke="#676d71" stroke-width="1.5"/><polygon points="501.3,236.0 493.8,231.0 493.8,241.0" fill="#676d71"/>
+  <text x="606.3" y="198.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Month 6</text>
+  <rect x="501.3" y="214.0" width="210.0" height="44.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="606.3" y="236.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">On-prem GPU ×100</text>
+  <rect x="531.3" y="270.0" width="150.0" height="32.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="606.3" y="286.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">AWS ×50 (overflow)</text>
+  <rect x="531.3" y="310.0" width="150.0" height="32.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="606.3" y="326.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">AWS ×50 (overflow)</text>
+  <line x1="711.3" y1="236.0" x2="733.0" y2="236.0" stroke="#676d71" stroke-width="1.5"/><polygon points="738.0,236.0 730.5,231.0 730.5,241.0" fill="#676d71"/>
+  <text x="843.0" y="198.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">One Year</text>
+  <rect x="738.0" y="214.0" width="210.0" height="44.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="843.0" y="236.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">On-prem GPU ×100</text>
+  <rect x="768.0" y="270.0" width="150.0" height="32.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="843.0" y="286.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">AWS ×50 (overflow)</text>
+  <rect x="768.0" y="310.0" width="150.0" height="32.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="843.0" y="326.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">GCP ×50 (overflow)</text>
+  <rect x="768.0" y="350.0" width="150.0" height="32.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="843.0" y="366.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">AWS ×50 (overflow)</text>
+</svg>

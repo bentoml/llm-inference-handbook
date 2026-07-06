@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 996 488" width="996" height="488">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <rect x="28.0" y="28.0" width="940.0" height="80.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="46.0" y="48.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="start" font-weight="500" dominant-baseline="middle">1. Draft model proposes the next 3 tokens based on context</text>
+  <rect x="46.0" y="64.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="75.0" y="81.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">The</text>
+  <rect x="112.0" y="64.0" width="78.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="151.0" y="81.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">weather</text>
+  <rect x="198.0" y="64.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="227.0" y="81.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">is</text>
+  <rect x="264.0" y="64.0" width="61.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="294.5" y="81.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">quite</text>
+  <rect x="333.0" y="64.0" width="58.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="362.0" y="81.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">nice</text>
+  <rect x="399.0" y="64.0" width="61.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="429.5" y="81.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">today</text>
+  <rect x="468.0" y="64.0" width="78.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="507.0" y="81.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">outside</text>
+  <rect x="28.0" y="122.0" width="940.0" height="150.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="46.0" y="142.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="start" font-weight="500" dominant-baseline="middle">2. Target model verifies proposed tokens in parallel, accepts longest agreeable prefix</text>
+  <rect x="46.0" y="156.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="75.0" y="173.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">The</text>
+  <rect x="112.0" y="156.0" width="78.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="151.0" y="173.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">weather</text>
+  <rect x="198.0" y="156.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="227.0" y="173.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">is</text>
+  <rect x="264.0" y="156.0" width="61.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="294.5" y="173.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">quite</text>
+  <rect x="333.0" y="156.0" width="58.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="362.0" y="173.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">nice</text>
+  <text x="411.0" y="173.0" font-family="Roboto Mono, Courier, monospace" font-size="16" fill="#16a34a" text-anchor="start" font-weight="700" dominant-baseline="middle">✓</text>
+  <rect x="46.0" y="194.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="75.0" y="211.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">The</text>
+  <rect x="112.0" y="194.0" width="78.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="151.0" y="211.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">weather</text>
+  <rect x="198.0" y="194.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="227.0" y="211.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">is</text>
+  <rect x="264.0" y="194.0" width="61.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="294.5" y="211.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">quite</text>
+  <rect x="333.0" y="194.0" width="58.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="362.0" y="211.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">nice</text>
+  <rect x="399.0" y="194.0" width="61.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="429.5" y="211.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">today</text>
+  <text x="480.0" y="211.0" font-family="Roboto Mono, Courier, monospace" font-size="16" fill="#16a34a" text-anchor="start" font-weight="700" dominant-baseline="middle">✓</text>
+  <rect x="46.0" y="232.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="75.0" y="249.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">The</text>
+  <rect x="112.0" y="232.0" width="78.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="151.0" y="249.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">weather</text>
+  <rect x="198.0" y="232.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="227.0" y="249.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">is</text>
+  <rect x="264.0" y="232.0" width="61.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="294.5" y="249.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">quite</text>
+  <rect x="333.0" y="232.0" width="58.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="362.0" y="249.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">nice</text>
+  <rect x="399.0" y="232.0" width="61.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="429.5" y="249.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">today</text>
+  <rect x="468.0" y="232.0" width="78.0" height="34.0" rx="4" fill="#ffe2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="507.0" y="249.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#dc2626" text-anchor="middle" font-weight="500" dominant-baseline="middle" text-decoration="line-through">outside</text>
+  <text x="566.0" y="249.0" font-family="Roboto Mono, Courier, monospace" font-size="16" fill="#dc2626" text-anchor="start" font-weight="700" dominant-baseline="middle">✗</text>
+  <rect x="28.0" y="286.0" width="940.0" height="80.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="46.0" y="306.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="start" font-weight="500" dominant-baseline="middle">3. Target accepts 2 tokens and generates 1 new token to continue</text>
+  <rect x="46.0" y="322.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="75.0" y="339.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">The</text>
+  <rect x="112.0" y="322.0" width="78.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="151.0" y="339.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">weather</text>
+  <rect x="198.0" y="322.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="227.0" y="339.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">is</text>
+  <rect x="264.0" y="322.0" width="61.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="294.5" y="339.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">quite</text>
+  <rect x="333.0" y="322.0" width="58.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="362.0" y="339.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">nice</text>
+  <rect x="399.0" y="322.0" width="61.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="429.5" y="339.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">today</text>
+  <rect x="468.0" y="322.0" width="58.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="497.0" y="339.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">for</text>
+  <rect x="28.0" y="380.0" width="940.0" height="80.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="46.0" y="400.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="start" font-weight="500" dominant-baseline="middle">4. Draft proposes next K tokens on the extended sequence, repeating the process</text>
+  <rect x="46.0" y="416.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="75.0" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">The</text>
+  <rect x="112.0" y="416.0" width="78.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="151.0" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">weather</text>
+  <rect x="198.0" y="416.0" width="58.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="227.0" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">is</text>
+  <rect x="264.0" y="416.0" width="61.0" height="34.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="294.5" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">quite</text>
+  <rect x="333.0" y="416.0" width="58.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="362.0" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">nice</text>
+  <rect x="399.0" y="416.0" width="61.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="429.5" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">today</text>
+  <rect x="468.0" y="416.0" width="58.0" height="34.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="497.0" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">for</text>
+  <rect x="534.0" y="416.0" width="58.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="563.0" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">a</text>
+  <rect x="600.0" y="416.0" width="58.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="629.0" y="433.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">walk</text>
+</svg>

@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react'
-import FormItem from '../FormItem'
-import styles from './styles.module.css'
+import { useState, useMemo } from 'react';
+import FormItem from '../FormItem';
+import styles from './styles.module.css';
 
 const MODE_OPTIONS = {
   standard: {
@@ -11,8 +11,8 @@ const MODE_OPTIONS = {
       l: 32,
       h: 32,
       d: 128,
-      q: 16
-    }
+      q: 16,
+    },
   },
   simplified: {
     title: 'Simplified Calculation',
@@ -21,47 +21,62 @@ const MODE_OPTIONS = {
       s: 1024,
       l: 32,
       hxd: 4096,
-      q: 16
-    }
+      q: 16,
+    },
+  },
+};
+
+type StandardKVCacheData = {
+  type: 'standard';
+  b: number; // Batch Size (B)
+  s: number; // Sequence Length (S)
+  l: number; // Number of Layers (L)
+  h: number; // Attention Heads (H)
+  d: number; // Head Dimension (D)
+  q: number; // Bit Precision (Q)
+};
+
+type SimplifiedKVCacheData = {
+  type: 'simplified';
+  b: number; // Batch Size (B)
+  s: number; // Sequence Length (S)
+  l: number; // Number of Layers (L)
+  hxd: number; // Attention Heads (H) * Head Dimension (D)
+  q: number; // Bit Precision (Q)
+};
+
+type KVCacheData = StandardKVCacheData | SimplifiedKVCacheData;
+type ModeKey = keyof typeof MODE_OPTIONS;
+
+function getDefaultData(type: ModeKey): KVCacheData {
+  if (type === 'standard') {
+    return {
+      type,
+      ...MODE_OPTIONS.standard.default,
+    };
   }
+
+  return {
+    type,
+    ...MODE_OPTIONS.simplified.default,
+  };
 }
 
 function KVCacheCalculator() {
-  const [data, setData] = useState<
-    | {
-        type: 'standard'
-        b: number // Batch Size (B)
-        s: number // Sequence Length (S)
-        l: number // Number of Layers (L)
-        h: number // Attention Heads (H)
-        d: number // Head Dimension (D)
-        q: number // Bit Precision (Q)
-      }
-    | {
-        type: 'simplified'
-        b: number // Batch Size (B)
-        s: number // Sequence Length (S)
-        l: number // Number of Layers (L)
-        hxd: number // Attention Heads (H) * Head Dimension (D)
-        q: number // Bit Precision (Q)
-      }
-  >({
-    type: 'standard',
-    ...MODE_OPTIONS.standard.default
-  })
+  const [data, setData] = useState<KVCacheData>(getDefaultData('standard'));
   const result = useMemo(() => {
     if (data.type === 'standard') {
       return (
         (2 * data.b * data.s * data.l * data.h * data.d * (data.q / 8)) /
         Math.pow(1024, 3)
-      )
+      );
     } else {
       return (
         (2 * data.b * data.s * data.l * data.hxd * (data.q / 8)) /
         Math.pow(1024, 3)
-      )
+      );
     }
-  }, [data])
+  }, [data]);
 
   return (
     <div className={styles.calculator}>
@@ -76,13 +91,14 @@ function KVCacheCalculator() {
       </div>
       <div className={styles.body}>
         <div className={styles.modeSelector}>
-          {Object.entries(MODE_OPTIONS).map(([key, value]) => (
+          {(Object.keys(MODE_OPTIONS) as ModeKey[]).map((key) => (
             <button
+              key={key}
               type="button"
               className={key === data.type ? styles.active : undefined}
-              onClick={() => setData({ ...value.default, type: key })}
+              onClick={() => setData(getDefaultData(key))}
             >
-              {value.title}
+              {MODE_OPTIONS[key].title}
             </button>
           ))}
         </div>
@@ -242,7 +258,7 @@ function KVCacheCalculator() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default KVCacheCalculator
+export default KVCacheCalculator;

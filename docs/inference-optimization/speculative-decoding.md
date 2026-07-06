@@ -51,7 +51,7 @@ At a high level, speculative decoding runs in a loop:
 4. If it accepts *h* tokens, it then generates the *(h+1)*th token itself (so that generation remains on track).
 5. The process repeats: the draft model proposes the next *K tokens* based on this new extended sequence.
 
-![spec-decoding.png](./img/spec-decoding.png)
+<Diagram name="spec-decoding" alt="Speculative decoding: draft model proposes tokens the target model verifies in parallel" />
 
 ## Understanding the performance of speculative decoding
 
@@ -74,7 +74,7 @@ When evaluating speculative decoding, three metrics matter most:
     
 ### How acceptance rate impacts performance
 
-In theory, the effectiveness of speculative decoding depends heavily on acceptance rate. To study this, the BentoML team patched vLLM to simulate speculative decoding at different α and γ values (no draft model and the target model accepts tokens at preset rates).
+In theory, the effectiveness of speculative decoding depends heavily on acceptance rate. [Modular MAX supports speculative decoding](https://docs.modular.com/max/serve/speculative-decoding/) and exposes a `--synthetic-acceptance-rate` benchmarking knob that accepts each drafted token at a preset probability—letting you study how the acceptance rate (α) and the number of speculative tokens (γ) affect performance without a real draft model.
 
 Here are the key findings:
 
@@ -83,22 +83,22 @@ Here are the key findings:
 3. Latency drops and throughput rises almost linearly with α.
 4. At α ≥ 0.6 and γ ≥ 5, speculative decoding achieved 2–3× speedups over baseline decoding.
 
-In practice, however, the speedup was lower than expected. [Read this blog post](https://www.bentoml.com/blog/3x-faster-llm-inference-with-speculative-decoding) to see the full test results and analysis.
+In practice, however, the speedup was lower than expected.
 
 ### How performance varies under different workloads
 
 They also tested speculative decoding under different concurrency levels and tensor parallelism (TP) configurations.
 
 <figure>
-![tp-1-spec-decoding.png](./img/tp-1-spec-decoding.png)
-<figcaption>Llama-3.3-70B-Instruct served with vLLM on a single H100 GPU</figcaption>
+  <img src={require('./img/tp-1-spec-decoding.png').default} alt="Speculative decoding benchmark on a single H100 GPU" />
+  <figcaption>Llama-3.3-70B-Instruct served with vLLM on a single H100 GPU</figcaption>
 </figure>
 
 With TP = 1, the total throughput plateaued earlier (around 20–30 concurrent requests) compared to the baseline. This indicates that the coordination between the draft and target models might bring overhead at higher loads. Still, Time Per Output Token (TPOT) improved by roughly 2×.
 
 <figure>
-![tp-2-spec-decoding.png](./img/tp-2-spec-decoding.png)
-<figcaption>Llama-3.3-70B-Instruct served with vLLM on 2 H100 GPUs </figcaption>
+  <img src={require('./img/tp-2-spec-decoding.png').default} alt="Speculative decoding benchmark on two H100 GPUs" />
+  <figcaption>Llama-3.3-70B-Instruct served with vLLM on 2 H100 GPUs</figcaption>
 </figure>
 
 With TP = 2, the performance of speculative decoding improved, showing clear throughput gains over baseline. However, a higher speculative token count (γ = 5) saw larger latency spikes under heavy concurrency (40+ requests).
@@ -127,7 +127,7 @@ When the target model rejects too many draft tokens, your GPU still spends time 
 
 How closely your draft model’s distribution matches with the target model determines the acceptance rate. Out-of-the-box draft models may work fine in some cases, but they often struggle with domain-specific tasks or very long contexts.
 
-If your workload has its own characteristics, you’ll likely get better results by [fine-tuning a draft model on your data](https://www.bentoml.com/blog/3x-faster-llm-inference-with-speculative-decoding). That way, it learns to mimic the target more closely, boosting acceptance rates and speedups. On the flip side, if you already see good acceptance, you can skip the training and still benefit.
+If your workload has its own characteristics, you’ll likely get better results by fine-tuning a draft model on your data. That way, it learns to mimic the target more closely, boosting acceptance rates and speedups. On the flip side, if you already see good acceptance, you can skip the training and still benefit.
 
 ## Adaptive speculative decoding
 
@@ -187,7 +187,6 @@ As with speculative decoding in general, the only reliable way to know is to ben
 
 <LinkList>
   ## Additional resources
-  * [Get 3× Faster LLM Inference with Speculative Decoding Using the Right Draft Model](https://www.bentoml.com/blog/3x-faster-llm-inference-with-speculative-decoding)
   * [Looking back at speculative decoding](https://research.google/blog/looking-back-at-speculative-decoding/)
   * [Adaptive Speculative Decoding in SGLang](https://docs.sglang.io/docs/advanced_features/adaptive_speculative_decoding)
   * [AdaSpec: Adaptive Speculative Decoding for Fast, SLO-Aware Large Language Model Serving](https://arxiv.org/abs/2503.05096)

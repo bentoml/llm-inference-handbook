@@ -10,8 +10,7 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import Button from '@site/src/components/Button';
-import Newsletter from '@site/src/components/Newsletter';
+import ContactSection from '@site/src/components/ContactSection';
 import LatencyMetrics from '@site/src/components/Calculator/LatencyMetrics';
 
 # Key metrics for LLM inference
@@ -67,7 +66,7 @@ Key metrics to measure latency:
   - **Average TPOT is request-weighted** and is useful when you want to compare per-request latency across systems or configurations. It treats every request equally, regardless of how many tokens are generated.
   - **Average ITL is token-weighted**, so longer responses (which contribute more total tokens) carry more weight. It's better for measuring overall system throughput and steady-state performance (e.g., aggregate streaming speed).
 
-![llm-inference-ttft-latency.png](./img/llm-inference-ttft-latency.png)
+<Diagram name="llm-inference-ttft-latency" alt="Time to first token and end-to-end latency across the inference pipeline" />
 
 Acceptable latency depends on the use case. For example, a chatbot might require a TTFT under 500 milliseconds to feel responsive, while a code completion tool may need TTFT below 100 milliseconds for seamless developer experience. In contrast, if you're generating long reports that are reviewed once a day, then even a 30-second total latency may be perfectly acceptable. The key is to match latency targets to the pace and expectations of the task at hand.
 
@@ -145,12 +144,8 @@ There are two common ways to measure throughput:
 
 ---
 
-We provide our customers with tailored deployment and inference optimization strategies. You can easily leverage them to optimize for throughput, latency, or cost.
-
-![bento-different-inference-optimizations.png](./img/bento-different-inference-optimizations.png)
-
 <div style={{ margin: '3rem 0' }}>
-[<Button>Talk to us</Button>](https://www.modular.com/request-demo?utm_source=bentoml_llm)
+<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
 </div>
     
 ## Goodput
@@ -197,4 +192,4 @@ Using a serverless API can abstract away these optimizations, leaving you with l
   * [Throughput is Not All You Need](https://hao-ai-lab.github.io/blogs/distserve/)
 </LinkList>
 
-<Newsletter />
+<ContactSection />

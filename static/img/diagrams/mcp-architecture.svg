@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 814 298" width="814" height="298">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <rect x="28.0" y="28.0" width="196.0" height="242.0" rx="6" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <text x="126.0" y="44.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP Host</text>
+  <rect x="42.0" y="58.0" width="168.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="126.0" y="83.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">MCP Client</text>
+  <rect x="330.0" y="58.0" width="168.0" height="50.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="414.0" y="83.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP Server</text>
+  <rect x="618.0" y="58.0" width="168.0" height="50.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="702.0" y="83.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Database</text>
+  <line x1="210.0" y1="83.0" x2="324.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="330.0,83.0 321.0,77.0 321.0,89.0" fill="#637bff"/>
+  <line x1="330.0" y1="83.0" x2="204.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,83.0 201.0,77.0 201.0,89.0" fill="#637bff"/>
+  <text x="270.0" y="71.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP</text>
+  <line x1="498.0" y1="83.0" x2="612.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="618.0,83.0 609.0,77.0 609.0,89.0" fill="#637bff"/>
+  <line x1="618.0" y1="83.0" x2="492.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,83.0 489.0,77.0 489.0,89.0" fill="#637bff"/>
+  <rect x="42.0" y="132.0" width="168.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="126.0" y="157.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">MCP Client</text>
+  <rect x="330.0" y="132.0" width="168.0" height="50.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="414.0" y="157.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP Server</text>
+  <rect x="618.0" y="132.0" width="168.0" height="50.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="702.0" y="157.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Filesystem</text>
+  <line x1="210.0" y1="157.0" x2="324.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="330.0,157.0 321.0,151.0 321.0,163.0" fill="#637bff"/>
+  <line x1="330.0" y1="157.0" x2="204.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,157.0 201.0,151.0 201.0,163.0" fill="#637bff"/>
+  <text x="270.0" y="145.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP</text>
+  <line x1="498.0" y1="157.0" x2="612.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="618.0,157.0 609.0,151.0 609.0,163.0" fill="#637bff"/>
+  <line x1="618.0" y1="157.0" x2="492.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,157.0 489.0,151.0 489.0,163.0" fill="#637bff"/>
+  <rect x="42.0" y="206.0" width="168.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="126.0" y="231.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">MCP Client</text>
+  <rect x="330.0" y="206.0" width="168.0" height="50.0" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="414.0" y="231.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP Server</text>
+  <rect x="618.0" y="206.0" width="168.0" height="50.0" rx="4" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="702.0" y="231.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">Cloud Service</text>
+  <line x1="210.0" y1="231.0" x2="324.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="330.0,231.0 321.0,225.0 321.0,237.0" fill="#637bff"/>
+  <line x1="330.0" y1="231.0" x2="204.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,231.0 201.0,225.0 201.0,237.0" fill="#637bff"/>
+  <text x="270.0" y="219.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP</text>
+  <line x1="498.0" y1="231.0" x2="612.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="618.0,231.0 609.0,225.0 609.0,237.0" fill="#637bff"/>
+  <line x1="618.0" y1="231.0" x2="492.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,231.0 489.0,225.0 489.0,237.0" fill="#637bff"/>
+</svg>

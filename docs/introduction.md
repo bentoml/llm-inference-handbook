@@ -12,7 +12,7 @@ keywords:
 ---
 
 import Features from '@site/src/components/Features';
-import Newsletter from '@site/src/components/Newsletter';
+import ContactSection from '@site/src/components/ContactSection';
 import StackQuiz from '@site/src/components/StackQuiz';
 
 # LLM Inference Handbook
@@ -68,6 +68,6 @@ This handbook provides various interactive tools to help you learn by trying the
 
 ## Contributing
 
-We welcome contributions! If you spot an error, have suggestions for improvements, or want to add new topics, please open an issue or submit a pull request on our [GitHub repository](https://github.com/bentoml/llm-inference-handbook).
+We welcome contributions! If you spot an error, have suggestions for improvements, or want to add new topics, please open an issue or submit a pull request on our [GitHub repository](https://github.com/modularml/modular-fe/tree/main/llm-handbook).
 
-<Newsletter />
+<ContactSection />

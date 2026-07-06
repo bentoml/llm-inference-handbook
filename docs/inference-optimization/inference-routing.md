@@ -106,7 +106,7 @@ This matters because long-context workloads can run into memory pressure even wh
 
 A KV cache utilization-aware router can steer new requests toward workers with enough memory headroom.
 
-![kv-cache-util-lb.png](./img/kv-cache-util-lb.png)
+<Diagram name="kv-cache-util-lb" alt="KV-cache utilization-aware load balancer routing to workers by load" />
 
 The key point is that a good router does not choose a worker only because it has the right prefix. A cache hit on a saturated worker can still be slower than a smaller cache hit on a worker with enough headroom.
 
@@ -118,7 +118,7 @@ Prefix-aware routing tries to send a request to a worker that already has the ma
 
 This is relevant because prefix caching only helps if the request reaches a worker that can reuse the cached state. In a single model server, the cache is local and easy to find. In a distributed deployment, each worker has its own cache, so the router needs some way to preserve cache locality across requests.
 
-![prefix-caching-aware-routing.png](./img/prefix-caching-aware-routing.png)
+<Diagram name="prefix-caching-aware-routing" alt="Prefix-cache-aware router sending requests to workers that already cache the prefix" />
 
 Different systems use different approaches to estimating or tracking cache locality:
 

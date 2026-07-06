@@ -360,8 +360,10 @@ Chain-of-Thought prompting is a prompt engineering technique that encourages an 
 This technique was introduced in the paper _Chain-of-Thought Prompting Elicits Reasoning in Large Language Models_ by [Jason Wei et al. (2022)](https://arxiv.org/abs/2201.11903). The authors showed that prompting models to generate intermediate reasoning steps significantly improves performance on tasks such as math problems, reasoning, and logical inference.
 
 <figure>
-![Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](./img/chain-of-thought-cot-prompting-example.png)
-<figcaption>Image Source: [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903)</figcaption>
+  <img src={require('./img/chain-of-thought-cot-prompting-example.png').default} alt="Chain-of-thought prompting example" />
+  <figcaption>
+    Image source: <a href="https://arxiv.org/abs/2201.11903">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a>
+  </figcaption>
 </figure>
 
 However, there are a few trade-offs for inference systems:
