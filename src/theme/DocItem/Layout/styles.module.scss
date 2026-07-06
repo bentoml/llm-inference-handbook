@@ -16,15 +16,59 @@
   overflow-y: auto;
   position: sticky;
   top: 96px;
-  padding-right: 20px;
+  margin-right: -20px;
   @media (max-width: 1280px) {
     top: 150px !important;
     max-height: calc(100vh - (var(--ifm-navbar-height) + 124px));
   }
 }
 
+// Infima's `.col` gives every column 24px of padding on *both* sides
+// (the grid gutter). On the left that correctly separates the TOC from the
+// reading column, but on the right it stacks with .rightRail's own 20px
+// padding (kept for scrollbar clearance), pushing the visible TOC content
+// 44px short of the column's actual (correctly aligned) right edge instead
+// of sitting flush against it.
+.rightRailCol {
+  padding-right: 0 !important;
+}
+
+// Infima's `.col` (flex: 1 0 0%, no max-width) and `.col--3` (flex: 0 0 25%)
+// already do exactly what we want here without any extra CSS: col--3 takes
+// a fixed 25% and .col's flex-grow absorbs *all* remaining space, so the
+// reading column stays responsive and the TOC col sits flush against the
+// row's right edge. Previous revisions capped .docItemCol's max-width and
+// tried to hand the leftover space to the TOC column via various
+// calc()/negative-margin hacks — that fought the flex layout instead of
+// using it, and drifted out of sync with the actual container width.
+.docItemCol {
+  // Flex items default to `min-width: auto`, which — combined with this
+  // column's `flex-basis: 0%` — means it refuses to shrink below its
+  // *content's* intrinsic min-content width (e.g. a wide table/calculator
+  // widget). Once that exceeds the column's fair-share width, the row
+  // (which is `flex-wrap: wrap`) can't fit the TOC column on the same
+  // line anymore and wraps it below all the reading content instead.
+  // min-width: 0 lets the column actually shrink to its allotted width and
+  // pushes any real overflow onto the content itself (which should scroll
+  // internally, e.g. `overflow-x: auto` on wide tables) instead of the
+  // whole two-column layout breaking.
+  min-width: 0;
+}
+
 @media (min-width: 997px) {
-  .docItemCol {
-    max-width: calc(75% - 60px) !important;
+  // The doc content `.container` (docMainContainer) has its own
+  // `--content-side-padding` (24px) on the right, matching the page-wide
+  // inset used to align the sidebar with the navbar's content column.
+  // That's correct for the reading column, but it leaves the TOC 24px
+  // short of the navbar's actual right edge (e.g. the "Sign up" button).
+  // Bleed the row through that padding so the TOC lines up exactly with
+  // it. `100%` resolves against .container's *content* box (inside its
+  // own left+right padding), so the extra width has to include that
+  // padding too, on top of the extra reach we want past it.
+  .docItemRow {
+    width: calc(
+      100% + (var(--ifm-spacing-horizontal) * 2) + var(--content-side-padding)
+    );
+    margin-right: calc(var(--content-side-padding) * -1);
   }
 }

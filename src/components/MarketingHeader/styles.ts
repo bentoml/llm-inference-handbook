@@ -33,7 +33,6 @@ ul {
 
 .mh-header {
   background: #fff;
-  border-bottom: 1px solid var(--Elements-Twilight-30-70);
   color: #020c13;
   position: relative;
   z-index: 200;
@@ -44,7 +43,7 @@ ul {
   display: flex;
   justify-content: center;
   min-height: 60px;
-  padding: 0 24px;
+  padding: 0 var(--content-side-padding, 24px);
   position: relative;
   z-index: 99;
 }
@@ -53,7 +52,7 @@ ul {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: var(--content-max-width, 1200px);
   min-height: 37px;
   position: relative;
   width: 100%;
