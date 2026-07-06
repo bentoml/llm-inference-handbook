@@ -47,6 +47,18 @@ const config: Config = {
         src: '/gtm-init.js',
       },
     },
+  ],
+
+  scripts: [
+    {
+      src: '/customerio.js',
+      defer: true,
+    },
+  ],
+
+  plugins: [
+    'docusaurus-plugin-sass',
+    tailwindConfig,
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -65,19 +77,7 @@ const config: Config = {
           }
         ]
       }
-    ]
-  ],
-
-  scripts: [
-    {
-      src: '/customerio.js',
-      defer: true,
-    },
-  ],
-
-  plugins: [
-    'docusaurus-plugin-sass',
-    tailwindConfig,
+    ],
     [
       'docusaurus-markdown-source-plugin',
       {
