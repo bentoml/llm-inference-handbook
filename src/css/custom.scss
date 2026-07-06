@@ -852,6 +852,14 @@ nav.menu {
     color: var(--Elements-Twilight-60-50);
     font-size: 0.9rem;
   }
+
+  .table-of-contents__link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 @mixin doc-actions-link-style {
