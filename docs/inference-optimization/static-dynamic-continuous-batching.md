@@ -57,7 +57,6 @@ Continuous batching, also known as in-flight batching, addresses these inefficie
   </figcaption>
 </figure>
 
-
 This technique uses iteration-level scheduling, meaning the batch composition changes dynamically at each decoding iteration. As soon as a sequence in the batch finishes generating tokens, the server inserts a new request in its place. This maximizes GPU occupancy and keeps compute resources busy by avoiding idle time that would otherwise be spent waiting for the slowest sequence in a batch to finish.
 
 Major [inference frameworks](../getting-started/choosing-the-right-inference-framework) such as vLLM, SGLang, TensorRT-LLM (in-flight batching) and LMDeploy (persistent batching) all support continuous batching or similar mechanisms. For memory management in long or mixed-length batches, see [PagedAttention](./pagedattention).
