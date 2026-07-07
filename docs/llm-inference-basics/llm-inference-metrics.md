@@ -141,12 +141,6 @@ There are two common ways to measure throughput:
     - Larger batches and higher concurrency can improve aggregate TPS by keeping the GPU busy, but may increase queueing time, TTFT, or per-user TPOT.
     
     As the number of concurrent requests increases, the total TPS also grows, until the LLM hits the saturation point of available compute resources. Beyond this point, performance might decrease because the LLM is over capacity.
-
----
-
-<div style={{ margin: '3rem 0' }}>
-<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
-</div>
     
 ## Goodput
 

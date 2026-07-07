@@ -97,9 +97,9 @@ For example, Modular Cloud BYOC provisions compute directly in your account, so 
 
 BYOC keeps your infrastructure cloud-neutral. You’re not tied to the stack or hardware of a single cloud provider. That means your LLM deployment strategy remains future-proof. As your needs change, you can freely move workloads across clouds, GPUs, or orchestration tools.
 
-## SaaS vs. BYOC vs. On-prem vs. Hybrid
+## SaaS vs. BYOC vs. On-prem
 
-Choosing how to deploy your LLMs is essentially about where your models live and who runs the infrastructure. Each deployment model — SaaS, BYOC, On-prem, or Hybrid (On-prem + BYOC) — offers different trade-offs between control, cost, and complexity.
+Choosing how to deploy your LLMs is essentially about where your models live and who runs the infrastructure. Each deployment model — SaaS, BYOC, or On-prem — offers different trade-offs between control, cost, and complexity.
 
 Here’s a quick comparison:
 
@@ -108,9 +108,8 @@ Here’s a quick comparison:
 | SaaS | Vendor’s cloud | Vendor | Low: data resides in vendor’s multi-tenant environment | Fast setup, minimal ops overhead, quick prototyping, non-sensitive data |
 | BYOC | Customer’s cloud account (e.g., AWS, GCP, Azure) | Shared between vendor and customer | High: data stays in customer’s VPC | Enterprises with security/compliance needs, GPU cost optimization, flexible scaling |
 | [On-prem](../getting-started/on-prem-llms) | Customer’s private data center | Customer |  Full: data and compute remain entirely on customer infrastructure | Air-gapped or highly regulated industries (e.g., defense, healthcare) |
-| [Hybrid (On-prem + BYOC)](../getting-started/on-prem-llms#overflowing-to-the-cloud-a-hybrid-approach) | Split between customer data center and cloud account | Shared between customer and vendor | Full: on-prem for sensitive workloads, cloud for burst capacity | Organizations needing more flexibility while maintaining strict data boundaries |
 
-For most enterprise LLM workloads, BYOC provides the best middle ground. It’s fast to deploy, secure by design, and cost-efficient at scale. However, hybrid architectures are becoming the bridge between full control and global agility. In a hybrid setup, you can deploy models on-prem for maximum control, data security, and compliance, while overflowing to cloud GPUs during traffic spikes.
+For most enterprise LLM workloads, BYOC provides the best middle ground. It’s fast to deploy, secure by design, and cost-efficient at scale.
 
 ---
 
@@ -131,9 +130,9 @@ With our BYOC deployment, you can:
 
 ## Frequently asked questions
 
-### Can BYOC work with multi-cloud or hybrid deployments?
+### Can BYOC work with multi-cloud deployments?
 
-Yes. BYOC fits naturally into hybrid and multi-cloud architectures. Depending on your securiy and compliance policy, sensitive workloads can stay on-prem or in one cloud, while overflow or global inference traffic scales into others.
+Yes. BYOC fits naturally into multi-cloud architectures. Depending on your security and compliance policy, sensitive workloads can stay in one cloud, while global inference traffic scales into others.
 
 ### How does BYOC differ from SaaS?
 
