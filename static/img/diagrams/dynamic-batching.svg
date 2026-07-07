@@ -3,34 +3,34 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
   </style>
   <text x="490.0" y="24.0" font-family="Roboto Mono, Courier, monospace" font-size="16" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Dynamic Batching</text>
-  <rect x="28.0" y="42.0" width="220.0" height="50.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
-  <rect x="38.0" y="50.0" width="92.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="84.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R1</text>
-  <rect x="138.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="161.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R2</text>
-  <rect x="192.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="215.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R3</text>
-  <rect x="278.0" y="42.0" width="228.0" height="50.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
-  <rect x="288.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="311.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R1</text>
-  <rect x="342.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="365.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R2</text>
-  <rect x="396.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="419.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R3</text>
-  <rect x="450.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="473.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R4</text>
-  <rect x="536.0" y="42.0" width="220.0" height="50.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
-  <rect x="546.0" y="50.0" width="92.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="592.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R1</text>
-  <rect x="646.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="669.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R2</text>
-  <rect x="700.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="723.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R3</text>
-  <rect x="786.0" y="42.0" width="166.0" height="50.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
-  <rect x="796.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="819.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R1</text>
-  <rect x="850.0" y="50.0" width="92.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
-  <text x="896.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R2</text>
+  <rect x="28.0" y="42.0" width="224.0" height="50.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <rect x="38.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="61.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R1</text>
+  <rect x="104.0" y="50.0" width="64.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="136.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R2</text>
+  <rect x="188.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="211.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R3</text>
+  <rect x="272.0" y="42.0" width="180.0" height="50.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <rect x="282.0" y="50.0" width="34.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="299.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R1</text>
+  <rect x="324.0" y="50.0" width="34.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="341.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R2</text>
+  <rect x="366.0" y="50.0" width="34.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="383.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R3</text>
+  <rect x="408.0" y="50.0" width="34.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="425.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R4</text>
+  <rect x="472.0" y="42.0" width="224.0" height="50.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <rect x="482.0" y="50.0" width="70.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="517.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R1</text>
+  <rect x="576.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="599.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R2</text>
+  <rect x="640.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="663.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R3</text>
+  <rect x="716.0" y="42.0" width="224.0" height="50.0" rx="4" fill="#f7f8fa" stroke="#d4dae4" stroke-width="2"/>
+  <rect x="726.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="749.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R1</text>
+  <rect x="884.0" y="50.0" width="46.0" height="34.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
+  <text x="907.0" y="67.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">R2</text>
   <line x1="28.0" y1="110.0" x2="946.0" y2="110.0" stroke="#676d71" stroke-width="1.5"/><polygon points="952.0,110.0 943.0,104.0 943.0,116.0" fill="#676d71"/>
   <text x="952.0" y="126.0" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="end" font-weight="500" dominant-baseline="middle">Time</text>
 </svg>
