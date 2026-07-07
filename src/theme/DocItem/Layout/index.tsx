@@ -8,6 +8,7 @@ import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile';
 import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
 import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
+import DocActions from '@site/src/components/DocActions';
 import type { Props } from '@theme/DocItem/Layout';
 import styles from './styles.module.scss';
 
@@ -27,8 +28,11 @@ function useDocTOC() {
 }
 
 export default function DocItemLayout({ children }: Props): ReactNode {
+  const {
+    metadata: { editUrl },
+  } = useDoc();
   const docTOC = useDocTOC();
-  const showRightRail = !docTOC.hidden;
+  const showRightRail = Boolean(editUrl) || !docTOC.hidden;
 
   return (
     <div className={clsx('row', showRightRail && styles.docItemRow)}>
@@ -46,8 +50,9 @@ export default function DocItemLayout({ children }: Props): ReactNode {
       {showRightRail && (
         <div className={clsx('col col--3 !mx-0', styles.rightRailCol)}>
           <div className={clsx(styles.rightRail, 'thin-scrollbar')}>
-            {/* injection target for docusaurus-markdown-source-plugin */}
-            <div className="doc-actions" />
+            <div className="doc-actions">
+              <DocActions editUrl={editUrl} />
+            </div>
             {docTOC.desktop}
           </div>
         </div>
