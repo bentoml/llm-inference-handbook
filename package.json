@@ -29,7 +29,7 @@
     "@tailwindcss/postcss": "^4.2.2",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.0",
-    "docusaurus-markdown-source-plugin": "github:modular/markdown_docusaurus_plugin#8cf117040a70deb931d500d289ccc6975187ad78",
+    "docusaurus-markdown-source-plugin": "github:modular/markdown_docusaurus_plugin#348c3b122df767a003daea07050f78bd56f636ff",
     "docusaurus-plugin-sass": "^0.2.6",
     "postcss": "^8.4.39",
     "postcss-import": "^16.1.0",
