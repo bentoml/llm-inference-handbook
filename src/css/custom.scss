@@ -657,8 +657,24 @@ nav.menu {
     padding-left: 8px;
   }
 
+  .sidebar-top-level-link {
+    border-bottom: 1px solid var(--Elements-Twilight-20-70);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+
+    > .menu__link {
+      font-size: 16px;
+      font-weight: 600;
+      border: none !important;
+
+      &.menu__link--active,
+      &:hover {
+        background-color: transparent !important;
+      }
+    }
+  }
+
   // Bold top-level category labels
-  .sidebar-top-level-link > .menu__link,
   .theme-doc-sidebar-item-category-level-1
     > .menu__list-item-collapsible
     > .menu__link {

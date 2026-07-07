@@ -10,7 +10,7 @@ const config: Config = {
   title: 'LLM Inference Handbook',
   tagline:
     'A practical handbook for engineers building, optimizing, scaling, and operating LLM inference systems in production.',
-  favicon: 'images/modular-logo-docs.svg',
+  favicon: 'images/favicon.ico',
 
   url: 'https://handbook.modular.com',
   baseUrl: '/',
