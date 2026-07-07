@@ -7,7 +7,6 @@ keywords:
     - LLM inference, AI inference, inference layer
 ---
 
-import ContactSection from '@site/src/components/ContactSection';
 import RequestLifecycle from '@site/src/components/RequestLifecycle';
 
 # What is LLM inference?
@@ -90,5 +89,3 @@ Understanding LLM inference (e.g., [batching](../inference-optimization/static-d
 - **If you're just curious about AI**: Inference is where the magic happens. Knowing how it works helps you separate AI hype from reality and makes you a more informed consumer and contributor to AI discussions.
 
 For more information, see [serverless vs. self-hosted LLM inference](../getting-started/serverless-vs-self-hosted-llm-inference).
-
-<ContactSection />
