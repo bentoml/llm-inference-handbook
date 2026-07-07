@@ -388,19 +388,166 @@ ul {
   text-transform: lowercase;
 }
 
+.mh-mobile-backdrop {
+  background: rgba(2, 12, 19, 0.45);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  z-index: 180;
+}
+
+.mh-mobile-backdrop[hidden] {
+  display: none;
+}
+
 .mh-mobile-menu {
   -webkit-overflow-scrolling: touch;
   background: #fff;
   border-top: 1px solid rgba(2, 12, 19, 0.08);
-  box-shadow: 0 18px 50px rgba(2, 12, 19, 0.08);
+  box-shadow: 0 18px 50px rgba(2, 12, 19, 0.18);
+  display: flex;
+  flex-direction: column;
   left: 0;
   max-height: calc(100vh - 60px);
-  overflow-y: auto;
-  padding: 20px 24px 28px;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 60px;
   z-index: 190;
+}
+
+/* Segmented control (visually approximates Mantine's SegmentedControl; no
+   runtime dependency since it must render inside the header's Shadow DOM). */
+.mh-tab-track {
+  background: #f1f3f5;
+  border-radius: 0;
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 20px 24px 0;
+  padding: 3px;
+  position: relative;
+}
+
+.mh-tab-pill {
+  background: #637bff;
+  border-radius: 0;
+  height: calc(100% - 6px);
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  transition: transform 200ms ease;
+  width: calc(50% - 3px);
+  z-index: 0;
+}
+
+.mh-tab-btn {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #676d71;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 0;
+  position: relative;
+  transition: color 160ms ease;
+  z-index: 1;
+}
+
+.mh-tab-btn[aria-selected='true'] {
+  color: #fff;
+}
+
+.mh-tab-panels {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 24px 28px;
+}
+
+.mh-tab-panel[hidden] {
+  display: none;
+}
+
+/* Handbook tab: live sidebar tree */
+.mh-toc-welcome {
+  border-bottom: 1px solid rgba(2, 12, 19, 0.08);
+  border-radius: 0;
+  color: #020c13;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  /* Bleed the highlight beyond the text's own alignment (like the article
+     items further down) so the current-page background reads as a proper
+     inset block instead of hugging the label text. */
+  margin: 0 -8px 6px;
+  padding: 8px 8px;
+}
+
+.mh-toc-welcome.current {
+  background: rgba(99, 123, 255, 0.12);
+  border-radius: 0;
+  color: #637bff;
+  font-weight: 600;
+}
+
+.mh-toc-category {
+  padding: 4px 0;
+}
+
+.mh-toc-category-header {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: #676d71;
+  cursor: pointer;
+  display: flex;
+  font-size: 11.5px;
+  font-weight: 700;
+  justify-content: space-between;
+  letter-spacing: 0.04em;
+  padding: 10px 4px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.mh-toc-category-header .mh-chevron {
+  transition: transform 160ms ease;
+}
+
+.mh-toc-category.expanded .mh-toc-category-header .mh-chevron {
+  transform: rotate(180deg);
+}
+
+.mh-toc-category-items {
+  display: none;
+}
+
+.mh-toc-category.expanded .mh-toc-category-items {
+  display: grid;
+  gap: 2px;
+}
+
+.mh-toc-article {
+  border-radius: 0;
+  color: #020c13;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 4px 8px 18px;
+}
+
+.mh-toc-article.current {
+  background: rgba(99, 123, 255, 0.12);
+  color: #637bff;
+  font-weight: 600;
+}
+
+.mh-toc-empty {
+  color: #676d71;
+  font-size: 13px;
+  padding: 16px 4px;
 }
 
 .mh-mobile-list {
@@ -522,8 +669,12 @@ ul {
     padding: 0 20px;
   }
 
-  .mh-mobile-menu {
-    padding: 18px 20px 24px;
+  .mh-tab-track {
+    margin: 18px 20px 0;
+  }
+
+  .mh-tab-panels {
+    padding: 14px 20px 24px;
   }
 
   .mh-mobile-actions {
