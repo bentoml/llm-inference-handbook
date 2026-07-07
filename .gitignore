@@ -21,6 +21,7 @@ yarn-error.log*
 .claude/
 .codex/
 .agents/plans/
+.agents/prototypes/
 
 # Testing
 nginx/

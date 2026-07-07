@@ -31,8 +31,8 @@ export default function DocItemLayout({ children }: Props): ReactNode {
   const showRightRail = !docTOC.hidden;
 
   return (
-    <div className="row">
-      <div className={clsx('col', showRightRail && styles.docItemCol)}>
+    <div className={clsx('row', showRightRail && styles.docItemRow)}>
+      <div className={clsx('col', styles.docItemCol)}>
         <div className={styles.docItemContainer}>
           <article>
             <DocBreadcrumbs />
@@ -44,7 +44,7 @@ export default function DocItemLayout({ children }: Props): ReactNode {
         </div>
       </div>
       {showRightRail && (
-        <div className="col col--3 !mx-0">
+        <div className={clsx('col col--3 !mx-0', styles.rightRailCol)}>
           <div className={clsx(styles.rightRail, 'thin-scrollbar')}>
             {/* injection target for docusaurus-markdown-source-plugin */}
             <div className="doc-actions" />

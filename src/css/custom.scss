@@ -357,6 +357,10 @@ $font-family-monospace:
   --ifm-navbar-height: 64px;
   --ifm-navbar-shadow: none;
   --ifm-alert-shadow: none;
+  // Shared with the navbar's shadow-DOM styles (MarketingHeader) so the
+  // sidebar + doc content align with the navbar's centered content column.
+  --content-max-width: 1200px;
+  --content-side-padding: 24px;
   --ifm-spacing-horizontal: 24px !important;
   --ifm-menu-link-padding-horizontal: 8px;
   letter-spacing: -0.32px;
@@ -596,10 +600,37 @@ table {
 // Sidebar
 // ============================================================
 
-// Sidebar panel: match page background, add right separator
+// Doc content row (sidebar + main): inset it to match the navbar's
+// centered content column instead of letting the sidebar run flush to
+// the viewport edge. Targets the flex row that directly parents the
+// sidebar, i.e. DocRoot's `docRoot` wrapper (theme-doc-sidebar-container's
+// parent), whose generated class name isn't otherwise addressable.
+@media (min-width: 997px) {
+  :has(> .theme-doc-sidebar-container) {
+    max-width: calc(
+      var(--content-max-width) + (var(--content-side-padding) * 2)
+    );
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--content-side-padding);
+    padding-right: var(--content-side-padding);
+    // Nudge the whole row a bit further left than strict navbar-alignment math
+    // would place it.
+    position: relative;
+    left: -24px;
+  }
+}
+
+// Sidebar panel: match page background. Explicitly cancel the stock
+// theme's border-right (Docusaurus's own docSidebarContainer CSS module
+// also sets one), since it visibly runs the full sticky height of the
+// row — well past the actual menu content — as a stray vertical line.
 .theme-doc-sidebar-container {
   background-color: var(--ifm-background-color);
-  border-right: 1px solid var(--Elements-Twilight-20-70);
+  // !important: the stock docSidebarContainer CSS module sets its own
+  // border-right and is emitted after this rule in the bundled stylesheet,
+  // so equal specificity alone isn't enough to cancel it.
+  border-right: none !important;
 
   > div {
     max-height: 100vh;
@@ -836,6 +867,14 @@ nav.menu {
   button {
     color: var(--Elements-Twilight-60-50);
     font-size: 0.9rem;
+  }
+
+  .table-of-contents__link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
