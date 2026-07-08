@@ -3,11 +3,7 @@
   display: block;
   width: 48px;
   height: 48px;
-  background-image: linear-gradient(
-    to right,
-    var(--Elements-Neb-Ultra),
-    var(--Elements-Neb-100)
-  );
+  background-color: var(--Elements-Neb-Ultra);
   position: fixed;
   width: 3rem;
   height: 3rem;
@@ -18,11 +14,7 @@
 }
 
 .chat:hover {
-  background-image: linear-gradient(
-    to right,
-    var(--Elements-Neb-100),
-    var(--Elements-Neb-90)
-  );
+  background-color: var(--Elements-Neb-Ultra-110);
 }
 
 .chatIcon {
