@@ -51,8 +51,10 @@ For LLM inference, output sequences vary widely in length. Some users might ask 
 Continuous batching, also known as in-flight batching, addresses these inefficiencies. Continuous batching doesn’t force the entire batch to complete before returning results. Instead, it lets each sequence in a batch finish independently and immediately replaces it with a new one. This is like an assembly line where, as soon as one item is finished (no matter how long it takes), a new item is added to keep the line running at full capacity.
 
 <figure>
-<Diagram name="continuous-batching" alt="Continuous batching: freed token slots are filled immediately by new sequences" />
-<figcaption>Generating seven sequences with continuous batching. On the first iteration (left), each sequence generates a token (blue) from its prompt (yellow). Over time (right), sequences complete at different iterations by emitting an end-of-sequence token (red), at which point new sequences are inserted. [Image source](https://www.anyscale.com/blog/continuous-batching-llm-inference)</figcaption>
+  <img src={require('./img/continuous-batching-diagram.png').default} alt="Continuous batching: freed token slots are filled immediately by new sequences" />
+  <figcaption>
+    Generating seven sequences with continuous batching. On the first iteration (left), each sequence generates a token (blue) from its prompt (yellow). Over time (right), sequences complete at different iterations by emitting an end-of-sequence token (red), at which point new sequences are inserted. [Image source](https://www.anyscale.com/blog/continuous-batching-llm-inference)
+  </figcaption>
 </figure>
 
 This technique uses iteration-level scheduling, meaning the batch composition changes dynamically at each decoding iteration. As soon as a sequence in the batch finishes generating tokens, the server inserts a new request in its place. This maximizes GPU occupancy and keeps compute resources busy by avoiding idle time that would otherwise be spent waiting for the slowest sequence in a batch to finish.
