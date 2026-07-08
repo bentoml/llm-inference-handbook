@@ -12,6 +12,7 @@ import Navbar from '@theme/Navbar';
 import Footer from '@theme/Footer';
 import LayoutProvider from '@theme/Layout/Provider';
 import ErrorPageContent from '@theme/ErrorPageContent';
+import Chat from '@site/src/components/Chat';
 import type {Props} from '@theme/Layout';
 import styles from './styles.module.css';
 
@@ -48,6 +49,7 @@ export default function Layout(props: Props): ReactNode {
         </ErrorBoundary>
       </div>
 
+      <Chat />
       {!noFooter && <Footer />}
     </LayoutProvider>
   );
