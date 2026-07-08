@@ -58,30 +58,3 @@ No universal answer exists to whether on-prem is “better” than cloud. Each o
 | **Flexibility** | Best for long-term, stable workloads | Best for rapid experimentation and dynamic workloads |
 
 The decision usually depends on compliance requirements, traffic patterns, and how much operational complexity your team is willing to manage.
-
-## Overflowing to the cloud: A hybrid approach
-
-On-prem deployments give you control, but they can’t always handle bursty or unpredictable traffic. GPU procurement cycles are long, and over-provisioning to cover peak hours leads to wasted resources. That’s where a hybrid approach comes in.
-
-In a hybrid setup, your on-prem cluster serves as the baseline for secure, predictable workloads. When demand exceeds local capacity, traffic can overflow to the cloud, where GPUs can be provisioned on demand. This lets you balance:
-
-- **Control**: Keep sensitive or regulated workloads running in your own data center.
-- **Availability**: Use cloud GPUs to handle spikes in usage without overbuilding on-prem hardware.
-- **Cost**: Rely on lower-cost reserved GPUs for steady demand in your on-prem environment, and only pay for overflowed cloud GPUs during peaks.
-
-Hybrid deployments give you flexibility without forcing you to compromise entirely on control, availability, or price. Many enterprises benefit from this pattern: security and compliance on-prem, elasticity in the cloud.
-
----
-
-We work to provide a unified compute fabric — a layer of orchestration and abstraction that allows enterprises to deploy and scale inference workloads across:
-
-- On-prem GPU clusters
-- Bring Your Own Cloud (including NeoCloud, multi-cloud and multi-region setups) environments
-
-If your on-prem cluster runs out of capacity, we allow you to seamlessly overflow traffic to cloud GPUs. This ensures you always have enough compute power as you scale.
-
-<Diagram name="overflow-to-cloud-gpus" alt="On-prem base capacity with dynamic overflow to cloud GPUs over time" />
-
-<div style={{ margin: '3rem 0' }}>
-<a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Talk to us</a>
-</div>
