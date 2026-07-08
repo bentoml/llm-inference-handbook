@@ -1,23 +1,23 @@
+/* Styled to match `.mh-toc-category-header` below (same font, case, color,
+   and padding) so "Welcome" reads as just another top-level sidebar item
+   instead of a visually distinct title. The 4px vertical margin mirrors
+   `.mh-toc-category`'s own outer spacing, keeping the gap to the first
+   category identical to the gap between two categories. */
 .mh-toc-welcome {
-  border-bottom: 1px solid rgba(2, 12, 19, 0.08);
-  border-radius: 0;
-  color: #020c13;
+  color: #676d71;
   display: block;
-  font-size: 14px;
-  font-weight: 500;
-  /* Bleed the highlight beyond the text's own alignment (like the article
-     items further down) so the current-page background reads as a proper
-     inset block instead of hugging the label text. */
-  margin: 0 -8px 6px;
-  padding: 8px 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 4px 0;
+  padding: 10px 4px;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .mh-toc-welcome.current {
   background: rgba(99, 123, 255, 0.12);
-  border-radius: 0;
   color: #637bff;
-  font-weight: 600;
 }
 
 .mh-toc-category {
