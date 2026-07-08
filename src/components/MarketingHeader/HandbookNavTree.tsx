@@ -5,6 +5,7 @@ import type {
   PropSidebarItem,
   PropSidebarItemCategory,
 } from '@docusaurus/plugin-content-docs';
+import './HandbookNavTree.scss';
 
 type Props = {
   sidebar: PropSidebar;
@@ -46,7 +47,7 @@ function CategoryItem({
         onClick={() => setExpanded((value) => !value)}
       >
         <span>{category.label}</span>
-        <svg className="mh-chevron" viewBox="0 0 7 7" fill="none" aria-hidden="true">
+        <svg className="mh-toc-chevron" viewBox="0 0 7 7" fill="none" aria-hidden="true">
           <path d="M0.5 3L3.5 6L6.5 3" stroke="currentColor" />
         </svg>
       </button>

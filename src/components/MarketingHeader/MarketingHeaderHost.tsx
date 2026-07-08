@@ -1,33 +1,13 @@
-import React, { isValidElement, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
-import { useNavbarSecondaryMenu } from '@docusaurus/theme-common/internal';
-import type { PropSidebar } from '@docusaurus/plugin-content-docs';
 import MarketingHeader from './MarketingHeader';
 import headerStyles from './styles';
-
-// The docs sidebar tree isn't reachable via React Context from here (see
-// below), so we borrow it from the secondary-menu "teleport" that Docusaurus's
-// own default `@theme/DocSidebar/Mobile` already feeds on every doc page, and
-// read its raw props instead of rendering its (Infima-styled) element.
-type SecondaryMenuProps = { sidebar?: PropSidebar; path?: string };
-
-function useHandbookSidebarData(): { sidebar?: PropSidebar; activePath?: string } {
-  const { content } = useNavbarSecondaryMenu();
-  return useMemo(() => {
-    if (!isValidElement(content)) {
-      return {};
-    }
-    const props = content.props as SecondaryMenuProps;
-    return { sidebar: props.sidebar, activePath: props.path };
-  }, [content]);
-}
 
 export default function MarketingHeaderHost(): JSX.Element {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const rootRef = useRef<Root | null>(null);
   const styleRef = useRef<HTMLStyleElement | null>(null);
   const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null);
-  const { sidebar, activePath } = useHandbookSidebarData();
 
   useEffect(() => {
     const host = hostRef.current;
@@ -64,14 +44,8 @@ export default function MarketingHeaderHost(): JSX.Element {
 
   useEffect(() => {
     if (!rootRef.current || !shadowRoot) return;
-    rootRef.current.render(
-      <MarketingHeader
-        shadowRoot={shadowRoot}
-        handbookSidebar={sidebar}
-        activePath={activePath}
-      />
-    );
-  }, [shadowRoot, sidebar, activePath]);
+    rootRef.current.render(<MarketingHeader shadowRoot={shadowRoot} />);
+  }, [shadowRoot]);
 
   return (
     <div

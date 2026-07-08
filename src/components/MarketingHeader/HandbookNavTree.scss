@@ -1,0 +1,82 @@
+/* Styled to match `.mh-toc-category-header` below (same font, case, color,
+   and padding) so "Welcome" reads as just another top-level sidebar item
+   instead of a visually distinct title. The 4px vertical margin mirrors
+   `.mh-toc-category`'s own outer spacing, keeping the gap to the first
+   category identical to the gap between two categories. */
+.mh-toc-welcome {
+  color: #676d71;
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 4px 0;
+  padding: 10px 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.mh-toc-welcome.current {
+  background: rgba(99, 123, 255, 0.12);
+  color: #637bff;
+}
+
+.mh-toc-category {
+  padding: 4px 0;
+}
+
+.mh-toc-category-header {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: #676d71;
+  cursor: pointer;
+  display: flex;
+  font-size: 11.5px;
+  font-weight: 700;
+  justify-content: space-between;
+  letter-spacing: 0.04em;
+  padding: 10px 4px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.mh-toc-category-header .mh-toc-chevron {
+  height: 7px;
+  transition: transform 160ms ease;
+  width: 7px;
+}
+
+.mh-toc-category.expanded .mh-toc-category-header .mh-toc-chevron {
+  transform: rotate(180deg);
+}
+
+.mh-toc-category-items {
+  display: none;
+}
+
+.mh-toc-category.expanded .mh-toc-category-items {
+  display: grid;
+  gap: 2px;
+}
+
+.mh-toc-article {
+  border-radius: 0;
+  color: #020c13;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 4px 8px 18px;
+  text-decoration: none;
+}
+
+.mh-toc-article.current {
+  background: rgba(99, 123, 255, 0.12);
+  color: #637bff;
+  font-weight: 600;
+}
+
+.mh-toc-empty {
+  color: #676d71;
+  font-size: 13px;
+  padding: 16px 4px;
+}

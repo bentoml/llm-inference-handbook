@@ -1,11 +1,4 @@
-import React, {
-  useEffect,
-  useId,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
-import type { PropSidebar } from '@docusaurus/plugin-content-docs';
+import React, { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import {
   marketingHeaderCtas,
   marketingHeaderItems,
@@ -14,33 +7,14 @@ import {
   type MarketingHeaderMenu,
 } from './marketingHeaderData';
 import { marketingHeaderIcons } from './marketingHeaderIcons';
-import HandbookNavTree from './HandbookNavTree';
 
 type Props = {
   shadowRoot: ShadowRoot;
-  handbookSidebar?: PropSidebar;
-  activePath?: string;
 };
 
-type MobileTab = 'handbook' | 'modular';
-
-export default function MarketingHeader({
-  shadowRoot,
-  handbookSidebar,
-  activePath,
-}: Props): JSX.Element {
+export default function MarketingHeader({ shadowRoot }: Props): JSX.Element {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const hasHandbookTab = Boolean(handbookSidebar && handbookSidebar.length > 0);
-  // `handbookSidebar` arrives asynchronously from the outer root (see
-  // MarketingHeaderHost) — it's undefined on the very first render, even on
-  // doc pages. Rather than storing the *displayed* tab directly in state
-  // (which would race with that first render and permanently lock onto
-  // "modular"), we store only the user's explicit choice, if any, and fall
-  // back to "handbook" whenever it's available and the user hasn't chosen
-  // otherwise. This keeps tab selection correct regardless of data timing.
-  const [userSelectedTab, setUserSelectedTab] = useState<MobileTab | null>(null);
-  const mobileTab: MobileTab = userSelectedTab ?? (hasHandbookTab ? 'handbook' : 'modular');
   const navId = useId();
   const headerRef = useRef<HTMLElement | null>(null);
 
@@ -132,9 +106,6 @@ export default function MarketingHeader({
                 <span />
                 <span />
               </span>
-              <span className="mh-mobile-toggle-label" aria-hidden="true">
-                {mobileOpen ? 'close' : 'menu'}
-              </span>
             </button>
           </div>
         </div>
@@ -152,84 +123,32 @@ export default function MarketingHeader({
         className="mh-mobile-menu"
         hidden={!mobileOpen}
       >
-        {hasHandbookTab ? (
-          <div className="mh-tab-track" role="tablist" aria-label="Mobile navigation">
-            <span
-              className="mh-tab-pill"
-              style={{
-                transform: `translateX(${mobileTab === 'handbook' ? '0%' : '100%'})`,
-              }}
-              aria-hidden="true"
-            />
-            <button
-              type="button"
-              className="mh-tab-btn"
-              role="tab"
-              aria-selected={mobileTab === 'handbook'}
-              onClick={() => setUserSelectedTab('handbook')}
-            >
-              Inference Handbook
-            </button>
-            <button
-              type="button"
-              className="mh-tab-btn"
-              role="tab"
-              aria-selected={mobileTab === 'modular'}
-              onClick={() => setUserSelectedTab('modular')}
-            >
-              Modular.com
-            </button>
-          </div>
-        ) : null}
-
-        <div className="mh-tab-panels">
-          {hasHandbookTab ? (
-            <div
-              className="mh-tab-panel"
-              role="tabpanel"
-              hidden={mobileTab !== 'handbook'}
-            >
-              <HandbookNavTree
-                sidebar={handbookSidebar!}
-                activePath={activePath ?? ''}
-                onNavigate={() => setMobileOpen(false)}
-              />
-            </div>
-          ) : null}
-
-          <div
-            className="mh-tab-panel"
-            role="tabpanel"
-            hidden={hasHandbookTab && mobileTab !== 'modular'}
+        <ul className="mh-mobile-list" role="list">
+          {marketingHeaderItems.map((item) => (
+            <li key={item.type === 'link' ? item.label : item.menu.label}>
+              {item.type === 'link' ? (
+                <a className="mh-mobile-top-link" href={item.href}>
+                  {item.label}
+                </a>
+              ) : (
+                <MobileMenuGroup menu={item.menu} />
+              )}
+            </li>
+          ))}
+        </ul>
+        <div className="mh-mobile-actions">
+          <a
+            className="mh-secondary-cta"
+            href={marketingHeaderCtas.secondary.href}
           >
-            <ul className="mh-mobile-list" role="list">
-              {marketingHeaderItems.map((item) => (
-                <li key={item.type === 'link' ? item.label : item.menu.label}>
-                  {item.type === 'link' ? (
-                    <a className="mh-mobile-top-link" href={item.href}>
-                      {item.label}
-                    </a>
-                  ) : (
-                    <MobileMenuGroup menu={item.menu} />
-                  )}
-                </li>
-              ))}
-            </ul>
-            <div className="mh-mobile-actions">
-              <a
-                className="mh-secondary-cta"
-                href={marketingHeaderCtas.secondary.href}
-              >
-                {marketingHeaderCtas.secondary.label}
-              </a>
-              <a
-                className="mh-primary-cta"
-                href={marketingHeaderCtas.primary.href}
-              >
-                {marketingHeaderCtas.primary.label}
-              </a>
-            </div>
-          </div>
+            {marketingHeaderCtas.secondary.label}
+          </a>
+          <a
+            className="mh-primary-cta"
+            href={marketingHeaderCtas.primary.href}
+          >
+            {marketingHeaderCtas.primary.label}
+          </a>
         </div>
       </div>
     </header>
