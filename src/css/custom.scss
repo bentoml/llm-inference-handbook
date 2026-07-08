@@ -956,6 +956,11 @@ html[data-theme='light'] .mantine-Alert-root {
   margin: 0 auto;
 }
 
+// Hide "Back to top" button that overlaps with the chat button
+.theme-back-to-top-button {
+  display: none !important;
+}
+
 // ============================================================
 // Redocusaurus / API reference styles
 // ============================================================

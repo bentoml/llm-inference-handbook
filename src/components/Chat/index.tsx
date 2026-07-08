@@ -36,10 +36,10 @@ function Chat() {
               <path d="m6 6 12 12" />
             </svg>
           </button>
-          <h4>Need Help with LLM Inference?</h4>
+          <h4>Are you deploying an LLM?</h4>
           <p>
-            We help top AI teams build high-performance LLM inference systems -
-            fast, portable, no hardware lock-in.
+            We build high-speed inference systems that are
+            customizable and portable across hardware.
           </p>
           <div>
             <a
@@ -48,8 +48,8 @@ function Chat() {
               rel="noopener noreferrer"
               className={styles.chatLink}
             >
-              <Button type="green" className={styles.chatButton}>
-                Request a Demo
+              <Button className={styles.chatButton}>
+                Request a demo
               </Button>
             </a>
           </div>

@@ -10,7 +10,6 @@ keywords:
 ---
 
 import LinkList from '@site/src/components/LinkList';
-import ContactSection from '@site/src/components/ContactSection';
 import LatencyMetrics from '@site/src/components/Calculator/LatencyMetrics';
 
 # Key metrics for LLM inference
@@ -185,5 +184,3 @@ Using a serverless API can abstract away these optimizations, leaving you with l
   * [LLM-Inference-Bench: Inference Benchmarking of Large Language Models on AI Accelerators](https://arxiv.org/pdf/2411.00136)
   * [Throughput is Not All You Need](https://hao-ai-lab.github.io/blogs/distserve/)
 </LinkList>
-
-<ContactSection />
