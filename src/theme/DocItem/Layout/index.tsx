@@ -8,6 +8,7 @@ import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile';
 import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
 import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
+import DocsContentsNav from '@site/src/components/DocsContentsNav/DocsContentsNav';
 import type { Props } from '@theme/DocItem/Layout';
 import styles from './styles.module.scss';
 
@@ -35,6 +36,7 @@ export default function DocItemLayout({ children }: Props): ReactNode {
       <div className={clsx('col', styles.docItemCol)}>
         <div className={styles.docItemContainer}>
           <article>
+            <DocsContentsNav />
             <DocBreadcrumbs />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>

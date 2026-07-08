@@ -788,6 +788,15 @@ nav.menu {
   @media (max-width: 576px) {
     margin-bottom: 1.5rem !important;
   }
+
+  // Mobile doc pages get a sticky "Contents" sub-bar right above this
+  // (see DocsContentsNav), so the roomier desktop/tablet spacing above reads
+  // as an oversized gap here — tighten it to match the sub-bar's own
+  // internal rhythm instead.
+  @media (max-width: 991px) {
+    margin-bottom: 0.5rem !important;
+    margin-top: 0.5rem;
+  }
 }
 .breadcrumbs {
   li {
@@ -875,6 +884,15 @@ nav.menu {
     &:hover {
       text-decoration: none;
     }
+  }
+
+  // Matches the tightened breadcrumb spacing above (see
+  // `.theme-doc-breadcrumbs`) so the gap above this dropdown reads as the
+  // same, smaller amount on mobile doc pages. The gap below stays a bit
+  // taller to give the page's H1 more breathing room.
+  @media (max-width: 991px) {
+    margin: 0.5rem 0 !important;
+    margin-bottom: 20px !important;
   }
 }
 

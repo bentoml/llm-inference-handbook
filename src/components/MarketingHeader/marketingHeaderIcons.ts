@@ -1,4 +1,6 @@
 export const marketingHeaderIcons: Record<string, string> = {
+  '/':
+    '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">  <path d="M2.5 3.33301V18.333H15.8333" stroke="currentColor"></path>  <path d="M13.75 1.6665H5V15.8332H17.5V5.4165L13.75 1.6665Z" stroke="currentColor"></path>  <path d="M12.9167 1.6665V6.24984H17.5" stroke="currentColor"></path></svg>',
   'https://docs.modular.com/':
     '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">  <path d="M2.5 3.33301V18.333H15.8333" stroke="currentColor"></path>  <path d="M13.75 1.6665H5V15.8332H17.5V5.4165L13.75 1.6665Z" stroke="currentColor"></path>  <path d="M12.9167 1.6665V6.24984H17.5" stroke="currentColor"></path></svg>',
   'https://github.com/modular/skills':

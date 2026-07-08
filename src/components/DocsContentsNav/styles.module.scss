@@ -1,0 +1,128 @@
+.subbar {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .subbar {
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid rgba(2, 12, 19, 0.08);
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    // Doc pages wrap content in a `.container` that both adds top padding
+    // (to space it from the header) and, at several widths inside our own
+    // ≤991px range, switches to a narrower fixed max-width that's centered
+    // via auto margins rather than just padded. A static negative margin
+    // can't cancel that reliably, so break out of the container the classic
+    // viewport-relative way instead — this bleeds to the true edges at any
+    // width, same as the header above it.
+    // Standard "full-bleed" breakout: works because Infima's `.container` is
+    // itself horizontally centered via auto margins, so shifting by
+    // (50% of our own — i.e. the container's — width) minus (50% of the
+    // viewport) always lands exactly on the true viewport edges, regardless
+    // of which fixed max-width the container happens to be using at the
+    // current breakpoint.
+    // No explicit width: a block-level element's `width: auto` already fills
+    // the rest of the viewport after these margins, which avoids the
+    // horizontal-scrollbar overflow that `width: 100vw` would introduce
+    // (`vw` doesn't subtract the scrollbar's own width).
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: -1rem;
+    padding: 10px var(--content-side-padding, 24px);
+    padding-top: 0;
+    position: sticky;
+    top: var(--ifm-navbar-height);
+    z-index: 150;
+  }
+
+  .crumb {
+    color: #676d71;
+    flex: 1 1 auto;
+    font-size: 13px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .contentsBtn {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(2, 12, 19, 0.16);
+    // Matches the "On this page" TOC dropdown's corner radius below it.
+    border-radius: var(--ifm-global-radius);
+    color: #020c13;
+    cursor: pointer;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 13px;
+    font-weight: 600;
+    gap: 6px;
+    padding: 6px 14px;
+  }
+
+  .contentsIcon {
+    height: 14px;
+    width: 14px;
+  }
+
+  .overlay {
+    background: #fff;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 300;
+  }
+
+  .overlayHeader {
+    align-items: center;
+    border-bottom: 1px solid rgba(2, 12, 19, 0.08);
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    padding: 16px var(--content-side-padding, 20px);
+  }
+
+  .overlayTitle {
+    color: #020c13;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .closeBtn {
+    background: transparent;
+    border: 0;
+    color: #020c13;
+    cursor: pointer;
+    display: inline-flex;
+    height: 24px;
+    padding: 0;
+    width: 24px;
+  }
+
+  .closeBtn svg {
+    height: 20px;
+    width: 20px;
+  }
+
+  .overlayBody {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 16px var(--content-side-padding, 20px) 28px;
+  }
+}
+
+// Matches the header's own `.mh-nav` breakpoint (see MarketingHeader/styles.ts),
+// which narrows its side padding from 24px to 20px at this width.
+@media (max-width: 520px) {
+  .subbar {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
