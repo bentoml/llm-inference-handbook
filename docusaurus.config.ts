@@ -82,6 +82,11 @@ const config: Config = {
       'docusaurus-markdown-source-plugin',
       {
         docsPath: '/',
+        fullyQualifiedLinks: true,
+        directive:
+          '> Markdown versions of all pages are available by appending .md to any URL.',
+        htmlDirective:
+          'IMPORTANT: To view this page as Markdown, append `.md` to the URL.',
         containerSelector: '.doc-actions',
         copyButtonText: 'Copy as Markdown',
         copiedButtonText: 'Copied!',
@@ -93,6 +98,7 @@ const config: Config = {
         routeBasePath: '/',
         path: './docs',
         sidebarPath: './sidebars.ts',
+        editUrl: 'https://github.com/modular/llm-inference-handbook/edit/main/',
         breadcrumbs: true,
         exclude: ['**/README.md', '**/LICENSE', 'adr/**'],
         remarkPlugins: [remarkMath],
