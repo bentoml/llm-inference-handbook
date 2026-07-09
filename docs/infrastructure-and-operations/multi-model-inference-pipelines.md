@@ -14,7 +14,7 @@ import LinkList from '@site/src/components/LinkList';
 
 A multi-model inference pipeline is a system where several models work together to produce one result. Instead of asking a single model to do everything, you split the work into stages. Each stage focuses on a specific task, like retrieval, OCR, classification, generation, or post-processing.
 
-This is different from running one model behind a single endpoint. It’s also different from [pipeline parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism), which splits one model across multiple devices. Here, the main question is not how to distribute one model. It is how to design, deploy, and operate a system where several models cooperate in one request path.
+This is different from running one model behind a single endpoint. It’s also different from [pipeline parallelism](/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism/), which splits one model across multiple devices. Here, the main question is not how to distribute one model. It is how to design, deploy, and operate a system where several models cooperate in one request path.
 
 ## What a multi-model pipeline looks like
 
@@ -88,7 +88,7 @@ That division of labor is often more effective than forcing one model to stretch
 
 Not every stage deserves the same hardware.
 
-A lightweight preprocessing or validation stage may run well on CPU. A vision encoder, reranker, or large generator may need [high-performance GPUs](../getting-started/choosing-the-right-gpu). Some stages batch nicely, while others are highly latency-sensitive and should stay small and fast.
+A lightweight preprocessing or validation stage may run well on CPU. A vision encoder, reranker, or large generator may need [high-performance GPUs](/getting-started/choosing-the-right-gpu/). Some stages batch nicely, while others are highly latency-sensitive and should stay small and fast.
 
 This lets teams place each stage on the hardware that matches its workload instead of overprovisioning the whole pipeline around the most expensive stage.
 
@@ -126,7 +126,7 @@ Model composition comes with a real tax:
 
 - More services to deploy
 - More contracts between stages
-- More [observability](./comprehensive-observability) work
+- More [observability](/infrastructure-and-operations/comprehensive-observability/) work
 - More failure modes
 - More tuning at the end-to-end level
 
@@ -160,7 +160,7 @@ A document workflow might look like this:
 Document image → OCR → Layout extraction → Classify → Summarize → Structured Output
 ```
 
-This is hard to replace with one model if accuracy, formatting, or traceability matters. OCR and layout extraction are very different tasks from summarization. The trade-off is that large intermediate artifacts can move across several stages, so payload design matters. If the output needs to feed another system directly, [structured outputs](../model-interaction/structured-outputs) can make that handoff much easier to maintain.
+This is hard to replace with one model if accuracy, formatting, or traceability matters. OCR and layout extraction are very different tasks from summarization. The trade-off is that large intermediate artifacts can move across several stages, so payload design matters. If the output needs to feed another system directly, [structured outputs](/model-interaction/structured-outputs/) can make that handoff much easier to maintain.
 
 ### Multimodal assistant
 
@@ -184,7 +184,7 @@ There is no universal winner. The right choice depends on what constraint matter
 
 As a rule of thumb:
 
-- Start with one model if it already meets your product requirement. Learn how to [choose the right model](../getting-started/choosing-the-right-model) before you decide to compose several models.
+- Start with one model if it already meets your product requirement. Learn how to [choose the right model](/getting-started/choosing-the-right-model/) before you decide to compose several models.
 - Add stages when they clearly help
 - Keep the number of stages as small as possible
 
@@ -204,7 +204,7 @@ They can reduce cost when small specialist models filter or route requests befor
 
 ### How is this different from an agentic workflow?
 
-Both chain multiple model calls, but a multi-model pipeline is a mostly fixed graph that you design up front. An agent decides dynamically which tools or models to call, how many times, and in what order. Agents are a superset of the pipeline idea, with more flexibility and more variance in latency and cost. If you want the stage interfaces in either setup to stay predictable, [function calling](../model-interaction/function-calling) and [structured outputs](../model-interaction/structured-outputs) are often part of the solution.
+Both chain multiple model calls, but a multi-model pipeline is a mostly fixed graph that you design up front. An agent decides dynamically which tools or models to call, how many times, and in what order. Agents are a superset of the pipeline idea, with more flexibility and more variance in latency and cost. If you want the stage interfaces in either setup to stay predictable, [function calling](/model-interaction/function-calling/) and [structured outputs](/model-interaction/structured-outputs/) are often part of the solution.
 
 <LinkList>
   ## Additional resources

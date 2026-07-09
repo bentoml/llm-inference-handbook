@@ -23,7 +23,7 @@ Multi-cloud inference means running LLM workloads across more than one cloud pro
 Cross-region inference refers to running LLM workloads across multiple geographic regions within the same cloud provider. Note that this doesn’t mean running a different model in each region. Instead, the same application is replicated across multiple sites so requests can be served from the nearest or most available location. For instance, a deployment might run in AWS us-east-1 for North America, eu-west-1 for Europe, and ap-southeast-1 for Asia.
 
 :::note
-Another pattern is hybrid cloud inference, which combines on-premises infrastructure with public and private cloud deployments. Instead of choosing one or the other, enterprises run part of their LLM workloads in private data centers and extend to the cloud when needed. Refer to [on-prem LLM deployments](../getting-started/on-prem-llms) for details.
+Another pattern is hybrid cloud inference, which combines on-premises infrastructure with public and private cloud deployments. Instead of choosing one or the other, enterprises run part of their LLM workloads in private data centers and extend to the cloud when needed. Refer to [on-prem LLM deployments](/getting-started/on-prem-llms/) for details.
 :::
 
 ## Why multi-cloud and cross-region inference matters
@@ -36,7 +36,7 @@ Unlike training, LLM inference is driven by real-time usage, often bursty and ha
 
 Multi-cloud and cross-region deployments provide headroom to absorb these bursts. If one region runs out of compute capacity, traffic can shift to elsewhere. If a cloud provider experiences shortages, workloads can overflow to another.
 
-For LLMs, this flexibility is especially important because inference isn’t just CPU-bound or storage-bound. It depends heavily on [GPU](../getting-started/choosing-the-right-gpu) availability. Frontier models like DeepSeek-V3.1 and gpt-oss-120b require hardware such as NVIDIA H100s and AMD MI300Xs, which are both expensive and limited. 
+For LLMs, this flexibility is especially important because inference isn’t just CPU-bound or storage-bound. It depends heavily on [GPU](/getting-started/choosing-the-right-gpu/) availability. Frontier models like DeepSeek-V3.1 and gpt-oss-120b require hardware such as NVIDIA H100s and AMD MI300Xs, which are both expensive and limited. 
 
 With a multi-cloud or cross-region setup, you increase the chance of finding GPUs when you need them. As such, teams can smooth out traffic spikes, avoid dropped requests, and maintain a consistent experience as they to scale.
 

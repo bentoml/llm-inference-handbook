@@ -16,7 +16,7 @@ const config: Config = {
   baseUrl: '/',
   trailingSlash: true,
 
-  onBrokenLinks: 'ignore',
+  onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
 
   i18n: {

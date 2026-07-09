@@ -32,7 +32,7 @@ At a technical level, the LLM still predicts the next token, just like any other
 
 These two ideas get mixed up a lot. Here’s the simple difference:
 
-- Structured outputs: You decide the [format that the model uses in its responses](./structured-outputs). For example, you can force the model to output JSON, a list, or a specific object.
+- Structured outputs: You decide the [format that the model uses in its responses](/model-interaction/structured-outputs/). For example, you can force the model to output JSON, a list, or a specific object.
 - Function calling: You tell the model when to take an action. Function calling tools are often defined in a structured way (e.g., JSON).
 
 Both can be used together.

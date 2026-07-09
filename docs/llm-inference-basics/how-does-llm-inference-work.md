@@ -51,7 +51,7 @@ During the prefill stage, the entire prompt (namely, the whole sequence of input
 
 As a result, the prefill stage is compute-bound and often saturates GPU utilization. The actual utilization depends on factors like sequence length, batch size, and hardware specifications.
 
-A key metric to monitor for prefill is the Time to First Token (TTFT), which measures the latency from prompt submission to first token generation. More details will be covered in the [inference optimization](/inference-optimization) chapter.
+A key metric to monitor for prefill is the Time to First Token (TTFT), which measures the latency from prompt submission to first token generation. More details will be covered in the [inference optimization](/inference-optimization/) chapter.
 
 <Diagram name="llm-inference-prefill" alt="LLM inference prefill pipeline showing tokenization, prefill, decode, and detokenization stages within Time to First Token (TTFT)" />
 
@@ -77,7 +77,7 @@ Finally, the sequence of generated tokens is decoded back into human-readable te
 
 Compared with prefill, decode is more memory-bound because it requires the model weights and the growing KV cache to be frequently read from memory. KV caching stores these key and value matrices in memory so that, during subsequent token generation, the LLM only needs to compute the keys and values for the new tokens rather than recomputing everything from scratch.
 
-This KV caching mechanism significantly speeds up inference by avoiding redundant computation. However, it comes at the cost of increased memory consumption, since the cache grows with the length of the generated sequence. KV cache memory can become a serving bottleneck even when the model weights already fit on the GPU. Some inference systems reduce this pressure by compressing or quantizing the KV cache, while others move inactive cache blocks to cheaper memory through [KV cache offloading](../inference-optimization/kv-cache-offloading).
+This KV caching mechanism significantly speeds up inference by avoiding redundant computation. However, it comes at the cost of increased memory consumption, since the cache grows with the length of the generated sequence. KV cache memory can become a serving bottleneck even when the model weights already fit on the GPU. Some inference systems reduce this pressure by compressing or quantizing the KV cache, while others move inactive cache blocks to cheaper memory through [KV cache offloading](/inference-optimization/kv-cache-offloading/).
 
 A key metric to monitor for decode is Inter-Token Latency (ITL), the time between the generation of consecutive tokens in a sequence.
 
@@ -89,7 +89,7 @@ Traditional LLM serving systems typically run both the prefill and decode phases
 
 One major issue is the interference between the prefill and decode phases, as they cannot run fully in parallel. In production, multiple requests can arrive at once, each with its own prefill and decode stages that overlap across different requests. However, only one phase can run at a time. When the GPU is occupied with compute-heavy prefill tasks, decode tasks must wait, increasing token latency, and vice versa. This makes it difficult to schedule resources for both phases.
 
-The open-source community is actively working on different strategies to separate prefill and decode. For more information, see [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation).
+The open-source community is actively working on different strategies to separate prefill and decode. For more information, see [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/).
 
 ## What is a context window and how does it work in LLM inference?
 
@@ -103,7 +103,7 @@ Technically, LLMs don’t have real memory. To keep context, every new request m
 
 This running text history is called the context window, which has a maximum length (e.g., 8K, 32K, or 128K tokens).
 
-As mentioned above, LLMs use the KV cache from previous tokens to avoid fully reprocessing everything in the decode phase, which helps with latency. When reusing the KV cache across multiple requests, it is more accurate to call this technique [prefix caching](../inference-optimization/prefix-caching).
+As mentioned above, LLMs use the KV cache from previous tokens to avoid fully reprocessing everything in the decode phase, which helps with latency. When reusing the KV cache across multiple requests, it is more accurate to call this technique [prefix caching](/inference-optimization/prefix-caching/).
 
 ## Diffusion LLMs (dLLMs)
 
@@ -157,7 +157,7 @@ Before sampling, temperature is applied to the logits (the raw pre-softmax score
 
 After applying temperature and converting logits into probabilities, a sampling strategy determines which token gets picked. Common ones include greedy decoding, top-k, and top-p.
 
-Learn more about [LLM inference parameters](../model-interaction/inference-parameters).
+Learn more about [LLM inference parameters](/model-interaction/inference-parameters/).
 
 ### What happens step by step during LLM inference?
 
@@ -186,7 +186,7 @@ Other factors also affect latency:
 - Input length (longer prompts increase prefill time)
 - Hardware (GPU type and memory bandwidth)
 
-This is why [inference optimization](../inference-optimization) is a major focus in production systems.
+This is why [inference optimization](/inference-optimization/) is a major focus in production systems.
 
 <LinkList>
   ## Additional resources

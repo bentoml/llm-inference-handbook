@@ -107,7 +107,7 @@ Here’s a quick comparison:
 | --- | --- | --- | --- | --- |
 | SaaS | Vendor’s cloud | Vendor | Low: data resides in vendor’s multi-tenant environment | Fast setup, minimal ops overhead, quick prototyping, non-sensitive data |
 | BYOC | Customer’s cloud account (e.g., AWS, GCP, Azure) | Shared between vendor and customer | High: data stays in customer’s VPC | Enterprises with security/compliance needs, GPU cost optimization, flexible scaling |
-| [On-prem](../getting-started/on-prem-llms) | Customer’s private data center | Customer |  Full: data and compute remain entirely on customer infrastructure | Air-gapped or highly regulated industries (e.g., defense, healthcare) |
+| [On-prem](/getting-started/on-prem-llms/) | Customer’s private data center | Customer |  Full: data and compute remain entirely on customer infrastructure | Air-gapped or highly regulated industries (e.g., defense, healthcare) |
 
 For most enterprise LLM workloads, BYOC provides the best middle ground. It’s fast to deploy, secure by design, and cost-efficient at scale.
 
@@ -120,7 +120,7 @@ With our BYOC deployment, you can:
 - Run models inside your own VPC across providers like AWS, GCP, or Azure and leverage your existing credits and commits
 - Keep your data and workloads fully within your environment
 - Run and scale inference across NVIDIA, AMD, CPUs, and more in the same BYOC deployment
-- Apply the latest distributed inference techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) in your private cloud
+- Apply the latest distributed inference techniques like [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/) in your private cloud
 
 <div style={{ margin: '3rem 0' }}>
 <a className="btn-outline" href="https://www.modular.com/request-demo?utm_source=llm_handbook">Schedule a Demo</a>

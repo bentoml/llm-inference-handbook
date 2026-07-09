@@ -59,7 +59,7 @@ Continuous batching, also known as in-flight batching, addresses these inefficie
 
 This technique uses iteration-level scheduling, meaning the batch composition changes dynamically at each decoding iteration. As soon as a sequence in the batch finishes generating tokens, the server inserts a new request in its place. This maximizes GPU occupancy and keeps compute resources busy by avoiding idle time that would otherwise be spent waiting for the slowest sequence in a batch to finish.
 
-Major [inference frameworks](../getting-started/choosing-the-right-inference-framework) such as vLLM, SGLang, TensorRT-LLM (in-flight batching) and LMDeploy (persistent batching) all support continuous batching or similar mechanisms. For memory management in long or mixed-length batches, see [PagedAttention](./pagedattention).
+Major [inference frameworks](/getting-started/choosing-the-right-inference-framework/) such as vLLM, SGLang, TensorRT-LLM (in-flight batching) and LMDeploy (persistent batching) all support continuous batching or similar mechanisms. For memory management in long or mixed-length batches, see [PagedAttention](/inference-optimization/pagedattention/).
 
 ## Chunked prefill
 
@@ -69,7 +69,7 @@ Continuous batching introduces a scheduling conflict when a new request arrives 
 
 <ChunkedPrefillVisualizer />
 
-The scheduler can combine one prefill chunk with decode tokens from active requests in the same batch. [SARATHI](https://arxiv.org/abs/2308.16369) calls this **decode-maximal batching**: the prefill chunk supplies enough parallel work to saturate the compute capacity of the GPU, while decode tokens piggyback on the same model execution at little extra cost. This prevents a long prompt from monopolizing one iteration and can also reduce pipeline bubbles under [pipeline parallelism](./data-tensor-pipeline-expert-hybrid-parallelism#pipeline-parallelism).
+The scheduler can combine one prefill chunk with decode tokens from active requests in the same batch. [SARATHI](https://arxiv.org/abs/2308.16369) calls this **decode-maximal batching**: the prefill chunk supplies enough parallel work to saturate the compute capacity of the GPU, while decode tokens piggyback on the same model execution at little extra cost. This prevents a long prompt from monopolizing one iteration and can also reduce pipeline bubbles under [pipeline parallelism](/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism/#pipeline-parallelism).
 
 The benefit of chunked prefill is that even when a request has a long prompt, the prefill computation is divided into smaller chunks. Instead of waiting for one long prefill iteration to finish, active decode requests can continue generating tokens between prefill chunks. This reduces Inter-Token Latency (ITL) and makes streamed responses smoother.
 
@@ -106,7 +106,7 @@ The shorter sequences may be padded to length `1024`. That keeps the tensor shap
 
 ### What are ragged tensors in LLM inference?
 
-Ragged tensors represent variable-length sequences without padding them all to one fixed length. Instead, the runtime stores the real tokens plus metadata such as sequence lengths, offsets, or KV cache block locations. This helps inference engines handle mixed-length prompts and continuous batching more efficiently, especially when paired with paged KV cache layouts such as [PagedAttention](./pagedattention).
+Ragged tensors represent variable-length sequences without padding them all to one fixed length. Instead, the runtime stores the real tokens plus metadata such as sequence lengths, offsets, or KV cache block locations. This helps inference engines handle mixed-length prompts and continuous batching more efficiently, especially when paired with paged KV cache layouts such as [PagedAttention](/inference-optimization/pagedattention/).
 
 <LinkList>
   ## Additional resources

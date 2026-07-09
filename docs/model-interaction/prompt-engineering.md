@@ -55,7 +55,7 @@ For high-throughput inference systems, prompt length becomes an important optimi
 
 ### KV cache usage
 
-LLM inference relies heavily on the [KV cache (Key-Value cache)](../llm-inference-basics/how-does-llm-inference-work/#prefill) to speed up generation.
+LLM inference relies heavily on the [KV cache (Key-Value cache)](/llm-inference-basics/how-does-llm-inference-work/#prefill) to speed up generation.
 
 During the prefill stage, the model processes the entire prompt and stores intermediate attention states in the KV cache. During decoding, the model reuses this cache instead of recomputing attention for previous tokens.
 
@@ -92,7 +92,7 @@ In many AI deployments, prompt engineering becomes the first layer of control ov
 
 Because prompts are part of the request payload, they can be updated quickly without retraining models or changing the serving infrastructure. This makes prompts a flexible way to steer model behavior in production.
 
-Prompt engineering is often tuned together with [inference parameters](./inference-parameters). The prompt defines the task and constraints, while parameters such as `temperature`, `top_p`, and `max_tokens` control how the model samples and bounds the response.
+Prompt engineering is often tuned together with [inference parameters](/model-interaction/inference-parameters/). The prompt defines the task and constraints, while parameters such as `temperature`, `top_p`, and `max_tokens` control how the model samples and bounds the response.
 
 ## Prompt roles
 
@@ -209,8 +209,8 @@ For large inference systems, long conversations can reduce throughput and increa
 
 - Message truncation to keep only the most recent turns
 - Conversation summarization to compress older context
-- [Prefix caching](./../inference-optimization/prefix-caching) to reuse shared prompt segments
-- [KV cache offloading](./../inference-optimization/kv-cache-offloading) to move cache data to low-cost storage when needed
+- [Prefix caching](/inference-optimization/prefix-caching/) to reuse shared prompt segments
+- [KV cache offloading](/inference-optimization/kv-cache-offloading/) to move cache data to low-cost storage when needed
 
 #### Injected by developers
 
@@ -276,7 +276,7 @@ Small wording changes sometimes produce large differences. Prompt engineering of
 
 ---
 
-As you build real systems, you’ll likely combine LLM prompt engineering with other techniques such as [structured outputs](./structured-outputs), [tool calling](./function-calling), and [fine-tuning](../model-preparation/llm-fine-tuning). Understanding how prompts impact model behavior is the first step toward building robust LLM applications.
+As you build real systems, you’ll likely combine LLM prompt engineering with other techniques such as [structured outputs](/model-interaction/structured-outputs/), [tool calling](/model-interaction/function-calling/), and [fine-tuning](/model-preparation/llm-fine-tuning/). Understanding how prompts impact model behavior is the first step toward building robust LLM applications.
 
 ## FAQs
 
@@ -376,7 +376,7 @@ Therefore, some production systems generate reasoning internally and only return
 
 ### When does prompt engineering fail?
 
-Prompt engineering is powerful, but it has limits. If a task requires domain knowledge that the model does not possess, or you need strict consistency across millions of requests, prompt engineering alone may not be sufficient. In these cases, techniques such as [fine-tuning](../model-preparation/llm-fine-tuning), RAG, or [constrained decoding](./structured-outputs#constrained-decoding) may be necessary.
+Prompt engineering is powerful, but it has limits. If a task requires domain knowledge that the model does not possess, or you need strict consistency across millions of requests, prompt engineering alone may not be sufficient. In these cases, techniques such as [fine-tuning](/model-preparation/llm-fine-tuning/), RAG, or [constrained decoding](/model-interaction/structured-outputs/#constrained-decoding) may be necessary.
 
 <LinkList>
   ## Additional resources

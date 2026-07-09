@@ -33,10 +33,10 @@ Key benefits of self-hosting include:
 - **Data privacy and compliance**: LLMs are widely used in modern applications like RAG and AI agents. These systems often require frequent access to sensitive data (e.g., customer details, medical records, financial information). This is often not an acceptable option for organizations in regulated industries with compliance and privacy requirements. Self-hosting LLMs makes sure your data always stays within your secure environment.
 - **Advanced customization and optimization**: With self-hosting, you can tailor your inference process to meet specific needs, such as:
     - Adjusting latency and throughput trade-offs precisely.
-    - Implementing advanced optimizations like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation), [prefix caching](../inference-optimization/prefix-caching), and [speculative decoding](../inference-optimization/speculative-decoding).
-    - Optimizing for long contexts or [batch-processing](../inference-optimization/static-dynamic-continuous-batching) scenarios.
+    - Implementing advanced optimizations like [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/), [prefix caching](/inference-optimization/prefix-caching/), and [speculative decoding](/inference-optimization/speculative-decoding/).
+    - Optimizing for long contexts or [batch-processing](/inference-optimization/static-dynamic-continuous-batching/) scenarios.
     - Enforcing structured decoding to ensure outputs follow strict schemas
-    - [Fine-tuning models](../model-preparation/llm-fine-tuning) using proprietary data to achieve competitive advantages.
+    - [Fine-tuning models](/model-preparation/llm-fine-tuning/) using proprietary data to achieve competitive advantages.
 - **Predictable performance and control**: When you self-host your LLMs, you have complete control over how your system behaves and performs. You’re not at the mercy of external API rate limits or sudden policy changes that might impact your application’s performance and availability.
 
 ## Comparison summary
@@ -55,7 +55,7 @@ Choosing between serverless and self-hosted LLM inference depends on your specif
 
 With serverless APIs, the cost per token is fixed, but total spend scales linearly with usage. That’s fine for early prototyping, but it becomes expensive fast in production.
 
-With self-hosting, there’s more upfront work and infrastructure cost. However, your per-token cost will drop significantly as you scale, especially using inference optimization techniques like [KV cache offloading](../inference-optimization/kv-cache-offloading).
+With self-hosting, there’s more upfront work and infrastructure cost. However, your per-token cost will drop significantly as you scale, especially using inference optimization techniques like [KV cache offloading](/inference-optimization/kv-cache-offloading/).
 
 At different stages of your AI adoption, you may want to reevaluate your approach and weigh trade-offs between agility and control.
 

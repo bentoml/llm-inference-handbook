@@ -16,7 +16,7 @@ import LinkList from '@site/src/components/LinkList';
 
 # Prefill-decode disaggregation
 
-To understand prefill-decode (PD) disaggregation, let’s briefly review how [LLM inference works](../llm-inference-basics/how-does-llm-inference-work) in two steps:
+To understand prefill-decode (PD) disaggregation, let’s briefly review how [LLM inference works](/llm-inference-basics/how-does-llm-inference-work/) in two steps:
 
 - **Prefill**: Processes the entire sequence in parallel and store key and value vectors from the attention layers in a KV cache. Because it’s handling all the tokens at once with large matrix operations, prefill is compute-bound, but not too demanding on GPU memory.
 - **Decode**: Generates the output tokens, one at a time, by reusing the KV cache built earlier. Each generated token requires repeatedly loading model weights and accessing an ever-growing KV cache. Therefore, decode requires fast memory access but lower compute.
@@ -60,7 +60,7 @@ As promising as PD disaggregation sounds, it’s not a one-size-fits-all fix.
   - Should KV blocks move eagerly after prefill, or lazily when decode actually needs them?
   - How does the router decide whether to reuse an existing cache, run local prefill, or send the request to a separate prefill pool?
 
-  These questions connect PD disaggregation to [KV cache offloading](./kv-cache-offloading) and [prefix caching](./prefix-caching). Treat them as parts of the same serving architecture, not isolated tuning knobs.
+  These questions connect PD disaggregation to [KV cache offloading](/inference-optimization/kv-cache-offloading/) and [prefix caching](/inference-optimization/prefix-caching/). Treat them as parts of the same serving architecture, not isolated tuning knobs.
 
 - **Cache compatibility matters**: The prefill worker and decode worker must agree on KV layout, page size, dtype, attention variant, and any extra cache metadata. Heterogeneous KV types (e.g., quantized KV caches, VLM encoder states, and speculative decoding caches) can make this handoff more complex than moving one standard full-attention KV tensor.
 
