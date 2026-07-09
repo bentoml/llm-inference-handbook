@@ -68,7 +68,7 @@ The user then asks:
 User: Which lookup should we optimize first?
 ```
 
-The model isn't given only the latest question. The application resends the previous messages as part of the [context window](../llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference), so the model knows which lookups the user means. The serialized second request therefore looks roughly like this:
+The model isn't given only the latest question. The application resends the previous messages as part of the [context window](/llm-inference-basics/how-does-llm-inference-work/#what-is-a-context-window-and-how-does-it-work-in-llm-inference), so the model knows which lookups the user means. The serialized second request therefore looks roughly like this:
 
 ```bash
 User: Why did the checkout API slow down after deployment?
@@ -78,7 +78,7 @@ User: Which lookup should we optimize first?
 
 The first two messages are an exact prefix that the model has already processed. If their KV states are still available, the model can reuse them and prefill only the new user message. Without prefix caching, it must process the entire conversation again.
 
-As the conversation grows, the reusable prefix grows with it. Avoiding repeated prefill reduces GPU compute and keeps TTFT from rising as quickly across turns. Note that a cache hit still depends on the serving engine retaining the entry, [routing the request to a worker that can access the cache](inference-routing), and serializing the previous messages identically.
+As the conversation grows, the reusable prefix grows with it. Avoiding repeated prefill reduces GPU compute and keeps TTFT from rising as quickly across turns. Note that a cache hit still depends on the serving engine retaining the entry, [routing the request to a worker that can access the cache](/inference-optimization/inference-routing/), and serializing the previous messages identically.
 
 ## What is the difference between KV caching and prefix caching?
 
