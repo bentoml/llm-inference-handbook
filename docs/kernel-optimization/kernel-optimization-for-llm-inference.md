@@ -51,7 +51,7 @@ At a high level, there are two common approaches to kernel optimization dependin
 
 ## What kernel optimization is not
 
-It’s easy to mix it up with other optimization techniques covered in the [Inference Optimization](../inference-optimization/) chapter. Kernel optimization is not:
+It’s easy to mix it up with other optimization techniques covered in the [Inference Optimization](/inference-optimization/) chapter. Kernel optimization is not:
 
 - Continuous or dynamic batching
 - Prefix caching

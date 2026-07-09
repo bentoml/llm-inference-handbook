@@ -19,7 +19,7 @@ Central Processing Units (CPUs) are general-purpose processors used in all compu
 
 Graphics Processing Units (GPUs) were originally designed for graphics rendering and digital visualization tasks. As they could perform highly parallel operations, they also turned out to be a great fit for ML and AI workloads. Today, GPUs are the default choice for both training and inference of GenAI like LLMs.
 
-[The architecture of GPUs](../kernel-optimization/gpu-architecture-fundamentals) is optimized for matrix multiplication and tensor operations, which are core components of transformer-based models. Modern inference frameworks and runtimes (e.g., vLLM, SGLang, LMDeploy, TensorRT-LLM, and Hugging Face TGI) are designed to take full advantage of GPU acceleration.
+[The architecture of GPUs](/kernel-optimization/gpu-architecture-fundamentals/) is optimized for matrix multiplication and tensor operations, which are core components of transformer-based models. Modern inference frameworks and runtimes (e.g., vLLM, SGLang, LMDeploy, TensorRT-LLM, and Hugging Face TGI) are designed to take full advantage of GPU acceleration.
 
 ## TPUs
 
@@ -50,14 +50,14 @@ Here is a side-by-side comparison:
 
 Selecting the appropriate hardware requires you to understand your model size, inference volume, latency requirements, cost constraints, and available infrastructure. GPUs remain the most popular choice due to their versatility and broad support, while TPUs offer compelling advantages for certain specialized scenarios, and CPUs still have a place for lightweight, budget-conscious workloads.
 
-Learn more about [GPU choices](../getting-started/choosing-the-right-gpu) for different open-source LLMs.
+Learn more about [GPU choices](/getting-started/choosing-the-right-gpu/) for different open-source LLMs.
 
 ## Choosing the right deployment pattern
 
 The deployment pattern shapes everything from latency and scalability to privacy and cost. Each pattern suits different operational needs for enterprises.
 
 - **Cloud**: The cloud is the most popular environment for LLM inference today. It offers on-demand access to high-performance GPUs and TPUs, along with a rich ecosystem of managed services, autoscaling, and monitoring tools.
-- **Multi-cloud and cross-region**: [This flexible deployment strategy](../infrastructure-and-operations/multi-cloud-and-cross-region-inference) distributes LLM workloads across multiple cloud providers or geographic regions. It helps reduce latency for global users, improves GPU availability, optimizes compute costs, mitigates vendor lock-in, and supports compliance with data residency requirements.
-- **Bring Your Own Cloud (BYOC)**: [BYOC deployments](../getting-started/bring-your-own-cloud) let you run vendor software, such as an LLM inference platform, directly inside your own cloud account. This model combines managed orchestration with full data, network, and cost control. It's ideal for enterprises that need compliance, cost-efficiency, and scalability without full self-hosting.
-- **On-prem**: [On-premises deployments](../getting-started/on-prem-llms) mean running LLM inference on your own infrastructure, typically within a private data center. This pattern offers full control over data, performance, and compliance, but requires more operational overhead.
+- **Multi-cloud and cross-region**: [This flexible deployment strategy](/infrastructure-and-operations/multi-cloud-and-cross-region-inference/) distributes LLM workloads across multiple cloud providers or geographic regions. It helps reduce latency for global users, improves GPU availability, optimizes compute costs, mitigates vendor lock-in, and supports compliance with data residency requirements.
+- **Bring Your Own Cloud (BYOC)**: [BYOC deployments](/getting-started/bring-your-own-cloud/) let you run vendor software, such as an LLM inference platform, directly inside your own cloud account. This model combines managed orchestration with full data, network, and cost control. It's ideal for enterprises that need compliance, cost-efficiency, and scalability without full self-hosting.
+- **On-prem**: [On-premises deployments](/getting-started/on-prem-llms/) mean running LLM inference on your own infrastructure, typically within a private data center. This pattern offers full control over data, performance, and compliance, but requires more operational overhead.
 - **Edge**: In edge deployments, the model runs directly on user devices or local edge nodes, closer to where data is generated. This reduces network latency and increases data privacy, especially for time-sensitive or offline use cases. Edge inference usually uses smaller, optimized models due to limited compute resources.

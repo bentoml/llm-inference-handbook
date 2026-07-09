@@ -21,7 +21,7 @@ On the macro level, distributed inference refers to high-level deployment and to
 
 - Running a model, or multiple replicas of it, across multiple geographic regions
 - Serving traffic on heterogeneous GPU clusters with different hardware profiles
-- Orchestrating inference across [multiple cloud (or NeoCloud) providers](./multi-cloud-and-cross-region-inference), and [on-prem data centers](../getting-started/on-prem-llms)
+- Orchestrating inference across [multiple cloud (or NeoCloud) providers](/infrastructure-and-operations/multi-cloud-and-cross-region-inference/), and [on-prem data centers](/getting-started/on-prem-llms/)
 
 At this level, teams distribute inference geographically to reduce latency, meet data residency requirements, improve fault tolerance, or take advantage of cheaper or more available GPU capacity in specific regions.
 
@@ -37,10 +37,10 @@ These techniques focus on parallelizing the internal mechanics of inference itse
 
 Common examples include:
 
-- [Prefill–decode disaggregation](../inference-optimization/prefill-decode-disaggregation). Separating prefill and decode work so each stage can run on specialized hardware.
-- [KV cache offloading](../inference-optimization/kv-cache-offloading). Moving KV cache data to CPU memory or remote storage to reduce GPU memory pressure and compute costs.
-- [Inference routing](../inference-optimization/inference-routing). Routing a request to the worker that holds useful cache or has enough capacity, reducing recomputation and improving throughput.
-- [Parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism). Splitting a large model across multiple GPUs when it cannot fit on a single device. This can take several forms, such as single-node multi-GPU and multi-node multi-GPU.
+- [Prefill–decode disaggregation](/inference-optimization/prefill-decode-disaggregation/). Separating prefill and decode work so each stage can run on specialized hardware.
+- [KV cache offloading](/inference-optimization/kv-cache-offloading/). Moving KV cache data to CPU memory or remote storage to reduce GPU memory pressure and compute costs.
+- [Inference routing](/inference-optimization/inference-routing/). Routing a request to the worker that holds useful cache or has enough capacity, reducing recomputation and improving throughput.
+- [Parallelism](/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism/). Splitting a large model across multiple GPUs when it cannot fit on a single device. This can take several forms, such as single-node multi-GPU and multi-node multi-GPU.
 
 Micro-level distributed inference is mainly about how inference runs efficiently, independent of where the infrastructure is deployed.
 
@@ -141,7 +141,7 @@ Teams often struggle with:
 - Attributing cost to specific models, workloads, or tenants
 - Detecting inefficiencies such as idle GPUs or imbalanced traffic
 
-Without [centralized observability](./comprehensive-observability) and cost visibility, distributed inference systems can become opaque. This makes it difficult to optimize performance and troubleshoot issues.
+Without [centralized observability](/infrastructure-and-operations/comprehensive-observability/) and cost visibility, distributed inference systems can become opaque. This makes it difficult to optimize performance and troubleshoot issues.
 
 ### State management and consistency
 
@@ -175,7 +175,7 @@ A naive round-robin scheduler quickly breaks down at scale. Modern inference sys
 
 ### Distributed inference runtimes
 
-Most teams do not build distributed inference from scratch. Instead, they rely on specialized runtimes that implement core [inference techniques](../inference-optimization/) such as parallelism and prefix-aware routing.
+Most teams do not build distributed inference from scratch. Instead, they rely on specialized runtimes that implement core [inference techniques](/inference-optimization/) such as parallelism and prefix-aware routing.
 
 In practice, teams often run inference runtimes such as vLLM, SGLang, and llm-d on Kubernetes. To some extent, they do help handle how inference runs at the micro level, but they do not fully solve macro-level concerns for LLM workloads such as multi-region routing, autoscaling, or operational visibility.
 
@@ -185,7 +185,7 @@ To run distributed inference in production, teams must also integrate:
 
 - Autoscaling policies across GPU pools
 - Health checks and failure recovery
-- Unified observability for [latency (e.g., TTFT and ITL)](../llm-inference-basics/llm-inference-metrics), throughput, GPU utilization, and errors
+- Unified observability for [latency (e.g., TTFT and ITL)](/llm-inference-basics/llm-inference-metrics/), throughput, GPU utilization, and errors
 - Cost attribution across models, regions, and workloads
 
 This orchestration layer is often where most engineering effort goes, especially when operating across multiple clusters or clouds.
@@ -197,7 +197,7 @@ For many teams, building and maintaining all of these layers internally becomes 
 Our Inference Platform provides a production-ready foundation for distributed inference, integrating:
 
 - Intelligent request routing and scheduling
-- Advanced inference optimization techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation)
+- Advanced inference optimization techniques like [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/)
 - Multi-GPU, cross-region, and multi-cloud deployment
 - Autoscaling, fault tolerance, and unified observability
 

@@ -23,11 +23,11 @@ This draft-then-verify pattern guarantees the final output matches exactly what 
 
 ## Why speculative decoding
 
-[Transformer-based LLMs generate text autoregressively](../llm-inference-basics/how-does-llm-inference-work#the-two-phases-of-llm-inference): one token at a time, each depending on the previous ones. Every new token requires a full forward pass, sampling, and then appending that token to the input before the next step begins.
+[Transformer-based LLMs generate text autoregressively](/llm-inference-basics/how-does-llm-inference-work/#the-two-phases-of-llm-inference): one token at a time, each depending on the previous ones. Every new token requires a full forward pass, sampling, and then appending that token to the input before the next step begins.
 
 This sequential process has two major issues:
 
-- **High Inter-Token Latency (ITL)**: [The delay between tokens](../llm-inference-basics/llm-inference-metrics) makes generation feel slow.
+- **High Inter-Token Latency (ITL)**: [The delay between tokens](/llm-inference-basics/llm-inference-metrics/) makes generation feel slow.
 - **Poor GPU utilization**: The model can’t compute future tokens in advance even if the GPU is idle.
 
 What if you could parallelize parts of the generation process, even if not all of it?
@@ -55,7 +55,7 @@ At a high level, speculative decoding runs in a loop:
 
 ## Understanding the performance of speculative decoding
 
-Speculative decoding can accelerate LLM inference, but only when the draft and target models align well. Before enabling it in production, always benchmark performance under your workload. For a quick test, you can choose [inference frameworks](../getting-started/choosing-the-right-inference-framework) like vLLM and SGLang, which provide built-in support for this inference optimization technique.
+Speculative decoding can accelerate LLM inference, but only when the draft and target models align well. Before enabling it in production, always benchmark performance under your workload. For a quick test, you can choose [inference frameworks](/getting-started/choosing-the-right-inference-framework/) like vLLM and SGLang, which provide built-in support for this inference optimization technique.
 
 ### Key metrics
 

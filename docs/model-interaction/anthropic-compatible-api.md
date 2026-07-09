@@ -119,7 +119,7 @@ A compatible endpoint speaks the Anthropic schema, but it isn’t the official A
 - **Configuration is often done via environment variables**. Many frameworks’ docs recommend setting the API key and base URL through environment variables (so the Anthropic SDK picks them up automatically) rather than hard-coding them in client code. The idea is the same across frameworks, but the specific variable names can differ.
 - **Not all API fields are supported**. Common fields like `model`, `messages`, and `max_tokens` are usually fine, but coverage thins out beyond that. For example:
   - **Modalities**. The official Anthropic API accepts types like `"image"` and `"document"`. For many open-source LLMs, these are simply not supported. Always check the compatibility doc before assuming a content type will go through.
-  - **Advanced features**. Capabilities like [prompt caching](../inference-optimization/prefix-caching) (`cache_control` for caching prefixes), extended thinking, and some [tool-use](./function-calling) options may be ignored or rejected. If you depend on these, verify they work end-to-end before porting an Anthropic-based application.
+  - **Advanced features**. Capabilities like [prompt caching](/inference-optimization/prefix-caching/) (`cache_control` for caching prefixes), extended thinking, and some [tool-use](/model-interaction/function-calling/) options may be ignored or rejected. If you depend on these, verify they work end-to-end before porting an Anthropic-based application.
 
 ## When to use it
 
@@ -128,7 +128,7 @@ Choose an Anthropic-compatible endpoint when:
 - Your application or agent stack is already built on the Anthropic API (e.g., Claude Code, Claude Agent SDK, or custom agent loops using Anthropic-style tool use).
 - The downstream tooling (SDKs, proxies, evaluators) expects the Anthropic schema, and rewriting it to OpenAI-compatible is more work than running a compatible endpoint.
 
-For new applications without an existing integration, the [OpenAI-compatible API](./openai-compatible-api) remains the more broadly supported default. If your main concern is predictable machine-readable responses, also compare the API surface with [structured outputs](./structured-outputs) support in your chosen backend.
+For new applications without an existing integration, the [OpenAI-compatible API](/model-interaction/openai-compatible-api/) remains the more broadly supported default. If your main concern is predictable machine-readable responses, also compare the API surface with [structured outputs](/model-interaction/structured-outputs/) support in your chosen backend.
 
 ## FAQs
 

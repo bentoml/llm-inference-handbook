@@ -15,7 +15,7 @@ Once you’ve selected a model, the next step is choosing how to run it. Your ch
 
 ## What are inference frameworks?
 
-An inference framework is the software layer that loads a model, runs it on the right hardware, and serves outputs to applications. For LLMs, this usually means more than calling the `forward()` function of the model. A framework also manages token generation, [KV cache](../inference-optimization/kv-cache-offloading), batching, streaming responses, memory limits, and request handling.
+An inference framework is the software layer that loads a model, runs it on the right hardware, and serves outputs to applications. For LLMs, this usually means more than calling the `forward()` function of the model. A framework also manages token generation, [KV cache](/inference-optimization/kv-cache-offloading/), batching, streaming responses, memory limits, and request handling.
 
 You may also see these tools called inference runtimes, inference engines, inference backends, or model servers. The exact meaning varies by project, but the core job is the same: make model execution efficient and usable outside a training notebook.
 
@@ -31,7 +31,7 @@ Inference frameworks handle the serving-specific work that raw model execution d
 - **KV cache management**: Store attention state efficiently for long prompts and multi-turn chats.
 - **Streaming**: Return tokens as they are generated instead of waiting for the full response.
 - **Memory control**: Fit larger models and more concurrent requests into limited GPU memory.
-- **Production APIs**: Expose [OpenAI-compatible](../model-interaction/openai-compatible-api) or framework-specific endpoints.
+- **Production APIs**: Expose [OpenAI-compatible](/model-interaction/openai-compatible-api/) or framework-specific endpoints.
 - **Multi-GPU support**: Split large models across devices when one GPU is not enough.
 
 These frameworks hide much of the model execution complexity behind serving options you can tune. Here is an example of using vLLM to serve DeepSeek-V4-Flash. You can tune different configurations directly without touching the model itself. vLLM automatically handles it for you.
@@ -61,7 +61,7 @@ Popular inference frameworks for building high-throughput, low-latency LLM appli
 
 - [vLLM](https://github.com/vllm-project/vllm). A high-performance inference engine optimized for serving LLMs. It is known for its efficient use of GPU resources and fast decoding capabilities.
 - [SGLang](https://github.com/sgl-project/sglang). A fast serving framework for LLMs and vision language models. It makes your interaction with models faster and more controllable by co-designing the backend runtime and frontend language.
-- [Max](https://github.com/modular/modular). A high-performance AI serving framework from Modular. It provides an integrated suite of tools for AI compute workloads across CPUs and GPUs and supports customization at both the model and [kernel level](../kernel-optimization/kernel-optimization-tools).
+- [Max](https://github.com/modular/modular). A high-performance AI serving framework from Modular. It provides an integrated suite of tools for AI compute workloads across CPUs and GPUs and supports customization at both the model and [kernel level](/kernel-optimization/kernel-optimization-tools/).
 - [LMDeploy](https://github.com/InternLM/lmdeploy). An inference backend focusing on delivering high decoding speed and efficient handling of concurrent requests. It supports various quantization techniques, making it suitable for deploying large models with reduced memory requirements.
 - [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM). An inference backend that leverages NVIDIA's TensorRT, a high-performance deep learning inference library. It is optimized for running large models on NVIDIA GPUs, providing fast inference and support for advanced optimizations like quantization.
 - [Hugging Face TGI](https://github.com/huggingface/text-generation-inference). A toolkit for deploying and serving LLMs. It is used in production at Hugging Face to power Hugging Chat, the Inference API and Inference Endpoint. Note that Hugging Face TGI is now in **maintenance mode**. This means it is still supported and usable, but there will no longer be major feature development or new performance optimizations. If you’re running TGI in production, it’s worth planning an upgrade path as your performance or scaling needs grow.
@@ -136,7 +136,7 @@ python -m sglang.launch_server \
   --port 30000
 ```
 
-Because both servers expose an [OpenAI-compatible API](../model-interaction/openai-compatible-api), the application code can use the same client interface like this:
+Because both servers expose an [OpenAI-compatible API](/model-interaction/openai-compatible-api/), the application code can use the same client interface like this:
 
 ```python
 from openai import OpenAI
@@ -187,7 +187,7 @@ They often begin with tools like Ollama to run models locally on a laptop or sma
 
 From there, teams move to high-performance server runtimes like vLLM. These frameworks provide continuous batching, KV cache optimizations, and improved GPU utilization on data center GPUs. However, most of these runtimes lack built-in multi-region routing, automatic failover, and true horizontal scaling. GPU provisioning, performance tuning, and fault tolerance also remain complex and time-consuming to implement.
 
-When teams need to run and scale inference across multiple GPU clusters, regions, or clouds, they typically adopt [distributed inference](../infrastructure-and-operations/distributed-inference) platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
+When teams need to run and scale inference across multiple GPU clusters, regions, or clouds, they typically adopt [distributed inference](/infrastructure-and-operations/distributed-inference/) platforms to handle autoscaling, routing, observability, and compliance requirements at production scale. These platforms provide advanced features out of the box, which means your engineering team can focus on product innovation instead of building and maintaining infrastructure.
 
 ## FAQs
 
@@ -201,9 +201,9 @@ Some models are too large to fit on a single GPU, so you need distributed infere
 
 ### What’s the best way to start experimenting with inference frameworks?
 
-A good path is to begin small and level up as you go. Many people start with Ollama because it runs on a laptop with almost no setup. It’s perfect for quick tests, [prompt tinkering](../model-interaction/prompt-engineering), or getting a feel for how different models behave. Once you understand the basics and want to evaluate real performance for production, move to vLLM, SGLang, or MAX. These frameworks are built for production-level workloads, so you can measure latency, throughput, batching behavior, and GPU efficiency in a realistic environment.
+A good path is to begin small and level up as you go. Many people start with Ollama because it runs on a laptop with almost no setup. It’s perfect for quick tests, [prompt tinkering](/model-interaction/prompt-engineering/), or getting a feel for how different models behave. Once you understand the basics and want to evaluate real performance for production, move to vLLM, SGLang, or MAX. These frameworks are built for production-level workloads, so you can measure latency, throughput, batching behavior, and GPU efficiency in a realistic environment.
 
 <LinkList>
   ## Additional resources
-  * [LLM performance benchmarks](../inference-optimization/llm-performance-benchmarks)
+  * [LLM performance benchmarks](/inference-optimization/llm-performance-benchmarks/)
 </LinkList>

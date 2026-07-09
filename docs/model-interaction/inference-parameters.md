@@ -14,18 +14,18 @@ import TopPvsTopK from '@site/src/components/TopPvsTopK';
 
 # LLM inference parameters
 
-Inference parameters are the settings you pass with an LLM request to control how the model generates responses. They do not change the model weights. Instead, they impact the [decoding process](../llm-inference-basics/how-does-llm-inference-work), such as: 
+Inference parameters are the settings you pass with an LLM request to control how the model generates responses. They do not change the model weights. Instead, they impact the [decoding process](/llm-inference-basics/how-does-llm-inference-work/), such as: 
 
 - How the next token is selected
 - How long the model can keep generating
 - When it should stop
 - How much repetition is allowed.
 
-Some parameters mainly affect output quality and style, while others have direct serving implications for scheduling, [throughput](../llm-inference-basics/llm-inference-metrics), memory usage, and production cost.
+Some parameters mainly affect output quality and style, while others have direct serving implications for scheduling, [throughput](/llm-inference-basics/llm-inference-metrics/), memory usage, and production cost.
 
 ## Common inference parameters
 
-You will see these parameters in hosted APIs, [OpenAI-compatible servers](./openai-compatible-api), [inference frameworks](../getting-started/choosing-the-right-inference-framework) like vLLM and SGLang, and agentic frameworks. Here is a quick summary of the common ones:
+You will see these parameters in hosted APIs, [OpenAI-compatible servers](/model-interaction/openai-compatible-api/), [inference frameworks](/getting-started/choosing-the-right-inference-framework/) like vLLM and SGLang, and agentic frameworks. Here is a quick summary of the common ones:
 
 | Parameter | What it controls | Common use |
 | --- | --- | --- |
@@ -54,12 +54,12 @@ Higher temperature flattens the distribution. Less likely tokens get more chance
 
 Common patterns:
 
-- Use low temperature for factual question answering, extraction, classification, and [structured workflows](./structured-outputs).
+- Use low temperature for factual question answering, extraction, classification, and [structured workflows](/model-interaction/structured-outputs/).
 - Use moderate temperature for chat, summarization, and product copy if you can accept some variation.
 - Use higher temperature for brainstorming, fiction, naming, and other creative tasks.
 - Use `temperature: 0` or near-zero values when you want greedy or near-deterministic decoding.
 
-Low temperature does not guarantee factual accuracy. It only reduces randomness in the decode step. A model can still give a confident wrong answer if the [prompt](./prompt-engineering) lacks grounding, the model lacks knowledge, or the application does not verify outputs.
+Low temperature does not guarantee factual accuracy. It only reduces randomness in the decode step. A model can still give a confident wrong answer if the [prompt](/model-interaction/prompt-engineering/) lacks grounding, the model lacks knowledge, or the application does not verify outputs.
 
 ## Top-p and top-k sampling
 
@@ -88,7 +88,7 @@ Many systems let you use `temperature`, `top_p`, and `top_k` together. This 
 A practical starting point:
 
 - Tune `temperature` first.
-- Use [greedy decoding](../llm-inference-basics/how-does-llm-inference-work#how-are-tokens-selected-via-sampling) if you want the model to select the highest probability token at each step. It is deterministic in a fixed serving setup, but can be prone to repetition.
+- Use [greedy decoding](/llm-inference-basics/how-does-llm-inference-work/#how-are-tokens-selected-via-sampling) if you want the model to select the highest probability token at each step. It is deterministic in a fixed serving setup, but can be prone to repetition.
 - Use `top_p` when you want to bound the long tail and keep sampling adaptive.
 - Use `top_k` when your inference framework or model family recommends it, or when you need a hard cap on candidate tokens.
 - Combine `top_k` and `top_p`: In many samplers, top-k removes the low-ranked tail first, then top-p refines the candidate set further.
@@ -96,7 +96,7 @@ A practical starting point:
 
 ## Output length
 
-Length parameters directly affect [latency](../llm-inference-basics/llm-inference-metrics) and cost because LLMs generate one token at a time during decode.
+Length parameters directly affect [latency](/llm-inference-basics/llm-inference-metrics/) and cost because LLMs generate one token at a time during decode.
 
 `max_tokens` sets the maximum number of tokens the model can produce. This is one of the most important production controls. If it is too low, responses get cut off. If it is too high, bad prompts or edge cases can waste GPU time and increase tail latency.
 
@@ -109,7 +109,7 @@ Good defaults depend on the application:
 - **Code generation or long-form writing**: Larger limits, with stronger monitoring for latency and cost.
 - **Batch jobs**: Explicit length limits so one bad input does not dominate the run.
 
-For inference systems, output length also affects scheduling. Long generations hold active request state longer, consume [KV cache](../llm-inference-basics/how-does-llm-inference-work#prefill) longer, and can interfere with latency-sensitive traffic.
+For inference systems, output length also affects scheduling. Long generations hold active request state longer, consume [KV cache](/llm-inference-basics/how-does-llm-inference-work/#prefill) longer, and can interfere with latency-sensitive traffic.
 
 ## Stop sequences
 
@@ -119,9 +119,9 @@ They are useful when the output has a clear boundary:
 
 - Stop at `"\n\nUser:"` in a chat transcript format.
 - Stop at `"</json>"` or another delimiter in a structured prompt.
-- Stop after one list item, one SQL statement, or one [tool call](./function-calling).
+- Stop after one list item, one SQL statement, or one [tool call](/model-interaction/function-calling/).
 
-Stop sequences are not a replacement for schema enforcement. They only end generation when a sequence appears. If you need guaranteed JSON, use [structured outputs](./structured-outputs) or constrained decoding when your provider supports it.
+Stop sequences are not a replacement for schema enforcement. They only end generation when a sequence appears. If you need guaranteed JSON, use [structured outputs](/model-interaction/structured-outputs/) or constrained decoding when your provider supports it.
 
 Be careful with common substrings. A stop sequence that appears inside normal content can cut off valid answers.
 
@@ -175,7 +175,7 @@ More advanced inference parameters can restrict or alter token selection directl
 - `bad_words` blocks certain word sequences.
 - `allowed_token_ids` restricts generation to a specific token set. These are powerful but easy to misuse because tokenization does not always match human-visible words.
 
-Use advanced controls when the output is consumed by software. For example, extraction pipelines, [function calling](./function-calling), and [structured data generation](./structured-outputs) usually need stronger guarantees than prompt instructions alone can provide.
+Use advanced controls when the output is consumed by software. For example, extraction pipelines, [function calling](/model-interaction/function-calling/), and [structured data generation](/model-interaction/structured-outputs/) usually need stronger guarantees than prompt instructions alone can provide.
 
 ## Recommended starting points
 
@@ -196,7 +196,7 @@ Still, the following ranges are useful starting points for evaluation:
 
 These are starting points, not rules. Always evaluate parameters with your actual prompts, model versions, and workloads.
 
-For production systems, parameter tuning is also an infrastructure concern. For example, higher output lengths and more exploratory sampling can increase [latency](../llm-inference-basics/llm-inference-metrics), GPU utilization, KV cache pressure, and tail latency under load.
+For production systems, parameter tuning is also an infrastructure concern. For example, higher output lengths and more exploratory sampling can increase [latency](/llm-inference-basics/llm-inference-metrics/), GPU utilization, KV cache pressure, and tail latency under load.
 
 ## FAQs
 

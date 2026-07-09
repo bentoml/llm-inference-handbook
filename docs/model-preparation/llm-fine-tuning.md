@@ -17,11 +17,11 @@ For example, fine-tuning can significantly improve a model’s:
 
 - **Domain expertise**: Adapting a model for legal, medical, or programming-related tasks.
 - **Instruction following**: Ensuring the model adheres to specific formats, tones, or styles in its responses.
-- **Safety and alignment**: Reinforcing how the model handles sensitive or high-risk [prompts](../model-interaction/prompt-engineering).
+- **Safety and alignment**: Reinforcing how the model handles sensitive or high-risk [prompts](/model-interaction/prompt-engineering/).
 
 ## Where fine-tuning fits in the customization stack
 
-Fine-tuning is only one approach to customization. It changes model weights, which makes it different from other techniques such as [prompt engineering](../model-interaction/prompt-engineering), [function calling](../model-interaction/function-calling), and [structured outputs](../model-interaction/structured-outputs).
+Fine-tuning is only one approach to customization. It changes model weights, which makes it different from other techniques such as [prompt engineering](/model-interaction/prompt-engineering/), [function calling](/model-interaction/function-calling/), and [structured outputs](/model-interaction/structured-outputs/).
 
 The difference matters in production. Runtime techniques are usually faster to test, easier to roll back, and more portable across model providers. Fine-tuning is more appropriate when the behavior you want is stable, appears across many requests, and cannot be handled cleanly by prompts or retrieved context alone.
 
@@ -50,7 +50,7 @@ Key features:
 
 - Supports popular open-weight models like Llama, Pythia, Falcon, and MPT.
 - Flexible training options: full fine-tuning, LoRA, QLoRA, ReLoRA, and GPTQ.
-- Compatible with advanced techniques like xFormers, [FlashAttention](../kernel-optimization/flashattention), ROPE scaling, Liger kernel, and sample packing.
+- Compatible with advanced techniques like xFormers, [FlashAttention](/kernel-optimization/flashattention/), ROPE scaling, Liger kernel, and sample packing.
 - Scales from single GPU setups to multi-GPU training using FSDP or DeepSpeed.
 - Easy to run locally with Docker or on cloud infrastructure.
 
@@ -60,7 +60,7 @@ Axolotl is great for users who want to focus on their data and tasks instead of 
 
 [Unsloth](https://unsloth.ai/) is a fine-tuning framework designed to make training LLMs faster, lighter, and more accessible, especially on limited hardware (e.g., free Google Colab GPUs).
 
-Unsloth is deeply optimized at the kernel level. Built with a custom attention implementation in [Triton](https://openai.com/index/triton), it enables 2× faster training with up to 80% less memory usage. If you want more background on where Triton fits relative to CUDA and compiler-based approaches, see [kernel optimization tools](../kernel-optimization/kernel-optimization-tools).
+Unsloth is deeply optimized at the kernel level. Built with a custom attention implementation in [Triton](https://openai.com/index/triton), it enables 2× faster training with up to 80% less memory usage. If you want more background on where Triton fits relative to CUDA and compiler-based approaches, see [kernel optimization tools](/kernel-optimization/kernel-optimization-tools/).
 
 The Unsloth team has collaborated directly with developers behind models like Llama 4, Mistral, Qwen, Gemma, and Phi, often contributing bug fixes and updates that improve prompt handling, accuracy, and overall stability.
 
@@ -110,7 +110,7 @@ Key features:
 
 ---
 
-Instead of fine-tuning a model yourself, you can often start with an existing fine-tuned or instruction-tuned model from [Hugging Face](../getting-started/choosing-the-right-model/#hugging-face). It hosts a large collection of community and officially released fine-tuned models that are ready to use out of the box. At the same time, it also provides base models and foundation checkpoints if you want full control and plan to fine-tune the model yourself. In practice, teams frequently explore both options on Hugging Face before deciding whether to reuse an existing model or invest in custom fine-tuning.
+Instead of fine-tuning a model yourself, you can often start with an existing fine-tuned or instruction-tuned model from [Hugging Face](/getting-started/choosing-the-right-model/#hugging-face). It hosts a large collection of community and officially released fine-tuned models that are ready to use out of the box. At the same time, it also provides base models and foundation checkpoints if you want full control and plan to fine-tune the model yourself. In practice, teams frequently explore both options on Hugging Face before deciding whether to reuse an existing model or invest in custom fine-tuning.
 
 ## Fine-tuning through a hosted provider
 
@@ -141,7 +141,7 @@ Here’s a clearer side-by-side comparison:
 
 ### How does LLM fine-tuning compare to other techniques like prompt engineering?
 
-[Prompt engineering](../model-interaction/prompt-engineering) adjusts how you ask the model to get better answers. It’s quick, cheap, and doesn’t require training, but it has limits. Long prompts can get messy, and the model may still behave inconsistently.
+[Prompt engineering](/model-interaction/prompt-engineering/) adjusts how you ask the model to get better answers. It’s quick, cheap, and doesn’t require training, but it has limits. Long prompts can get messy, and the model may still behave inconsistently.
 
 Fine-tuning actually changes the model. You feed it examples of what “good” looks like, and it learns to follow that pattern on its own. It’s more reliable for long-term use, especially when you need consistent tone, domain knowledge, or strict formatting.
 
@@ -149,7 +149,7 @@ In short, prompt engineering is great for early exploration, but fine-tuning giv
 
 ### When should I avoid fine-tuning?
 
-Avoid fine-tuning when the main problem is missing or frequently changing information. A [RAG pipeline](../infrastructure-and-operations/multi-model-inference-pipelines/#rag-pipeline), prompt template, or tool call is usually a better fit because it can fetch fresh data at inference time.
+Avoid fine-tuning when the main problem is missing or frequently changing information. A [RAG pipeline](/infrastructure-and-operations/multi-model-inference-pipelines/#rag-pipeline), prompt template, or tool call is usually a better fit because it can fetch fresh data at inference time.
 
 Fine-tuning is also a poor first step when you do not have a reliable evaluation set. Without it, it is hard to tell whether a fine-tuned model actually improved the target behavior or simply changed its style.
 

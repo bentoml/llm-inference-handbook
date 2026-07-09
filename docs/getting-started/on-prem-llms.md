@@ -17,7 +17,7 @@ This kind of freedom brings advantages, but also serious engineering challenges.
 AI teams usually turn to on-prem deployments for the following reasons:
 
 - **Data security and compliance**: All inference runs inside your infrastructure. This reduces the risk of sensitive information leaving your environment. It also helps you meet strict regulatory requirements in industries such as healthcare, finance, and government.
-- **Predictable costs**: After the initial hardware investment, ongoing inference costs may be lower than usage-based serverless APIs. However, you may need to apply certain inference optimization techniques like [KV cache offloading](../inference-optimization/kv-cache-offloading) and [prefix caching](../inference-optimization/prefix-caching) to stay within budget.
+- **Predictable costs**: After the initial hardware investment, ongoing inference costs may be lower than usage-based serverless APIs. However, you may need to apply certain inference optimization techniques like [KV cache offloading](/inference-optimization/kv-cache-offloading/) and [prefix caching](/inference-optimization/prefix-caching/) to stay within budget.
 - **Performance control**: You can directly tune inference performance for your latency, throughput, and scaling goals without being limited by a provider’s SLA. This is extremely useful for high-volume or latency-sensitive applications.
 - **Fewer external dependencies**: Since everything happens within your own network, you don’t have to rely on external providers. This allows you to enforce custom security measures such as authentication, access control, and auditing. This minimizes exposure to external threats.
 
@@ -54,7 +54,7 @@ No universal answer exists to whether on-prem is “better” than cloud. Each o
 | **Cost model** | High upfront hardware investment; lower marginal costs for steady traffic | Pay-per-use; flexible for bursty or unpredictable workloads |
 | **Performance control** | Full control over latency, throughput, and scaling behavior | Limited by provider SLAs and shared infrastructure |
 | **Scalability** | Limited by purchased hardware; fast autoscaling for LLMs requires extra setups and configurations | Virtually unlimited, with on-demand GPU access; however, you may also need extra tuning to speed up cold starts for LLMs |
-| **Maintenance and operations**  | Requires dedicated teams for infra, LLM-specific observability, and updates | Faster setup, but still require some infra management; [BYOC](./bring-your-own-cloud) offloads part of the burdens to service providers |
+| **Maintenance and operations**  | Requires dedicated teams for infra, LLM-specific observability, and updates | Faster setup, but still require some infra management; [BYOC](/getting-started/bring-your-own-cloud/) offloads part of the burdens to service providers |
 | **Flexibility** | Best for long-term, stable workloads | Best for rapid experimentation and dynamic workloads |
 
 The decision usually depends on compliance requirements, traffic patterns, and how much operational complexity your team is willing to manage.

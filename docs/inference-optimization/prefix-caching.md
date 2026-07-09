@@ -68,7 +68,7 @@ The user then asks:
 User: Which lookup should we optimize first?
 ```
 
-The model isn't given only the latest question. The application resends the previous messages as part of the [context window](../llm-inference-basics/how-does-llm-inference-work#what-is-a-context-window-and-how-does-it-work-in-llm-inference), so the model knows which lookups the user means. The serialized second request therefore looks roughly like this:
+The model isn't given only the latest question. The application resends the previous messages as part of the [context window](/llm-inference-basics/how-does-llm-inference-work/#what-is-a-context-window-and-how-does-it-work-in-llm-inference), so the model knows which lookups the user means. The serialized second request therefore looks roughly like this:
 
 ```bash
 User: Why did the checkout API slow down after deployment?
@@ -78,7 +78,7 @@ User: Which lookup should we optimize first?
 
 The first two messages are an exact prefix that the model has already processed. If their KV states are still available, the model can reuse them and prefill only the new user message. Without prefix caching, it must process the entire conversation again.
 
-As the conversation grows, the reusable prefix grows with it. Avoiding repeated prefill reduces GPU compute and keeps TTFT from rising as quickly across turns. Note that a cache hit still depends on the serving engine retaining the entry, [routing the request to a worker that can access the cache](inference-routing), and serializing the previous messages identically.
+As the conversation grows, the reusable prefix grows with it. Avoiding repeated prefill reduces GPU compute and keeps TTFT from rising as quickly across turns. Note that a cache hit still depends on the serving engine retaining the entry, [routing the request to a worker that can access the cache](/inference-optimization/inference-routing/), and serializing the previous messages identically.
 
 ## What is the difference between KV caching and prefix caching?
 
@@ -112,9 +112,9 @@ In agent workflows, the benefit is even more pronounced. Some use cases have inp
 
 For applications with long, repetitive prompts, prefix caching can significantly reduce both latency and cost. Over time, however, your KV cache size can be quite large. GPU memory is finite, and storing long prefixes across many users can eat up space quickly. You’ll need cache eviction strategies or memory tiering.
 
-The open-source community is actively working on distributed serving strategies. See [inference routing](./inference-routing) for details.
+The open-source community is actively working on distributed serving strategies. See [inference routing](/inference-optimization/inference-routing/) for details.
 
-Another practical limitation is feature composition. Prefix caching is easy to reason about when the model has one standard full-attention KV cache. Newer serving stacks may need to manage several cache-like states at once: draft and target model caches for [speculative decoding](./speculative-decoding), image encoder states for VLMs, scaling metadata for quantized KV cache, or separate caches for hybrid attention layers.
+Another practical limitation is feature composition. Prefix caching is easy to reason about when the model has one standard full-attention KV cache. Newer serving stacks may need to manage several cache-like states at once: draft and target model caches for [speculative decoding](/inference-optimization/speculative-decoding/), image encoder states for VLMs, scaling metadata for quantized KV cache, or separate caches for hybrid attention layers.
 
 For these models, a shared text prefix does not always mean every cached state can be reused in the same way. Sliding-window attention, for example, only keeps a bounded recent window, so the cache manager must know which tokens are still valid. In production, treat prefix cache hit rate as a per-workload metric rather than a single global number, and verify that your inference framework can compose prefix caching with the other optimizations you enable.
 

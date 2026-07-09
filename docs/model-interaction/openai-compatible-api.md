@@ -40,7 +40,7 @@ OpenAI-compatible APIs address these challenges by providing:
 - **Seamless migration**: Move between providers or self-hosted deployments with minimal disruption.
 - **Consistent integration**: Maintain compatibility with tools and frameworks that rely on the OpenAI API schema (e.g., `chat/completions`, `embeddings` endpoints).
 
-Many [inference backends](../getting-started/choosing-the-right-inference-framework) (e.g., vLLM and SGLang) and model serving frameworks (e.g., MAX) provide OpenAI-compatible endpoints out of the box. This makes it easier to switch between different models without changing client code.
+Many [inference backends](/getting-started/choosing-the-right-inference-framework/) (e.g., vLLM and SGLang) and model serving frameworks (e.g., MAX) provide OpenAI-compatible endpoints out of the box. This makes it easier to switch between different models without changing client code.
 
 ## How to call an OpenAI-compatible API
 
@@ -140,7 +140,7 @@ curl https://your-custom-endpoint.com/v1/models \
 
 Use any returned `id` as the `model` field in your chat completion requests. Note that not every framework exposes this endpoint.
 
-Most compatible endpoints also accept common [LLM inference parameters](./inference-parameters), such as `temperature`, `top_p`, and `max_tokens`. Support varies across providers and self-hosted backends, so verify the exact fields your server accepts before using them in production.
+Most compatible endpoints also accept common [LLM inference parameters](/model-interaction/inference-parameters/), such as `temperature`, `top_p`, and `max_tokens`. Support varies across providers and self-hosted backends, so verify the exact fields your server accepts before using them in production.
 
 ## FAQs
 
@@ -170,11 +170,11 @@ Not by itself. The API format is just an interface. It doesn’t make inference 
 
 Cost savings come from where the API is running. Here’s the breakdown:
 
-- **If you self-host LLMs through tools like vLLM and SGLang**, you mainly pay for GPUs instead of per-token pricing. You can apply inference optimizations like [KV cache offloading](../inference-optimization/kv-cache-offloading) and [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) to improve utilization and potentially reduce serving cost. This can be far cheaper for steady or high-volume workloads when the deployment is well utilized.
+- **If you self-host LLMs through tools like vLLM and SGLang**, you mainly pay for GPUs instead of per-token pricing. You can apply inference optimizations like [KV cache offloading](/inference-optimization/kv-cache-offloading/) and [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/) to improve utilization and potentially reduce serving cost. This can be far cheaper for steady or high-volume workloads when the deployment is well utilized.
 - **If you use a hosted provider (e.g., Together AI, Fireworks)**, you still pay per-token or per-request, even if the API is “OpenAI-compatible.”
 - **If you stay on OpenAI**, you pay per-token at OpenAI pricing.
 
-The reason some AI teams save money isn’t the OpenAI-compatible API; it’s the ability to self-host any model without breaking their existing application code. Learn more about [serverless vs. self-hosted LLM inference](../getting-started/serverless-vs-self-hosted-llm-inference).
+The reason some AI teams save money isn’t the OpenAI-compatible API; it’s the ability to self-host any model without breaking their existing application code. Learn more about [serverless vs. self-hosted LLM inference](/getting-started/serverless-vs-self-hosted-llm-inference/).
 
 <LinkList>
   ## Additional resources

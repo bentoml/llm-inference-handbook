@@ -61,7 +61,7 @@ Workstation cards sit between consumer and data center hardware. They’re a goo
 
 Enterprises rely on data center GPUs for large-scale AI inference and high-performance computing (HPC) workloads. They offer high VRAM (40–192GB), strong memory bandwidth, and features like multi-instance GPU (MIG) or NVLink for scaling across clusters. Examples include NVIDIA A100, H100, and B200, as well as AMD MI300X and MI350X.
 
-For teams renting cloud compute or [deploying LLM on-prem](./on-prem-llms), data center GPUs are usually the most practical choice.
+For teams renting cloud compute or [deploying LLM on-prem](/getting-started/on-prem-llms/), data center GPUs are usually the most practical choice.
 
 ## Key considerations for choosing GPUs
 
@@ -69,13 +69,13 @@ When selecting GPUs, remember that raw benchmark numbers don’t tell the whole 
 
 ### GPU memory (VRAM)
 
-[VRAM](../kernel-optimization/gpu-architecture-fundamentals) sets the ceiling on model size and context length because everything the GPU touches during inference must live in the memory: the model weights, the activations, and the KV cache. Weights determine the baseline footprint, so the model has to fit before you can serve it at all. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized. The KV cache then consumes whatever VRAM is left, which limits how long a context you can support.
+[VRAM](/kernel-optimization/gpu-architecture-fundamentals/) sets the ceiling on model size and context length because everything the GPU touches during inference must live in the memory: the model weights, the activations, and the KV cache. Weights determine the baseline footprint, so the model has to fit before you can serve it at all. For example, DeepSeek V3 and R1, with 671B parameters, require 8 NVIDIA H200 GPUs (141 GB each) to run. In contrast, smaller models such as Phi-3 can fit within 16–24GB when quantized. The KV cache then consumes whatever VRAM is left, which limits how long a context you can support.
 
-In production, the major challenge is often the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](../infrastructure-and-operations/distributed-inference) techniques like [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation) and [KV cache offloading](../inference-optimization/kv-cache-offloading).
+In production, the major challenge is often the KV cache. Its size grows linearly with sequence length, meaning long-context workloads can quickly exhaust memory. To avoid bottlenecks, you need [distributed inference](/infrastructure-and-operations/distributed-inference/) techniques like [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/) and [KV cache offloading](/inference-optimization/kv-cache-offloading/).
 
 ### Memory bandwidth
 
-Memory bandwidth is how fast the GPU can move data between its [HBM](../kernel-optimization/gpu-architecture-fundamentals/#hbm-high-bandwidth-memory) and the compute cores, measured in GB/s or TB/s. For LLM inference, it is one of the most important specifications, because the **decode phase is memory-bound**. To generate each new token, the GPU must repeatedly stream most or all model weights (plus the growing KV cache) from HBM, while doing relatively little computation per byte of data read.
+Memory bandwidth is how fast the GPU can move data between its [HBM](/kernel-optimization/gpu-architecture-fundamentals/#hbm-high-bandwidth-memory) and the compute cores, measured in GB/s or TB/s. For LLM inference, it is one of the most important specifications, because the **decode phase is memory-bound**. To generate each new token, the GPU must repeatedly stream most or all model weights (plus the growing KV cache) from HBM, while doing relatively little computation per byte of data read.
 
 As a result, the theoretical upper bound for single-stream decode speed is approximately:
 
@@ -85,7 +85,7 @@ maximum decode tokens/sec ≈ memory bandwidth / bytes read per token
 
 For example, a 70B-parameter model in FP16 contains about 140 GB of weights. On an H100 SXM with roughly 3.35 TB/s of HBM bandwidth, this means a theoretical ceiling of about 24 tokens/s per sequence before accounting for any other overhead (e.g., KV cache).
 
-This is why the prefill phase (which processes the prompt in parallel) behaves very differently from decode. It also explains why [batching](../inference-optimization/static-dynamic-continuous-batching) improves throughput so effectively: the same weight reads can be reused across many sequences, allowing the GPU to trade memory-bandwidth pressure for additional compute work.
+This is why the prefill phase (which processes the prompt in parallel) behaves very differently from decode. It also explains why [batching](/inference-optimization/static-dynamic-continuous-batching/) improves throughput so effectively: the same weight reads can be reused across many sequences, allowing the GPU to trade memory-bandwidth pressure for additional compute work.
 
 ### Compute throughput
 
@@ -94,14 +94,14 @@ Compute throughput is how many math operations the GPU can perform per second, m
 When reading specification sheets, keep a few caveats in mind:
 
 - **Watch the asterisks**. Vendors often quote peak FLOPS with sparsity or at the lowest supported precision. Compare cards at the same precision and the same dense/sparse assumption.
-- **FLOPS isn't the user-facing metric**. What you ultimately care about is [tokens per second and latency](../llm-inference-basics/llm-inference-metrics) (TTFT and ITL). A GPU can have huge FLOPS yet be bottlenecked by [memory bandwidth](#memory-bandwidth) during decode, so the two numbers need to be read together.
+- **FLOPS isn't the user-facing metric**. What you ultimately care about is [tokens per second and latency](/llm-inference-basics/llm-inference-metrics/) (TTFT and ITL). A GPU can have huge FLOPS yet be bottlenecked by [memory bandwidth](#memory-bandwidth) during decode, so the two numbers need to be read together.
 - **Precision support is a hard gate**. Native FP8 needs NVIDIA H-series or newer. Older cards fall back to higher precision, losing the throughput advantage.
 
-To push effective throughput further, apply techniques like [speculative decoding](../inference-optimization/speculative-decoding), [prefill-decode disaggregation](../inference-optimization/prefill-decode-disaggregation), and [continuous batching](../inference-optimization/static-dynamic-continuous-batching).
+To push effective throughput further, apply techniques like [speculative decoding](/inference-optimization/speculative-decoding/), [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/), and [continuous batching](/inference-optimization/static-dynamic-continuous-batching/).
 
 ### GPU interconnect
 
-GPU interconnect determines how quickly you can exchange data (e.g., KV cache) when your workload spans more than one GPU, both within a single node and across multiple nodes. This is especially important for large models that use [tensor parallelism, pipeline parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism), or other [distributed inference techniques](../infrastructure-and-operations/distributed-inference). If the interconnect is slow, adding more GPUs may increase memory capacity but fail to deliver the expected throughput or latency improvements.
+GPU interconnect determines how quickly you can exchange data (e.g., KV cache) when your workload spans more than one GPU, both within a single node and across multiple nodes. This is especially important for large models that use [tensor parallelism, pipeline parallelism](/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism/), or other [distributed inference techniques](/infrastructure-and-operations/distributed-inference/). If the interconnect is slow, adding more GPUs may increase memory capacity but fail to deliver the expected throughput or latency improvements.
 
 - **Intra-node interconnect**. This refers to communication between GPUs inside the same server. High-bandwidth fabrics such as NVIDIA NVLink/NVSwitch or AMD Infinity Fabric are often much faster than PCIe-only setups for tightly coupled multi-GPU inference. On an H100, for example, NVLink delivers 900 GB/s of bidirectional GPU-to-GPU bandwidth, [about 7 times faster](https://www.nvidia.com/en-us/data-center/h100/) than the bidirectional bandwidth of a single PCIe 5.0 link at 128 GB/s.
 - **Inter-node interconnect**. This refers to networking between different GPU servers. A single node typically contains 4 to 8 GPUs, although larger or specialized systems exist. Once a model or workload exceeds what a single node can support due to limits like power, cooling, or form factor, communication must go over the network. A practical solution is InfiniBand (with GPUDirect RDMA) or highly tuned RoCEv2 Ethernet.
@@ -126,7 +126,7 @@ A GPU is only as effective as the software that supports it. NVIDIA benefits fro
 
 ## Matching GPUs to open-source LLMs
 
-Different models perform best on different types of GPUs. The table below maps popular NVIDIA and AMD GPUs to suitable open-source LLMs. Some models require **multiple GPUs to meet VRAM demands** or you may need optimization techniques like [quantization](../model-preparation/llm-quantization).
+Different models perform best on different types of GPUs. The table below maps popular NVIDIA and AMD GPUs to suitable open-source LLMs. Some models require **multiple GPUs to meet VRAM demands** or you may need optimization techniques like [quantization](/model-preparation/llm-quantization/).
 
 <GPUTable />
 
@@ -138,7 +138,7 @@ Things to keep in mind:
 
 - **FP8 support**. If you choose NVIDIA GPUs, note that LLMs that rely on native FP8 weights can only run on NVIDIA H-series (or newer) GPUs. This is because A-series cards lack FP8 hardware support.
 - **Single vs. Multi-GPU**. Some models can run on one card, but usually performance improves with multiple GPUs (e.g., for high-concurrency scenarios).
-- **Hardware flexibility**. Most models can run on different hardware. For instance, gpt-oss-20b and gpt-oss-120b can run on NVIDIA A100, H100, H200, B200 GPUs, or AMD MI300X, MI325X, MI355X GPUs. The limiting factor is usually VRAM and cluster size, not architecture. Learn how to [calculate GPU memory for serving LLMs](./calculating-gpu-memory-for-llms).
+- **Hardware flexibility**. Most models can run on different hardware. For instance, gpt-oss-20b and gpt-oss-120b can run on NVIDIA A100, H100, H200, B200 GPUs, or AMD MI300X, MI325X, MI355X GPUs. The limiting factor is usually VRAM and cluster size, not architecture. Learn how to [calculate GPU memory for serving LLMs](/getting-started/calculating-gpu-memory-for-llms/).
 
 ---
 
@@ -163,16 +163,16 @@ Weight loading happens at service startup. Here is the specific pipeline:
     - Weights are temporarily placed in system memory
     - Often deserialized or memory-mapped
     - CPU RAM bandwidth: ~50–200 GB/s for typical configurations
-3. Transferred to [GPU HBM](../kernel-optimization/gpu-architecture-fundamentals/#hbm-high-bandwidth-memory)
+3. Transferred to [GPU HBM](/kernel-optimization/gpu-architecture-fundamentals/#hbm-high-bandwidth-memory)
 4. Cached there for the lifetime of the serving process
 
 Once copied, weights are stored in HBM and are ready for repeated reads during every forward pass. For decoding, weights are NOT reloaded from disk or CPU; they are reused directly from HBM.
 
-If you are using [tensor parallelism](../inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism), each GPU holds a slice of every layer's weight matrices.
+If you are using [tensor parallelism](/inference-optimization/data-tensor-pipeline-expert-hybrid-parallelism/), each GPU holds a slice of every layer's weight matrices.
 
 ### What is the best GPU comparison tool for AI workloads?
 
-Most generic GPU comparison tools focus on gaming or graphics performance, which doesn’t reflect real AI inference workloads. For LLMs, you need tools that measure [throughput and latency metrics like TTFT and ITL](../llm-inference-basics/llm-inference-metrics).
+Most generic GPU comparison tools focus on gaming or graphics performance, which doesn’t reflect real AI inference workloads. For LLMs, you need tools that measure [throughput and latency metrics like TTFT and ITL](/llm-inference-basics/llm-inference-metrics/).
 
 You can start by checking open-source leaderboards from frameworks such as vLLM, SGLang, and TensorRT-LLM. They provide ready-to-use scripts that help you compare inference performance across different GPUs.
 
@@ -198,7 +198,7 @@ On most systems, you can quickly verify your GPU type using command-line tools:
 
 ### How important are CUDA and driver versions when choosing a GPU?
 
-Very important. GPU performance isn’t just about the hardware. Your NVIDIA driver, CUDA version, and framework build (e.g., PyTorch, vLLM, SGLang, TensorRT-LLM) all need to line up. When they don’t, you’ll see errors, slowdowns, or missing features like FP8 or [FlashAttention](../kernel-optimization/flashattention). If you want the lower-level reason these mismatches matter, refer to [GPU architecture fundamentals](../kernel-optimization/gpu-architecture-fundamentals).
+Very important. GPU performance isn’t just about the hardware. Your NVIDIA driver, CUDA version, and framework build (e.g., PyTorch, vLLM, SGLang, TensorRT-LLM) all need to line up. When they don’t, you’ll see errors, slowdowns, or missing features like FP8 or [FlashAttention](/kernel-optimization/flashattention/). If you want the lower-level reason these mismatches matter, refer to [GPU architecture fundamentals](/kernel-optimization/gpu-architecture-fundamentals/).
 
 For NVIDIA GPUs:
 

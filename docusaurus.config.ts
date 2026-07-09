@@ -14,7 +14,7 @@ const config: Config = {
 
   url: 'https://handbook.modular.com',
   baseUrl: '/',
-  trailingSlash: false,
+  trailingSlash: true,
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',

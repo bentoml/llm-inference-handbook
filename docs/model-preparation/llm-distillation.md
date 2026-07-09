@@ -19,7 +19,7 @@ A simple way to think about it:
 - The teacher already knows how to solve the task well
 - The student learns by copying the outputs from the teacher
 
-Unlike [quantization](./llm-quantization), which reduces the precision of existing weights, distillation produces an entirely new model. The two techniques are complementary. A distilled model can also be quantized for further efficiency.
+Unlike [quantization](/model-preparation/llm-quantization/), which reduces the precision of existing weights, distillation produces an entirely new model. The two techniques are complementary. A distilled model can also be quantized for further efficiency.
 
 DeepSeek-R1 (671B parameters) is a good example of what distillation enables. Researchers used it to transfer reasoning ability into smaller models, including 1.5B, 7B, 8B, 14B, 32B, and 70B variants. They reason in a style similar to the teacher, at a fraction of the inference cost.
 
@@ -89,7 +89,7 @@ You can think of it this way:
 
 - Distillation makes the model smaller
 - Quantization makes the model lighter
-- [Inference optimizations](../inference-optimization) (like [prefix caching](../inference-optimization/prefix-caching)) make serving more efficient
+- [Inference optimizations](/inference-optimization/) (like [prefix caching](/inference-optimization/prefix-caching/)) make serving more efficient
 
 You can combine these techniques in you inference systems: Large model → Distill → Smaller model → Quantize (if needed) → Optimize serving → Deploy
 

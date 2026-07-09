@@ -31,7 +31,7 @@ Training is computationally intensive, often requiring expensive GPU or TPU clus
 
 ## Inference: Using the model in real time
 
-LLM inference means applying the trained model to new data to make predictions. Unlike training, inference [happens continuously and in real-time](./what-is-llm-inference), responding immediately to user input or incoming data. It is the phase where the model is actively "in use." Better-trained and more finely-tuned models typically provide more accurate and useful inference.
+LLM inference means applying the trained model to new data to make predictions. Unlike training, inference [happens continuously and in real-time](/llm-inference-basics/what-is-llm-inference/), responding immediately to user input or incoming data. It is the phase where the model is actively "in use." Better-trained and more finely-tuned models typically provide more accurate and useful inference.
 
 Inference compute needs are ongoing and can become very high, especially as user interactions and traffic grow. Each inference request consumes computational resources such as GPUs. While each inference step may be smaller than training in isolation, the cumulative demand over time can lead to significant operational expenses.
 
@@ -55,7 +55,7 @@ Here is a side-by-side comparison between training and inference:
 
 Model serving is the production process of making a trained model available to applications, users, or systems so it can run inference on new inputs. It usually includes packaging the model, loading it onto suitable hardware, exposing it through an API or service, monitoring its behavior, and keeping latency, reliability, security, and cost under control.
 
-Learn more about the difference between [serving and inference](./what-is-llm-inference#whats-the-difference-between-serving-and-inference).
+Learn more about the difference between [serving and inference](/llm-inference-basics/what-is-llm-inference/#whats-the-difference-between-serving-and-inference).
 
 ### Where do training and inference fit in the LLM lifecycle?
 
@@ -63,12 +63,12 @@ Training happens early in the lifecycle. The model learns patterns, language str
 
 ### Why does LLM inference often cost more than training?
 
-Even though training an LLM is expensive, it usually happens once. Inference, on the other hand, runs every time a user sends a request. As traffic grows, the number of inference calls grows with it. Each request uses GPU compute, memory, and network bandwidth. Over time, this ongoing demand can make inference the larger long-term expense, especially for applications with heavy usage or long [prompts](./../model-interaction/prompt-engineering).
+Even though training an LLM is expensive, it usually happens once. Inference, on the other hand, runs every time a user sends a request. As traffic grows, the number of inference calls grows with it. Each request uses GPU compute, memory, and network bandwidth. Over time, this ongoing demand can make inference the larger long-term expense, especially for applications with heavy usage or long [prompts](/model-interaction/prompt-engineering/).
 
 ### Should I train my own LLM?
 
-In most cases, no. Training a new LLM from scratch requires massive datasets, specialized hardware, and a dedicated research team. Most companies get better results by starting with an existing [open-source LLM](../getting-started/choosing-the-right-model) and then fine-tuning or customizing it for their domain. Full training only makes sense if you’re solving a problem that existing models can’t handle or you have strict control requirements that fine-tuning can’t meet.
+In most cases, no. Training a new LLM from scratch requires massive datasets, specialized hardware, and a dedicated research team. Most companies get better results by starting with an existing [open-source LLM](/getting-started/choosing-the-right-model/) and then fine-tuning or customizing it for their domain. Full training only makes sense if you’re solving a problem that existing models can’t handle or you have strict control requirements that fine-tuning can’t meet.
 
 ### Is fine-tuning considered training or inference?
 
-Fine-tuning is a form of training. You update some of the model’s weights using new data to adapt it to a specific task or domain. Inference doesn’t change any weights. It only uses the model to generate predictions. See the [fine-tuning section](../model-preparation/llm-fine-tuning) to learn more.
+Fine-tuning is a form of training. You update some of the model’s weights using new data to adapt it to a specific task or domain. Inference doesn’t change any weights. It only uses the model to generate predictions. See the [fine-tuning section](/model-preparation/llm-fine-tuning/) to learn more.

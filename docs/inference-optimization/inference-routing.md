@@ -29,7 +29,7 @@ A routing decision affects things like:
 - Whether prefill or decode work is already saturating the worker
 - Whether the overall GPU pool stays busy across uneven traffic patterns
 
-Therefore, inference routing is closely tied to concepts like [prefix caching](./prefix-caching), [KV cache offloading](./kv-cache-offloading), and [prefill-decode disaggregation](./prefill-decode-disaggregation).
+Therefore, inference routing is closely tied to concepts like [prefix caching](/inference-optimization/prefix-caching/), [KV cache offloading](/inference-optimization/kv-cache-offloading/), and [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/).
 
 At platform scale, routing is also an economic tool. Better placement keeps GPUs useful across heterogeneous tenants and bursty workloads, not just faster for one request.
 
@@ -50,7 +50,7 @@ LLM inference breaks those assumptions in several ways:
 
 - **Requests are not equal**. A 100-token prompt and a 100k-token prompt have completely different memory and compute footprints. Some requests finish in milliseconds, while others may generate tokens for minutes.
 - **Workers carry state**. During prefill, the model builds KV cache that can be reused by later requests. However, that reuse only happens if the next request reaches a worker that already owns the right cache. This is especially important for multi-turn chats and agent workflows where prompts often share large prefixes.
-- **Prefill and decode stress different resources**. Prefill is mostly compute-bound, while decode is usually memory-bandwidth-bound. A worker busy decoding a long output can still accept new prefill work, and vice versa. Many distributed systems separate them entirely to avoid wasted GPU cycles and memory bandwidth. See [prefill-decode disaggregation](./prefill-decode-disaggregation) to learn more.
+- **Prefill and decode stress different resources**. Prefill is mostly compute-bound, while decode is usually memory-bandwidth-bound. A worker busy decoding a long output can still accept new prefill work, and vice versa. Many distributed systems separate them entirely to avoid wasted GPU cycles and memory bandwidth. See [prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/) to learn more.
 - **Latency goals differ across workloads**. Code completion, chat applications, agents, and batch inference jobs all have different latency requirements. Some workloads prioritize low TTFT, while others care more about throughput or total cost. If every worker is treated identically, expensive long-running requests can interfere with latency-sensitive ones. For example, a code completion request may end up waiting behind long agent generations even though the user expects an instant response.
 
 When the router can't see these details, it starts making bad decisions, leading to:

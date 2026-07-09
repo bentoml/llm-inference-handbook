@@ -31,7 +31,7 @@ Here are situations where custom benchmarking makes sense:
 - **Comparing different models**. When you make a decision between two of the best LLMs, benchmarks reveal how they differ in throughput, latency, and cost under your workload.
 - **Evaluating inference frameworks**. Frameworks like vLLM, SGLang, TensorRT-LLM, and Hugging Face TGI provide different inference optimizations. Benchmarks help you see which delivers the best trade-off for your setup.
 - **Testing infrastructure changes**. Moving from A10G to H100 GPUs, or switching from on-prem to cloud, will affect performance. Benchmarks confirm the impact.
-- **Measuring optimization gains**. Inference techniques such as [speculative decoding](./speculative-decoding), [prefix caching](./prefix-caching), [disaggregated serving](./prefill-decode-disaggregation), or [KV cache offloading](./kv-cache-offloading) should always be validated with repeatable performance testing.
+- **Measuring optimization gains**. Inference techniques such as [speculative decoding](/inference-optimization/speculative-decoding/), [prefix caching](/inference-optimization/prefix-caching/), [disaggregated serving](/inference-optimization/prefill-decode-disaggregation/), or [KV cache offloading](/inference-optimization/kv-cache-offloading/) should always be validated with repeatable performance testing.
 - **Scaling for production traffic**. Before going live, benchmarks under realistic request rates and concurrency levels show how your system holds up.
 
 In short, you should run LLM performance benchmarks whenever you need evidence-based answers about which inference setup will meet your requirements.
@@ -82,7 +82,7 @@ When running performance benchmarks for LLM inference, it’s not enough to repo
 - **Throughput**: How many tokens or requests per second the model can process or produce. This measures scalability and raw efficiency.
 - **Latency**: How quickly the model responds to a request. Key latency metrics include TTFT, ITL, median latency, and tail latencies (P95, P99). These determine how responsive your LLM feels to users.
     
-  See [LLM inference metrics](../llm-inference-basics/llm-inference-metrics) for more information.
+  See [LLM inference metrics](/llm-inference-basics/llm-inference-metrics/) for more information.
     
 - **Cost**: Usually measured as cost per thousand tokens, cost per request, or cost per unit time. For self-hosted inference, GPUs are often the biggest driver of cost. Many top LLMs require large, expensive GPUs to run efficiently.
 - **Resource utilization**: GPU/CPU utilization, memory allocation, and cache hit rates. High utilization often means better hardware efficiency. This is especially important in production since it directly determines how much performance you get per dollar.
