@@ -165,7 +165,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'images/handbook-meta-image.png',
+    image: 'img/handbook-meta-image.png',
     navbar: {
       logo: {
         alt: 'Modular',
