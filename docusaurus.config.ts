@@ -84,12 +84,45 @@ const config: Config = {
         docsPath: '/',
         fullyQualifiedLinks: true,
         directive:
+          '> For the complete documentation index, see [llms.txt](/llms.txt).\n' +
           '> Markdown versions of all pages are available by appending .md to any URL.',
         htmlDirective:
-          'IMPORTANT: To view this page as Markdown, append `.md` to the URL.',
+          'IMPORTANT: To view this page as Markdown, append `.md` to the URL.\n' +
+          'For the complete documentation index, see <a href="/llms.txt">llms.txt</a>.',
         containerSelector: '.doc-actions',
         copyButtonText: 'Copy as Markdown',
         copiedButtonText: 'Copied!',
+      },
+    ],
+    [
+      'docusaurus-plugin-llms',
+      {
+        title: 'LLM Inference Handbook',
+        description:
+          'A practical handbook for engineers building, optimizing, scaling, and operating LLM inference systems in production.',
+        rootContent:
+          'Markdown versions of all pages are available by appending `.md` to any URL.\n\n' +
+          '- [LLM Inference Handbook](https://handbook.modular.com/index.md): A practical handbook for engineers building, optimizing, scaling, and operating LLM inference systems in production.\n',
+        generateLLMsFullTxt: false,
+        excludeImports: true,
+        docsDir: 'docs',
+        ignoreFiles: [
+          '**/LICENSE',
+          '**/README.md',
+          '**/img/**',
+          'adr/**',
+          'index.md',
+        ],
+        includeOrder: [
+          'getting-started/**/*',
+          'llm-inference-basics/**/*',
+          'inference-optimization/**/*',
+          'kernel-optimization/**/*',
+          'model-preparation/**/*',
+          'model-interaction/**/*',
+          'infrastructure-and-operations/**/*',
+        ],
+        includeUnmatchedLast: true,
       },
     ],
     [
