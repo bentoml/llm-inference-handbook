@@ -74,9 +74,9 @@ When evaluating speculative decoding, three metrics matter most:
     
 ### How acceptance rate impacts performance
 
-In theory, the effectiveness of speculative decoding depends heavily on acceptance rate. [Modular MAX supports speculative decoding](https://docs.modular.com/max/serve/speculative-decoding/) and exposes a `--synthetic-acceptance-rate` benchmarking knob that accepts each drafted token at a preset probability—letting you study how the acceptance rate (α) and the number of speculative tokens (γ) affect performance without a real draft model.
+In theory, the effectiveness of speculative decoding depends heavily on acceptance rate. To isolate this variable, you can simulate speculation by accepting each drafted token at a preset probability instead of running a real draft model. For example, a [BentoML benchmark](https://www.bentoml.com/blog/3x-faster-llm-inference-with-speculative-decoding) used a patched vLLM setup for this purpose; [Modular MAX supports speculative decoding](https://docs.modular.com/max/serve/speculative-decoding/) and exposes a `--synthetic-acceptance-rate` knob for the same kind of controlled test.
 
-Here are the key findings:
+The simulated benchmark showed four patterns:
 
 1. Higher α produces greater speedup.
 2. Increasing γ helps only when τ is high; otherwise, performance may be negatively affected.
@@ -87,7 +87,7 @@ In practice, however, the speedup was lower than expected.
 
 ### How performance varies under different workloads
 
-They also tested speculative decoding under different concurrency levels and tensor parallelism (TP) configurations.
+The synthetic acceptance-rate test isolates the effect of α and γ, but real deployments also have to contend with concurrency and parallelism. To see how those factors interact, [a separate set of benchmarks](https://www.bentoml.com/blog/3x-faster-llm-inference-with-speculative-decoding) measured speculative decoding under different concurrency levels and tensor parallelism (TP) configurations, serving Llama-3.3-70B-Instruct with vLLM on H100 GPUs.
 
 <figure>
   <img src={require('./img/tp-1-spec-decoding.png').default} alt="Speculative decoding benchmark on a single H100 GPU" />
