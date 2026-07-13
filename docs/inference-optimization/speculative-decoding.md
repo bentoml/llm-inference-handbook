@@ -4,6 +4,8 @@ description: Speculative decoding accelerates LLM inference with draft model pre
 keywords:
     - Speculative decoding, speculative sampling
     - Adaptive speculative decoding
+    - EAGLE, Medusa, Multi-Token Prediction, MTP
+    - Lookahead decoding, prompt lookup decoding
     - Draft model, target model
     - Distributed inference, distributed LLM inference
     - LLM inference optimization, LLM inference optimization techniques
@@ -128,6 +130,86 @@ When the target model rejects too many draft tokens, your GPU still spends time 
 How closely your draft model’s distribution matches with the target model determines the acceptance rate. Out-of-the-box draft models may work fine in some cases, but they often struggle with domain-specific tasks or very long contexts.
 
 If your workload has its own characteristics, you’ll likely get better results by fine-tuning a draft model on your data. That way, it learns to mimic the target more closely, boosting acceptance rates and speedups. On the flip side, if you already see good acceptance, you can skip the training and still benefit.
+
+## Speculative decoding methods
+
+The draft-then-verify pattern above describes the classic setup, where a separate, smaller model does the drafting. However, it is only one way to generate draft tokens. Over time, researchers have developed a number of methods that differ mainly in how the draft tokens are proposed.
+
+Broadly, the approaches fall into four groups:
+
+- **Standalone draft model**. A separate smaller model proposes tokens (the classic one described above).
+- **Target-specific auxiliary drafter**. A lightweight model trained specifically for the target proposes tokens or hidden features. EAGLE belongs to this group and normally uses a separate checkpoint.
+- **Model-integrated drafter**. Extra prediction heads or modules are included in the target checkpoint, as with Medusa or native MTP models.
+- **Training-free or retrieval-based methods**. Candidates are generated algorithmically or retrieved from the prompt and previously generated context, without a trained draft component.
+
+Let’s take a look at them in more detail.
+
+### Medusa
+
+[Medusa](https://arxiv.org/abs/2401.10774) removes the separate draft model. It attaches several lightweight **decoding heads** on top of the target model's final hidden state. Each head predicts a token at a future position (t+1, t+2, t+3, …) in a single forward pass.
+
+The top candidates from these heads are combined into a tree of possible continuations. The target model then evaluates the tree in one forward pass using tree attention, which applies an attention mask that preserves the causal relationships within each candidate branch. Similar to the classic speculative decoding method, the longest accepted candidate prefix will be used for the next decoding phase.
+
+Medusa comes in two flavors: 
+
+- **Medusa-1** trains only the new heads on a frozen backbone LLM (cheap, no quality change to the base model). The paper reports speedups above 2.2×.
+- **Medusa-2** fine-tunes the heads and backbone together. This improves draft accuracy but modifies the original target model. The paper reports speedups of approximately 2.3–3.6× by using a training recipe that preserves the capabilities of the backbone LLM.
+
+### Multi-Token Prediction (MTP)
+
+[Multi-Token Prediction](https://arxiv.org/abs/2404.19737) started as a training objective: instead of only predicting the next token, the model is trained to predict several future tokens at once. This gives the model denser training signal and, as a side benefit, built-in machinery for drafting.
+
+[DeepSeek-V3](https://arxiv.org/abs/2412.19437) popularized MTP at scale, using sequential MTP modules that preserve the full causal chain at each prediction depth. At inference time, these MTP modules can be repurposed as native draft heads for speculative decoding, so the model speculates on its own next tokens with no separate draft model and no bolt-on heads. Because the MTP modules are trained jointly with the main model, their predictions align closely with the target distribution, which tends to yield high acceptance rates.
+
+### N-gram speculation
+
+N-gram speculation generates draft tokens without running a separate draft model or adding trained prediction heads. It searches the existing context for repeated token sequences and reuses the continuation that followed an earlier match.
+
+A typical implementation follows four steps:
+
+1. Take a suffix from the current sequence, such as the most recent two, three, or four tokens.
+2. Search the prompt or previously generated text for an earlier occurrence of that suffix.
+3. Copy the tokens that followed the earlier occurrence and use them as a draft.
+4. Ask the target model to verify the proposed tokens.
+
+N-gram speculation is helpful when the desired output repeats or closely follows language already available in the prompt. Common examples include:
+
+- Summarizing or rewriting supplied text
+- Editing code or configuration files
+- Filling predefined templates
+- Answering questions from retrieved documents
+- Reproducing names, dates, identifiers, or technical terms from the input
+- Generating structured output from a schema or example already included in the prompt
+
+### EAGLE
+
+[EAGLE (Extrapolation Algorithm for Greater Language-model Efficiency)](https://arxiv.org/pdf/2401.15077) makes a key observation: autoregression is more accurate and regular at the feature level (the hidden states of the second-to-top layer) than at the token level. So instead of predicting the next token, the EAGLE lightweight draft head predicts the next feature, then reuses the target model's own LM head to turn it into a token.
+
+One problem is that a feature (hidden state) doesn't uniquely determine what comes next, because sampling is random. For example, if the generated text currently ends with `I`, and you sample from it, you might get `am`, `always`, or `think`. The feature is the same in every case; the drawn token is not. So what should the next feature be? That depends entirely on which token was actually drawn. `I am`and `I always` lead to completely different hidden states.
+
+The fix from EAGLE is simple: tell it. Along with the features, feed in the tokens that were actually sampled, offset by one position so that each feature is paired with the token that came after it. This way, at each step the draft head sees "here's the hidden state, and here's the token that the sampler actually picked from it", which is exactly the missing information needed to know where the sequence went.
+
+EAGLE has evolved across three versions:
+
+- **EAGLE-1**: Feature-level autoregression with a single small draft head.
+- **EAGLE-2**: Adds a context-aware dynamic draft tree. It uses the confidence scores from the draft mode to allocate candidate branches to positions where acceptance is more likely. [The paper](https://arxiv.org/abs/2406.16858) reports speedups of approximately 3.05–4.26× in evaluations.
+- **EAGLE-3**: Drops the feature-prediction constraint and predicts tokens directly. It fuses low-, mid-, and high-level features from the target model. [EAGLE-3](https://arxiv.org/abs/2503.01840) achieves a speedup of 3.0x-6.5x over the vanilla autoregressive generation.
+
+EAGLE is widely adopted and supported natively in frameworks like vLLM, MAX and SGLang, and it consistently reports some of the highest speedups among speculative methods.
+
+### Choosing a method
+
+There's no universally best method. The right choice depends on your needs:
+
+| Method | Extra draft model | Training required | Note |
+| --- | --- | --- | --- |
+| Vanilla speculative decoding | Yes | No (optional fine-tuning) | Matching a good draft model can be tricky |
+| Medusa | No (extra heads) | Yes (heads) | Moderate speedup |
+| MTP | No | Yes (jointly, at pretraining) | Models trained with MTP (e.g., DeepSeek-V3) |
+| N-gram | No | No | Zero-setup gains, input-grounded tasks |
+| EAGLE | Yes | Yes (draft head) | Highest speedups, broad framework support |
+
+[Inference frameworks](/getting-started/choosing-the-right-inference-framework/) like vLLM, MAX, and SGLang implement several of these methods, so you can benchmark them against your own workload before committing.
 
 ## Adaptive speculative decoding
 
