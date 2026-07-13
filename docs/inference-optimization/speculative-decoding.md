@@ -146,13 +146,13 @@ Let’s take a look at them in more detail.
 
 ### Medusa
 
-[Medusa](https://arxiv.org/abs/2401.10774) removes the separate draft model. It attaches several lightweight **decoding heads** on top of the target model's final hidden state. Each head predicts a token at a future position (t+1, t+2, t+3, …) in a single forward pass.
+[Medusa](https://arxiv.org/abs/2401.10774) removes the separate draft model. It attaches several lightweight **decoding heads** on top of the target model's final hidden state. Each head predicts a token at a future position (t+2, t+3, t+4, …), while the original LM head of the model still handles the immediate next token (t+1).
 
 The top candidates from these heads are combined into a tree of possible continuations. The target model then evaluates the tree in one forward pass using tree attention, which applies an attention mask that preserves the causal relationships within each candidate branch. Similar to the classic speculative decoding method, the longest accepted candidate prefix will be used for the next decoding phase.
 
 Medusa comes in two flavors: 
 
-- **Medusa-1** trains only the new heads on a frozen backbone LLM (cheap, no quality change to the base model). The paper reports speedups above 2.2×.
+- **Medusa-1** trains only the new heads on a frozen backbone LLM, leaving the backbone weights unchanged. The paper reports speedups above 2.2× without compromising generation quality.
 - **Medusa-2** fine-tunes the heads and backbone together. This improves draft accuracy but modifies the original target model. The paper reports speedups of approximately 2.3–3.6× by using a training recipe that preserves the capabilities of the backbone LLM.
 
 ### Multi-Token Prediction (MTP)
@@ -183,19 +183,19 @@ N-gram speculation is helpful when the desired output repeats or closely follows
 
 ### EAGLE
 
-[EAGLE (Extrapolation Algorithm for Greater Language-model Efficiency)](https://arxiv.org/pdf/2401.15077) makes a key observation: autoregression is more accurate and regular at the feature level (the hidden states of the second-to-top layer) than at the token level. So instead of predicting the next token, the EAGLE lightweight draft head predicts the next feature, then reuses the target model's own LM head to turn it into a token.
+[EAGLE (Extrapolation Algorithm for Greater Language-model Efficiency)](https://arxiv.org/pdf/2401.15077) makes a key observation: autoregression is easier to model at the feature level (the hidden states of the second-to-top layer) than at the token level. So instead of predicting the next token, the lightweight EAGLE draft model predicts the next feature, then reuses the LM head of the target model to turn that feature into token probabilities.
 
-One problem is that a feature (hidden state) doesn't uniquely determine what comes next, because sampling is random. For example, if the generated text currently ends with `I`, and you sample from it, you might get `am`, `always`, or `think`. The feature is the same in every case; the drawn token is not. So what should the next feature be? That depends entirely on which token was actually drawn. `I am`and `I always` lead to completely different hidden states.
+Under stochastic sampling, the current feature does not reveal which token was sampled from the corresponding distribution. For example, if the generated text currently ends with `I`, sampling might produce `am`, `always`, or `think`. The next feature depends on the token actually drawn: `I am` and `I always` lead to different hidden states.
 
 The fix from EAGLE is simple: tell it. Along with the features, feed in the tokens that were actually sampled, offset by one position so that each feature is paired with the token that came after it. This way, at each step the draft head sees "here's the hidden state, and here's the token that the sampler actually picked from it", which is exactly the missing information needed to know where the sequence went.
 
 EAGLE has evolved across three versions:
 
-- **EAGLE-1**: Feature-level autoregression with a single small draft head.
-- **EAGLE-2**: Adds a context-aware dynamic draft tree. It uses the confidence scores from the draft mode to allocate candidate branches to positions where acceptance is more likely. [The paper](https://arxiv.org/abs/2406.16858) reports speedups of approximately 3.05–4.26× in evaluations.
-- **EAGLE-3**: Drops the feature-prediction constraint and predicts tokens directly. It fuses low-, mid-, and high-level features from the target model. [EAGLE-3](https://arxiv.org/abs/2503.01840) achieves a speedup of 3.0x-6.5x over the vanilla autoregressive generation.
+- **EAGLE-1**: Feature-level autoregression with a small draft model.
+- **EAGLE-2**: Adds a context-aware dynamic draft tree. It uses the confidence scores from the draft model to allocate candidate branches to positions where acceptance is more likely. [The paper](https://arxiv.org/abs/2406.16858) reports speedups of approximately 3.05–4.26× in evaluations.
+- **EAGLE-3**: Drops the feature-prediction constraint and predicts tokens directly. It fuses low-, mid-, and high-level features from the target model. [The paper](https://arxiv.org/abs/2503.01840) reports speedups of approximately 3.0×–6.5× over vanilla autoregressive generation across the evaluated models and tasks.
 
-EAGLE is widely adopted and supported natively in frameworks like vLLM, MAX and SGLang, and it consistently reports some of the highest speedups among speculative methods.
+EAGLE is widely adopted and supported natively in frameworks like vLLM, MAX, and SGLang. The EAGLE papers report strong speedups, but actual gains depend on the target model, draft checkpoint, workload, hardware, and serving implementation.
 
 ### Choosing a method
 
@@ -207,7 +207,7 @@ There's no universally best method. The right choice depends on your needs:
 | Medusa | No (extra heads) | Yes (heads) | Moderate speedup |
 | MTP | No | Yes (jointly, at pretraining) | Models trained with MTP (e.g., DeepSeek-V3) |
 | N-gram | No | No | Zero-setup gains, input-grounded tasks |
-| EAGLE | Yes | Yes (draft head) | Highest speedups, broad framework support |
+| EAGLE | Yes | Yes (draft model) | Strong reported speedups, broad framework support |
 
 [Inference frameworks](/getting-started/choosing-the-right-inference-framework/) like vLLM, MAX, and SGLang implement several of these methods, so you can benchmark them against your own workload before committing.
 
