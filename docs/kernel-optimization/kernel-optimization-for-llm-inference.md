@@ -10,7 +10,7 @@ keywords:
 
 import LinkList from '@site/src/components/LinkList';
 
-# Kernel optimization for LLM Inference
+# Kernel optimization for LLM inference
 
 When people talk about speeding up LLM inference, they usually jump to batching, caching, or routing. That makes sense. Those are visible, system-level levers.
 
