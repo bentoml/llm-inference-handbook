@@ -146,12 +146,14 @@
   background: #faf5ff;
   transition:
     box-shadow 200ms ease,
-    border-color 200ms ease;
+    border-color 200ms ease,
+    background-color 200ms ease;
 }
 
 .smHighlight {
   border-color: #6d28d9;
-  box-shadow: none;
+  background: #f3e8ff;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.35);
 }
 
 .smCompact {
@@ -188,12 +190,14 @@
   margin-bottom: 0.5rem;
   transition:
     box-shadow 200ms ease,
-    border-color 200ms ease;
+    border-color 200ms ease,
+    background-color 200ms ease;
 }
 
 .blockHighlight {
   border-color: var(--Elements-Neb-Ultra);
-  box-shadow: none;
+  background: var(--Elements-Neb-30-Alpha);
+  box-shadow: 0 0 0 3px rgba(99, 123, 255, 0.35);
 }
 
 .blockHeader {
@@ -213,7 +217,10 @@
   padding: 0.5rem 0.625rem;
   background: #f8faff;
   margin-bottom: 0.5rem;
-  transition: border-color 200ms ease;
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease;
 }
 
 .blockCollapsedTitle {
@@ -238,12 +245,14 @@
   margin-bottom: 0.375rem;
   transition:
     box-shadow 200ms ease,
-    border-color 200ms ease;
+    border-color 200ms ease,
+    background-color 200ms ease;
 }
 
 .warpHighlight {
   border-color: var(--Elements-Neb-Ultra);
-  box-shadow: none;
+  background: var(--Elements-Neb-30-Alpha);
+  box-shadow: 0 0 0 3px rgba(99, 123, 255, 0.45);
 }
 
 .warpHeader {
@@ -274,7 +283,10 @@
   padding: 0.375rem 0.5rem;
   background: var(--Elements-Neb-20-Alpha);
   margin-bottom: 0.375rem;
-  transition: border-color 200ms ease;
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease;
 }
 
 /* ── Thread grid: 32 cells in 16 columns ── */
@@ -631,4 +643,19 @@
 :global(html[data-theme='dark']) .hbmItem {
   background: rgba(251, 146, 60, 0.2);
   color: #fed7aa;
+}
+
+/* Dark-mode highlight states — must come after the dark background rules
+   above so the highlighted fill wins the cascade. */
+:global(html[data-theme='dark']) .smHighlight {
+  background: rgba(139, 92, 246, 0.28);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.45);
+}
+:global(html[data-theme='dark']) .blockHighlight {
+  background: rgba(99, 123, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(99, 123, 255, 0.45);
+}
+:global(html[data-theme='dark']) .warpHighlight {
+  background: rgba(99, 123, 255, 0.28);
+  box-shadow: 0 0 0 3px rgba(99, 123, 255, 0.55);
 }

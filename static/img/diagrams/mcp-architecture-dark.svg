@@ -11,10 +11,10 @@
   <rect x="618.0" y="58.0" width="168.0" height="50.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
   <text x="702.0" y="83.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Database</text>
   <line x1="210.0" y1="83.0" x2="324.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="330.0,83.0 321.0,77.0 321.0,89.0" fill="#637bff"/>
-  <line x1="330.0" y1="83.0" x2="204.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,83.0 201.0,77.0 201.0,89.0" fill="#637bff"/>
+  <line x1="330.0" y1="83.0" x2="216.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,83.0 219.0,77.0 219.0,89.0" fill="#637bff"/>
   <text x="270.0" y="71.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP</text>
   <line x1="498.0" y1="83.0" x2="612.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="618.0,83.0 609.0,77.0 609.0,89.0" fill="#637bff"/>
-  <line x1="618.0" y1="83.0" x2="492.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,83.0 489.0,77.0 489.0,89.0" fill="#637bff"/>
+  <line x1="618.0" y1="83.0" x2="504.0" y2="83.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,83.0 507.0,77.0 507.0,89.0" fill="#637bff"/>
   <rect x="42.0" y="132.0" width="168.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
   <text x="126.0" y="157.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">MCP Client</text>
   <rect x="330.0" y="132.0" width="168.0" height="50.0" rx="4" fill="#1a3a5c" stroke="#637bff" stroke-width="2"/>
@@ -22,10 +22,10 @@
   <rect x="618.0" y="132.0" width="168.0" height="50.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
   <text x="702.0" y="157.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Filesystem</text>
   <line x1="210.0" y1="157.0" x2="324.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="330.0,157.0 321.0,151.0 321.0,163.0" fill="#637bff"/>
-  <line x1="330.0" y1="157.0" x2="204.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,157.0 201.0,151.0 201.0,163.0" fill="#637bff"/>
+  <line x1="330.0" y1="157.0" x2="216.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,157.0 219.0,151.0 219.0,163.0" fill="#637bff"/>
   <text x="270.0" y="145.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP</text>
   <line x1="498.0" y1="157.0" x2="612.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="618.0,157.0 609.0,151.0 609.0,163.0" fill="#637bff"/>
-  <line x1="618.0" y1="157.0" x2="492.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,157.0 489.0,151.0 489.0,163.0" fill="#637bff"/>
+  <line x1="618.0" y1="157.0" x2="504.0" y2="157.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,157.0 507.0,151.0 507.0,163.0" fill="#637bff"/>
   <rect x="42.0" y="206.0" width="168.0" height="50.0" rx="4" fill="#637bff" stroke="#637bff" stroke-width="2"/>
   <text x="126.0" y="231.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">MCP Client</text>
   <rect x="330.0" y="206.0" width="168.0" height="50.0" rx="4" fill="#1a3a5c" stroke="#637bff" stroke-width="2"/>
@@ -33,8 +33,8 @@
   <rect x="618.0" y="206.0" width="168.0" height="50.0" rx="4" fill="#20262c" stroke="#353d42" stroke-width="2"/>
   <text x="702.0" y="231.0" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Cloud Service</text>
   <line x1="210.0" y1="231.0" x2="324.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="330.0,231.0 321.0,225.0 321.0,237.0" fill="#637bff"/>
-  <line x1="330.0" y1="231.0" x2="204.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,231.0 201.0,225.0 201.0,237.0" fill="#637bff"/>
+  <line x1="330.0" y1="231.0" x2="216.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="210.0,231.0 219.0,225.0 219.0,237.0" fill="#637bff"/>
   <text x="270.0" y="219.0" font-family="Roboto Mono, Courier, monospace" font-size="10" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">MCP</text>
   <line x1="498.0" y1="231.0" x2="612.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="618.0,231.0 609.0,225.0 609.0,237.0" fill="#637bff"/>
-  <line x1="618.0" y1="231.0" x2="492.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,231.0 489.0,225.0 489.0,237.0" fill="#637bff"/>
+  <line x1="618.0" y1="231.0" x2="504.0" y2="231.0" stroke="#637bff" stroke-width="2"/><polygon points="498.0,231.0 507.0,225.0 507.0,237.0" fill="#637bff"/>
 </svg>
