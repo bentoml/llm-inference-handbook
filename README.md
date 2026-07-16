@@ -31,7 +31,7 @@ pnpm serve
 Contributions are welcome! Feel free to open issues, suggest improvements, or
 submit pull requests.
 
-### Markdown linting
+## Markdown linting
 
 Markdown files are linted with [rumdl](https://rumdl.dev/). Prose is wrapped at
 80 characters. Run the same checks as CI locally:
@@ -43,6 +43,45 @@ pnpm lint:md:fix   # auto-fix
 
 Some line-length violations (long URLs, API references) may need manual reflow
 or `<!-- rumdl-disable MD013 -->` blocks.
+
+### Editor integration
+
+rumdl supports in-editor linting via:
+
+- [VS Code extension](https://rumdl.dev/vscode-extension/): Install from the
+  marketplace, or run `pnpm exec rumdl vscode`. See [VS Code setup](#vs-code-setup)
+  below to match CI rules and enable fix-on-save.
+- [LSP server](https://rumdl.dev/lsp/): Run `pnpm exec rumdl server` and point
+  your editor's LSP client at it.
+
+#### VS Code setup
+
+By default the extension uses its own built-in rules, not this repo's config. To
+match CI, point it at [`.rumdl.toml`](.rumdl.toml) and apply rumdl fixes on save.
+
+This repo ships recommended settings in
+[`.vscode/recommended_settings.json`](.vscode/recommended_settings.json). Either
+copy those keys into `.vscode/settings.json` (workspace-scoped, gitignored) or
+into your user settings (`~/Library/Application Support/Cursor/User/settings.json`
+on macOS):
+
+```json
+{
+  "rumdl.configPath": ".rumdl.toml",
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": { "source.fixAll.rumdl": "explicit" }
+  },
+  "[mdx]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": { "source.fixAll.rumdl": "explicit" }
+  },
+  "editor.rulers": [80]
+}
+```
+
+Install the recommended extensions when prompted, or open the Extensions view
+and run **Extensions: Show Recommended Extensions**.
 
 ## Licenses
 
