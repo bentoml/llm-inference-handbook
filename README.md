@@ -41,8 +41,8 @@ pnpm lint:md       # check for issues
 pnpm lint:md:fix   # auto-fix
 ```
 
-Some line-length violations (long URLs, API references) may need manual reflow or
-`<!-- rumdl-disable MD013 -->` blocks.
+Some line-length violations (long URLs, API references) may need manual reflow
+or `<!-- rumdl-disable MD013 -->` blocks.
 
 ## Licenses
 
