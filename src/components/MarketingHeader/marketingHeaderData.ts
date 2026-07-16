@@ -215,7 +215,7 @@ export const marketingHeaderItems: MarketingHeaderItem[] = [
             },
             {
               label: 'Contact Us',
-              href: 'https://www.modular.com/request-demo',
+              href: 'https://www.modular.com/request-demo?utm_source=llm_handbook',
               description: 'Request a demo',
             },
           ],
@@ -228,10 +228,10 @@ export const marketingHeaderItems: MarketingHeaderItem[] = [
 export const marketingHeaderCtas = {
   secondary: {
     label: 'Request a Demo',
-    href: 'https://www.modular.com/request-demo',
+    href: 'https://www.modular.com/request-demo?utm_source=llm_handbook',
   },
   primary: {
     label: 'Sign up',
-    href: 'https://console.modular.com/signup?utm_source=topNav',
+    href: 'https://console.modular.com/signup?utm_source=llm_handbook',
   },
 };
