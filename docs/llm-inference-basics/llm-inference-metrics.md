@@ -56,16 +56,19 @@ Key metrics to measure latency:
   For a single request, the mean of all ITLs equals TPOT, which is why
   **the two are sometimes used interchangeably**:
 
+  <!-- rumdl-disable-next-line MD013 -->
   $$ \text{Average ITL} = \text{TPOT} = \frac{\text{E2EL – TTFT}}{\text{Total Output Tokens} - 1} $$
 
   Across multiple requests, however, the difference comes down to how you
   average:
 
+  <!-- rumdl-disable-next-line MD013 -->
   $$ \text{Average ITL} = \frac{\text{Sum of all ITLs across Requests}}{\text{Total Output Tokens across Requests}} $$
 
   In this case, the average ITL is different from the average TPOT since the
   latter is usually calculated as follows:
 
+  <!-- rumdl-disable-next-line MD013 -->
   $$ \text{Average TPOT} = \frac{\text{TPOT}_1 + \text{TPOT}_2 + \cdots + \text{TPOT}_N}{N} $$
 
   When reading benchmark results, always check how TPOT and ITL are defined.

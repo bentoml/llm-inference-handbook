@@ -5,14 +5,9 @@ disable = [
     "no-inline-html",
     "no-alt-text",
 
-    # Temporary exclusions for consistency with existing markdownlint config
-    "MD034", # TODO: Creates strange formatting with URLs
-    "MD036", # TODO: Emphasis used instead of a heading (needs manual fixing)
-    "MD046", # TODO: Use indented code blocks (needs manual fixing)
-    "MD051", # TODO: Link anchor does not exist in document headings (needs manual fixing)
-    "MD057", # TODO: Relative links broken (needs manual fixing)
-    "MD059", # TODO: Link text should be descriptive (needs manual fixing)
-    "MD076", # TODO: Missing blank line between list items (needs manual fixing)
+    # List items with nested blocks (math, paragraphs) need blank lines between
+    # siblings for valid Markdown; MD076 flags those as errors.
+    "MD076",
 ]
 
 exclude = [

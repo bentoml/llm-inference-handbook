@@ -36,6 +36,7 @@ tiling, see
 
 Standard attention calculates:
 
+<!-- rumdl-disable-next-line MD013 -->
 $$ \text{Attention}(Q, K, V) = \mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $$
 
 The naive implementation follows these steps:
