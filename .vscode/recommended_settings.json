@@ -1,0 +1,16 @@
+{
+  "rumdl.configPath": ".rumdl.toml",
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.rumdl": "explicit"
+    }
+  },
+  "[mdx]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.rumdl": "explicit"
+    }
+  },
+  "editor.rulers": [80]
+}

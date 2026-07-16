@@ -114,6 +114,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: 0.4.1
         version: 0.4.1(prettier@3.6.2)
+      rumdl:
+        specifier: 0.2.34
+        version: 0.2.34
       typescript:
         specifier: ^5.1.1
         version: 5.6.3
@@ -1646,6 +1649,48 @@ packages:
 
   '@rspack/lite-tapable@1.1.0':
     resolution: {integrity: sha512-E2B0JhYFmVAwdDiG14+DW0Di4Ze4Jg10Pc4/lILUrd5DRCaklduz2OvJ5HYQ6G+hd+WTzqQb3QnDNfK4yvAFYw==}
+
+  '@rumdl/cli-darwin-arm64@0.2.34':
+    resolution: {integrity: sha512-3QKJxcgAJE4O5Q1m9J1BhrC2bjNzyNzCLUgT8QKlcDBmgr63tSeP5OCmBCBCAV+lxFQAGIb1bZWE0lNcb9wT3w==}
+    engines: {node: '>=18.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@rumdl/cli-darwin-x64@0.2.34':
+    resolution: {integrity: sha512-qcyMxAwJYyEkg+bgoeIOJwn05TEv7k4cuw1UICzoZiHCedvdXo5JWUWc0WVtaYlarvWFR1ypzP7WkW2hnjhh0A==}
+    engines: {node: '>=18.0.0'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@rumdl/cli-linux-arm64-musl@0.2.34':
+    resolution: {integrity: sha512-/RktCM4r8x1sOVquZUkq16nOZeXQEA5xbeBRZO5GhnRbFEEnbQnc9q6Ji+qiqYkQ/dJ42CdllztcCuFRanctMg==}
+    engines: {node: '>=18.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@rumdl/cli-linux-arm64@0.2.34':
+    resolution: {integrity: sha512-KYNMR9bAtCMvL7h4HcDyeiwMnTvO9NKU0XyzFmxTuWlcD5iu4rlL0TyCSDKiGKEs19xdwEpOqm7Y7GZBYFtOOw==}
+    engines: {node: '>=18.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@rumdl/cli-linux-x64-musl@0.2.34':
+    resolution: {integrity: sha512-w+E5QRYFW8KHCMw2hHmNN7N/FAvgOK1xHCxNJIps2CM72yh54sNoI2w54bl171zVlJ4vPJ/uG0mMmEX8qbbQKw==}
+    engines: {node: '>=18.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  '@rumdl/cli-linux-x64@0.2.34':
+    resolution: {integrity: sha512-UX+OJ4kaB2nOPKobEQacFnR5+jS83MspapXmnLWgajRsig48nD73hwZNPDz59KDZdyfuWuQhiUAyBYszUhdocA==}
+    engines: {node: '>=18.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  '@rumdl/cli-win32-x64@0.2.34':
+    resolution: {integrity: sha512-+EGiDnQzfPNd4oVeoD2e+rX5jtWo/tbCpgwJwDXwAoNBJ1B59S4T7sf7ndpdQqpEe8vDisZ6kR94NGb9T4qVWw==}
+    engines: {node: '>=18.0.0'}
+    cpu: [x64]
+    os: [win32]
 
   '@sideway/address@4.1.5':
     resolution: {integrity: sha512-IqO/DUQHUkPeixNQ8n0JA6102hT9CmaljNTPmQ1u8MEhBo/R4Q8eKLN/vGZxuebwOroDB4cbpjheD4+/sKFK4Q==}
@@ -5284,6 +5329,11 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
 
+  rumdl@0.2.34:
+    resolution: {integrity: sha512-CyFwilktHsX+snE82oXOgO5BOVmbG8oIRDgRkAjYo7mo5XnW5B/XRh28rWdAeXdxyENBxuMJi8+pk1aRA4u+GQ==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
+
   run-applescript@7.1.0:
     resolution: {integrity: sha512-DPe5pVFaAsinSaV6QjQ6gdiedWDcRCbUuiQfQa2wmWV7+xC9bGulGI8+TdRmoFkAPaBXk8CrAbnlY2ISniJ47Q==}
     engines: {node: '>=18'}
@@ -8562,6 +8612,27 @@ snapshots:
       '@rspack/lite-tapable': 1.1.0
 
   '@rspack/lite-tapable@1.1.0': {}
+
+  '@rumdl/cli-darwin-arm64@0.2.34':
+    optional: true
+
+  '@rumdl/cli-darwin-x64@0.2.34':
+    optional: true
+
+  '@rumdl/cli-linux-arm64-musl@0.2.34':
+    optional: true
+
+  '@rumdl/cli-linux-arm64@0.2.34':
+    optional: true
+
+  '@rumdl/cli-linux-x64-musl@0.2.34':
+    optional: true
+
+  '@rumdl/cli-linux-x64@0.2.34':
+    optional: true
+
+  '@rumdl/cli-win32-x64@0.2.34':
+    optional: true
 
   '@sideway/address@4.1.5':
     dependencies:
@@ -12663,6 +12734,16 @@ snapshots:
       picocolors: 1.1.1
       postcss: 8.5.6
       strip-json-comments: 3.1.1
+
+  rumdl@0.2.34:
+    optionalDependencies:
+      '@rumdl/cli-darwin-arm64': 0.2.34
+      '@rumdl/cli-darwin-x64': 0.2.34
+      '@rumdl/cli-linux-arm64': 0.2.34
+      '@rumdl/cli-linux-arm64-musl': 0.2.34
+      '@rumdl/cli-linux-x64': 0.2.34
+      '@rumdl/cli-linux-x64-musl': 0.2.34
+      '@rumdl/cli-win32-x64': 0.2.34
 
   run-applescript@7.1.0: {}
 

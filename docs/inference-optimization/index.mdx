@@ -6,15 +6,27 @@ sidebar_custom_props:
 
 # Inference optimization
 
-Running an LLM is just the starting point. Making it fast, efficient, and scalable is where inference optimization comes into play.
+Running an LLM is just the starting point. Making it fast, efficient, and
+scalable is where inference optimization comes into play.
 
 ## Why do you need to optimize inference?
 
-A setup that works in a demo can fail under real traffic. Latency can grow as queues form, throughput can plateau below the hardware's capacity, and cost can scale faster than expected. In production, optimization helps you meet latency and throughput goals at a cost the product can sustain.
+A setup that works in a demo can fail under real traffic. Latency can grow as
+queues form, throughput can plateau below the hardware's capacity, and cost can
+scale faster than expected. In production, optimization helps you meet latency
+and throughput goals at a cost the product can sustain.
 
-Optimization also gives you more control over trade-offs. Some workloads need low latency for interactive users. Others need maximum throughput for batch jobs. Long-context applications need careful KV cache management. Multi-tenant systems need routing and scheduling policies that prevent one workload from hurting another.
+Optimization also gives you more control over trade-offs. Some workloads need
+low latency for interactive users. Others need maximum throughput for batch
+jobs. Long-context applications need careful KV cache management. Multi-tenant
+systems need routing and scheduling policies that prevent one workload from
+hurting another.
 
-If you're using a serverless endpoint (e.g., OpenAI API), much of this work is abstracted away, but the trade-offs still affect price, rate limits, and response time. If you're self-hosting open-source or custom models, applying the right optimization techniques is what lets you adapt the serving stack to your actual workload instead of accepting whatever the default runtime gives you.
+If you're using a serverless endpoint (e.g., OpenAI API), much of this work is
+abstracted away, but the trade-offs still affect price, rate limits, and
+response time. If you're self-hosting open-source or custom models, applying the
+right optimization techniques is what lets you adapt the serving stack to your
+actual workload instead of accepting whatever the default runtime gives you.
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';

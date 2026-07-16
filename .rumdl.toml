@@ -1,0 +1,42 @@
+[global]
+disable = [
+    # Imported from markdownlint
+    "first-line-h1",
+    "no-inline-html",
+    "no-alt-text",
+
+    # List items with nested blocks (math, paragraphs) need blank lines between
+    # siblings for valid Markdown; MD076 flags those as errors.
+    "MD076",
+]
+
+exclude = [
+    ".claude",
+    ".docusaurus",
+    "build",
+    "node_modules",
+]
+
+respect_gitignore = true
+
+[ul-style]
+style = "dash"
+
+[line-length]
+code-blocks = false
+headings = false
+line-length = 80
+tables = false
+
+[no-duplicate-heading]
+siblings-only = true
+
+[MD013]
+reflow = true
+
+[MD050]
+style = "asterisk"
+
+[MD060]
+enabled = true
+style = "aligned-no-space"

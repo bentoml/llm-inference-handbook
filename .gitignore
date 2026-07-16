@@ -1,7 +1,10 @@
 node_modules
+.rumdl_cache/
 .DS_Store
 .docusaurus
-.vscode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/recommended_settings.json
 build/
 .agents/log/
 .agents/screenshots/
