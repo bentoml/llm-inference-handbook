@@ -21,6 +21,9 @@
   <line x1="565.0" y1="78.0" x2="577.0" y2="78.0" stroke="#637bff" stroke-width="1.5"/><polygon points="581.0,78.0 575.0,74.0 575.0,82.0" fill="#637bff"/>
   <line x1="621.0" y1="78.0" x2="633.0" y2="78.0" stroke="#637bff" stroke-width="1.5"/><polygon points="637.0,78.0 631.0,74.0 631.0,82.0" fill="#637bff"/>
   <line x1="677.0" y1="78.0" x2="689.0" y2="78.0" stroke="#637bff" stroke-width="1.5"/><polygon points="693.0,78.0 687.0,74.0 687.0,82.0" fill="#637bff"/>
+  <line x1="573.0" y1="78.0" x2="573.0" y2="93.0" stroke="#637bff" stroke-width="1.5"/><polygon points="573.0,97.0 569.0,91.0 577.0,91.0" fill="#637bff"/>
+  <line x1="629.0" y1="78.0" x2="629.0" y2="93.0" stroke="#637bff" stroke-width="1.5"/><polygon points="629.0,97.0 625.0,91.0 633.0,91.0" fill="#637bff"/>
+  <line x1="685.0" y1="78.0" x2="685.0" y2="93.0" stroke="#637bff" stroke-width="1.5"/><polygon points="685.0,97.0 681.0,91.0 689.0,91.0" fill="#637bff"/>
   <text x="629.0" y="108.0" font-family="Roboto Mono, Courier, monospace" font-size="11" fill="#9a9eaa" text-anchor="middle" font-weight="500" dominant-baseline="middle">Inter Token Latency (ITL)</text>
   <rect x="791.0" y="48.0" width="153.0" height="56.0" rx="4" fill="#1a3a5c" stroke="#637bff" stroke-width="2"/>
   <text x="867.5" y="76.0" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="500" dominant-baseline="middle">Detokenization</text>
