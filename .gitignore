@@ -1,4 +1,5 @@
 node_modules
+.rumdl_cache/
 .DS_Store
 .docusaurus
 .vscode

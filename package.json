@@ -12,6 +12,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "format": "prettier --write .",
+    "lint:md": "rumdl check .",
+    "lint:md:fix": "rumdl fmt .",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -52,6 +54,7 @@
     "@types/react-dom": "^18.3.1",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "0.4.1",
+    "rumdl": "0.2.34",
     "typescript": "^5.1.1"
   },
   "browserslist": {

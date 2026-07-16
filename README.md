@@ -31,6 +31,19 @@ pnpm serve
 Contributions are welcome! Feel free to open issues, suggest improvements, or
 submit pull requests.
 
+### Markdown linting
+
+Markdown files are linted with [rumdl](https://rumdl.dev/). Prose is wrapped at
+80 characters. Run the same checks as CI locally:
+
+```bash
+pnpm lint:md       # check for issues
+pnpm lint:md:fix   # auto-fix
+```
+
+Some line-length violations (long URLs, API references) may need manual reflow or
+`<!-- rumdl-disable MD013 -->` blocks.
+
 ## Licenses
 
 This handbook follows the upstream dual-license posture:
