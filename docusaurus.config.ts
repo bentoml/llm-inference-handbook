@@ -211,7 +211,7 @@ const config: Config = {
       },
       items: [
         {
-          href: 'https://www.modular.com/request-demo',
+          href: 'https://www.modular.com/request-demo?utm_source=llm_handbook',
           label: 'Request a demo',
           position: 'right',
           className: 'navbar-signin-btn',
@@ -245,7 +245,7 @@ const config: Config = {
             },
             {
               label: 'Contact',
-              href: 'https://www.modular.com/request-demo',
+              href: 'https://www.modular.com/request-demo?utm_source=llm_handbook',
             },
           ],
         },
