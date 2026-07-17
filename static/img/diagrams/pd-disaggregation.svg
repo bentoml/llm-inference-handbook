@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&amp;display=swap');
+  </style>
+  <rect x="90" y="36" width="190" height="60" rx="12" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="185" y="60" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">User chat</text>
+  <text x="185" y="78" font-family="Roboto Mono, Courier, monospace" font-size="14" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">or agent</text>
+  <rect x="370" y="36" width="220" height="60" rx="12" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="480" y="66" font-family="Roboto Mono, Courier, monospace" font-size="15" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Orchestrator</text>
+  <line x1="280" y1="56" x2="364" y2="56" stroke="#637bff" stroke-width="2"/>
+  <polygon points="370,56 361.0,50 361.0,62" fill="#637bff"/>
+  <line x1="370" y1="78" x2="286" y2="78" stroke="#637bff" stroke-width="2"/>
+  <polygon points="280,78 289.0,72 289.0,84" fill="#637bff"/>
+  <line x1="480" y1="96" x2="480" y2="176" stroke="#637bff" stroke-width="2"/>
+  <polygon points="480,182 474,173.0 486,173.0" fill="#637bff"/>
+  <rect x="50" y="190" width="330" height="180" rx="12" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="215" y="228" font-family="Roboto Mono, Courier, monospace" font-size="15" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Prefill nodes</text>
+  <text x="215" y="252" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="middle" font-weight="400" dominant-baseline="middle">compute-bound</text>
+  <rect x="580" y="190" width="330" height="180" rx="12" fill="#f2f3f3" stroke="#d4dae4" stroke-width="2"/>
+  <text x="745" y="228" font-family="Roboto Mono, Courier, monospace" font-size="15" fill="#020c13" text-anchor="middle" font-weight="600" dominant-baseline="middle">Decode nodes</text>
+  <text x="745" y="252" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="middle" font-weight="400" dominant-baseline="middle">memory-bandwidth-bound</text>
+  <rect x="89" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="141" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="193" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="245" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="297" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="215" y="350" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="middle" font-weight="400" dominant-baseline="middle">whole prompt at once</text>
+  <rect x="607" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="665" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="723" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="781" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="839" y="285" width="44" height="40" rx="4" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <line x1="651" y1="305" x2="659" y2="305" stroke="#637bff" stroke-width="2"/>
+  <polygon points="665,305 656.0,299 656.0,311" fill="#637bff"/>
+  <line x1="709" y1="305" x2="717" y2="305" stroke="#637bff" stroke-width="2"/>
+  <polygon points="723,305 714.0,299 714.0,311" fill="#637bff"/>
+  <line x1="767" y1="305" x2="775" y2="305" stroke="#637bff" stroke-width="2"/>
+  <polygon points="781,305 772.0,299 772.0,311" fill="#637bff"/>
+  <line x1="825" y1="305" x2="833" y2="305" stroke="#637bff" stroke-width="2"/>
+  <polygon points="839,305 830.0,299 830.0,311" fill="#637bff"/>
+  <text x="745" y="350" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#676d71" text-anchor="middle" font-weight="400" dominant-baseline="middle">one token at a time</text>
+  <text x="480" y="290" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">KV cache transfer</text>
+  <line x1="380" y1="312" x2="574" y2="312" stroke="#637bff" stroke-width="2"/>
+  <polygon points="580,312 571.0,306 571.0,318" fill="#637bff"/>
+  <line x1="215" y1="370" x2="215" y2="424" stroke="#637bff" stroke-width="2"/>
+  <polygon points="215,430 209,421.0 221,421.0" fill="#637bff"/>
+  <rect x="155" y="430" width="120" height="52" rx="8" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="215" y="456" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#020c13" text-anchor="middle" font-weight="500" dominant-baseline="middle">first token</text>
+  <line x1="745" y1="370" x2="745" y2="402" stroke="#637bff" stroke-width="2"/>
+  <line x1="351.0" y1="402" x2="759.0" y2="402" stroke="#637bff" stroke-width="2"/>
+  <line x1="351.0" y1="402" x2="351.0" y2="424" stroke="#637bff" stroke-width="2"/>
+  <polygon points="351.0,430 345.0,421.0 357.0,421.0" fill="#637bff"/>
+  <line x1="487.0" y1="402" x2="487.0" y2="424" stroke="#637bff" stroke-width="2"/>
+  <polygon points="487.0,430 481.0,421.0 493.0,421.0" fill="#637bff"/>
+  <line x1="623.0" y1="402" x2="623.0" y2="424" stroke="#637bff" stroke-width="2"/>
+  <polygon points="623.0,430 617.0,421.0 629.0,421.0" fill="#637bff"/>
+  <line x1="759.0" y1="402" x2="759.0" y2="424" stroke="#637bff" stroke-width="2"/>
+  <polygon points="759.0,430 753.0,421.0 765.0,421.0" fill="#637bff"/>
+  <rect x="291" y="430" width="120" height="52" rx="8" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="427" y="430" width="120" height="52" rx="8" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="563" y="430" width="120" height="52" rx="8" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <rect x="699" y="430" width="120" height="52" rx="8" fill="#f0f2fd" stroke="#637bff" stroke-width="2"/>
+  <text x="555.0" y="508" font-family="Roboto Mono, Courier, monospace" font-size="13" fill="#676d71" text-anchor="middle" font-weight="500" dominant-baseline="middle">remaining tokens</text>
+</svg>

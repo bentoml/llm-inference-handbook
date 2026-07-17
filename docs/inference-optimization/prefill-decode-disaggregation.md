@@ -3,7 +3,9 @@ sidebar_position: 5
 description: Disaggregate prefill and decode for better parallel execution, resource allocation, and scaling.
 keywords:
     - Prefill-decode disaggregation
+    - Disaggregated inference
     - Disaggregating prefill and decode
+    - Disaggregated serving
     - Prefill, decode
     - Cross-cluster prefill, cross-datacenter prefill
     - Distributed LLM inference
@@ -16,7 +18,15 @@ import LinkList from '@site/src/components/LinkList';
 
 # Prefill-decode disaggregation
 
-To understand prefill-decode (PD) disaggregation, let’s briefly review how
+Prefill-decode (PD) disaggregation, also called disaggregated inference, is a
+serving architecture that runs the two main phases of LLM inference, prefill and
+decode, on separate hardware resources. The terms "disaggregated prefill" and
+"disaggregated serving" often refer to the same core idea: giving each phase
+dedicated resources for different compute and memory demands.
+
+## The problems with collocating prefill and decode
+
+To see why collocation causes problems, let’s briefly review how
 [LLM inference works](/llm-inference-basics/how-does-llm-inference-work/) in two
 steps:
 
@@ -52,7 +62,11 @@ them makes it difficult to optimize both metrics simultaneously.
 ## Why disaggregation makes sense
 
 The idea of PD disaggregation is simple: separate these two very different tasks
-so they don’t get in each other’s way. Key benefits include:
+so they don’t get in each other’s way. Here is an example architecture:
+
+<Diagram name="pd-disaggregation" alt="Prefill-decode disaggregation architecture: an orchestrator routes a user or agent request to compute-bound prefill nodes that process the whole prompt at once and emit the first token, then transfer the KV cache to memory-bandwidth-bound decode nodes that generate the remaining tokens one at a time" />
+
+Key benefits include:
 
 - **Dedicated resource allocation**: Prefill and decode can be scheduled and
   scaled independently on different hardware. For example, if your workload has
@@ -61,7 +75,10 @@ so they don’t get in each other’s way. Key benefits include:
   compute demand on prefill and you can put more resources on decode.
 - **Parallel execution**: Prefill and decode phases don’t interfere with each
   other anymore. You can run them more efficiently in parallel, which means
-  better concurrency and throughput.
+  better concurrency and throughput. The separation can also improve
+  [tail latency](/llm-inference-basics/llm-inference-metrics). With collocation,
+  a single long prefill can stall every in-flight decode request behind it,
+  raising P95 and P99 latency.
 - **Independent tuning**: You can implement different optimization techniques
   (like tensor or pipeline parallelism) for prefill and decode to better meet
   your goals for TTFT and ITL.
