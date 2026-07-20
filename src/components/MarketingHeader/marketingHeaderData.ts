@@ -143,7 +143,7 @@ export const marketingHeaderItems: MarketingHeaderItem[] = [
             {
               label: 'LLM Inference Handbook',
               href: 'https://handbook.modular.com/',
-              description: 'Tips & tricks for production scale',
+              description: 'From basics to production scale',
             },
           ],
         },
