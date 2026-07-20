@@ -91,8 +91,8 @@ const PROFILES: Record<ProfileId, Profile> = {
         href: '/llm-inference-basics/what-is-llm-inference',
       },
       {
-        title: 'How does LLM inference work?',
-        description: 'Tokenization, prefill, decode — step by step',
+        title: 'How does an LLM work?',
+        description: 'Tokenization, attention, prefill, decode — step by step',
         href: '/llm-inference-basics/how-does-llm-inference-work',
       },
       {
