@@ -24,7 +24,9 @@ inference in modern LLMs.
 FlashAttention is a kernel-level optimization. The gains come from how the
 attention computation itself executes on the GPU, including how data moves
 between HBM and SRAM, how the work is tiled, and how operations are fused into
-a single kernel. That's why this page lives in the Kernel Optimization chapter. For techniques at the serving layer, see [Inference Optimization](/inference-optimization/).
+a single kernel. That's why this page lives in the Kernel Optimization chapter.
+For techniques at the serving layer, see
+[Inference Optimization](/inference-optimization/).
 :::
 
 ## Why attention is slow in the first place
