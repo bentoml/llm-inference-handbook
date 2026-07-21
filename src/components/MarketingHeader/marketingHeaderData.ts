@@ -141,9 +141,9 @@ export const marketingHeaderItems: MarketingHeaderItem[] = [
               description: 'Write high-performance kernels for CPUs and GPUs',
             },
             {
-              label: 'Community',
-              href: 'https://www.modular.com/open-source/community',
-              description: 'Build the future of AI together',
+              label: 'LLM Inference Handbook',
+              href: 'https://handbook.modular.com/',
+              description: 'From basics to production scale',
             },
           ],
         },
