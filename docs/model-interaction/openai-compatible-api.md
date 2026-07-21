@@ -57,7 +57,7 @@ OpenAI-compatible APIs address these challenges by providing:
 
 Many
 [inference backends](/getting-started/choosing-the-right-inference-framework/)
-(e.g., vLLM and SGLang) and model serving frameworks (e.g., MAX) provide
+(e.g., vLLM, SGLang, and MAX) provide
 OpenAI-compatible endpoints out of the box. This makes it easier to switch
 between different models without changing client code.
 
