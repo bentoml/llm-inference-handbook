@@ -98,9 +98,17 @@ vector with the vector of the "responding" token. That
 produces two new vectors, which are then multiplied together
 to get the attention score. The attention mechanism then
 
-normalizes the scores with softmax into weights, and uses those weights to
-take a weighted sum of the values. In self-attention, queries, keys, and values
-come from the same sequence. A causal mask limits each token to the current and
+normalizes the scores with softmax so we have a cleanly
+distributed ranking of how important every "responding" token
+is to the "querying" token. Finally, the _value_ vector for each
+"responding" token is multiplied by the vector of the
+"querying" token. With some more math, this value is
+now embedded into the "querying" token. That means
+the token _absorbs_ some high-dimensional values
+from every other token in the sequence, relative to how
+important each one is (how large its attention score is).
+
+A causal mask limits each token to the current and
 earlier positions. This is how "bank" ends up meaning something different in
 "river bank" and "bank account": the representation of the token is updated
 based on the tokens it attends to.
