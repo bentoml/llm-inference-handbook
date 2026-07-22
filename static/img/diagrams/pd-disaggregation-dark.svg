@@ -12,8 +12,12 @@
   <polygon points="370,56 361.0,50 361.0,62" fill="#637bff"/>
   <line x1="370" y1="78" x2="286" y2="78" stroke="#637bff" stroke-width="2"/>
   <polygon points="280,78 289.0,72 289.0,84" fill="#637bff"/>
-  <line x1="480" y1="96" x2="480" y2="176" stroke="#637bff" stroke-width="2"/>
-  <polygon points="480,182 474,173.0 486,173.0" fill="#637bff"/>
+  <line x1="480" y1="96" x2="480" y2="150" stroke="#637bff" stroke-width="2"/>
+  <line x1="215" y1="150" x2="745" y2="150" stroke="#637bff" stroke-width="2"/>
+  <line x1="215" y1="150" x2="215" y2="184" stroke="#637bff" stroke-width="2"/>
+  <polygon points="215,190 209,181.0 221,181.0" fill="#637bff"/>
+  <line x1="745" y1="150" x2="745" y2="184" stroke="#637bff" stroke-width="2"/>
+  <polygon points="745,190 739,181.0 751,181.0" fill="#637bff"/>
   <rect x="50" y="190" width="330" height="180" rx="12" fill="#181c1f" stroke="#353d42" stroke-width="2"/>
   <text x="215" y="228" font-family="Roboto Mono, Courier, monospace" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="600" dominant-baseline="middle">Prefill nodes</text>
   <text x="215" y="252" font-family="Roboto Mono, Courier, monospace" font-size="12" fill="#9a9eaa" text-anchor="middle" font-weight="400" dominant-baseline="middle">compute-bound</text>
