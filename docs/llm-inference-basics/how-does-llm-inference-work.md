@@ -76,42 +76,38 @@ cache that attention uses during generation.
 ## The attention mechanism
 
 Attention lets the model assign different levels of importance to different
-tokens, so it can capture relationships across the sequence. For each token, the
-model computes three vectors:
+tokens, so it can capture relationships across the sequence.
+
+To do this, each attention layer learns three weight matrices: $W_Q$, $W_K$, and
+$W_V$. These matrices are shared across all token positions and transform the
+hidden representation of each token into three vectors:
 
 - **Query (Q)**: A proactive request from the current token. It describes what
   information the token wants to gather from positions that it can attend to.
-- **Key (K)**: A label each position exposes on the response side, describing
-  what kind of information it can offer. Queries and keys are compared via a
-  scaled dot product (QKᵀ / √d_k) to measure how well the current token matches
-  each position.
+- **Key (K)**: A label describing what information each position has to offer,
+  used to judge how well that position matches a given query.
 - **Value (V)**: The content each position offers. The position's contribution
   depends on how well it matches relative to the other positions in view.
 
-These three vectors help the attention mechanism decide how
-important a given token is in relation to another one—how much
-it "attends to" that token (also known as its attention score).
-The actual process to calculate the attention score is a lot of 
-math, but it essentially multiplies the _query_ vector with the
-vector of the "querying" token, and multiplies the _key_
-vector with the vector of the "responding" token. That
-produces two new vectors, which are then multiplied together
-to get the attention score. The attention mechanism then
+These three vectors allow the attention mechanism to determine how much each
+token attends to every other token, and what it takes away when it does. The
+model compares the query vector of the current token with the key vectors of all
+tokens it is allowed to attend to using a scaled dot product
+($\frac{QK^\top}{\sqrt{d_k}}$). The resulting scores indicate how relevant each
+token is to the current one. Values play no role in this scoring step.
 
-normalizes the scores with softmax so we have a cleanly
-distributed ranking of how important every "responding" token
-is to the "querying" token. Finally, the _value_ vector for each
-"responding" token is multiplied by the vector of the
-"querying" token. With some more math, this value is
-now embedded into the "querying" token. That means
-the token _absorbs_ some high-dimensional values
-from every other token in the sequence, relative to how
-important each one is (how large its attention score is).
+The scores are then normalized with a softmax function so they become attention
+weights that sum to 1. These weights determine how much each value vector
+contributes to the current token. Each value vector is multiplied by its
+attention weight, and the weighted values are summed together to produce the
+attention output for the current token, which updates its representation. In
+this way, each token incorporates information from other tokens according to how
+much attention it gives them.
 
-A causal mask limits each token to the current and
-earlier positions. This is how "bank" ends up meaning something different in
-"river bank" and "bank account": the representation of the token is updated
-based on the tokens it attends to.
+In decoder-only LLMs, a causal mask limits each token to attending only to the
+current and earlier positions. This is how "bank" ends up meaning something
+different in "river bank" and "bank account": the representation of the token is
+updated based on the tokens it attends to.
 
 The keys and values computed here are also what the model stores in the KV
 cache, which you'll see in the prefill and decode phases below.
