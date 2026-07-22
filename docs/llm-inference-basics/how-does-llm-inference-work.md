@@ -235,6 +235,41 @@ Unless stated otherwise, "LLM" in this handbook refers to decoder-only
 Transformer models.
 :::
 
+### What is KV cache?
+
+The KV cache is the memory an LLM uses to store the key (K) and value (V)
+vectors it has already computed, so it doesn't have to compute them again.
+
+Attention works by having each token attend to every token before it. Without a
+cache, generating token 1,000 would mean recomputing the keys and values for the
+999 tokens that came first, then repeating that work for token 1,001. Because
+those vectors depend only on the tokens themselves and not on what comes after,
+they never change once computed. Caching them turns each decode step into
+computing K and V for a single new token and reading the rest back from memory.
+This is how the KV cache mecahnism helps speed up inference.
+
+As the sequence length grows during inference, the KV cache becomes the dominant
+factor in memory usage. For Llama 3 8B in FP16, for example, a single 8K-token
+sequence holds about 1 GB of KV cache (learn more about
+[the calculation](/inference-optimization/kv-cache-offloading/#how-to-calculate-the-kv-cache-size)).
+The weights take roughly 16 GB. On an 80 GB GPU, this leaves at most around 64
+GB for the KV cache and other runtime data, giving a theoretical upper bound of
+roughly 60 such sequences. This is why the KV cache, not the model weights, is
+usually what limits how many users a server can handle.
+
+The KV cache is the thing several optimization techniques in this handbook are
+built around:
+
+- [PagedAttention](/inference-optimization/pagedattention/) stores the cache in
+  fixed-size blocks to avoid fragmentation and over-reservation
+- [Prefix caching](/inference-optimization/prefix-caching/) reuses the cache for
+  a shared prompt prefix across requests
+- [KV cache offloading](/inference-optimization/kv-cache-offloading/) moves
+  inactive blocks to CPU memory or disk, and includes a calculator for the
+  example above
+- [Prefill-decode disaggregation](/inference-optimization/prefill-decode-disaggregation/)
+  splits the two phases across workers and transfers the cache between them
+
 ### How are tokens selected via sampling?
 
 At each decode step, the model does not directly output a word. Instead, it
