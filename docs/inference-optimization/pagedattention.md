@@ -25,9 +25,8 @@ see
 
 ## Attention and the KV cache
 
-[Attention](/llm-inference-basics/how-does-llm-inference-work/#the-attention-mechanism)
-is the mechanism that lets a Transformer weigh how strongly tokens relate to
-one another. For each token, the model computes three vectors:
+Attention is the mechanism that lets a Transformer evaluate how strongly tokens
+relate to one another. For each token, the model computes three vectors:
 
 - **Query (Q)**: what the current token is looking for
 - **Key (K)**: what each token offers for matching
@@ -40,10 +39,13 @@ values.
 During autoregressive generation, each new token needs the keys and values of
 all previous tokens. Instead of recomputing them at every step, the serving
 engine
-[stores them in the KV cache](/llm-inference-basics/how-does-llm-inference-work/#the-two-phases-of-llm-inference).
+[stores them in the KV cache](/llm-inference-basics/how-does-llm-inference-work/#what-is-kv-cache).
 That cache grows with sequence length and can consume a substantial amount of
 GPU memory across concurrent requests. How the engine allocates that memory is
 the problem PagedAttention solves.
+
+For more information, see
+[the attention mechanism](/llm-inference-basics/how-does-llm-inference-work/#the-attention-mechanism).
 
 ## Why contiguous KV cache allocation wastes memory
 

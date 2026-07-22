@@ -75,13 +75,18 @@ cache that attention uses during generation.
 
 ## The attention mechanism
 
-[Attention](https://arxiv.org/abs/1706.03762) lets the model assign different
-levels of importance to different tokens, so it can capture relationships
-across the sequence. For each token, the model computes three vectors:
+Attention lets the model assign different levels of importance to different
+tokens, so it can capture relationships across the sequence. For each token, the
+model computes three vectors:
 
-- **Query (Q)**: what the current token is looking for
-- **Key (K)**: what each token offers for matching
-- **Value (V)**: the content each token contributes
+- **Query (Q)**: A proactive request from the current token. It describes what
+  information the token wants to gather from positions that it can attend to.
+- **Key (K)**: A label each position exposes on the response side, describing
+  what kind of information it can offer. Queries and keys are compared via a
+  scaled dot product (QKᵀ / √d_k) to measure how well the current token matches
+  each position.
+- **Value (V)**: The content each position offers. The position's contribution
+  depends on how well it matches relative to the other positions in view.
 
 The model compares queries against keys to produce attention scores,
 normalizes the scores with softmax into weights, and uses those weights to
@@ -93,6 +98,9 @@ based on the tokens it attends to.
 
 The keys and values computed here are also what the model stores in the KV
 cache, which you'll see in the prefill and decode phases below.
+
+For more information, see the
+[Attention Is All You Need](https://arxiv.org/abs/1706.03762) paper.
 
 ## The attention mask
 
