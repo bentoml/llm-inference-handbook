@@ -88,7 +88,16 @@ model computes three vectors:
 - **Value (V)**: The content each position offers. The position's contribution
   depends on how well it matches relative to the other positions in view.
 
-The model compares queries against keys to produce attention scores,
+These three vectors help the attention mechanism decide how
+important a given token is in relation to another one—how much
+it "attends to" that token (also known as its attention score).
+The actual process to calculate the attention score is a lot of 
+math, but it essentially multiplies the _query_ vector with the
+vector of the "querying" token, and multiplies the _key_
+vector with the vector of the "responding" token. That
+produces two new vectors, which are then multiplied together
+to get the attention score. The attention mechanism then
+
 normalizes the scores with softmax into weights, and uses those weights to
 take a weighted sum of the values. In self-attention, queries, keys, and values
 come from the same sequence. A causal mask limits each token to the current and
