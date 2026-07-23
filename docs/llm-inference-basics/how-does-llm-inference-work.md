@@ -78,8 +78,9 @@ cache that attention uses during generation.
 Attention lets the model assign different levels of importance to different
 tokens, so it can capture relationships across the sequence.
 
-To do this, each attention layer learns three weight matrices: $W_Q$, $W_K$, and
-$W_V$. These matrices are shared across all token positions and transform the
+To do this, each attention layer learns three weight matrices:
+$W_Q$ (query weight), $W_K$ (key weight), and $W_V$ (value weight).
+These matrices are shared across all token positions and transform the
 hidden representation of each token into three vectors:
 
 - **Query (Q)**: A proactive request from the current token. It describes what
