@@ -83,12 +83,17 @@ $W_Q$ (query weight), $W_K$ (key weight), and $W_V$ (value weight).
 These matrices are shared across all token positions and transform the
 hidden representation of each token into three vectors:
 
-- **Query (Q)**: A proactive request from the current token. It describes what
-  information the token wants to gather from positions that it can attend to.
-- **Key (K)**: A label describing what information each position has to offer,
-  used to judge how well that position matches a given query.
-- **Value (V)**: The content each position offers. The position's contribution
-  depends on how well it matches relative to the other positions in view.
+- **Query (Q)**: A vector that represents a type of information
+  the token wants to collect from the other tokens it can attend to.
+- **Key (K)**: A vector that represents the type of information the
+  token offers. If the key vector is positively aligned with another
+  token’s query vector, that other token will "attend to" this token
+  (to a degree specified by an attention score, calculated based on
+  how well the query and key vectors align).
+- **Value (V)**: A vector that represents the actual information the
+  token offers to other tokens. If another token attends to this token,
+  it will embed a proportion of this value into its token embedding
+  (as determined by the attention score).
 
 These three vectors allow the attention mechanism to determine how much each
 token attends to every other token, and what it takes away when it does. The
