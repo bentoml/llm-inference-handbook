@@ -1,8 +1,10 @@
 ---
 sidebar_position: 3
-description: Learn how LLM inference works, from tokenization to prefill and decode stages, with tips on performance, KV caching, and optimization strategies.
+description: Learn how an LLM works, from tokenization and Transformer architecture (attention, attention masks) to the prefill and decode stages of inference.
 keywords:
+    - How does an LLM work, LLM architecture, transformer architecture
     - LLM inference, how LLM inference works, autoregressive decoding, transformer inference
+    - Attention mechanism, attention mask, causal mask
     - Prefill and decode
     - LLM tokenization, tokens, LLM vocabulary
     - KV cache LLM
@@ -14,10 +16,13 @@ import AutoregressiveDecodeStepper from
 '@site/src/components/AutoregressiveDecodeStepper'; import
 LatencyTimelineVisualizer from '@site/src/components/LatencyTimelineVisualizer';
 
-# How does LLM inference work?
+# How does an LLM work?
 
-During inference, an LLM generates text one token at a time, using its internal
-attention mechanisms and knowledge of previous context.
+A typical autoregressive LLM reads text as tokens, processes them through a
+stack of Transformer layers built around the attention mechanism, and generates
+output one token at a time. This page walks through that pipeline: how text
+becomes tokens, what the model architecture looks like inside, and how inference
+proceeds through prefill and decode phases.
 
 ## What are tokens and tokenization?
 
@@ -47,6 +52,100 @@ For output, LLMs generate new tokens autoregressively. Starting with an initial
 sequence of tokens, the model predicts the next token based on everything it has
 seen so far. This repeats until a stopping criterion is met.
 
+## What's inside an LLM?
+
+Most modern LLMs are
+[decoder-only Transformer models](#are-all-llms-decoder-only-transformer-models).
+At a high level, the architecture has three major components:
+
+1. **Input representation**: Token IDs are converted into numerical vectors
+   (embeddings). The model also incorporates positional information so it can
+   distinguish token order. For example, Rotary Positional Embeddings (RoPE)
+   encode position within the attention computation.
+2. **A stack of Transformer layers**: The embeddings pass through many
+   Transformer layers. A typical layer combines a self-attention mechanism,
+   which mixes information across tokens, with a feed-forward network, which
+   transforms each token independently.
+3. **Output head**: The final hidden state is projected into logits, one raw
+   score for every token in the vocabulary. These logits are what the model
+   [samples from to pick the next token](#how-are-tokens-selected-via-sampling).
+
+Many inference optimizations target either attention computation or the KV
+cache that attention uses during generation.
+
+## The attention mechanism
+
+Attention lets the model assign different levels of importance to different
+tokens, so it can capture relationships across the sequence.
+
+To do this, each attention layer learns three weight matrices:
+$W_Q$ (query weight), $W_K$ (key weight), and $W_V$ (value weight).
+These matrices are shared across all token positions and transform the
+hidden representation of each token into three vectors:
+
+- **Query (Q)**: A vector that represents a type of information
+  the token wants to collect from the other tokens it can attend to.
+- **Key (K)**: A vector that represents the type of information the
+  token offers. If the key vector is positively aligned with another
+  token’s query vector, that other token will "attend to" this token
+  (to a degree specified by an attention score, calculated based on
+  how well the query and key vectors align).
+- **Value (V)**: A vector that represents the actual information the
+  token offers to other tokens. If another token attends to this token,
+  it will embed a proportion of this value into its token embedding
+  (as determined by the attention score).
+
+These three vectors allow the attention mechanism to determine how much each
+token attends to every other token, and what it takes away when it does. The
+model compares the query vector of the current token with the key vectors of all
+tokens it is allowed to attend to using a scaled dot product
+($\frac{QK^\top}{\sqrt{d_k}}$). The resulting scores indicate how relevant each
+token is to the current one. Values play no role in this scoring step.
+
+The scores are then normalized with a softmax function so they become attention
+weights that sum to 1. These weights determine how much each value vector
+contributes to the current token. Each value vector is multiplied by its
+attention weight, and the weighted values are summed together to produce the
+attention output for the current token, which updates its representation. In
+this way, each token incorporates information from other tokens according to how
+much attention it gives them.
+
+In decoder-only LLMs, a causal mask limits each token to attending only to the
+current and earlier positions. This is how "bank" ends up meaning something
+different in "river bank" and "bank account": the representation of the token is
+updated based on the tokens it attends to.
+
+The keys and values computed here are also what the model stores in the KV
+cache, which you'll see in the prefill and decode phases below.
+
+For more information, see the
+[Attention Is All You Need](https://arxiv.org/abs/1706.03762) paper.
+
+## The attention mask
+
+Self-attention can naturally look at every token in the sequence at once, but
+that's not always desirable. An attention mask controls which tokens each
+token is allowed to attend to.
+
+For standard autoregressive generation, decoder-only LLMs apply a causal mask
+(also called a look-ahead mask). The mask is part of the architecture rather
+than an optional setting: an autoregressive model predicts the next token from
+the tokens before it, so a token must never see tokens that come after it. The
+causal mask enforces this by setting attention scores for future positions to
+negative infinity before softmax, so their weights become zero and no
+information flows from later positions to earlier ones.
+
+The causal mask matters whenever many tokens are processed in parallel, such as
+during training and the prefill phase of inference. Without it, earlier tokens
+would attend to later ones, producing representations inconsistent with how the
+model generates text. During ordinary single-token decode, the model generates
+one token at a time and only past tokens exist in the KV cache, so there are no
+future positions left to mask.
+
+Attention masks are also used to hide padding tokens, which are filler tokens
+added to align sequences of different lengths in a batch and carry no meaning
+of their own.
+
 ## The two phases of LLM inference
 
 For decoder-only Transformer models like GPT-4, the entire inference process
@@ -60,9 +159,11 @@ sequence of tokens. The prefill phase begins after tokenization:
 1. These tokens (or token IDs) are embedded as numerical vectors that the LLM
    can understand.
 2. The vectors pass through multiple transformer layers, each containing a
-   self-attention mechanism. Here, query (Q), key (K), and value (V) vectors are
+   self-attention mechanism. Here,
+   [query (Q), key (K), and value (V) vectors](#the-attention-mechanism) are
    computed for each token. These vectors determine how tokens attend to each
-   other, capturing contextual meaning.
+   other (subject to the [causal mask](#the-attention-mask)), capturing
+   contextual meaning.
 3. As the model processes the prompt, it builds a KV cache to store the key and
    value vectors for every token at every layer. It acts as an internal memory
    for faster lookups during decoding.

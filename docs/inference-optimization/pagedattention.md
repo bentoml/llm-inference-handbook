@@ -14,15 +14,44 @@ import LinkList from '@site/src/components/LinkList';
 # PagedAttention
 
 [PagedAttention](https://blog.vllm.ai/2023/06/20/vllm.html) is a
-memory-efficient approach to implementing the attention mechanism in LLMs.
+memory-efficient approach to managing the KV cache in LLM inference. The primary
+serving benefit does not come from a faster attention kernel. It comes from how
+the serving engine allocates and manages KV cache memory. Attention kernels
+implement part of the mechanism (they read KV blocks through a lookup table),
+but the win is at the serving layer, which is why this page sits in the
+Inference Optimization chapter. For attention efficiency at the kernel level,
+see
+[FlashAttention](/kernel-optimization/flashattention/).
+
+## Attention and the KV cache
+
+Attention is the mechanism that lets a Transformer evaluate how strongly tokens
+relate to one another. For each token, the model computes three vectors:
+
+- **Query (Q)**: what the current token is looking for
+- **Key (K)**: what each token offers for matching
+- **Value (V)**: the content each token contributes
+
+The model compares queries against keys to produce attention scores, normalizes
+them with softmax, and uses the resulting weights to take a weighted sum of the
+values.
+
+During autoregressive generation, each new token needs the keys and values of
+all previous tokens. Instead of recomputing them at every step, the serving
+engine
+[stores them in the KV cache](/llm-inference-basics/how-does-llm-inference-work/#what-is-kv-cache).
+That cache grows with sequence length and can consume a substantial amount of
+GPU memory across concurrent requests. How the engine allocates that memory is
+the problem PagedAttention solves.
+
+For more information, see
+[the attention mechanism](/llm-inference-basics/how-does-llm-inference-work/#the-attention-mechanism).
 
 ## Why contiguous KV cache allocation wastes memory
 
-When an LLM is generating a response, it needs to
-[remember past information (i.e. the KV cache) for every token it generates](/llm-inference-basics/how-does-llm-inference-work/#the-two-phases-of-llm-inference).
-Normally, the KV cache takes up a big chunk of memory because it’s stored as one
-giant continuous block. This can lead to memory fragmentation or wasted space
-because you need to reserve a big block even if you don’t fill it fully.
+Normally, the KV cache takes up a big chunk of memory because it’s stored as
+one giant contiguous block. This can lead to memory fragmentation or wasted
+space because you need to reserve a big block even if you don’t fill it fully.
 
 Specifically, early serving engines often allocated KV cache as a contiguous
 tensor sized for the worst case.
