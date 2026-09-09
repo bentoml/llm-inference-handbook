@@ -4,21 +4,28 @@
 }
 
 .bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   height: 64px;
-  padding: 0 1.5rem;
+  max-width: calc(var(--content-max-width) + var(--content-side-padding) * 2);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--content-side-padding);
+  padding-right: var(--content-side-padding);
 
   @media (max-width: 996px) {
+    display: flex;
     height: auto;
-    padding: 16px 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     flex-wrap: wrap;
-    row-gap: 12px;
+    row-gap: 1.5rem;
   }
 }
 
 .logoLink {
+  justify-self: start;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -40,14 +47,18 @@
 }
 
 .links {
+  grid-column: 2;
+  justify-self: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 32px;
   flex-wrap: wrap;
 
   @media (max-width: 996px) {
     order: 3;
     flex-basis: 100%;
+    justify-content: flex-start;
     gap: 16px;
   }
 }
